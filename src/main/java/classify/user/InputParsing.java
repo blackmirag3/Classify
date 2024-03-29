@@ -53,11 +53,15 @@ public class InputParsing {
         // @@author tayponghee
         switch (userCommand[0]) {
         case ADD:
-            AddStudent.addStudent(masterStudentList, in, userCommand[1]);
-            // @@author ParthGandhiNUS
-            assert masterStudentList != null;
-            DataHandler.writeStudentInfo(masterStudentList);
-            // @@author tayponghee
+            if (userCommand.length >= 2) {
+                AddStudent.addStudent(masterStudentList, in, userCommand[1]);
+                //@@author ParthGandhiNUS
+                assert masterStudentList != null;
+                DataHandler.writeStudentInfo(masterStudentList);
+                //@@ author tayponghee
+            } else {
+                System.out.println("Invalid command: Not enough arguments for 'add'.");
+            }
             break;
 
         case VIEW:

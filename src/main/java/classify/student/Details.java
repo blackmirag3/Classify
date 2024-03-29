@@ -50,4 +50,8 @@ public abstract class Details {
         this.remarks = remarks;
     }
 
+    public static Details getDetails() {
+        return StudentAttributes.getDetails();
+    }
+
 }
