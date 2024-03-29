@@ -118,6 +118,25 @@ Contains the restore student list method which is used to restore the previously
 Contains the relevant methods to make the required file directories for storing the text file. 
 It checks for existing folders. If not found, it makes new folders to store text files properly. 
 
+### AddStudent Component
+
+The `AddStudent` class is responsible for adding a new student to the list of students. It ensures that no two students with the same name are added and checks if the attributes added are in the correct format.
+
+#### Design Considerations
+
+- **Handling Duplicate Names**: The class checks if a student with the same name already exists in the master list before adding a new student.
+- **Input Validation**: It validates the format of input attributes such as the name, phone number, gender, last payment date, and remarks.
+- **Modular Approach**: The class is designed with modularity in mind, allowing easy addition of new attributes or modifications in the future.
+
+#### Implementation and Rationale
+
+- **Name Validation**: The `checkForEmptyName` method ensures that the name provided by the user is not empty and does not already exist in the master student list.
+- **Attribute Validation**: Various methods such as `promptForPhoneNumber`, `promptForGender`, `promptForLastPaymentDate`, and `promptForRemarks` validate the format of different attributes.
+- **Adding Subjects**: The `addSubject` method allows users to add multiple subjects along with their grades and classes attended for each student.
+- **Error Handling**: The class provides appropriate error messages if invalid input or duplicate names are encountered.
+
+The `AddStudent` class contributes to the overall functionality of the application by providing a streamlined process for adding new students and ensuring data integrity within the student database.
+
 ---
 
 ## Product scope
