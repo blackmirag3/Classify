@@ -90,6 +90,34 @@ We created a parent `Details` class as those are information not specifically re
 
 However, our current implementation is not very secure as one can access every field of a `Student` object just by having access to it or the `StudentAttribute` object, which can be done via accessing the `static masterStudentList` variable.In future updates, we could possibly implement a Facade Pattern to better hide sensitive details.
 
+### Data Commands Component
+
+This section refers to `DataHandler.java`, `DataReader.java`, and `DataStorage.java` classes.
+
+We have currently implemented a basic data handler which has the abilities to store a student's name into a text file.
+
+This text file is created locally on the users' computer for easy access and retrieval.
+
+Currently there is a polling system set in place where every change in the list of students (eg, addition, deletion, modification) would override the current working text file on the users' computer.
+
+We intend to further the functionalities of this component by allowing us to add attributes (phone number, subjects, last fee payment date),
+
+#### Design Considerations
+
+In order to ensure the proper usage of OOP principles (such as encapsulation), we have segregated the 3 classes to read,store and handle the data.
+
+#### Implementation and Rationale
+
+##### DataHandler
+Contains the methods to read and write student information which are used in other functions such as InputParser and Main.
+
+##### DataReader
+Contains the restore student list method which is used to restore the previously saved information about the students which are part of the tuition centre.
+
+##### DataStorage
+Contains the relevant methods to make the required file directories for storing the text file. 
+It checks for existing folders. If not found, it makes new folders to store text files properly. 
+
 ---
 
 ## Product scope
