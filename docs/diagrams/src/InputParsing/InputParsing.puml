@@ -36,3 +36,5 @@ InputParsing ...r> Ui
 InputParsing ..> student
 
 note "Inconsequential methods and attributes omitted" as N1
+
+@enduml
