@@ -86,11 +86,14 @@ public class InputParsingTest {
                 "delete                      Deletes a student from the student list, expects a name" +
                                              ", can be used directly with a name e.g. add [name]"
                                              + System.lineSeparator() +
+                "restore                     Restore a student deleted within the current session, expects a name, " +
+                                             "can be used directly by restore [name]."
+                                             + System.lineSeparator() +
+                "undo                        Restores the last student deleted in the current session."
+                                             + System.lineSeparator() +
                 "list                        Displays the list of all students"
                                              + System.lineSeparator() +
                 "bye                         Exits Classify"
-                                             + System.lineSeparator() +
-                "sort_name                   sorts the students by name lexicographically"
                                              + System.lineSeparator() +
                 "sort                        Sorts the student list by the input parameter, expects an" +
                                              " attribute to sort by, can be used directly by sort [type]."

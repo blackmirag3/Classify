@@ -71,9 +71,10 @@ public class Ui {
         printEditHelpMessage();
         printViewHelpMessage();
         printDeleteHelpMessage();
+        printRestoreHelpMessage();
+        printUndoHelpMessage();
         printListHelpMessage();
         printByeHelpMessage();
-        printSortNameMessage();
         printSortHelpMessage();
         System.out.println("help                        Prints this help message");
     }
@@ -83,9 +84,14 @@ public class Ui {
                 " attribute to sort by, can be used directly by sort [type].");
         System.out.println("                            Currently available types: name, classes, payment");
     }
-    //@@ author tayponghee
-    private static void printSortNameMessage() {
-        System.out.println("sort_name                   sorts the students by name lexicographically");
+
+    private static void printRestoreHelpMessage() {
+        System.out.println("restore                     Restore a student deleted within the current session, expects" +
+                " a name, can be used directly by restore [name].");
+    }
+
+    private static void printUndoHelpMessage() {
+        System.out.println("undo                        Restores the last student deleted in the current session.");
     }
 
     //@@ author Cryolian
