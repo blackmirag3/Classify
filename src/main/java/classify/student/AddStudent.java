@@ -1,7 +1,7 @@
 
 package classify.student;
 
-import classify.user.Ui;
+import classify.ui.UI;
 import classify.user.InputParsing;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -40,8 +40,8 @@ public class AddStudent {
             assert InputParsing.findStudentByName(masterStudentList, name) != null;
             LOGGER.log(Level.WARNING, STUDENT_WITH_THE_SAME_NAME_ALREADY_EXISTS);
 
-            Ui.printSameNameError();
-            Ui.printDivider();
+            UI.printSameNameError();
+            UI.printDivider();
             return;
         }
 
@@ -60,20 +60,20 @@ public class AddStudent {
         //@@author Cryolian
         student.getAttributes().setPhoneNumber(number);
 
-        Ui.promptForGender();
+        UI.promptForGender();
         student.getAttributes().setGender(InputParsing.readInString(in));
 
-        Ui.promptForLastPaymentDate();
+        UI.promptForLastPaymentDate();
         student.getAttributes().setLastPaymentDate(InputParsing.readInDate(in));
 
-        Ui.promptForRemarks();
+        UI.promptForRemarks();
         student.getAttributes().setRemarks(InputParsing.readInString(in));
 
         //@@author tayponghee
         masterStudentList.add(student);
         LOGGER.log(Level.INFO, STUDENT_ADDED_SUCCESSFULLY);
-        Ui.printStudentAdded();
-        Ui.printDivider();
+        UI.printStudentAdded();
+        UI.printDivider();
     }
 
     /**
@@ -94,7 +94,7 @@ public class AddStudent {
 
             //@@author alalal47
             if (studentName == null) {
-                Ui.printStudentNamePrompt();
+                UI.printStudentNamePrompt();
                 name = in.nextLine().trim();
             } else {
                 name = studentName.trim();
@@ -105,8 +105,8 @@ public class AddStudent {
             assert studentName != null;
 
             if (name.isEmpty()) {
-                Ui.printEmptyNameMessage();
-                Ui.printDivider();
+                UI.printEmptyNameMessage();
+                UI.printDivider();
             } else {
                 break;
             }
@@ -130,13 +130,13 @@ public class AddStudent {
             String subject = in.nextLine().trim();
 
             if (subject.isBlank()) {
-                Ui.printNoSubjectsAdded();
+                UI.printNoSubjectsAdded();
                 break;
 
             } else if (attributes.findSubject(subject) != null) {
                 // rejects subject if existing subject of same name exists in students'
                 // attributes
-                Ui.printSubjectAlreadyExists();
+                UI.printSubjectAlreadyExists();
                 break;
 
             } else if (checkForValidSubjectResponse(in, attributes, subject)) {
@@ -162,7 +162,7 @@ public class AddStudent {
         attributes.addSubjectGrade(subjectGrade);
 
         while (true) {
-            Ui.printAddSubject();
+            UI.printAddSubject();
             String response = in.nextLine().trim().toLowerCase();
 
             if (response.equals(YES)) {
@@ -172,7 +172,7 @@ public class AddStudent {
                 return true;
 
             } else {
-                Ui.printInvalidResponse();
+                UI.printInvalidResponse();
             }
 
         }
@@ -188,7 +188,7 @@ public class AddStudent {
      */
     public static int promptForClassesAttended(Scanner in) {
         while (true) {
-            Ui.printClassesAttendedPrompt();
+            UI.printClassesAttendedPrompt();
             String classesAttendedInput = in.nextLine();
 
             if (classesAttendedInput.isBlank()) {
@@ -201,9 +201,9 @@ public class AddStudent {
                 classesAttended = Integer.parseInt(classesAttendedInput);
             } catch (NumberFormatException e) {
                 //@@author tayponghee
-                Ui.printWrongNumberFormat();
+                UI.printWrongNumberFormat();
                 //@@author ParthGandhiNus
-                Ui.printDivider();
+                UI.printDivider();
                 classesAttended = promptForClassesAttended(in);
             }
 

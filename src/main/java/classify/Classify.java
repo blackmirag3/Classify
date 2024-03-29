@@ -1,9 +1,9 @@
 package classify;
 
-import classify.datacommands.DataHandler;
+import classify.commands.datacommands.DataCommands;
 import classify.student.StudentList;
 import classify.user.InputParsing;
-import classify.user.Ui;
+import classify.ui.UI;
 import classify.user.UserInput;
 
 import java.io.IOException;
@@ -21,9 +21,9 @@ public class Classify {
     public static void main(String[] args) throws IOException {
 
         // @@author ParthGandhiNUS  
-        Ui.printWelcomeMessage();
-        Ui.printUserPrompt();
-        DataHandler.readStudentInfo();
+        UI.printWelcomeMessage();
+        UI.printUserPrompt();
+        DataCommands.readStudentInfo();
         
         // Takes in input from the user, and processes input to determine if it contains a command and a name   
         String[] userCommand = UserInput.processInput(in.nextLine());
@@ -36,7 +36,7 @@ public class Classify {
             userCommand = UserInput.processInput(in.nextLine());
         }
 
-        Ui.printEndConversation();
+        UI.printEndConversation();
     }
 }
 
