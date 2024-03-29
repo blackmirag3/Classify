@@ -6,8 +6,6 @@ import classify.student.Student;
 import classify.ui.DataUI;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 //@@author blackmirag3
