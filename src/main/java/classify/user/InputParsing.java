@@ -1,8 +1,8 @@
 package classify.user;
 
-import classify.commands.datacommands.DataCommands;
-
-import classify.commands.deletecommands.DeleteCommands;
+import classify.commands.Commands;
+import classify.commands.FileIOCommands;
+import classify.commands.DeleteCommands;
 import classify.student.AddStudent;
 import classify.student.Student;
 import classify.student.StudentAttributes;
@@ -12,6 +12,7 @@ import classify.student.SubjectGrade;
 import classify.student.ViewStudent;
 import classify.ui.UI;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
@@ -36,6 +37,7 @@ public class InputParsing {
     private static final String HELP = "help";
     private static final String SORT = "sort";
     private static final String ARCHIVE = "archive";
+    private static final String UNARCHIVE = "unarchive";
     private static final String VIEW_SUBJECT = "view_subject";
     private static final String ENTER_THE_SUBJECT_NAME_TYPE_EXIT_TO_GO_BACK =
             "Enter the subject name (type 'exit' to go back):";
@@ -48,7 +50,8 @@ public class InputParsing {
     private static final String LAST_PAID_DATE = "3. Date of last fee payment: ";
 
     public static void parseUserCommand(String[] userCommand, ArrayList<Student> masterStudentList,
-                                        ArrayList<Student> recentlyDeletedList, Scanner in) {
+                                        ArrayList<Student> recentlyDeletedList,
+                                        ArrayList<Student> archiveList, Scanner in) {
         // @@author blackmirag3
         if (masterStudentList == null) {
             System.out.println("Student list is null.");
@@ -56,15 +59,10 @@ public class InputParsing {
         // @@author tayponghee
         switch (userCommand[0]) {
         case ADD:
-            if (userCommand.length >= 2) {
-                AddStudent.addStudent(masterStudentList, in, userCommand[1]);
-                //@@author ParthGandhiNUS
-                assert masterStudentList != null;
-                DataCommands.writeStudentInfo(masterStudentList);
-                //@@ author tayponghee
-            } else {
-                System.out.println("Invalid command: Not enough arguments for 'add'.");
-            }
+            AddStudent.addStudent(masterStudentList, in, userCommand[1]);
+            //@@author ParthGandhiNUS
+            assert masterStudentList != null;
+            FileIOCommands.writeStudentInfo(masterStudentList);
             break;
 
         case VIEW:
@@ -76,7 +74,7 @@ public class InputParsing {
         case DELETE:
             DeleteCommands.deleteStudent(masterStudentList, recentlyDeletedList, in, userCommand[1]);
             // @@author ParthGandhiNUS
-            DataCommands.writeStudentInfo(masterStudentList);
+            FileIOCommands.writeStudentInfo(masterStudentList);
             //@@author alalal47
             break;
 
@@ -96,7 +94,7 @@ public class InputParsing {
         // @@author ParthGandhiNUS
         case BYE:
             UI.printEndConversation();
-            DataCommands.writeStudentInfo(masterStudentList);
+            FileIOCommands.writeStudentInfo(masterStudentList);
             break;
 
         case LIST:
@@ -118,7 +116,11 @@ public class InputParsing {
             break;
 
         case ARCHIVE:
-            archiveStudent(userCommand[1]);
+            archiveStudent(masterStudentList, archiveList, userCommand[1], in);
+            break;
+
+        case UNARCHIVE:
+            unarchiveStudent(masterStudentList, archiveList, userCommand[1], in);
             break;
 
         default:
@@ -127,11 +129,37 @@ public class InputParsing {
         }
     }
 
-    private static void archiveStudent(String name) {
-        while (name == null) {
-            System.out.println("enter student name");
-            String input = in.nextLine().trim();
+    //author blackmirag3
+    private static void unarchiveStudent(ArrayList<Student> masterList, ArrayList<Student> archiveList,
+                                         String name, Scanner in) {
+        if (name == null) {
+            name = Commands.promptName(in);
         }
+        Student student = findStudentByName(archiveList, name);
+        if (student == null) {
+            UI.printStudentNotFound();
+            return;
+        }
+        archiveList.remove(student);
+        masterList.add(student);
+        FileIOCommands.writeArchive(archiveList);
+        FileIOCommands.writeStudentInfo(masterList);
+    }
+
+    private static void archiveStudent(ArrayList<Student> masterList, ArrayList<Student> archiveList,
+                                       String name, Scanner in) {
+        if (name == null) {
+            name = Commands.promptName(in);
+        }
+        Student student = findStudentByName(masterList, name);
+        if (student == null) {
+            UI.printStudentNotFound();
+            return;
+        }
+        masterList.remove(student);
+        archiveList.add(student);
+        FileIOCommands.writeArchive(archiveList);
+        FileIOCommands.writeStudentInfo(masterList);
     }
 
     /**

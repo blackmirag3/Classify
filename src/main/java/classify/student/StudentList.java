@@ -14,6 +14,7 @@ public class StudentList {
     public static final String STUDENTS_IN_THE_LIST = " students in the list.";
     public static ArrayList<Student> masterStudentList = new ArrayList<>();
     public static ArrayList<Student> recentlyDeletedList = new ArrayList<>();
+    public static ArrayList<Student> archiveList = new ArrayList<>();
 
     //@@author Cryolian
     public ArrayList<Student> studentList;

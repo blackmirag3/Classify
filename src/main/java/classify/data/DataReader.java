@@ -53,7 +53,7 @@ public class DataReader {
         }
     }
 
-    public static void initialiseData(String directoryPath, String filePath) throws IOException {
+    public static void initialiseData(ArrayList<Student> list, String directoryPath, String filePath) throws IOException {
         Path directory = Paths.get(directoryPath);
         if (!Files.exists(directory)) {
             DataUI.printCreatingDirectory();
@@ -64,7 +64,7 @@ public class DataReader {
             DataUI.printRetrieveData();
 
             while (line.ready()) {
-                restoreStudentList(line.readLine(), StudentList.masterStudentList);
+                restoreStudentList(line.readLine(), list);
             }
             line.close();
 

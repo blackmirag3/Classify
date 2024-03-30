@@ -1,5 +1,16 @@
 # User Guide for **Classify**
 
+## Preface
+With the increased competititiveness of cohorts in Singapore, tuition centres have become more prevalent than ever before. 
+
+According to a **[newspaper article](https://www.straitstimes.com/singapore/education/families-spent-14b-on-private-tuition-for-kids-last-year-as-parents-fork-out)** in The Straits Times, billions of dollars are spent in the tuition industry in Singapore every single year. 
+
+These are just the numbers in Singapore. If we go to other countries, the situation is much worse. In India, new tuition centres preparing students for competitive entrance exams like JEE and NEET spring up every single day.
+
+In such a fast-growing market, it is important that these tuition centres use better and more efficient student management systems to increase efficiency and automation of manual laborious tasks.
+
+These systems enable tutors and administrative staff to focus on more pressing issues and work on catering to every students' needs instead of being swamped with paperwork. 
+
 ## Introduction
 
 Classify is a student management system meant to assist administrative staff of private tuition centres. 

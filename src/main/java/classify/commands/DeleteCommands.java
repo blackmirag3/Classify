@@ -1,4 +1,4 @@
-package classify.commands.deletecommands;
+package classify.commands;
 
 import classify.student.Student;
 import classify.user.InputParsing;
@@ -7,7 +7,7 @@ import classify.ui.UI;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class DeleteCommands {
+public class DeleteCommands extends Commands {
     //@@author alalal47
     /**
      * Removes a student from the list.
@@ -21,15 +21,13 @@ public class DeleteCommands {
      */
     public static void deleteStudent(ArrayList<Student> masterStudentList, ArrayList<Student> recentlyDeletedList,
                                      Scanner in, String studentName) {
-        String name;
+        //@@author blackmirag3
         if (studentName == null) {
-            UI.printStudentNamePrompt();
-            name = in.nextLine().trim();
-        } else {
-            name = studentName;
+            studentName = promptName(in);
         }
 
-        Student foundStudent = InputParsing.findStudentByName(masterStudentList, name);
+        //@@author alalal47
+        Student foundStudent = InputParsing.findStudentByName(masterStudentList, studentName);
 
         if (foundStudent != null) {
             UI.printStudentDeleted();
@@ -38,9 +36,12 @@ public class DeleteCommands {
         }
 
         UI.printDivider();
-        recentlyDeletedList.add(foundStudent);
+        //@@author blackmirag3
+        if (recentlyDeletedList != null) {
+            recentlyDeletedList.add(foundStudent);
+        }
         masterStudentList.remove(foundStudent);
-        assert InputParsing.findStudentByName(masterStudentList, name) == null : "Student should be deleted";
+        assert InputParsing.findStudentByName(masterStudentList, studentName) == null : "Student should be deleted";
     }
 
     /**
@@ -55,15 +56,12 @@ public class DeleteCommands {
      */
     public static void restoreStudent(ArrayList<Student> masterStudentList, ArrayList<Student> recentlyDeletedList,
                                       Scanner in, String studentName) {
-        String name;
+        //@@author blackmirag3
         if (studentName == null) {
-            UI.printStudentNamePrompt();
-            name = in.nextLine().trim();
-        } else {
-            name = studentName;
+            studentName = promptName(in);
         }
 
-        Student foundStudent = InputParsing.findStudentByName(recentlyDeletedList, name);
+        Student foundStudent = InputParsing.findStudentByName(recentlyDeletedList, studentName);
 
         if (foundStudent != null) {
             UI.printRestoreMessage();

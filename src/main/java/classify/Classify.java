@@ -1,6 +1,6 @@
 package classify;
 
-import classify.commands.datacommands.DataCommands;
+import classify.commands.FileIOCommands;
 import classify.student.StudentList;
 import classify.user.InputParsing;
 import classify.ui.UI;
@@ -23,7 +23,8 @@ public class Classify {
         // @@author ParthGandhiNUS  
         UI.printWelcomeMessage();
         UI.printUserPrompt();
-        DataCommands.readStudentInfo();
+        FileIOCommands.readStudentInfo(StudentList.masterStudentList);
+        FileIOCommands.readArchive(StudentList.archiveList);
         
         // Takes in input from the user, and processes input to determine if it contains a command and a name   
         String[] userCommand = UserInput.processInput(in.nextLine());
@@ -32,7 +33,7 @@ public class Classify {
         // If user's first word is "bye", will exit the while loop.
         while (!(userCommand[0].equals("bye"))){
             InputParsing.parseUserCommand(userCommand, StudentList.masterStudentList, StudentList.recentlyDeletedList,
-                    in);
+                    StudentList.archiveList, in);
             userCommand = UserInput.processInput(in.nextLine());
         }
 

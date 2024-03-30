@@ -24,9 +24,10 @@ public class InputParsingTest {
 
         ArrayList<Student> masterStudentList = new ArrayList<>();
         ArrayList<Student> recentlyDeletedList = new ArrayList<>();
+        ArrayList<Student> archiveList = new ArrayList<>();
         String [] commands = new String[2];
         commands[0] = "bye";
-        InputParsing.parseUserCommand(commands, masterStudentList, recentlyDeletedList, new Scanner(System.in));
+        InputParsing.parseUserCommand(commands, masterStudentList, recentlyDeletedList, archiveList, new Scanner(System.in));
 
         System.setOut(System.out);
 
@@ -48,9 +49,10 @@ public class InputParsingTest {
         System.setOut(new PrintStream(outputStream));
         ArrayList<Student> students = new ArrayList<>();
         ArrayList<Student> recentlyDeletedList = new ArrayList<>();
+        ArrayList<Student> archiveList = new ArrayList<>();
         String [] commands = new String[2];
         commands[0] = "yeet";
-        InputParsing.parseUserCommand(commands, students, recentlyDeletedList, new Scanner(System.in));
+        InputParsing.parseUserCommand(commands, students, recentlyDeletedList, archiveList, new Scanner(System.in));
         System.setOut(System.out);
         String printedOutput = outputStream.toString().trim();
         String expectedOutput = "No such command, type \"help\" to view all commands" +
@@ -66,9 +68,10 @@ public class InputParsingTest {
 
         ArrayList<Student> masterStudentList = new ArrayList<>();
         ArrayList<Student> recentlyDeletedList = new ArrayList<>();
+        ArrayList<Student> archiveList = new ArrayList<>();
         String [] commands = new String[2];
         commands[0] = "help";
-        InputParsing.parseUserCommand(commands, masterStudentList, recentlyDeletedList, new Scanner(System.in));
+        InputParsing.parseUserCommand(commands, masterStudentList, recentlyDeletedList, archiveList, new Scanner(System.in));
 
         System.setOut(System.out);
 
@@ -87,11 +90,14 @@ public class InputParsingTest {
                 "delete                      Deletes a student from the student list, expects a name" +
                                              ", can be used directly with a name e.g. add [name]"
                                              + System.lineSeparator() +
+                "restore                     Restore a student deleted within the current session, expects a name, " +
+                                             "can be used directly by restore [name]."
+                                             + System.lineSeparator() +
+                "undo                        Restores the last student deleted in the current session."
+                                             + System.lineSeparator() +
                 "list                        Displays the list of all students"
                                              + System.lineSeparator() +
                 "bye                         Exits Classify"
-                                             + System.lineSeparator() +
-                "sort_name                   sorts the students by name lexicographically"
                                              + System.lineSeparator() +
                 "sort                        Sorts the student list by the input parameter, expects an" +
                                              " attribute to sort by, can be used directly by sort [type]."
