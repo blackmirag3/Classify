@@ -1,7 +1,6 @@
 package classify.data;
 
 import classify.student.Student;
-import classify.student.StudentList;
 import classify.ui.DataUI;
 import classify.user.InputParsing;
 import classify.ui.UI;
@@ -53,7 +52,8 @@ public class DataReader {
         }
     }
 
-    public static void initialiseData(ArrayList<Student> list, String directoryPath, String filePath) throws IOException {
+    public static void initialiseData(ArrayList<Student> list, String directoryPath,
+                                      String filePath) throws IOException {
         Path directory = Paths.get(directoryPath);
         if (!Files.exists(directory)) {
             DataUI.printCreatingDirectory();

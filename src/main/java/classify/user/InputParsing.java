@@ -12,7 +12,6 @@ import classify.student.SubjectGrade;
 import classify.student.ViewStudent;
 import classify.ui.UI;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 

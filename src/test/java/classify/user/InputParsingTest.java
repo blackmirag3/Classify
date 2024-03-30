@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 public class InputParsingTest {
 
     //@@author tayponghee
@@ -27,7 +26,8 @@ public class InputParsingTest {
         ArrayList<Student> archiveList = new ArrayList<>();
         String [] commands = new String[2];
         commands[0] = "bye";
-        InputParsing.parseUserCommand(commands, masterStudentList, recentlyDeletedList, archiveList, new Scanner(System.in));
+        InputParsing.parseUserCommand(commands, masterStudentList, recentlyDeletedList,
+                archiveList, new Scanner(System.in));
 
         System.setOut(System.out);
 
@@ -71,7 +71,8 @@ public class InputParsingTest {
         ArrayList<Student> archiveList = new ArrayList<>();
         String [] commands = new String[2];
         commands[0] = "help";
-        InputParsing.parseUserCommand(commands, masterStudentList, recentlyDeletedList, archiveList, new Scanner(System.in));
+        InputParsing.parseUserCommand(commands, masterStudentList, recentlyDeletedList,
+                archiveList, new Scanner(System.in));
 
         System.setOut(System.out);
 

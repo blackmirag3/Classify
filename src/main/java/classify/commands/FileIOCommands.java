@@ -13,7 +13,7 @@ import java.util.List;
 public class FileIOCommands extends Commands {
     private static final String DATA_DIRECTORY_PATH = "data/studentInfo";
     private static final String DATA_FILE_PATH = DATA_DIRECTORY_PATH + "/Student_Information.txt";
-    static final String ARCHIVE_DIRECTORY_PATH = "data/archive";
+    private static final String ARCHIVE_DIRECTORY_PATH = "data/archive";
     private static final String ARCHIVE_FILE_PATH = ARCHIVE_DIRECTORY_PATH + "/student_archive.txt";
 
     /**
