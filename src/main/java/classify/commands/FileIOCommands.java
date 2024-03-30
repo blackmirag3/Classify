@@ -35,7 +35,7 @@ public class FileIOCommands extends Commands {
     public static void readStudentInfo(ArrayList<Student> list) throws IOException{
         try{
             DataWriter.createParentFileFolder(DATA_DIRECTORY_PATH);
-            DataReader.initialiseData(list, DATA_DIRECTORY_PATH, DATA_FILE_PATH);
+            DataReader.initialiseData(list, DATA_FILE_PATH);
         } catch (IOException e) {
             DataUI.printCreateFailure();
             throw e;
@@ -60,8 +60,8 @@ public class FileIOCommands extends Commands {
      */
     public static void readArchive(ArrayList<Student> list) throws IOException {
         try{
-            DataWriter.createParentFileFolder(FileIOCommands.ARCHIVE_DIRECTORY_PATH);
-            DataReader.initialiseData(list, ARCHIVE_DIRECTORY_PATH, ARCHIVE_FILE_PATH);
+            DataWriter.createParentFileFolder(ARCHIVE_DIRECTORY_PATH);
+            DataReader.initialiseData(list, ARCHIVE_FILE_PATH);
         } catch (IOException e) {
             DataUI.printCreateFailure();
             throw e;

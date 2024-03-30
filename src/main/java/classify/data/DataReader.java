@@ -52,17 +52,19 @@ public class DataReader {
         }
     }
 
-    public static void initialiseData(ArrayList<Student> list, String directoryPath,
+    public static void initialiseData(ArrayList<Student> list,
                                       String filePath) throws IOException {
-        Path directory = Paths.get(directoryPath);
+        //@@author blackmirag3
+        Path directory = Paths.get(filePath);
         if (!Files.exists(directory)) {
-            DataUI.printCreatingDirectory();
+            DataUI.printCreatingFile();
             Files.createFile(directory);
         } else {
             FileReader fileReader = new FileReader(filePath);
             BufferedReader line = new BufferedReader(fileReader);
             DataUI.printRetrieveData();
 
+            //@@author ParthGandhiNUS
             while (line.ready()) {
                 restoreStudentList(line.readLine(), list);
             }

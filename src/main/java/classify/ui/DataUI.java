@@ -5,6 +5,7 @@ public class DataUI extends UI {
     //@@author ParthGandhiNUS
     private static final String ANALYSING_INPUT_MESSAGE = "Analysing Inputs...";
     private static final String CREATING_DIRECTORY_MESSAGE = "Creating a new directory...";
+    private static final String CREATING_FILE_MESSAGE = "Creating a new data file...";
     private static final String DIRECTORY_SUCCESS_MESSAGE = "Directory loaded successfully!";
     private static final String CREATE_FAILURE_MESSAGE = "Unable to create a new file/directory!";
     private static final String RETRIEVING_DATA_MESSAGE = "Retrieving data...";
@@ -28,6 +29,10 @@ public class DataUI extends UI {
 
     public static void printCreatingDirectory() {
         System.out.println(CREATING_DIRECTORY_MESSAGE);
+    }
+
+    public static void printCreatingFile() {
+        System.out.println(CREATING_FILE_MESSAGE);
     }
 
     public static void printDirectorySuccess() {
