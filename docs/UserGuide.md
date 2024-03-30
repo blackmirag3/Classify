@@ -60,7 +60,7 @@ Removes a student from the master list of students.
 
 Displays a list of all the students with that associated subject taken in the tuition centre.
 
-### - Sort the list lexicograpically, from A to Z `sort name`
+### - Sort the list lexicographically, from A to Z `sort name`
 
 Sorts the masterlist of students from A to Z. When the user types list, it will generate the updated sorted list.
 
@@ -72,7 +72,7 @@ Sorts the masterlist of students from lowest number of classes attended to highe
 //todo add usage guide for our different commands
 
 ### Adding a student: `add`
-Initialises an interface for adding a student and their relevant details to the database.
+Initialises an interface for adding a student and their relevant details to the database. Allows the user to do add or add [name]
 
 **to change**
 Currently, no two students can have the same name within the system.
@@ -104,7 +104,12 @@ NUMBER
 ```
 
 ### - View details of a student `view`
-Views a student details. Allows the user to do view <student> or just view.
+Views a student's details. Allows the user to do view [name] or just view.
+
+Format: `view` or `view name`
+
+Depending on whether the user entered the student's name or not during the command, fields will be printed out in the terminal, awaiting a user input each time.
+
 ``` 
 Example:
 view wario
@@ -121,10 +126,42 @@ Classes Attended: 1
 ```
 
 ### - Edit details of a student `edit`
+Edit a student's details. Allows the user to do edit [student] or just edit.
 
+Format: `edit` or `edit NAME`
+
+Depending on whether the user entered the student's name or not during the command, fields will be printed out in the terminal, awaiting a user input each time.
+
+```
+Example:
+edit
+Name of student to edit (enter blank to exit):
+toad
+No subjects and grades found for this student.
+How would you like to update a student's subject? (enter blank to exit)
+Add, Edit or Delete: 
+add
+Subject (enter nothing to skip): Math
+Current marks out of 100 (blank to skip) : 
+95
+Enter Classes Attended (blank to skip): 
+11
+Do you want to add another subject and grade? (yes/no)
+no
+How would you like to update a student's subject? (enter blank to exit)
+Add, Edit or Delete: 
+
+Exiting edit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 ### - Delete a student from the working list `delete`
-Deletes the student from the list. Allows the user to do delete <student> or just delete.
+Deletes the student from the list. Allows the user to do delete [student] or just delete.
+
+Format: `delete` or `delete NAME`
+
+Depending on whether the user entered the student's name or not during the command, fields will be printed out in the terminal, awaiting a user input each time.
+
 ``` 
 Example:
 delete
@@ -134,6 +171,37 @@ wario
 Student removed successfully!
 ```
 
+### - Sort the list of students `sort`
+Sorts the list of students based on the following input. Allows the user to do sort [type] or just sort
+
+Format: `sort`, `sort name`, `sort classes` or `sort payment`
+
+Depending on whether the user entered the student's name or not during the command, fields will be printed out in the terminal, awaiting a user input each time.
+
+```
+Example:
+sort
+Sort by: (Choose index)
+1. Name (A to Z)
+2. Total number of classes attended:
+3. Date of last fee payment: 
+1
+List of Students:
+1. mario
+2. toad
+3. wario
+Currently, there are 3 students in the list.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sort complete!
+
+sort payment
+1.toad - Date of last payment: 2015-10-21
+2.mario - Date of last payment: 2024-03-30
+3.wario - Date of last payment: 2024-03-30
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sort complete!
+```
 ## FAQ
 
 **Q**: How do I transfer my data to another computer? 
@@ -164,8 +232,11 @@ Allows the user to edit the details of the student. If the name of the student i
 ### `sort <name>` 
 Sorts the list lexicographically. If the word `name` is not specified in the initial command, the program will prompt the user for an appropriate flag.
 
-### `sort <payment_date>` 
-Sorts the list lexicographically. If the word `payment_date` is not specified in the initial command, the program will prompt the user for an appropriate flag.
+### `sort <payment>` 
+Sorts the list by the last fee payment date of a student. If the word `payment` is not specified in the initial command, the program will prompt the user for an appropriate flag.
+
+### `sort <classes>`
+Sorts the list by the number of classes a student has attended. If the word `classes` is not specified in the initial command, the program will prompt the user for an appropriate flag.
 
 ### `view_subject <subject>` 
 Lists all the students associated with that subject. If the user specifies the subject in the initial command, the list will be generated and the command will be terminated. If the user does not specify the subject, the programme will continuously prompt the user for a subject, until they choose to terminate the command.
