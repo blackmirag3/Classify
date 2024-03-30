@@ -210,7 +210,7 @@ Sort complete!
 
 **Q**: How do I transfer my data to another computer **without** removing any components?
 
-**A**: (parth this is for you to answer)
+**A**: In the jar directory (folder containing jar file), data is stored in the "data" folder (./data). You can import the contents within this data directory to that of the jar directory on the new computer.
 
 ## Command Summary
 
@@ -240,6 +240,12 @@ Sorts the list by the number of classes a student has attended. If the word `cla
 
 ### `view_subject <subject>` 
 Lists all the students associated with that subject. If the user specifies the subject in the initial command, the list will be generated and the command will be terminated. If the user does not specify the subject, the programme will continuously prompt the user for a subject, until they choose to terminate the command.
+
+### `archive <student>`
+Archives specified student. Removes student from current list and adds student to archive.
+
+### `unarchive <student>`
+Unarchives specified student. Moves student from archive to current list.
 
 ### `help` 
 Generates the list of commands.
