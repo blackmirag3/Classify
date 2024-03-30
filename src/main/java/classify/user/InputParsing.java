@@ -118,12 +118,19 @@ public class InputParsing {
             break;
 
         case ARCHIVE:
-            //todo
+            archiveStudent(userCommand[1]);
             break;
 
         default:
             UI.printWrongInput();
             break;
+        }
+    }
+
+    private static void archiveStudent(String name) {
+        while (name == null) {
+            System.out.println("enter student name");
+            String input = in.nextLine().trim();
         }
     }
 
