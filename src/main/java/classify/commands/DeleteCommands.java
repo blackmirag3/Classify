@@ -1,11 +1,13 @@
-package classify.user;
+package classify.commands;
 
 import classify.student.Student;
+import classify.user.InputParsing;
+import classify.ui.UI;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class DeleteCommands {
+public class DeleteCommands extends Commands {
     //@@author alalal47
     /**
      * Removes a student from the list.
@@ -17,28 +19,29 @@ public class DeleteCommands {
      * @param studentName         The name of the student if the user had entered it
      *                            before being prompted
      */
-    static void deleteStudent(ArrayList<Student> masterStudentList, ArrayList<Student> recentlyDeletedList,
-                              Scanner in, String studentName) {
-        String name;
+    public static void deleteStudent(ArrayList<Student> masterStudentList, ArrayList<Student> recentlyDeletedList,
+                                     Scanner in, String studentName) {
+        //@@author blackmirag3
         if (studentName == null) {
-            Ui.printStudentNamePrompt();
-            name = in.nextLine().trim();
-        } else {
-            name = studentName;
+            studentName = promptName(in);
         }
 
-        Student foundStudent = InputParsing.findStudentByName(masterStudentList, name);
+        //@@author alalal47
+        Student foundStudent = InputParsing.findStudentByName(masterStudentList, studentName);
 
         if (foundStudent != null) {
-            Ui.printStudentDeleted();
+            UI.printStudentDeleted();
         } else {
-            Ui.printStudentNotFound();
+            UI.printStudentNotFound();
         }
 
-        Ui.printDivider();
-        recentlyDeletedList.add(foundStudent);
+        UI.printDivider();
+        //@@author blackmirag3
+        if (recentlyDeletedList != null) {
+            recentlyDeletedList.add(foundStudent);
+        }
         masterStudentList.remove(foundStudent);
-        assert InputParsing.findStudentByName(masterStudentList, name) == null : "Student should be deleted";
+        assert InputParsing.findStudentByName(masterStudentList, studentName) == null : "Student should be deleted";
     }
 
     /**
@@ -51,25 +54,22 @@ public class DeleteCommands {
      * @param studentName         The name of the student if the user had entered it
      *                            before being prompted
      */
-    static void restoreStudent(ArrayList<Student> masterStudentList, ArrayList<Student> recentlyDeletedList,
-                               Scanner in, String studentName) {
-        String name;
+    public static void restoreStudent(ArrayList<Student> masterStudentList, ArrayList<Student> recentlyDeletedList,
+                                      Scanner in, String studentName) {
+        //@@author blackmirag3
         if (studentName == null) {
-            Ui.printStudentNamePrompt();
-            name = in.nextLine().trim();
-        } else {
-            name = studentName;
+            studentName = promptName(in);
         }
 
-        Student foundStudent = InputParsing.findStudentByName(recentlyDeletedList, name);
+        Student foundStudent = InputParsing.findStudentByName(recentlyDeletedList, studentName);
 
         if (foundStudent != null) {
-            Ui.printRestoreMessage();
+            UI.printRestoreMessage();
         } else {
-            Ui.printStudentNotFound();
+            UI.printStudentNotFound();
         }
 
-        Ui.printDivider();
+        UI.printDivider();
         masterStudentList.add(foundStudent);
         recentlyDeletedList.remove(foundStudent);
     }
@@ -80,16 +80,16 @@ public class DeleteCommands {
      * @param masterStudentList   The list of all students
      * @param recentlyDeletedList The list of recently deleted students
      */
-    static void undoDelete(ArrayList<Student> masterStudentList, ArrayList<Student> recentlyDeletedList) {
+    public static void undoDelete(ArrayList<Student> masterStudentList, ArrayList<Student> recentlyDeletedList) {
         if (recentlyDeletedList.isEmpty()) {
-            Ui.printNoDeleteFound();
-            Ui.printDivider();
+            UI.printNoDeleteFound();
+            UI.printDivider();
             return;
         }
         Student student = recentlyDeletedList.get(recentlyDeletedList.size() - 1);
         masterStudentList.add(student);
         recentlyDeletedList.remove(student);
-        Ui.printDeleteUndone();
-        Ui.printDivider();
+        UI.printDeleteUndone();
+        UI.printDivider();
     }
 }

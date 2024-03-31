@@ -1,9 +1,9 @@
 package classify;
 
-import classify.datacommands.DataHandler;
+import classify.commands.FileIOCommands;
 import classify.student.StudentList;
 import classify.user.InputParsing;
-import classify.user.Ui;
+import classify.ui.UI;
 import classify.user.UserInput;
 
 import java.io.IOException;
@@ -21,9 +21,10 @@ public class Classify {
     public static void main(String[] args) throws IOException {
 
         // @@author ParthGandhiNUS  
-        Ui.printWelcomeMessage();
-        Ui.printUserPrompt();
-        DataHandler.readStudentInfo();
+        UI.printWelcomeMessage();
+        UI.printUserPrompt();
+        FileIOCommands.readStudentInfo(StudentList.masterStudentList);
+        FileIOCommands.readArchive(StudentList.archiveList);
         
         // Takes in input from the user, and processes input to determine if it contains a command and a name   
         String[] userCommand = UserInput.processInput(in.nextLine());
@@ -32,11 +33,11 @@ public class Classify {
         // If user's first word is "bye", will exit the while loop.
         while (!(userCommand[0].equals("bye"))){
             InputParsing.parseUserCommand(userCommand, StudentList.masterStudentList, StudentList.recentlyDeletedList,
-                    in);
+                    StudentList.archiveList, in);
             userCommand = UserInput.processInput(in.nextLine());
         }
 
-        Ui.printEndConversation();
+        UI.printEndConversation();
     }
 }
 

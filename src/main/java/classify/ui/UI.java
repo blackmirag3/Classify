@@ -1,11 +1,11 @@
-package classify.user;
+package classify.ui;
 
 import classify.student.Student;
 
 import java.util.ArrayList;
 
 //@@author Cryolian
-public class Ui {
+public class UI {
     public static final String TOTAL_CLASSES_ATTENDED_ACROSS_ALL_SUBJECTS = "Total classes " +
             "attended across all subjects: ";
     private static final String EMPTY_SUBJECT_ERROR = "No subjects and grades found for this student.";
@@ -218,6 +218,7 @@ public class Ui {
     public static void printStudentGradesPrompt() {
         System.out.println(STUDENT_GRADES_PROMPT);
     }
+
 
     //@@ author tayponghee
     public static void printStudentList(ArrayList<Student> students) {

@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 public class InputParsingTest {
 
     //@@author tayponghee
@@ -24,17 +23,20 @@ public class InputParsingTest {
 
         ArrayList<Student> masterStudentList = new ArrayList<>();
         ArrayList<Student> recentlyDeletedList = new ArrayList<>();
+        ArrayList<Student> archiveList = new ArrayList<>();
         String [] commands = new String[2];
         commands[0] = "bye";
-        InputParsing.parseUserCommand(commands, masterStudentList, recentlyDeletedList, new Scanner(System.in));
+        InputParsing.parseUserCommand(commands, masterStudentList, recentlyDeletedList,
+                archiveList, new Scanner(System.in));
 
         System.setOut(System.out);
 
         String printedOutput = outputStream.toString().trim();
         String expectedOutput = "Hope you've had a productive day. See you again! Goodbye!" +
                 System.lineSeparator() + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-                + System.lineSeparator() + "Analysing Inputs..." + System.lineSeparator()
-                + "Updated Student Records successfully!"+System.lineSeparator()
+                + System.lineSeparator() + "Analysing Inputs..."
+                + System.lineSeparator() + "Directory loaded successfully!" + System.lineSeparator()
+                + "Data update success!" + System.lineSeparator()
                 + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
 
         assertEquals(expectedOutput.trim(), printedOutput);
@@ -47,9 +49,10 @@ public class InputParsingTest {
         System.setOut(new PrintStream(outputStream));
         ArrayList<Student> students = new ArrayList<>();
         ArrayList<Student> recentlyDeletedList = new ArrayList<>();
+        ArrayList<Student> archiveList = new ArrayList<>();
         String [] commands = new String[2];
         commands[0] = "yeet";
-        InputParsing.parseUserCommand(commands, students, recentlyDeletedList, new Scanner(System.in));
+        InputParsing.parseUserCommand(commands, students, recentlyDeletedList, archiveList, new Scanner(System.in));
         System.setOut(System.out);
         String printedOutput = outputStream.toString().trim();
         String expectedOutput = "No such command, type \"help\" to view all commands" +
@@ -65,9 +68,11 @@ public class InputParsingTest {
 
         ArrayList<Student> masterStudentList = new ArrayList<>();
         ArrayList<Student> recentlyDeletedList = new ArrayList<>();
+        ArrayList<Student> archiveList = new ArrayList<>();
         String [] commands = new String[2];
         commands[0] = "help";
-        InputParsing.parseUserCommand(commands, masterStudentList, recentlyDeletedList, new Scanner(System.in));
+        InputParsing.parseUserCommand(commands, masterStudentList, recentlyDeletedList,
+                archiveList, new Scanner(System.in));
 
         System.setOut(System.out);
 

@@ -1,6 +1,6 @@
 package classify.student;
 
-import classify.user.Ui;
+import classify.ui.UI;
 import classify.user.InputParsing;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class ViewStudent {
 
         //@@ author alalal47
         if (studentName == null) {
-            Ui.printStudentNamePrompt();
+            UI.printStudentNamePrompt();
             name = in.nextLine();
         } else {
             name = studentName;
@@ -42,19 +42,19 @@ public class ViewStudent {
 
         if (foundStudent != null) {
             logger.log(Level.INFO, "Viewing student details: " + name);
-            Ui.printDivider();
-            Ui.printStudentDetails();
-            Ui.printStudentName(name);
-            Ui.printStudentDetails(foundStudent);
+            UI.printDivider();
+            UI.printStudentDetails();
+            UI.printStudentName(name);
+            UI.printStudentDetails(foundStudent);
             StudentAttributes attributes = foundStudent.getAttributes();
             showAttributes(attributes);
 
             int totalClassesAttended = getTotalClassesAttended(foundStudent);
-            Ui.printTotalClassesAttended(totalClassesAttended);
+            UI.printTotalClassesAttended(totalClassesAttended);
 
         } else {
             logger.log(Level.WARNING, "Student not found: " + name);
-            Ui.printStudentNotFound();
+            UI.printStudentNotFound();
         }
     }
 
@@ -82,7 +82,7 @@ public class ViewStudent {
             List<SubjectGrade> subjectGrades = attributes.getSubjectGrades();
             checkIfSubjectGradesIsEmpty(subjectGrades);
         } else {
-            Ui.printNullAttributeError();
+            UI.printNullAttributeError();
         }
     }
 
@@ -90,17 +90,17 @@ public class ViewStudent {
         if (!subjectGrades.isEmpty()) {
             printSubjectAttributes(subjectGrades);
         } else {
-            Ui.printEmptySubjectError();
+            UI.printEmptySubjectError();
         }
     }
 
     private static void printSubjectAttributes(List<SubjectGrade> subjectGrades) {
         for (SubjectGrade subjectGrade : subjectGrades) {
             assert subjectGrade != null : "subjectGrade cannot be null";
-            Ui.printSubjectName(subjectGrade.getSubject());
-            Ui.printStudentGrades(subjectGrade.getGrade());
-            Ui.printClassesAttended(subjectGrade.getClassesAttended());
-            Ui.printDivider();
+            UI.printSubjectName(subjectGrade.getSubject());
+            UI.printStudentGrades(subjectGrade.getGrade());
+            UI.printClassesAttended(subjectGrade.getClassesAttended());
+            UI.printDivider();
         }
     }
 

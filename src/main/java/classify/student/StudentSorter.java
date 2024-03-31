@@ -1,6 +1,6 @@
 package classify.student;
 
-import classify.user.Ui;
+import classify.ui.UI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class StudentSorter {
      */
     public static void sortByChoice(ArrayList<Student> masterStudentList, String choice, Scanner in) {
         while (!isValidChoice(choice)) {
-            Ui.println(INVALID_CHOICE);
+            UI.println(INVALID_CHOICE);
             choice = in.nextLine().trim();
         }
 
@@ -53,7 +53,7 @@ public class StudentSorter {
             break;
         //@@author tayponghee
         default:
-            Ui.println(INVALID_CHOICE);
+            UI.println(INVALID_CHOICE);
             break;
         }
     }
@@ -77,7 +77,7 @@ public class StudentSorter {
     private static void listStudentsByName(ArrayList<Student> masterStudentList) {
         masterStudentList.sort(StudentComparators.nameComparator);
         listStudents(masterStudentList);
-        Ui.printDivider();
+        UI.printDivider();
     }
 
     /**
@@ -101,7 +101,7 @@ public class StudentSorter {
         masterStudentList.sort(StudentComparators.classesAttendedComparator);
         listStudentsWithTotalClasses(masterStudentList);
 
-        Ui.printDivider();
+        UI.printDivider();
     }
 
     //@@author alalal47
@@ -113,7 +113,7 @@ public class StudentSorter {
     private static void listStudentsByLastPaidDate(ArrayList<Student> masterStudentList) {
         masterStudentList.sort(StudentComparators.lastPaidDateComparator);
         listStudentsWithLastPaidDate(masterStudentList);
-        Ui.printDivider();
+        UI.printDivider();
     }
 
     //@@author tayponghee
@@ -123,7 +123,7 @@ public class StudentSorter {
      * @param students The list of students to be listed.
      */
     private static void listStudents(ArrayList<Student> students) {
-        Ui.printStudentList(students);
+        UI.printStudentList(students);
     }
 
     /**

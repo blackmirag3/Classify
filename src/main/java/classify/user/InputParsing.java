@@ -1,7 +1,8 @@
 package classify.user;
 
-import classify.datacommands.DataHandler;
-
+import classify.commands.Commands;
+import classify.commands.FileIOCommands;
+import classify.commands.DeleteCommands;
 import classify.student.AddStudent;
 import classify.student.Student;
 import classify.student.StudentAttributes;
@@ -9,6 +10,7 @@ import classify.student.StudentList;
 import classify.student.StudentSorter;
 import classify.student.SubjectGrade;
 import classify.student.ViewStudent;
+import classify.ui.UI;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -33,6 +35,8 @@ public class InputParsing {
     private static final String EDIT = "edit";
     private static final String HELP = "help";
     private static final String SORT = "sort";
+    private static final String ARCHIVE = "archive";
+    private static final String UNARCHIVE = "unarchive";
     private static final String VIEW_SUBJECT = "view_subject";
     private static final String ENTER_THE_SUBJECT_NAME_TYPE_EXIT_TO_GO_BACK =
             "Enter the subject name (type 'exit' to go back):";
@@ -45,7 +49,8 @@ public class InputParsing {
     private static final String LAST_PAID_DATE = "3. Date of last fee payment: ";
 
     public static void parseUserCommand(String[] userCommand, ArrayList<Student> masterStudentList,
-                                        ArrayList<Student> recentlyDeletedList, Scanner in) {
+                                        ArrayList<Student> recentlyDeletedList,
+                                        ArrayList<Student> archiveList, Scanner in) {
         // @@author blackmirag3
         if (masterStudentList == null) {
             System.out.println("Student list is null.");
@@ -56,20 +61,19 @@ public class InputParsing {
             AddStudent.addStudent(masterStudentList, in, userCommand[1]);
             //@@author ParthGandhiNUS
             assert masterStudentList != null;
-            DataHandler.writeStudentInfo(masterStudentList);
-            //@@ author tayponghee
+            FileIOCommands.writeStudentInfo(masterStudentList);
             break;
 
         case VIEW:
             ViewStudent.viewStudent(masterStudentList, in, userCommand[1]);
-            Ui.printDivider();
+            UI.printDivider();
             break;
 
         //@@author alalal47
         case DELETE:
             DeleteCommands.deleteStudent(masterStudentList, recentlyDeletedList, in, userCommand[1]);
             // @@author ParthGandhiNUS
-            DataHandler.writeStudentInfo(masterStudentList);
+            FileIOCommands.writeStudentInfo(masterStudentList);
             //@@author alalal47
             break;
 
@@ -82,18 +86,14 @@ public class InputParsing {
             break;
 
         case HELP:
-            Ui.printHelp();
-            Ui.printDivider();
+            UI.printHelp();
+            UI.printDivider();
             break;
 
         // @@author ParthGandhiNUS
         case BYE:
-            Ui.printEndConversation();
-            DataHandler.writeStudentInfo(masterStudentList);
-            break;
-
-        case EDIT:
-            editStudent(masterStudentList, in, userCommand[1]);
+            UI.printEndConversation();
+            FileIOCommands.writeStudentInfo(masterStudentList);
             break;
 
         case LIST:
@@ -109,10 +109,56 @@ public class InputParsing {
             handleViewSubjectCommand(masterStudentList, in, userCommand[1]);
             break;
 
+        //@@author blackmirag3
+        case EDIT:
+            editStudent(masterStudentList, in, userCommand[1]);
+            break;
+
+        case ARCHIVE:
+            archiveStudent(masterStudentList, archiveList, userCommand[1], in);
+            break;
+
+        case UNARCHIVE:
+            unarchiveStudent(masterStudentList, archiveList, userCommand[1], in);
+            break;
+
         default:
-            Ui.printWrongInput();
+            UI.printWrongInput();
             break;
         }
+    }
+
+    //author blackmirag3
+    private static void unarchiveStudent(ArrayList<Student> masterList, ArrayList<Student> archiveList,
+                                         String name, Scanner in) {
+        if (name == null) {
+            name = Commands.promptName(in);
+        }
+        Student student = findStudentByName(archiveList, name);
+        if (student == null) {
+            UI.printStudentNotFound();
+            return;
+        }
+        archiveList.remove(student);
+        masterList.add(student);
+        FileIOCommands.writeArchive(archiveList);
+        FileIOCommands.writeStudentInfo(masterList);
+    }
+
+    private static void archiveStudent(ArrayList<Student> masterList, ArrayList<Student> archiveList,
+                                       String name, Scanner in) {
+        if (name == null) {
+            name = Commands.promptName(in);
+        }
+        Student student = findStudentByName(masterList, name);
+        if (student == null) {
+            UI.printStudentNotFound();
+            return;
+        }
+        masterList.remove(student);
+        archiveList.add(student);
+        FileIOCommands.writeArchive(archiveList);
+        FileIOCommands.writeStudentInfo(masterList);
     }
 
     /**
@@ -126,10 +172,10 @@ public class InputParsing {
         while (true) {
             //@@author alalal47
             if (sortType == null) {
-                Ui.println(SORT_BY_CHOOSE_INDEX);
-                Ui.println(NAME_A_TO_Z);
-                Ui.println(TOTAL_NUMBER_OF_CLASSES_ATTENDED);
-                Ui.println(LAST_PAID_DATE);
+                UI.println(SORT_BY_CHOOSE_INDEX);
+                UI.println(NAME_A_TO_Z);
+                UI.println(TOTAL_NUMBER_OF_CLASSES_ATTENDED);
+                UI.println(LAST_PAID_DATE);
                 input = in.nextLine().trim();
             } else {
                 input = sortType.trim().toLowerCase();
@@ -139,17 +185,17 @@ public class InputParsing {
 
             if (input.equalsIgnoreCase(EXIT)) {
                 System.out.println(EXITED_THE_COMMAND);
-                Ui.printDivider();
+                UI.printDivider();
                 return;
             }
 
             if (StudentSorter.isValidChoice(input)) {
                 StudentSorter.sortByChoice(masterStudentList, input, in);
-                Ui.println(LIST_SORTED);
+                UI.println(LIST_SORTED);
                 break;
             } else {
                 sortType = null;
-                Ui.println(StudentSorter.INVALID_CHOICE);
+                UI.println(StudentSorter.INVALID_CHOICE);
             }
         }
     }
@@ -186,7 +232,7 @@ public class InputParsing {
 
             if (input.equalsIgnoreCase(EXIT)) {
                 System.out.println(EXITED_THE_COMMAND);
-                Ui.printDivider();
+                UI.printDivider();
                 return;
             }
 
@@ -220,7 +266,7 @@ public class InputParsing {
             System.out.println("No students found with the subject: " + subject);
         }
 
-        Ui.printDivider();
+        UI.printDivider();
     }
 
     // @@author blackmirag3
@@ -228,12 +274,12 @@ public class InputParsing {
         StudentList.printCurrentArrayList(list);
         // @@author ParthGandhiNUS
         StudentList.printCurrentArrayMessage(list);
-        Ui.printDivider();
+        UI.printDivider();
     }
 
     private static void editStudent(ArrayList<Student> list, Scanner in, String name) {
         if (list.isEmpty()) {
-            Ui.printEmptyListError();
+            UI.printEmptyListError();
             return;
         }
         
@@ -242,7 +288,7 @@ public class InputParsing {
         if (name != null) {
             student = findStudentByName(list, name);
             if (student == null) {
-                Ui.printStudentNotFound();
+                UI.printStudentNotFound();
             }
         }
         
@@ -261,7 +307,7 @@ public class InputParsing {
             if (student != null) {
                 break;
             } else {
-                Ui.printStudentNotFound();
+                UI.printStudentNotFound();
             }
         }
         
@@ -273,11 +319,11 @@ public class InputParsing {
         ViewStudent.showAttributes(attributes);
 
         while (true) {
-            Ui.printEditPrompt();
+            UI.printEditPrompt();
             String command = in.nextLine().trim();
             if (command.isBlank()) {
                 System.out.println("Exiting edit");
-                Ui.printDivider();
+                UI.printDivider();
                 return;
             }
 
@@ -381,7 +427,7 @@ public class InputParsing {
      */
     public static double promptForGrade(Scanner in) {
         while (true) {
-            Ui.printStudentGradesPrompt();
+            UI.printStudentGradesPrompt();
             String gradeInput = in.nextLine();
             
             if (gradeInput.isBlank()) {
@@ -394,7 +440,7 @@ public class InputParsing {
                 grade = Double.parseDouble(gradeInput);
             } catch (NumberFormatException e) {
                 System.out.println("Wrong number format! Please try again! e.g. 75 ");
-                Ui.printDivider();
+                UI.printDivider();
                 grade = promptForGrade(in);
             }
             
@@ -425,14 +471,14 @@ public class InputParsing {
         try {
             if (classesAttended < 0) {
                 System.out.println("Classes attended must be 0 or more.");
-                Ui.printDivider();
+                UI.printDivider();
                 return false;
             }
             return true;
         } catch (NumberFormatException e) {
             LOGGER.log(Level.WARNING, "Invalid input for classes attended: " + classesAttended, e);
             System.out.println("Invalid input for classes attended. Please enter a valid whole number.");
-            Ui.printDivider();
+            UI.printDivider();
             return false;
         }
     }
@@ -441,14 +487,14 @@ public class InputParsing {
         try {
             if (grade < 0 || grade > 100) {
                 System.out.println("Grade must be between 0 and 100. Please enter a valid number.");
-                Ui.printDivider();
+                UI.printDivider();
                 return false;
             }
             return true;
         } catch (NumberFormatException e) {
             LOGGER.log(Level.WARNING, "Invalid input for grade: " + grade, e);
-            Ui.printValidNumberError();
-            Ui.printDivider();
+            UI.printValidNumberError();
+            UI.printDivider();
             return false;
         }
     }
@@ -472,7 +518,7 @@ public class InputParsing {
         try {
             
             do  {
-                Ui.printPhoneNumberPrompt();
+                UI.printPhoneNumberPrompt();
                 number = readInPhoneNumber(in);
             } while (!checkNumberValidity(number));
             
@@ -480,7 +526,7 @@ public class InputParsing {
             return number;
 
         } catch (NumberFormatException e) {
-            Ui.printValidNumberError();
+            UI.printValidNumberError();
         }
 
         return -1;
@@ -552,7 +598,7 @@ public class InputParsing {
 
     private static LocalDate invalidDatePath() {
         LOGGER.log(Level.WARNING, "Invalid date format entered." + '\n');
-        Ui.printInvalidDateFormatError();
+        UI.printInvalidDateFormatError();
         return LocalDate.now().plusDays(2);
     }
 
@@ -561,7 +607,7 @@ public class InputParsing {
         if (paymentDate.isAfter(LocalDate.now().plusDays(1)) || 
                 paymentDate.isBefore(LocalDate.parse(EARLIER_POSSIBLE_DATE))) {
             
-            Ui.printInvalidDateRangeError();
+            UI.printInvalidDateRangeError();
             return false;
         }
 
