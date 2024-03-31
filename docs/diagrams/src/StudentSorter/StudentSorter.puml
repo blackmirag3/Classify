@@ -1,0 +1,46 @@
+@startuml StudentSorter
+
+package student {
+    class StudentSorter {
+        +NAME:String
+        +PAYMENT_DATE:String
+        +TOTAL_CLASSES:String
+        +ONE:String
+        +TWO:String
+        +THREE:String
+        +INVALID_CHOICE:String
+        --
+        +sortByChoice(ArrayList<Student>, String, Scanner)
+        +isValidChoice(String):boolean
+    }
+
+    class StudentList {
+        {static} +masterStudentList:ArrayList<Student>
+        {static} +recentlyDeletedList:ArrayList<Student>
+        +studentList:ArrayList<Student>
+    }
+
+    class Student {
+        +name:String
+        -totalClassesAttended:int
+    }
+
+    class StudentAttributes {
+        +subjectGrades:List<SubjectGrade>
+    }
+
+    class SubjectGrade {
+        -subject:String
+        -grade:double
+        -classesAttended:int
+    }
+}
+
+StudentSorter "1" --> "1..*" Student
+StudentSorter "1" --> "1" StudentList
+StudentSorter "1" --> "1" StudentAttributes
+StudentAttributes "1" --> "0..*" SubjectGrade
+
+note "Inconsequential methods and attributes omitted" as N1
+
+@enduml
