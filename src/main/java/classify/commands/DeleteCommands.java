@@ -3,7 +3,7 @@ package classify.commands;
 import classify.student.Student;
 import classify.student.StudentList;
 import classify.user.InputParsing;
-import classify.user.nameNumberMatchException;
+import classify.user.NameNumberMatchException;
 import classify.ui.UI;
 
 import java.util.ArrayList;
@@ -83,7 +83,7 @@ public class DeleteCommands extends Commands {
             recentlyDeletedList.remove(foundStudent);
 
         //@@author Cryolian
-        } catch (nameNumberMatchException e) {
+        } catch (NameNumberMatchException e) {
             return;
         }
 

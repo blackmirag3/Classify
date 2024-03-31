@@ -3,7 +3,7 @@ package classify.student;
 
 import classify.ui.UI;
 import classify.user.InputParsing;
-import classify.user.nameNumberMatchException;
+import classify.user.NameNumberMatchException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -67,7 +67,7 @@ public class AddStudent {
         try {
             StudentList.checkNameNumberPair(StudentList.masterStudentList, name, number);
             StudentList.checkNameNumberPair(StudentList.recentlyDeletedList, name, number);
-        } catch (nameNumberMatchException e) {
+        } catch (NameNumberMatchException e) {
             return;
         }
 

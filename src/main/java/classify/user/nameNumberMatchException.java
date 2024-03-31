@@ -1,8 +1,8 @@
 package classify.user;
 
-public class nameNumberMatchException extends Exception{
+public class NameNumberMatchException extends Exception{
     
-    public nameNumberMatchException(String errorMessage) {
+    public NameNumberMatchException(String errorMessage) {
         super(errorMessage);
     }
 }

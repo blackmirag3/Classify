@@ -38,7 +38,8 @@ public class InputParsing {
     private static final String ARCHIVE = "archive";
     private static final String UNARCHIVE = "unarchive";
     private static final String VIEW_SUBJECT = "view_subject";
-    private static final String ENTER_THE_SUBJECT_NAME_TYPE_EXIT_TO_GO_BACK = "Enter the subject name (type 'exit' to go back):";
+    private static final String ENTER_THE_SUBJECT_NAME_TYPE_EXIT_TO_GO_BACK = 
+            "Enter the subject name (type 'exit' to go back):";
     private static final String EXIT = "exit";
     private static final String EXITED_THE_COMMAND = "Exited the command.";
     private static final String LIST_SORTED = "Sort complete!";
@@ -56,74 +57,74 @@ public class InputParsing {
         }
         // @@author tayponghee
         switch (userCommand[0]) {
-            case ADD:
-                AddStudent.addStudent(masterStudentList, in, userCommand[1]);
-                // @@author ParthGandhiNUS
-                assert masterStudentList != null;
-                FileIOCommands.writeStudentInfo(masterStudentList);
-                break;
-
-            case VIEW:
-                ViewStudent.viewStudent(masterStudentList, in, userCommand[1]);
-                UI.printDivider();
-                break;
-
-            // @@author alalal47
-            case DELETE:
-                DeleteCommands.deleteStudent(masterStudentList, recentlyDeletedList, in, userCommand[1]);
-                // @@author ParthGandhiNUS
-                FileIOCommands.writeStudentInfo(masterStudentList);
-                // @@author alalal47
-                break;
-
-            case RESTORE:
-                DeleteCommands.restoreStudent(masterStudentList, recentlyDeletedList, in, userCommand[1]);
-                break;
-
-            case UNDO:
-                DeleteCommands.undoDelete(masterStudentList, recentlyDeletedList);
-                break;
-
-            case HELP:
-                UI.printHelp();
-                UI.printDivider();
-                break;
-
+        case ADD:
+            AddStudent.addStudent(masterStudentList, in, userCommand[1]);
             // @@author ParthGandhiNUS
-            case BYE:
-                UI.printEndConversation();
-                FileIOCommands.writeStudentInfo(masterStudentList);
-                break;
+            assert masterStudentList != null;
+            FileIOCommands.writeStudentInfo(masterStudentList);
+            break;
 
-            case LIST:
-                listStudents(masterStudentList);
-                break;
+        case VIEW:
+            ViewStudent.viewStudent(masterStudentList, in, userCommand[1]);
+            UI.printDivider();
+            break;
 
-            // @@ author tayponghee
-            case SORT:
-                sortStudents(masterStudentList, in, userCommand[1]);
-                break;
+        // @@author alalal47
+        case DELETE:
+            DeleteCommands.deleteStudent(masterStudentList, recentlyDeletedList, in, userCommand[1]);
+            // @@author ParthGandhiNUS
+            FileIOCommands.writeStudentInfo(masterStudentList);
+            // @@author alalal47
+            break;
 
-            case VIEW_SUBJECT:
-                handleViewSubjectCommand(masterStudentList, in, userCommand[1]);
-                break;
+        case RESTORE:
+            DeleteCommands.restoreStudent(masterStudentList, recentlyDeletedList, in, userCommand[1]);
+            break;
 
-            // @@author blackmirag3
-            case EDIT:
-                editStudent(masterStudentList, in, userCommand[1]);
-                break;
+        case UNDO:
+            DeleteCommands.undoDelete(masterStudentList, recentlyDeletedList);
+            break;
 
-            case ARCHIVE:
-                archiveStudent(masterStudentList, archiveList, userCommand[1], in);
-                break;
+        case HELP:
+            UI.printHelp();
+            UI.printDivider();
+            break;
 
-            case UNARCHIVE:
-                unarchiveStudent(masterStudentList, archiveList, userCommand[1], in);
-                break;
+        // @@author ParthGandhiNUS
+        case BYE:
+            UI.printEndConversation();
+            FileIOCommands.writeStudentInfo(masterStudentList);
+            break;
 
-            default:
-                UI.printWrongInput();
-                break;
+        case LIST:
+            listStudents(masterStudentList);
+            break;
+
+        // @@ author tayponghee
+        case SORT:
+            sortStudents(masterStudentList, in, userCommand[1]);
+            break;
+
+        case VIEW_SUBJECT:
+            handleViewSubjectCommand(masterStudentList, in, userCommand[1]);
+            break;
+
+        // @@author blackmirag3
+        case EDIT:
+            editStudent(masterStudentList, in, userCommand[1]);
+            break;
+
+        case ARCHIVE:
+            archiveStudent(masterStudentList, archiveList, userCommand[1], in);
+            break;
+
+        case UNARCHIVE:
+            unarchiveStudent(masterStudentList, archiveList, userCommand[1], in);
+            break;
+
+        default:
+            UI.printWrongInput();
+            break;
         }
     }
 
@@ -560,9 +561,9 @@ public class InputParsing {
      * the country code.
      * 
      * @param in The scanner class to read inputs from.
-     * @throws NumberFormatException thrown if invalid number is give
      * @return -1 if an exception was thrown. An 8
      *         or 10-digit number if not.
+     * @throws NumberFormatException thrown if invalid number is give
      */
     public static int promptForPhoneNumber(Scanner in) throws NumberFormatException {
 

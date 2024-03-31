@@ -3,7 +3,7 @@ package classify.student;
 import java.util.ArrayList;
 
 import classify.user.ClassifyExceptions;
-import classify.user.nameNumberMatchException;
+import classify.user.NameNumberMatchException;
 
 /**
  * Class to represent a list of Students.
@@ -52,17 +52,17 @@ public class StudentList {
         int numberOfStudents = currentList.size();
 
         switch (numberOfStudents) {
-            case 0:
-                System.out.println(ZERO_STUDENT_MESSAGE);
-                break;
+        case 0:
+            System.out.println(ZERO_STUDENT_MESSAGE);
+            break;
 
-            case 1:
-                System.out.println(ONE_STUDENT_MESSAGE);
-                break;
+        case 1:
+            System.out.println(ONE_STUDENT_MESSAGE);
+            break;
 
-            default:
-                System.out.println(CURRENTLY_THERE_ARE + numberOfStudents + STUDENTS_IN_THE_LIST);
-                break;
+        default:
+            System.out.println(CURRENTLY_THERE_ARE + numberOfStudents + STUDENTS_IN_THE_LIST);
+            break;
         }
 
     }
@@ -113,11 +113,11 @@ public class StudentList {
      * @throws nameNumberMatchException Thrown if a match is found.
      */
     public static void checkNameNumberPair(ArrayList<Student> studentList, String name, int number)
-            throws nameNumberMatchException {
+            throws NameNumberMatchException {
 
         for (Student s : studentList) {
             if (s.getName().equalsIgnoreCase(name) && s.getPhoneNumber() == number) {
-                throw new nameNumberMatchException("Student with the same " +
+                throw new NameNumberMatchException("Student with the same " +
                         "name and phone number.");
             }
             //@@author blackmirag3
