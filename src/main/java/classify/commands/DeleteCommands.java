@@ -44,8 +44,8 @@ public class DeleteCommands extends Commands {
             recentlyDeletedList.add(foundStudent);
         }
         masterStudentList.remove(foundStudent);
-        //assert may be false after implementation of phone number indentification
-        // assert InputParsing.findStudentByName(masterStudentList, studentName) == null : "Student should be deleted";
+        FileIOCommands.writeStudentInfo(masterStudentList);
+
     }
 
     /**

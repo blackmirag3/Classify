@@ -1,5 +1,8 @@
-package classify.student;
+package classify.commands;
 
+import classify.student.Student;
+import classify.student.StudentAttributes;
+import classify.student.SubjectGrade;
 import classify.ui.UI;
 
 import java.util.ArrayList;

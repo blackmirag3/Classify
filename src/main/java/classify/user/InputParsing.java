@@ -1,15 +1,15 @@
 package classify.user;
 
+import classify.commands.AddStudent;
 import classify.commands.Commands;
 import classify.commands.FileIOCommands;
 import classify.commands.DeleteCommands;
 import classify.commands.ListStudentsCommand;
-import classify.student.AddStudent;
+import classify.commands.StudentSorter;
+import classify.commands.ViewStudent;
 import classify.student.Student;
 import classify.student.StudentAttributes;
-import classify.student.StudentSorter;
 import classify.student.SubjectGrade;
-import classify.student.ViewStudent;
 import classify.ui.UI;
 
 import java.time.LocalDate;
@@ -61,7 +61,7 @@ public class InputParsing {
             AddStudent.addStudent(masterStudentList, in, userCommand[1]);
             // @@author ParthGandhiNUS
             assert masterStudentList != null;
-            FileIOCommands.writeStudentInfo(masterStudentList);
+
             break;
 
         case VIEW:
@@ -73,7 +73,7 @@ public class InputParsing {
         case DELETE:
             DeleteCommands.deleteStudent(masterStudentList, recentlyDeletedList, in, userCommand[1]);
             // @@author ParthGandhiNUS
-            FileIOCommands.writeStudentInfo(masterStudentList);
+
             // @@author alalal47
             break;
 
@@ -566,7 +566,7 @@ public class InputParsing {
     }
 
     private static boolean checkNumberValidity(int number) {
-        return number > 0 &&
+        return number > 0 && number > 80000000 &&
                 String.valueOf(number).length() == LOWER_LIMIT_PHONE_NUMBER;
     }
 

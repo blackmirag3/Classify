@@ -35,16 +35,6 @@ public class DataReader {
 
         if (studentFileInput != null){
 
-            //removed below portion due to implementation of phone number identification.
-            // if (InputParsing.findStudentByName(masterStudentList, studentFileInput) != null) {
-            //     assert InputParsing.findStudentByName(masterStudentList, studentFileInput) != null;
-            //     logger.log(Level.WARNING, "Student with the same name already exists.");
-
-            //     UI.printSameNameError();
-            //     UI.printDivider();
-            //     return;
-            // }
-
             Student student = new Student(studentFileInput);
 
             masterStudentList.add(student);
