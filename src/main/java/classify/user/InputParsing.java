@@ -132,14 +132,14 @@ public class InputParsing {
         }
     }
 
-    //@@ author tayponghee
+    //@@author tayponghee
     public static void parseListCommand(ArrayList<Student> masterStudentList, Scanner scanner) {
         UI.printListCommandStart();
         String subject = scanner.nextLine().trim();
         ListStudentsCommand.chooseListType(masterStudentList, scanner, subject);
     }
 
-    //author blackmirag3
+    //@@author blackmirag3
     private static void unarchiveStudent(ArrayList<Student> masterList, ArrayList<Student> archiveList,
             String name, Scanner in) {
         if (name == null) {
@@ -259,7 +259,7 @@ public class InputParsing {
         }
     }
 
-    // @@author blackmirag3
+    //@@author blackmirag3
     private static void editStudent(ArrayList<Student> list, Scanner in, String name) {
         if (list.isEmpty()) {
             UI.printEmptyListError();
@@ -332,7 +332,7 @@ public class InputParsing {
         }
     }
 
-    // @@author blackmirag3
+    //@@author blackmirag3
     /**
      * Prompts the user to edit subject, grade, and classes attended for student.
      * Continues to prompt the user until user enters blank to exit.
@@ -442,7 +442,7 @@ public class InputParsing {
      */
     public static Student findStudentByName(ArrayList<Student> masterStudentList, String name, Scanner in) {
 
-        // @@author Cryolian
+        //@@author Cryolian
         ArrayList<Student> studentsWithMatchingNames = new ArrayList<Student>();
         for (Student student : masterStudentList) {
             if (student.getName().equalsIgnoreCase(name)) {
@@ -499,7 +499,7 @@ public class InputParsing {
         return null;
     }
 
-    // @@author blackmirag3
+    //@@author blackmirag3
     public static boolean isValidClassesAttended(int classesAttended) {
         try {
             if (classesAttended < 0) {
