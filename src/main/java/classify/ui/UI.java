@@ -19,8 +19,8 @@ public class UI {
     private static final String STUDENT_GENDER_MESSAGE = "Gender: ";
     private static final String STUDENT_PAYMENT_MESSAGE = "Last Payment Date: ";
     private static final String STUDENT_REMARKS_MESSAGE = "Remarks: ";
-    private static final String SAME_NAME_ERROR = "Student with the same name already exists. " + 
-            "Please enter a different name.";
+    private static final String SAME_NAME_ERROR = "Name found in existing student. " + 
+            "Please make sure the entered phone number will be unique.";
     private static final String EMPTY_NAME_ERROR = "Student name cannot be empty. Please enter a valid name.";
     private static final String GENDER_PROMPT = "Please input the student's gender: ";
     private static final String PAYMENT_PROMPT = "Please input their last payment date in the format of YYYY-MM-DD. " +

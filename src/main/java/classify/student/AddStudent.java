@@ -3,6 +3,7 @@ package classify.student;
 
 import classify.ui.UI;
 import classify.user.InputParsing;
+import classify.user.nameNumberMatchException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -36,28 +37,40 @@ public class AddStudent {
 
         name = checkForEmptyName(masterStudentList, in, studentName);
 
-        if (InputParsing.findStudentByName(masterStudentList, name) != null) {
-            assert InputParsing.findStudentByName(masterStudentList, name) != null;
-            LOGGER.log(Level.WARNING, STUDENT_WITH_THE_SAME_NAME_ALREADY_EXISTS);
+        //Check removed due to implementation of phone number identification.
+        // if (InputParsing.findStudentByName(masterStudentList, name) != null) {
+        //     assert InputParsing.findStudentByName(masterStudentList, name) != null;
+        //     LOGGER.log(Level.WARNING, STUDENT_WITH_THE_SAME_NAME_ALREADY_EXISTS);
 
-            UI.printSameNameError();
-            UI.printDivider();
-            return;
-        }
-
+        //     UI.printSameNameError();
+        //     UI.printDivider();
+        // }
+        
         Student student = new Student(name);
         addSubject(in, student.getAttributes());
 
-        // @@author Cryolian
-        int number = InputParsing.promptForPhoneNumber(in);
+        int number = 0;
 
-        while (number < 0) {
+        // @@author Cryolian
+        try {
             number = InputParsing.promptForPhoneNumber(in);
+        } catch (NumberFormatException e) {
+            UI.printValidNumberError();
+            return;
         }
+
         //@@ author ParthGandhiNUS
         assert number > 0 && number < 100000000 : NUMBER_IS_OUTSIDE_THE_ACCEPTABLE_RANGE;
 
         //@@author Cryolian
+
+        try {
+            StudentList.checkNameNumberPair(StudentList.masterStudentList, name, number);
+            StudentList.checkNameNumberPair(StudentList.recentlyDeletedList, name, number);
+        } catch (nameNumberMatchException e) {
+            return;
+        }
+
         student.getAttributes().setPhoneNumber(number);
 
         UI.promptForGender();

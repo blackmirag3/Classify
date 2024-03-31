@@ -38,8 +38,7 @@ public class InputParsing {
     private static final String ARCHIVE = "archive";
     private static final String UNARCHIVE = "unarchive";
     private static final String VIEW_SUBJECT = "view_subject";
-    private static final String ENTER_THE_SUBJECT_NAME_TYPE_EXIT_TO_GO_BACK =
-            "Enter the subject name (type 'exit' to go back):";
+    private static final String ENTER_THE_SUBJECT_NAME_TYPE_EXIT_TO_GO_BACK = "Enter the subject name (type 'exit' to go back):";
     private static final String EXIT = "exit";
     private static final String EXITED_THE_COMMAND = "Exited the command.";
     private static final String LIST_SORTED = "Sort complete!";
@@ -49,92 +48,92 @@ public class InputParsing {
     private static final String LAST_PAID_DATE = "3. Date of last fee payment: ";
 
     public static void parseUserCommand(String[] userCommand, ArrayList<Student> masterStudentList,
-                                        ArrayList<Student> recentlyDeletedList,
-                                        ArrayList<Student> archiveList, Scanner in) {
+            ArrayList<Student> recentlyDeletedList,
+            ArrayList<Student> archiveList, Scanner in) {
         // @@author blackmirag3
         if (masterStudentList == null) {
             System.out.println("Student list is null.");
         }
         // @@author tayponghee
         switch (userCommand[0]) {
-        case ADD:
-            AddStudent.addStudent(masterStudentList, in, userCommand[1]);
-            //@@author ParthGandhiNUS
-            assert masterStudentList != null;
-            FileIOCommands.writeStudentInfo(masterStudentList);
-            break;
+            case ADD:
+                AddStudent.addStudent(masterStudentList, in, userCommand[1]);
+                // @@author ParthGandhiNUS
+                assert masterStudentList != null;
+                FileIOCommands.writeStudentInfo(masterStudentList);
+                break;
 
-        case VIEW:
-            ViewStudent.viewStudent(masterStudentList, in, userCommand[1]);
-            UI.printDivider();
-            break;
+            case VIEW:
+                ViewStudent.viewStudent(masterStudentList, in, userCommand[1]);
+                UI.printDivider();
+                break;
 
-        //@@author alalal47
-        case DELETE:
-            DeleteCommands.deleteStudent(masterStudentList, recentlyDeletedList, in, userCommand[1]);
+            // @@author alalal47
+            case DELETE:
+                DeleteCommands.deleteStudent(masterStudentList, recentlyDeletedList, in, userCommand[1]);
+                // @@author ParthGandhiNUS
+                FileIOCommands.writeStudentInfo(masterStudentList);
+                // @@author alalal47
+                break;
+
+            case RESTORE:
+                DeleteCommands.restoreStudent(masterStudentList, recentlyDeletedList, in, userCommand[1]);
+                break;
+
+            case UNDO:
+                DeleteCommands.undoDelete(masterStudentList, recentlyDeletedList);
+                break;
+
+            case HELP:
+                UI.printHelp();
+                UI.printDivider();
+                break;
+
             // @@author ParthGandhiNUS
-            FileIOCommands.writeStudentInfo(masterStudentList);
-            //@@author alalal47
-            break;
+            case BYE:
+                UI.printEndConversation();
+                FileIOCommands.writeStudentInfo(masterStudentList);
+                break;
 
-        case RESTORE:
-            DeleteCommands.restoreStudent(masterStudentList, recentlyDeletedList, in, userCommand[1]);
-            break;
+            case LIST:
+                listStudents(masterStudentList);
+                break;
 
-        case UNDO:
-            DeleteCommands.undoDelete(masterStudentList, recentlyDeletedList);
-            break;
+            // @@ author tayponghee
+            case SORT:
+                sortStudents(masterStudentList, in, userCommand[1]);
+                break;
 
-        case HELP:
-            UI.printHelp();
-            UI.printDivider();
-            break;
+            case VIEW_SUBJECT:
+                handleViewSubjectCommand(masterStudentList, in, userCommand[1]);
+                break;
 
-        // @@author ParthGandhiNUS
-        case BYE:
-            UI.printEndConversation();
-            FileIOCommands.writeStudentInfo(masterStudentList);
-            break;
+            // @@author blackmirag3
+            case EDIT:
+                editStudent(masterStudentList, in, userCommand[1]);
+                break;
 
-        case LIST:
-            listStudents(masterStudentList);
-            break;
+            case ARCHIVE:
+                archiveStudent(masterStudentList, archiveList, userCommand[1], in);
+                break;
 
-        //@@ author tayponghee
-        case SORT:
-            sortStudents(masterStudentList, in, userCommand[1]);
-            break;
+            case UNARCHIVE:
+                unarchiveStudent(masterStudentList, archiveList, userCommand[1], in);
+                break;
 
-        case VIEW_SUBJECT:
-            handleViewSubjectCommand(masterStudentList, in, userCommand[1]);
-            break;
-
-        //@@author blackmirag3
-        case EDIT:
-            editStudent(masterStudentList, in, userCommand[1]);
-            break;
-
-        case ARCHIVE:
-            archiveStudent(masterStudentList, archiveList, userCommand[1], in);
-            break;
-
-        case UNARCHIVE:
-            unarchiveStudent(masterStudentList, archiveList, userCommand[1], in);
-            break;
-
-        default:
-            UI.printWrongInput();
-            break;
+            default:
+                UI.printWrongInput();
+                break;
         }
     }
 
-    //author blackmirag3
+    // author blackmirag3
     private static void unarchiveStudent(ArrayList<Student> masterList, ArrayList<Student> archiveList,
-                                         String name, Scanner in) {
+            String name, Scanner in) {
         if (name == null) {
             name = Commands.promptName(in);
         }
-        Student student = findStudentByName(archiveList, name);
+        Student student = findStudentByName(archiveList, name, in);
         if (student == null) {
             UI.printStudentNotFound();
             return;
@@ -146,11 +145,11 @@ public class InputParsing {
     }
 
     private static void archiveStudent(ArrayList<Student> masterList, ArrayList<Student> archiveList,
-                                       String name, Scanner in) {
+            String name, Scanner in) {
         if (name == null) {
             name = Commands.promptName(in);
         }
-        Student student = findStudentByName(masterList, name);
+        Student student = findStudentByName(masterList, name, in);
         if (student == null) {
             UI.printStudentNotFound();
             return;
@@ -170,7 +169,7 @@ public class InputParsing {
     private static void sortStudents(ArrayList<Student> masterStudentList, Scanner in, String sortType) {
         String input;
         while (true) {
-            //@@author alalal47
+            // @@author alalal47
             if (sortType == null) {
                 UI.println(SORT_BY_CHOOSE_INDEX);
                 UI.println(NAME_A_TO_Z);
@@ -180,8 +179,8 @@ public class InputParsing {
             } else {
                 input = sortType.trim().toLowerCase();
             }
-            //@@author tayponghee
-            //input = in.nextLine().trim();
+            // @@author tayponghee
+            // input = in.nextLine().trim();
 
             if (input.equalsIgnoreCase(EXIT)) {
                 System.out.println(EXITED_THE_COMMAND);
@@ -202,9 +201,11 @@ public class InputParsing {
 
     /**
      * Lets the user check view a list of students with that corresponding subject.
-     * If the user types view_subject [subject], it will only generate the list of students with that subject,
+     * If the user types view_subject [subject], it will only generate the list of
+     * students with that subject,
      * then exit.
-     * If the user types view_subject, the user can continuously view all students that
+     * If the user types view_subject, the user can continuously view all students
+     * that
      * have that subject, until they exit the command.
      *
      * @param masterStudentList The list of all students.
@@ -220,7 +221,8 @@ public class InputParsing {
 
     /**
      * Finds students with the specified subject and displays them to the user.
-     * Continuously prompts the user to enter a subject name until they choose to exit.
+     * Continuously prompts the user to enter a subject name until they choose to
+     * exit.
      *
      * @param masterStudentList The list of all students.
      * @param in                The scanner object to read user input.
@@ -282,16 +284,16 @@ public class InputParsing {
             UI.printEmptyListError();
             return;
         }
-        
+
         Student student = null;
-        
+
         if (name != null) {
-            student = findStudentByName(list, name);
+            student = findStudentByName(list, name, in);
             if (student == null) {
                 UI.printStudentNotFound();
             }
         }
-        
+
         while (student == null) {
 
             System.out.println("Name of student to edit (enter blank to exit):");
@@ -302,7 +304,7 @@ public class InputParsing {
                 return;
             }
 
-            student = findStudentByName(list, name);
+            student = findStudentByName(list, name, in);
 
             if (student != null) {
                 break;
@@ -310,7 +312,7 @@ public class InputParsing {
                 UI.printStudentNotFound();
             }
         }
-        
+
         editStudentAttributes(in, student);
     }
 
@@ -329,21 +331,21 @@ public class InputParsing {
 
             switch (command) {
 
-            case ADD:
-                AddStudent.addSubject(in, attributes);
-                student.setAttributes(attributes);
-                break;
+                case ADD:
+                    AddStudent.addSubject(in, attributes);
+                    student.setAttributes(attributes);
+                    break;
 
-            case EDIT:
-                editAttribute(in, attributes);
-                break;
+                case EDIT:
+                    editAttribute(in, attributes);
+                    break;
 
-            case DELETE:
-                deleteAttribute(in, attributes);
-                break;
+                case DELETE:
+                    deleteAttribute(in, attributes);
+                    break;
 
-            default:
-                break;
+                default:
+                    break;
             }
 
         }
@@ -381,11 +383,11 @@ public class InputParsing {
                 }
 
                 double newGrade = promptForGrade(in);
-                
+
                 if (newGrade != -1) {
                     currentSubject.setGrade(newGrade);
                 }
-                
+
                 int newClassesAttended = AddStudent.promptForClassesAttended(in);
                 currentSubject.setClassesAttended(newClassesAttended);
                 System.out.println("Subject updated.");
@@ -399,15 +401,15 @@ public class InputParsing {
 
     private static void deleteAttribute(Scanner in, StudentAttributes attributes) {
         while (true) {
-            
+
             System.out.println("Subject to delete (enter blank to exit)");
             String subjectToDelete = in.nextLine().trim();
-            
+
             if (subjectToDelete.isBlank()) {
                 System.out.println("no subject deleted");
                 return;
             }
-            
+
             if (attributes.findSubject(subjectToDelete) != null) {
                 attributes.deleteSubject(subjectToDelete);
                 System.out.println("Subject deleted");
@@ -429,11 +431,11 @@ public class InputParsing {
         while (true) {
             UI.printStudentGradesPrompt();
             String gradeInput = in.nextLine();
-            
+
             if (gradeInput.isBlank()) {
                 return -1;
             }
-            
+
             // @@author ParthGandhiNUS
             double grade;
             try {
@@ -443,7 +445,7 @@ public class InputParsing {
                 UI.printDivider();
                 grade = promptForGrade(in);
             }
-            
+
             if (isValidGrade(grade)) {
                 return grade;
             }
@@ -455,14 +457,64 @@ public class InputParsing {
      *
      * @param masterStudentList The list of all students.
      * @param name              The name of the student to search for.
-     * @return The student object if found, null otherwise.
+     * @return A list of students with names matching the input.
      */
-    public static Student findStudentByName(ArrayList<Student> masterStudentList, String name) {
+    public static Student findStudentByName(ArrayList<Student> masterStudentList, String name, Scanner in) {
+
+        // @@author Cryolian
+        ArrayList<Student> studentsWithMatchingNames = new ArrayList<Student>();
         for (Student student : masterStudentList) {
             if (student.getName().equalsIgnoreCase(name)) {
-                return student;
+                studentsWithMatchingNames.add(student);
             }
         }
+
+        if (studentsWithMatchingNames.size() == 0) {
+            return null;
+        }
+
+        if (studentsWithMatchingNames.size() == 1) {
+            return studentsWithMatchingNames.get(0);
+        }
+
+        UI.printSameNameError();
+        return findStudentByNumber(studentsWithMatchingNames, in);
+
+    }
+
+    /**
+     * Function looks through a list of students with the same name,
+     * prints them out, and expects an Integer input to specify a student.
+     * 
+     * @param studentList List of students to look for.
+     * @param in          Scanner to parse in the user input.
+     * @return            Student with rigth name and number pair.
+     */
+    private static Student findStudentByNumber(ArrayList<Student> studentList, Scanner in) {
+        assert studentList.size() > 1 : "List should contain more than one Student";
+
+        for (Student student : studentList) {
+            student.printStringNumber();
+        }
+        int number;
+
+        try {
+
+            number = promptForPhoneNumber(in);
+
+            for (Student student : studentList) {
+
+                if (student.getPhoneNumber() == number) {
+                    return student;
+                }
+                UI.println("No student found with a matching number. Please try again.");
+            }
+
+        } catch (NumberFormatException e) {
+            UI.printValidNumberError();
+            return null;
+        }
+
         return null;
     }
 
@@ -499,7 +551,7 @@ public class InputParsing {
         }
     }
 
-    //@@author Cryolian
+    // @@author Cryolian
     /**
      * Creates a looping prompt asking for a phone number.
      * Only exits the loop when either an exception is thrown,
@@ -507,35 +559,28 @@ public class InputParsing {
      * the length of a Singaporean number, with or without
      * the country code.
      * 
-     * @param in    The scanner class to read inputs from.
-     * @return      -1 if an exception was thrown. An 8
-     *              or 10-digit number if not.
+     * @param in The scanner class to read inputs from.
+     * @throws NumberFormatException thrown if invalid number is give
+     * @return -1 if an exception was thrown. An 8
+     *         or 10-digit number if not.
      */
-    public static int promptForPhoneNumber(Scanner in) {
+    public static int promptForPhoneNumber(Scanner in) throws NumberFormatException {
 
         int number = 0;
-        
-        try {
-            
-            do  {
-                UI.printPhoneNumberPrompt();
-                number = readInPhoneNumber(in);
-            } while (!checkNumberValidity(number));
-            
-            LOGGER.log(Level.INFO, "Storing number: " + number);
-            return number;
 
-        } catch (NumberFormatException e) {
-            UI.printValidNumberError();
-        }
+        do {
+            UI.printPhoneNumberPrompt();
+            number = readInPhoneNumber(in);
+        } while (!checkNumberValidity(number));
 
-        return -1;
+        LOGGER.log(Level.INFO, "Storing number: " + number);
+        return number;
     }
 
-    private static int readInPhoneNumber(Scanner in) throws NumberFormatException{
+    private static int readInPhoneNumber(Scanner in) throws NumberFormatException {
 
         String input = in.nextLine().trim();
-        
+
         return Integer.parseInt(input);
     }
 
@@ -547,18 +592,18 @@ public class InputParsing {
     /**
      * A prompting input to scan in a string from the user input.
      * 
-     * @param in    The scanner class to scan inputs from.
-     * @return      "Unknown" if blank was inputted, or the
-     *              trimmed string inputted by the user.
+     * @param in The scanner class to scan inputs from.
+     * @return "Unknown" if blank was inputted, or the
+     *         trimmed string inputted by the user.
      */
     public static String readInString(Scanner in) {
-        
+
         String string = in.nextLine();
         if (string.isBlank()) {
             return DEFAULT_STRING_VALUE;
-        } 
+        }
         return string.trim();
-        
+
     }
 
     public static LocalDate readInDate(Scanner in) {
@@ -571,7 +616,7 @@ public class InputParsing {
             userInput = in.nextLine();
             paymentDate = parseDateFromString(userInput);
 
-        } while(!isDateValid(paymentDate));
+        } while (!isDateValid(paymentDate));
 
         return paymentDate;
     }
@@ -604,15 +649,15 @@ public class InputParsing {
 
     private static boolean isDateValid(LocalDate paymentDate) {
 
-        if (paymentDate.isAfter(LocalDate.now().plusDays(1)) || 
+        if (paymentDate.isAfter(LocalDate.now().plusDays(1)) ||
                 paymentDate.isBefore(LocalDate.parse(EARLIER_POSSIBLE_DATE))) {
-            
+
             UI.printInvalidDateRangeError();
             return false;
         }
 
         return true;
-                
+
     }
 
 }
