@@ -2,7 +2,6 @@ package classify.student;
 
 import java.util.ArrayList;
 
-import classify.user.ClassifyExceptions;
 import classify.user.NameNumberMatchException;
 
 /**
