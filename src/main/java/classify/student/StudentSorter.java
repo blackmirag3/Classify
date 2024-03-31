@@ -93,7 +93,9 @@ public class StudentSorter {
             List<SubjectGrade> subjectGrades = attributes.getSubjectGrades();
 
             for (SubjectGrade subjectGrade : subjectGrades) {
-                totalClassesAttended += subjectGrade.getClassesAttended();
+                if (subjectGrade.getClassesAttended() >= 0) {
+                    totalClassesAttended += subjectGrade.getClassesAttended();
+                }
             }
 
             student.setTotalClassesAttended(totalClassesAttended);
