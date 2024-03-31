@@ -12,7 +12,8 @@ public class ListStudentsCommand {
     private static final String ONE = "1";
     private static final String TWO = "2";
     private static final String FULL_STUDENT_LIST = "Full Student list:";
-    private static final String LIST_OF_STUDENTS_WITH_TOTAL_CLASSES_ATTENDED = "List of students with total classes attended:";
+    private static final String LIST_OF_STUDENTS_WITH_TOTAL_CLASSES_ATTENDED =
+            "List of students with total classes attended:";
     private static final String INVALID_CHOICE = "Invalid choice!";
     private static final String TOTAL_CLASSES_ATTENDED = " - Total Classes Attended: ";
 

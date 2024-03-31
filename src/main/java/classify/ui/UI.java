@@ -61,8 +61,8 @@ public class UI {
     private static final String NO_SUBJECTS_ADDED = "No subjects added.";
     private static final String SUBJECT_ALREADY_EXISTS = "Subject already exists.";
     private static final String WRONG_NUMBER_FORMAT = "Wrong number format! Please try again! e.g. 12 ";
-    public static final String TYPE_LIST_ONLY = "Type 'list' only!";
-    public static final String SUBJECT_NAME_LEAVE_BLANK = "Enter subject name (leave blank for all students):";
+    private static final String TYPE_LIST_ONLY = "Type 'list' only!";
+    private static final String SUBJECT_NAME_LEAVE_BLANK = "Enter subject name (leave blank for all students):";
     private static final String STUDENTS_WITH_THE_SUBJECT = "Students with the subject";
     private static final String NO_STUDENTS_FOUND_WITH_THE_SUBJECT = "No students found with the subject: ";
     private static final String CHOOSE_THE_TYPE_OF_LIST_TO_DISPLAY = "Choose the type of list to display: (index only)";
