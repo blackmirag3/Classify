@@ -39,7 +39,7 @@ public class ViewStudent {
         assert name != null : "Student name cannot be null";
 
         //@@author tayponghee
-        Student foundStudent = InputParsing.findStudentByName(masterStudentList, name);
+        Student foundStudent = InputParsing.findStudentByName(masterStudentList, name, in);
 
         if (foundStudent != null) {
             logger.log(Level.INFO, "Viewing student details: " + name);

@@ -82,4 +82,8 @@ public class Student {
     public String toString() {
         return this.name;
     }
+
+    public void printStringNumber() {
+        System.out.println(this.name + ": " + String.valueOf(this.getPhoneNumber()));
+    }
 }

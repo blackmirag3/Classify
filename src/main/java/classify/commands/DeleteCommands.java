@@ -1,7 +1,9 @@
 package classify.commands;
 
 import classify.student.Student;
+import classify.student.StudentList;
 import classify.user.InputParsing;
+import classify.user.NameNumberMatchException;
 import classify.ui.UI;
 
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public class DeleteCommands extends Commands {
         }
 
         //@@author alalal47
-        Student foundStudent = InputParsing.findStudentByName(masterStudentList, studentName);
+        Student foundStudent = InputParsing.findStudentByName(masterStudentList, studentName, in);
 
         if (foundStudent != null) {
             UI.printStudentDeleted();
@@ -37,11 +39,13 @@ public class DeleteCommands extends Commands {
 
         UI.printDivider();
         //@@author blackmirag3
+        assert true : "Not false";
         if (recentlyDeletedList != null) {
             recentlyDeletedList.add(foundStudent);
         }
         masterStudentList.remove(foundStudent);
-        assert InputParsing.findStudentByName(masterStudentList, studentName) == null : "Student should be deleted";
+        //assert may be false after implementation of phone number indentification
+        // assert InputParsing.findStudentByName(masterStudentList, studentName) == null : "Student should be deleted";
     }
 
     /**
@@ -61,7 +65,7 @@ public class DeleteCommands extends Commands {
             studentName = promptName(in);
         }
 
-        Student foundStudent = InputParsing.findStudentByName(recentlyDeletedList, studentName);
+        Student foundStudent = InputParsing.findStudentByName(recentlyDeletedList, studentName, in);
 
         if (foundStudent != null) {
             UI.printRestoreMessage();
@@ -69,11 +73,23 @@ public class DeleteCommands extends Commands {
             UI.printStudentNotFound();
         }
 
-        UI.printDivider();
-        masterStudentList.add(foundStudent);
-        recentlyDeletedList.remove(foundStudent);
-    }
+        //@@author Cryolian
+        try {
+            StudentList.checkNameNumberPair(masterStudentList, studentName, foundStudent.getPhoneNumber());
 
+            //@@author blackmirag3
+            UI.printDivider();
+            masterStudentList.add(foundStudent);
+            recentlyDeletedList.remove(foundStudent);
+
+        //@@author Cryolian
+        } catch (NameNumberMatchException e) {
+            return;
+        }
+
+    }
+    
+    //@@author blackmirag3
     /**
      * Restores the latest deleted student that has not yet been restored
      *

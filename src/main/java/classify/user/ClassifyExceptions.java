@@ -1,5 +1,5 @@
 package classify.user;
 
-public class ClassifyExceptions extends Exception{
-    
+public class ClassifyExceptions extends Exception {
+
 }
