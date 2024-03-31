@@ -86,12 +86,16 @@ Sorts the masterlist of students from the oldest date to the most recent. When t
 ### Adding a student: `add`
 Initialises an interface for adding a student and their relevant details to the database. Allows the user to do add or add [name]
 
-**to change**
-Currently, no two students can have the same name within the system.
+Students of the same name can be added so long as they possess a different phone number. Students with the same phone number can be added so long as they have different names.
 
 Format: `add` or `add NAME`
 
 Depending on whether the user entered the student's name or not during the command, fields will be printed out in the terminal, awaiting a user input each time.
+
+Please note that the user input NUMBER (shown below) must be an *8 digit number starting with 8 or 9*. 
+Thus, please be informed and educated that our software only works in countries that have phone numbers that are 8 digits long and start with 8 or 9.
+To be specific, this is referring to a city-state republic in South East Asia, that lies in the timezone GMT +8 in the Straits of Johor. 
+Some may debate that our time zone is actually GMT+7.5 or GMT+7, but it was changed to facilitate business deals and decisions with other financial hubs in the region thanks to our capitalistic overlords.
 
 Example: 
 ``` 

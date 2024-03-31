@@ -1,6 +1,10 @@
 
-package classify.student;
+package classify.commands;
 
+import classify.student.Student;
+import classify.student.StudentAttributes;
+import classify.student.StudentList;
+import classify.student.SubjectGrade;
 import classify.ui.UI;
 import classify.user.InputParsing;
 import classify.user.NameNumberMatchException;
@@ -10,6 +14,7 @@ import java.util.logging.Level;
 
 import static classify.user.InputParsing.LOGGER;
 
+//@@author tayponghee
 public class AddStudent {
     private static final String NOTEMPTY = "THIS STRING IS NOT EMPTY";
     private static final String YES = "yes";
@@ -36,15 +41,6 @@ public class AddStudent {
         String name;
 
         name = checkForEmptyName(masterStudentList, in, studentName);
-
-        //Check removed due to implementation of phone number identification.
-        // if (InputParsing.findStudentByName(masterStudentList, name) != null) {
-        //     assert InputParsing.findStudentByName(masterStudentList, name) != null;
-        //     LOGGER.log(Level.WARNING, STUDENT_WITH_THE_SAME_NAME_ALREADY_EXISTS);
-
-        //     UI.printSameNameError();
-        //     UI.printDivider();
-        // }
         
         Student student = new Student(name);
         addSubject(in, student.getAttributes());
@@ -56,6 +52,8 @@ public class AddStudent {
             number = InputParsing.promptForPhoneNumber(in);
         } catch (NumberFormatException e) {
             UI.printValidNumberError();
+            UI.println("Exiting the adding interface.");
+            UI.printDivider();
             return;
         }
 
@@ -68,6 +66,9 @@ public class AddStudent {
             StudentList.checkNameNumberPair(StudentList.masterStudentList, name, number);
             StudentList.checkNameNumberPair(StudentList.recentlyDeletedList, name, number);
         } catch (NameNumberMatchException e) {
+            UI.println("Student and Phone number pair found. Please input a new name" 
+                    + " or a new phone number");
+            UI.printDivider();
             return;
         }
 
@@ -87,6 +88,7 @@ public class AddStudent {
         LOGGER.log(Level.INFO, STUDENT_ADDED_SUCCESSFULLY);
         UI.printStudentAdded();
         UI.printDivider();
+        FileIOCommands.writeStudentInfo(masterStudentList);
     }
 
     /**

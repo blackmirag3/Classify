@@ -1,6 +1,8 @@
-package classify.student;
+package classify.commands;
 
 import java.util.Comparator;
+
+import classify.student.Student;
 
 public class StudentComparators {
     //@@author tayponghee

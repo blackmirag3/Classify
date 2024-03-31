@@ -2,6 +2,8 @@ package classify.student;
 
 import org.junit.jupiter.api.Test;
 
+import classify.commands.StudentSorter;
+
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
