@@ -332,21 +332,21 @@ public class InputParsing {
 
             switch (command) {
 
-                case ADD:
-                    AddStudent.addSubject(in, attributes);
-                    student.setAttributes(attributes);
-                    break;
+            case ADD:
+                AddStudent.addSubject(in, attributes);
+                student.setAttributes(attributes);
+                break;
 
-                case EDIT:
-                    editAttribute(in, attributes);
-                    break;
+            case EDIT:
+                editAttribute(in, attributes);
+                break;
 
-                case DELETE:
-                    deleteAttribute(in, attributes);
-                    break;
+            case DELETE:
+                deleteAttribute(in, attributes);
+                break;
 
-                default:
-                    break;
+            default:
+                break;
             }
 
         }
