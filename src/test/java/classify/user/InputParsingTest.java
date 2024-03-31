@@ -98,6 +98,9 @@ public class InputParsingTest {
                                              + System.lineSeparator() +
                 "list                        Displays the list of all students"
                                              + System.lineSeparator() +
+                "                            Currently available types: Whole student list, with " +
+                                             "total classes attended or by certain subject only"
+                                             + System.lineSeparator() +
                 "bye                         Exits Classify"
                                              + System.lineSeparator() +
                 "sort                        Sorts the student list by the input parameter, expects an" +

@@ -61,6 +61,14 @@ public class UI {
     private static final String NO_SUBJECTS_ADDED = "No subjects added.";
     private static final String SUBJECT_ALREADY_EXISTS = "Subject already exists.";
     private static final String WRONG_NUMBER_FORMAT = "Wrong number format! Please try again! e.g. 12 ";
+    private static final String TYPE_LIST_ONLY = "Type 'list' only!";
+    private static final String SUBJECT_NAME_LEAVE_BLANK = "Enter subject name (leave blank for all students):";
+    private static final String STUDENTS_WITH_THE_SUBJECT = "Students with the subject";
+    private static final String NO_STUDENTS_FOUND_WITH_THE_SUBJECT = "No students found with the subject: ";
+    private static final String CHOOSE_THE_TYPE_OF_LIST_TO_DISPLAY = "Choose the type of list to display: (index only)";
+    private static final String FULL_STUDENT_LIST = "1. Full student list";
+    private static final String STUDENTS_WITH_TOTAL_CLASSES = "2. List of students with total classes attended";
+    private static final String ENTER_ONE_TWO = "Enter your choice (1 or 2):";
 
     //@@author alalal47
     /**
@@ -101,6 +109,8 @@ public class UI {
 
     private static void printListHelpMessage() {
         System.out.println("list                        Displays the list of all students");
+        System.out.println("                            Currently available types: Whole student list, with " +
+                "total classes attended or by certain subject only");
     }
 
     private static void printDeleteHelpMessage() {
@@ -327,4 +337,26 @@ public class UI {
         System.out.println(WRONG_NUMBER_FORMAT);
     }
 
+    public static void printInvalidListCommand() {
+        System.out.println(TYPE_LIST_ONLY);
+    }
+
+    public static void printListCommandStart() {
+        System.out.println(SUBJECT_NAME_LEAVE_BLANK);
+    }
+
+    public static void printStudentsWithSubject(String subject) {
+        System.out.println(STUDENTS_WITH_THE_SUBJECT + " \"" + subject + "\":");
+    }
+
+    public static void printNoStudentsWithSubject(String subject) {
+        System.out.println(NO_STUDENTS_FOUND_WITH_THE_SUBJECT + subject);
+    }
+
+    public static void printListAllStudentsChoice () {
+        System.out.println(CHOOSE_THE_TYPE_OF_LIST_TO_DISPLAY);
+        System.out.println(FULL_STUDENT_LIST);
+        System.out.println(STUDENTS_WITH_TOTAL_CLASSES);
+        System.out.println(ENTER_ONE_TWO);
+    }
 }

@@ -56,9 +56,17 @@ Initialises the process of editing both academic and non-academic details of a s
 
 Removes a student from the master list of students. 
 
-### - Produce a list of all the students who takes a subject `view_subject`
+### - Produce a list of all the students who takes a subject `list`, enter, then followed by `subject name`
 
 Displays a list of all the students with that associated subject taken in the tuition centre.
+
+### Produce a list of all students with total classes attended `list`, enter, enter, `2`
+
+Displays a list of all the students with their total classes attended at the tuition centre.
+
+### Produce a list of all students `list`, enter, enter, `1`
+
+Displays a list of all the students at the tuition centre with no other parameters shown.
 
 ### - Sort the list lexicographically, from A to Z `sort name`
 
