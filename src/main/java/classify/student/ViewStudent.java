@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 public class ViewStudent {
 
     private static final Logger logger = Logger.getLogger(ViewStudent.class.getName());
+    private static final String NO_CLASSES_FOUND = "No classes was inputted for the corresponding subject.";
 
     //@@author tayponghee
     /**
@@ -42,6 +43,7 @@ public class ViewStudent {
 
         if (foundStudent != null) {
             logger.log(Level.INFO, "Viewing student details: " + name);
+
             UI.printDivider();
             UI.printStudentDetails();
             UI.printStudentName(name);
@@ -60,6 +62,8 @@ public class ViewStudent {
 
     /**
      * Calculates the total number of classes attended by the student across all subjects.
+     * If the user does not specify the number of classes the student attended for that subject, i.e.
+     * the user left it blank, the total classes attended would not be affected.
      *
      * @param student The student whose total classes attended are to be calculated.
      * @return The total number of classes attended by the student.
@@ -67,7 +71,9 @@ public class ViewStudent {
     private static int getTotalClassesAttended(Student student) {
         int totalClassesAttended = 0;
         for (classify.student.SubjectGrade subjectGrade : student.getAttributes().getSubjectGrades()) {
-            totalClassesAttended += subjectGrade.getClassesAttended();
+            if (subjectGrade.getClassesAttended() >= 0) {
+                totalClassesAttended += subjectGrade.getClassesAttended();
+            }
         }
         return totalClassesAttended;
     }
@@ -86,6 +92,11 @@ public class ViewStudent {
         }
     }
 
+    /**
+     * Checks if the list of subject grades is empty and performs appropriate actions.
+     *
+     * @param subjectGrades The list of SubjectGrade objects to check.
+     */
     private static void checkIfSubjectGradesIsEmpty(List<SubjectGrade> subjectGrades) {
         if (!subjectGrades.isEmpty()) {
             printSubjectAttributes(subjectGrades);
@@ -94,14 +105,25 @@ public class ViewStudent {
         }
     }
 
+    /**
+     * Prints attributes of each SubjectGrade object in the provided list.
+     *
+     * @param subjectGrades The list of SubjectGrade objects to print attributes for.
+     */
     private static void printSubjectAttributes(List<SubjectGrade> subjectGrades) {
         for (SubjectGrade subjectGrade : subjectGrades) {
             assert subjectGrade != null : "subjectGrade cannot be null";
+
             UI.printSubjectName(subjectGrade.getSubject());
             UI.printStudentGrades(subjectGrade.getGrade());
-            UI.printClassesAttended(subjectGrade.getClassesAttended());
+
+            if (subjectGrade.getClassesAttended() >= 0) {
+                UI.printClassesAttended(subjectGrade.getClassesAttended());
+            } else {
+                UI.println(NO_CLASSES_FOUND);
+            }
+
             UI.printDivider();
         }
     }
-
 }
