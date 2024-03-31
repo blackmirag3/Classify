@@ -3,10 +3,10 @@ package classify.user;
 import classify.commands.Commands;
 import classify.commands.FileIOCommands;
 import classify.commands.DeleteCommands;
+import classify.commands.ListStudentsCommand;
 import classify.student.AddStudent;
 import classify.student.Student;
 import classify.student.StudentAttributes;
-import classify.student.StudentList;
 import classify.student.StudentSorter;
 import classify.student.SubjectGrade;
 import classify.student.ViewStudent;
@@ -97,7 +97,11 @@ public class InputParsing {
             break;
 
         case LIST:
-            listStudents(masterStudentList);
+            if (userCommand[1] != null) {
+                UI.printInvalidListCommand();
+            } else {
+                parseListCommand(masterStudentList, in);
+            }
             break;
 
         //@@ author tayponghee
@@ -126,6 +130,13 @@ public class InputParsing {
             UI.printWrongInput();
             break;
         }
+    }
+
+    //@@ author tayponghee
+    public static void parseListCommand(ArrayList<Student> masterStudentList, Scanner scanner) {
+        UI.printListCommandStart();
+        String subject = scanner.nextLine().trim();
+        ListStudentsCommand.chooseListType(masterStudentList, scanner, subject);
     }
 
     //author blackmirag3
@@ -212,7 +223,7 @@ public class InputParsing {
      */
     private static void handleViewSubjectCommand(ArrayList<Student> masterStudentList, Scanner in, String subject) {
         if (subject != null && !subject.isEmpty()) {
-            viewStudentsBySubject(masterStudentList, subject);
+            ListStudentsCommand.listStudentsBySubject(masterStudentList, subject);
         } else {
             findStudentsWithSubject(masterStudentList, in);
         }
@@ -237,7 +248,7 @@ public class InputParsing {
             }
 
             if (!input.isEmpty()) {
-                viewStudentsBySubject(masterStudentList, input);
+                ListStudentsCommand.listStudentsBySubject(masterStudentList, input);
                 return;
             } else {
                 System.out.println("Please enter a valid subject name.");
@@ -245,38 +256,7 @@ public class InputParsing {
         }
     }
 
-    /**
-     * Views all students who have the specified subject.
-     *
-     * @param masterStudentList The list of all students.
-     * @param subject           The subject to search for among students.
-     */
-    private static void viewStudentsBySubject(ArrayList<Student> masterStudentList, String subject) {
-        boolean found = false;
-        System.out.println("Students with the subject \"" + subject + "\":");
-
-        for (Student student : masterStudentList) {
-            if (student.hasSubject(subject)) {
-                System.out.println("- " + student.getName());
-                found = true;
-            }
-        }
-
-        if (!found) {
-            System.out.println("No students found with the subject: " + subject);
-        }
-
-        UI.printDivider();
-    }
-
     // @@author blackmirag3
-    private static void listStudents(ArrayList<Student> list) {
-        StudentList.printCurrentArrayList(list);
-        // @@author ParthGandhiNUS
-        StudentList.printCurrentArrayMessage(list);
-        UI.printDivider();
-    }
-
     private static void editStudent(ArrayList<Student> list, Scanner in, String name) {
         if (list.isEmpty()) {
             UI.printEmptyListError();
