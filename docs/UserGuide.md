@@ -29,14 +29,14 @@ We have determined these to be the attributes important to running a working tui
 
 ## Quick Start
 
-1. Ensure that you have Java __11 or above__ installed.
-2. Download the provided jar file into an empty folder. 
-3. Run it from the terminal using the following command:
+1. Ensure that you have __Java 11 or above__ installed.
+2. Download the provided jar file into an empty folder.
+3. Open a terminal and change the working directory to the folder with the jar file.
+4. Run it from the terminal using the following command:
 ```
 java -jar ./Classify.jar
 ```
-
-4. Run the command ```help``` within the program to get a quick view of the available commands.
+5. Run the command ```help``` within the program to get a quick view of the available commands.
 
 ## Features 
 
@@ -64,9 +64,13 @@ Displays a list of all the students with that associated subject taken in the tu
 
 Sorts the masterlist of students from A to Z. When the user types list, it will generate the updated sorted list.
 
-### - Sort the list by total classes attended, `sort payment_date`
+### - Sort the list by total classes attended `sort classes`
 
-Sorts the masterlist of students from lowest number of classes attended to highest. When the user types list, it will generate the updated sorted list.
+Sorts the masterlist of students from the lowest number of classes attended to highest. When the user types list, it will generate the updated sorted list.
+
+### - Sort the list by latest fee payment date `sort payment`
+
+Sorts the masterlist of students from the oldest date to the most recent. When the user types list, it will generate the updated sorted list.
 
 # Usage
 //todo add usage guide for our different commands
@@ -106,7 +110,7 @@ NUMBER
 ### - View details of a student `view`
 Views a student's details. Allows the user to do view [name] or just view.
 
-Format: `view` or `view name`
+Format: `view` or `view NAME`
 
 Depending on whether the user entered the student's name or not during the command, fields will be printed out in the terminal, awaiting a user input each time.
 
