@@ -90,6 +90,7 @@ We created a parent `Details` class as those are information not specifically re
 
 However, our current implementation is not very secure as one can access every field of a `Student` object just by having access to it or the `StudentAttribute` object, which can be done via accessing the `static masterStudentList` variable.In future updates, we could possibly implement a Facade Pattern to better hide sensitive details.
 
+
 ### Data Commands Component
 
 This section refers to `DataHandler.java`, `DataReader.java`, and `DataStorage.java` classes.
@@ -124,18 +125,53 @@ The `AddStudent` class is responsible for adding a new student to the list of st
 
 #### Design Considerations
 
-- **Handling Duplicate Names**: The class checks if a student with the same name already exists in the master list before adding a new student.
-- **Input Validation**: It validates the format of input attributes such as the name, phone number, gender, last payment date, and remarks.
-- **Modular Approach**: The class is designed with modularity in mind, allowing easy addition of new attributes or modifications in the future.
+- **Handling Duplicate Names**: The class checks if a student with the same name 
+already exists in the master list before adding a new student.
+- **Input Validation**: It validates the format of input attributes such as 
+the name, phone number, gender, last payment date, and remarks.
+- **Modular Approach**: The class is designed with modularity in mind,
+allowing easy addition of new attributes or modifications in the future.
 
 #### Implementation and Rationale
 
-- **Name Validation**: The `checkForEmptyName` method ensures that the name provided by the user is not empty and does not already exist in the master student list.
-- **Attribute Validation**: Various methods such as `promptForPhoneNumber`, `promptForGender`, `promptForLastPaymentDate`, and `promptForRemarks` validate the format of different attributes.
-- **Adding Subjects**: The `addSubject` method allows users to add multiple subjects along with their grades and classes attended for each student.
-- **Error Handling**: The class provides appropriate error messages if invalid input or duplicate names are encountered.
+- **Name Validation**: The `checkForEmptyName` method ensures that the name provided 
+by the user is not empty and does not already exist in the master student list.
+- **Attribute Validation**: Various methods such as 
+`promptForPhoneNumber`, `promptForGender`, `promptForLastPaymentDate`, and `promptForRemarks` 
+validate the format of different attributes.
+- **Adding Subjects**: The `addSubject` method allows users to add multiple subjects 
+along with their grades and classes attended for each student.
+- **Error Handling**: The class provides appropriate error messages if invalid input 
+or duplicate names are encountered.
 
 The `AddStudent` class contributes to the overall functionality of the application by providing a streamlined process for adding new students and ensuring data integrity within the student database.
+
+
+### StudentSorter Component
+
+The `StudentSorter` class facilitates sorting of the list of students based on various criterion.
+As of the latest iteration, it sorts the master list of students in the order specified by the user.
+
+![StudentSorterUML](./diagrams/src/StudentSorter/StudentSorter.png) 
+
+#### Design Considerations
+
+- Support for sorting by name, total classes attended, and last payment date.
+- Input validation to ensure only valid sorting choices are accepted.
+- Clear user feedback on sorting choices and results.
+
+#### Implementation and Rationale
+
+- **Sorting Criteria**: Supports sorting by name, total classes attended, and last payment date.
+- **Input Validation**: Validates user input to ensure only valid sorting choices are accepted.
+- **Switch Case Structure**: Utilizes switch-case structure for efficient sorting based on user choice.
+- **Reusable Comparators**: Utilizes reusable comparators for sorting students by name, 
+total classes attended, and last payment date.
+- **Clear Output**: Provides clear output of sorted student lists with relevant information.
+- **Error Handling**: Provides error message for invalid sorting choices.
+
+The `StudentSorter` class contributes to the overall functionality of the application by 
+providing a mechanism to organize and present student information based on user preferences.
 
 ---
 
