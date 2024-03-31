@@ -7,6 +7,7 @@ import classify.ui.UI;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//@@ author tayponghee
 public class ListStudentsCommand {
 
     private static final String ONE = "1";
@@ -75,12 +76,13 @@ public class ListStudentsCommand {
             UI.println(FULL_STUDENT_LIST);
 
             StudentList.printCurrentArrayList(masterStudentList);
-            //@@ ParthGandhiNUS
+            //@@ author ParthGandhiNUS
             StudentList.printCurrentArrayMessage(masterStudentList);
 
             UI.printDivider();
             break;
 
+            //@@author tayponghee
         case TWO:
             UI.println(LIST_OF_STUDENTS_WITH_TOTAL_CLASSES_ATTENDED);
 
