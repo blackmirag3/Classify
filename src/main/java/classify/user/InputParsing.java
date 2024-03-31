@@ -590,13 +590,13 @@ public class InputParsing {
             paymentDate = LocalDate.parse(string);
 
         } catch (DateTimeParseException e) {
-            return invalidDatePath();
+            return printInvalidDateMessage();
         }
 
         return paymentDate;
     }
 
-    private static LocalDate invalidDatePath() {
+    private static LocalDate printInvalidDateMessage() {
         LOGGER.log(Level.WARNING, "Invalid date format entered." + '\n');
         UI.printInvalidDateFormatError();
         return LocalDate.now().plusDays(2);
