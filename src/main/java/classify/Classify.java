@@ -19,12 +19,13 @@ public class Classify {
      * @throws IOException  Thrown when error reading file.
      */
     public static void main(String[] args) throws IOException {
-
-        // @@author ParthGandhiNUS  
-        UI.printWelcomeMessage();
-        UI.printUserPrompt();
+        //@@author blackmirag3
         FileIOCommands.readStudentInfo(StudentList.masterStudentList);
         FileIOCommands.readArchive(StudentList.archiveList);
+        // @@author ParthGandhiNUS
+        UI.printWelcomeMessage();
+        UI.printUserPrompt();
+
         
         // Takes in input from the user, and processes input to determine if it contains a command and a name   
         String[] userCommand = UserInput.processInput(in.nextLine());
