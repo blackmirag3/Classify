@@ -1,0 +1,42 @@
+@startuml InputParsingSequenceDiagram
+
+hide footbox
+
+actor ":User" as u
+participant ":UserInput" as UI
+participant ":InputParsing" as IP
+collections ":Commands" as commands
+database "masterStudentList:Student[ ]" as msl
+participant ":FileIOCommands" as fioc
+database "studentInfo.txt" as studentInfo
+
+
+u -> UI : processInput(String)
+activate u
+activate UI
+UI -> u : userCommand:String[ ]
+deactivate UI
+
+u -> IP : parseUserCommand(userCommand:String[ ])
+activate IP
+IP -> commands : command to execute
+activate commands
+commands -> msl : update runtime database
+activate msl
+commands -> fioc : update stored database
+activate fioc
+fioc -> studentInfo : write in msl
+activate studentInfo
+studentInfo --> fioc 
+deactivate studentInfo
+fioc --> commands
+deactivate fioc
+msl --> commands
+deactivate msl
+commands --> IP
+deactivate commands
+IP --> u
+deactivate IP
+
+@enduml
+
