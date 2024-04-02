@@ -44,6 +44,8 @@ public class DeleteCommands extends Commands {
             recentlyDeletedList.add(foundStudent);
         }
         masterStudentList.remove(foundStudent);
+        //@@author alalal47
+        assert masterStudentList.contains(foundStudent) == false : "student should be removed";
         DataHandler.writeStudentInfo(masterStudentList);
 
     }
@@ -96,6 +98,7 @@ public class DeleteCommands extends Commands {
      * @param masterStudentList   The list of all students
      * @param recentlyDeletedList The list of recently deleted students
      */
+    //@@author alalal47
     public static void undoDelete(ArrayList<Student> masterStudentList, ArrayList<Student> recentlyDeletedList) {
         if (recentlyDeletedList.isEmpty()) {
             UI.printNoDeleteFound();
