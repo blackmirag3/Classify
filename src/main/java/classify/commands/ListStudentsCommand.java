@@ -93,7 +93,7 @@ public class ListStudentsCommand {
         default:
             UI.println(INVALID_CHOICE);
         }
-        scanner.close();
+        //scanner.close();
         UI.printDivider();
     }
 
