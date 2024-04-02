@@ -69,7 +69,6 @@ public class ListStudentsCommand {
 
         Scanner scanner = new Scanner(System.in);
         String choice = scanner.nextLine().trim();
-        scanner.close();
 
         //@@ author blackmirag3
         switch (choice) {
