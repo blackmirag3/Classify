@@ -39,7 +39,6 @@ public class DeleteCommands extends Commands {
 
         UI.printDivider();
         //@@author blackmirag3
-        assert true : "Not false";
         if (recentlyDeletedList != null) {
             recentlyDeletedList.add(foundStudent);
         }
