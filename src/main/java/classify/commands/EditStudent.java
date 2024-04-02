@@ -21,6 +21,16 @@ public class EditStudent {
     private static final String DEFAULT_STRING_VALUE = "Unknown";
 
     // @@author blackmirag3
+
+    /***
+     * Searches for specified student in a list and edit attributes of found student
+     * Prompts for input from user for name if student is not found in list
+     * Prompts for input from user for name if there is no valid string input for name
+     *
+     * @param list ArrayList containing students
+     * @param in Scanner instance
+     * @param name String containing student's name
+     */
     public static void editStudent(ArrayList<Student> list, Scanner in, String name) {
         if (list.isEmpty()) {
             UI.printEmptyListError();
@@ -58,6 +68,13 @@ public class EditStudent {
         editStudentAttributes(in, student);
     }
 
+    /***
+     * Edit StudentAttributes within specified instance of student
+     * Prompts for user input to either add, edit or delete attributes
+     *
+     * @param in Scanner instance
+     * @param student instance of student to edit
+     */
     private static void editStudentAttributes(Scanner in, Student student) {
         StudentAttributes attributes = student.getAttributes();
         ViewStudent.showAttributes(attributes);
@@ -199,6 +216,17 @@ public class EditStudent {
         }
     }
 
+    /**
+     * Prompts the user to delete subject for student.
+     * Prompts user for input for subject name
+     * Method searches student attributes for specified subject
+     * If subject is found, subject is deleted
+     * If subject is not found or user enters blank to indicate exit, method returns.
+     *
+     * @param in         The scanner object to read user input.
+     * @param attributes The StudentAttributes object to store the attributes of the
+     *                   student.
+     */
     private static void deleteAttribute(Scanner in, StudentAttributes attributes) {
         while (true) {
 

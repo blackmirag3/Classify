@@ -44,9 +44,20 @@ public class DataReader {
         }
     }
 
+    //@@author blackmirag3
+
+    /**
+     * Initialises student array list from specified data file.
+     * Creates new data file if data file not found
+     *
+     *
+     * @param list ArrayList containing Students
+     * @param filePath String containing path to data file
+     * @throws IOException Thrown when there is error reading the data file.
+     */
     public static void initialiseData(ArrayList<Student> list,
                                       String filePath) throws IOException {
-        //@@author blackmirag3
+
         Path directory = Paths.get(filePath);
         if (!Files.exists(directory)) {
             DataUI.printCreatingFile();
