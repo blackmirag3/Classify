@@ -1,13 +1,13 @@
 package classify.user;
 
 import classify.commands.AddStudent;
-import classify.commands.Commands;
-import classify.commands.FileIOCommands;
+import classify.commands.ArchiveCommands;
 import classify.commands.DeleteCommands;
+import classify.commands.EditStudent;
 import classify.commands.ListStudentsCommand;
 import classify.commands.StudentSorter;
 import classify.commands.ViewStudent;
-import classify.commands.EditStudent;
+import classify.data.DataHandler;
 import classify.student.Student;
 import classify.ui.UI;
 
@@ -93,7 +93,7 @@ public class InputParsing {
         // @@author ParthGandhiNUS
         case BYE:
             UI.printEndConversation();
-            FileIOCommands.writeStudentInfo(masterStudentList);
+            DataHandler.writeStudentInfo(masterStudentList);
             break;
 
         case LIST:
@@ -119,11 +119,11 @@ public class InputParsing {
             break;
 
         case ARCHIVE:
-            archiveStudent(masterStudentList, archiveList, userCommand[1], in);
+            ArchiveCommands.archiveStudent(masterStudentList, archiveList, userCommand[1], in);
             break;
 
         case UNARCHIVE:
-            unarchiveStudent(masterStudentList, archiveList, userCommand[1], in);
+            ArchiveCommands.unarchiveStudent(masterStudentList, archiveList, userCommand[1], in);
             break;
 
         default:
@@ -137,39 +137,6 @@ public class InputParsing {
         UI.printListCommandStart();
         String subject = scanner.nextLine().trim();
         ListStudentsCommand.chooseListType(masterStudentList, scanner, subject);
-    }
-
-    //@@author blackmirag3
-    private static void unarchiveStudent(ArrayList<Student> masterList, ArrayList<Student> archiveList,
-            String name, Scanner in) {
-        if (name == null) {
-            name = Commands.promptName(in);
-        }
-        Student student = findStudentByName(archiveList, name, in);
-        if (student == null) {
-            UI.printStudentNotFound();
-            return;
-        }
-        archiveList.remove(student);
-        masterList.add(student);
-        FileIOCommands.writeArchive(archiveList);
-        FileIOCommands.writeStudentInfo(masterList);
-    }
-
-    private static void archiveStudent(ArrayList<Student> masterList, ArrayList<Student> archiveList,
-            String name, Scanner in) {
-        if (name == null) {
-            name = Commands.promptName(in);
-        }
-        Student student = findStudentByName(masterList, name, in);
-        if (student == null) {
-            UI.printStudentNotFound();
-            return;
-        }
-        masterList.remove(student);
-        archiveList.add(student);
-        FileIOCommands.writeArchive(archiveList);
-        FileIOCommands.writeStudentInfo(masterList);
     }
 
     /**
@@ -362,35 +329,25 @@ public class InputParsing {
 
     //@@author blackmirag3
     public static boolean isValidClassesAttended(int classesAttended) {
-        try {
-            if (classesAttended < 0) {
-                System.out.println("Classes attended must be 0 or more.");
-                UI.printDivider();
-                return false;
-            }
-            return true;
-        } catch (NumberFormatException e) {
-            LOGGER.log(Level.WARNING, "Invalid input for classes attended: " + classesAttended, e);
-            System.out.println("Invalid input for classes attended. Please enter a valid whole number.");
+
+        if (classesAttended < 0) {
+            System.out.println("Classes attended must be 0 or more.");
             UI.printDivider();
             return false;
         }
+
+        return true;
     }
 
     private static boolean isValidGrade(double grade) {
-        try {
-            if (grade < 0 || grade > 100) {
-                System.out.println("Grade must be between 0 and 100. Please enter a valid number.");
-                UI.printDivider();
-                return false;
-            }
-            return true;
-        } catch (NumberFormatException e) {
-            LOGGER.log(Level.WARNING, "Invalid input for grade: " + grade, e);
-            UI.printValidNumberError();
+
+        if (grade < 0 || grade > 100) {
+            System.out.println("Grade must be between 0 and 100. Please enter a valid number.");
             UI.printDivider();
             return false;
         }
+
+        return true;
     }
 
     // @@author Cryolian

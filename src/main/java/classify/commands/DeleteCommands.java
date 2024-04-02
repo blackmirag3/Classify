@@ -1,5 +1,6 @@
 package classify.commands;
 
+import classify.data.DataHandler;
 import classify.student.Student;
 import classify.student.StudentList;
 import classify.user.InputParsing;
@@ -43,7 +44,7 @@ public class DeleteCommands extends Commands {
             recentlyDeletedList.add(foundStudent);
         }
         masterStudentList.remove(foundStudent);
-        FileIOCommands.writeStudentInfo(masterStudentList);
+        DataHandler.writeStudentInfo(masterStudentList);
 
     }
 

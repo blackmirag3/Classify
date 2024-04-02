@@ -1,6 +1,7 @@
 
 package classify.commands;
 
+import classify.data.DataHandler;
 import classify.student.Student;
 import classify.student.StudentAttributes;
 import classify.student.StudentList;
@@ -88,7 +89,7 @@ public class AddStudent {
         LOGGER.log(Level.INFO, STUDENT_ADDED_SUCCESSFULLY);
         UI.printStudentAdded();
         UI.printDivider();
-        FileIOCommands.writeStudentInfo(masterStudentList);
+        DataHandler.writeStudentInfo(masterStudentList);
     }
 
     /**
