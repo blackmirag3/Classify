@@ -1,8 +1,10 @@
 package classify.data;
 
 import classify.student.Student;
+import classify.student.StudentList;
 import classify.ui.DataUI;
 import classify.user.InputParsing;
+import classify.user.NameNumberMatchException;
 import classify.ui.UI;
 
 import java.io.BufferedReader;
@@ -49,9 +51,19 @@ public class DataReader {
             
             //Set Phone Number
             try {
-                student.getAttributes().setPhoneNumber(Integer.parseInt(inputArr[2].trim()));
+                //@@author Cryolian
+                int phoneNumber = Integer.parseInt(inputArr[2].trim());
+                StudentList.checkNameNumberPair(masterStudentList, student.getName(), phoneNumber);
+                student.getAttributes().setPhoneNumber(phoneNumber);
+
+                //@@author ParthGandhiNUS
             } catch (NumberFormatException e) {
                 UI.println("Error parsing the phone number.");
+
+            } catch (NameNumberMatchException e) {
+                UI.println("Existing name and number pair found");
+                masterStudentList.remove(student);
+                return;
             }
 
             //Set Last Payment Date
