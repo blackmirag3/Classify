@@ -117,7 +117,7 @@ public class StudentList {
         for (Student s : studentList) {
             if (s.getName().equalsIgnoreCase(name) && s.getPhoneNumber() == number) {
                 throw new NameNumberMatchException("Student with the same " +
-                        "name and phone number.");
+                        "name and phone number found.");
             }
             //@@author blackmirag3
             assert (s.getName().equalsIgnoreCase(name) && s.getPhoneNumber() == number) 

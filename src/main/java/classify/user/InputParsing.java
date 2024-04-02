@@ -7,9 +7,8 @@ import classify.commands.DeleteCommands;
 import classify.commands.ListStudentsCommand;
 import classify.commands.StudentSorter;
 import classify.commands.ViewStudent;
+import classify.commands.EditStudent;
 import classify.student.Student;
-import classify.student.StudentAttributes;
-import classify.student.SubjectGrade;
 import classify.ui.UI;
 
 import java.time.LocalDate;
@@ -24,7 +23,6 @@ public class InputParsing {
     public static final Logger LOGGER = Logger.getLogger(InputParsing.class.getName());
     private static final String EARLIER_POSSIBLE_DATE = "1970-01-01";
     private static final String DEFAULT_STRING_VALUE = "Unknown";
-    private static final int LOWER_LIMIT_PHONE_NUMBER = 8;
     private static final String BYE = "bye";
     private static final String LIST = "list";
     private static final String ADD = "add";
@@ -47,6 +45,8 @@ public class InputParsing {
     private static final String NAME_A_TO_Z = "1. Name (A to Z)";
     private static final String TOTAL_NUMBER_OF_CLASSES_ATTENDED = "2. Total number of classes attended:";
     private static final String LAST_PAID_DATE = "3. Date of last fee payment: ";
+    private static final int NUMBER_TOO_SMALL = 80000000;
+    private static final int NUMBER_TOO_BIG = 1000_000_000;
 
     public static void parseUserCommand(String[] userCommand, ArrayList<Student> masterStudentList,
             ArrayList<Student> recentlyDeletedList,
@@ -111,7 +111,7 @@ public class InputParsing {
 
         // @@author blackmirag3
         case EDIT:
-            editStudent(masterStudentList, in, userCommand[1]);
+            EditStudent.editStudent(masterStudentList, in, userCommand[1]);
             break;
 
         case ARCHIVE:
@@ -177,7 +177,7 @@ public class InputParsing {
     private static void sortStudents(ArrayList<Student> masterStudentList, Scanner in, String sortType) {
         String input;
         while (true) {
-            // @@author alalal47
+            //@@author alalal47
             if (sortType == null) {
                 UI.println(SORT_BY_CHOOSE_INDEX);
                 UI.println(NAME_A_TO_Z);
@@ -187,7 +187,7 @@ public class InputParsing {
             } else {
                 input = sortType.trim().toLowerCase();
             }
-            // @@author tayponghee
+            //@@author tayponghee
             // input = in.nextLine().trim();
 
             if (input.equalsIgnoreCase(EXIT)) {
@@ -255,147 +255,8 @@ public class InputParsing {
         }
     }
 
-    //@@author blackmirag3
-    private static void editStudent(ArrayList<Student> list, Scanner in, String name) {
-        if (list.isEmpty()) {
-            UI.printEmptyListError();
-            return;
-        }
-
-        Student student = null;
-
-        if (name != null) {
-            student = findStudentByName(list, name, in);
-            if (student == null) {
-                UI.printStudentNotFound();
-            }
-        }
-
-        while (student == null) {
-
-            System.out.println("Name of student to edit (enter blank to exit):");
-            name = in.nextLine().trim();
-
-            if (name.isBlank()) {
-                System.out.println("Exiting edit.");
-                return;
-            }
-
-            student = findStudentByName(list, name, in);
-
-            if (student != null) {
-                break;
-            } else {
-                UI.printStudentNotFound();
-            }
-        }
-
-        editStudentAttributes(in, student);
-    }
-
-    private static void editStudentAttributes(Scanner in, Student student) {
-        StudentAttributes attributes = student.getAttributes();
-        ViewStudent.showAttributes(attributes);
-
-        while (true) {
-            UI.printEditPrompt();
-            String command = in.nextLine().trim();
-            if (command.isBlank()) {
-                System.out.println("Exiting edit");
-                UI.printDivider();
-                return;
-            }
-
-            switch (command) {
-
-            case ADD:
-                AddStudent.addSubject(in, attributes);
-                student.setAttributes(attributes);
-                break;
-
-            case EDIT:
-                editAttribute(in, attributes);
-                break;
-
-            case DELETE:
-                deleteAttribute(in, attributes);
-                break;
-
-            default:
-                break;
-            }
-
-        }
-    }
 
     //@@author blackmirag3
-    /**
-     * Prompts the user to edit subject, grade, and classes attended for student.
-     * Continues to prompt the user until user enters blank to exit.
-     *
-     * @param in         The scanner object to read user input.
-     * @param attributes The StudentAttributes object to store the attributes of the
-     *                   student.
-     */
-    private static void editAttribute(Scanner in, StudentAttributes attributes) {
-
-        while (true) {
-
-            System.out.print("Subject to edit (enter nothing to exit): ");
-            String subjectToFind = in.nextLine().trim();
-
-            if (subjectToFind.isBlank()) {
-                System.out.println("No subject edited.");
-                return;
-            }
-
-            SubjectGrade currentSubject = attributes.findSubject(subjectToFind);
-
-            if (currentSubject != null) {
-                System.out.print("New subject name (enter nothing to skip): ");
-                String newName = in.nextLine().trim();
-
-                if (!newName.isBlank()) {
-                    currentSubject.setSubject(newName);
-                }
-
-                double newGrade = promptForGrade(in);
-
-                if (newGrade != -1) {
-                    currentSubject.setGrade(newGrade);
-                }
-
-                int newClassesAttended = AddStudent.promptForClassesAttended(in);
-                currentSubject.setClassesAttended(newClassesAttended);
-                System.out.println("Subject updated.");
-
-            } else {
-                System.out.println("Subject not found.");
-            }
-
-        }
-    }
-
-    private static void deleteAttribute(Scanner in, StudentAttributes attributes) {
-        while (true) {
-
-            System.out.println("Subject to delete (enter blank to exit)");
-            String subjectToDelete = in.nextLine().trim();
-
-            if (subjectToDelete.isBlank()) {
-                System.out.println("no subject deleted");
-                return;
-            }
-
-            if (attributes.findSubject(subjectToDelete) != null) {
-                attributes.deleteSubject(subjectToDelete);
-                System.out.println("Subject deleted");
-            } else {
-                System.out.println("subject not found");
-            }
-        }
-    }
-
     /**
      * Prompts for grade from user input and checks format
      * Prompts the user to enter a valid double within the range [0, 100] until one
@@ -413,7 +274,7 @@ public class InputParsing {
                 return -1;
             }
 
-            // @@author ParthGandhiNUS
+            //@@author ParthGandhiNUS
             double grade;
             try {
                 grade = Double.parseDouble(gradeInput);
@@ -484,8 +345,8 @@ public class InputParsing {
                 if (student.getPhoneNumber() == number) {
                     return student;
                 }
-                UI.println("No student found with a matching number. Please try again.");
             }
+            UI.println("No student found with a matching number. Please try again.");
 
         } catch (NumberFormatException e) {
             UI.printValidNumberError();
@@ -562,8 +423,7 @@ public class InputParsing {
     }
 
     private static boolean checkNumberValidity(int number) {
-        return number > 0 && number > 80000000 &&
-                String.valueOf(number).length() == LOWER_LIMIT_PHONE_NUMBER;
+        return number > NUMBER_TOO_SMALL && number < NUMBER_TOO_BIG;
     }
 
     /**

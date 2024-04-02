@@ -38,6 +38,7 @@ public class DeleteCommands extends Commands {
         }
 
         UI.printDivider();
+        //@@author blackmirag3
         if (recentlyDeletedList != null) {
             recentlyDeletedList.add(foundStudent);
         }
