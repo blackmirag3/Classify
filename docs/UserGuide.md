@@ -60,13 +60,13 @@ Removes a student from the master list of students.
 
 Displays a list of all the students with that associated subject taken in the tuition centre.
 
-### Produce a list of all students with total classes attended `list`, enter, enter, `2`
-
-Displays a list of all the students with their total classes attended at the tuition centre.
-
 ### Produce a list of all students `list`, enter, enter, `1`
 
 Displays a list of all the students at the tuition centre with no other parameters shown.
+
+### Produce a list of all students with total classes attended `list`, enter, enter, `2`
+
+Displays a list of all the students with their total classes attended at the tuition centre.
 
 ### - Sort the list lexicographically, from A to Z `sort name`
 
@@ -233,8 +233,14 @@ Sort complete!
 ### `add <student>` 
 Adds a student into the list. If the name of the student is not specified in the initial command, the program will prompt the user for the name.
 
-### `list` 
-Displays the list of students.
+### `list`, press enter, [subject] 
+Displays the list of students that has taken that subject.
+
+### `list`, press enter, press enter, [1]
+Displays the list of students that is registered in the tuition centre.
+
+### `list`, press enter, press enter, [2]
+Displays the list of students that is registered in the tuition centre with the total number of classes taken.
 
 ### `view <student>` 
 Views a students details. If the name of the student is not specified in the initial command, the program will prompt the user for the name.
