@@ -323,35 +323,25 @@ public class InputParsing {
 
     //@@author blackmirag3
     public static boolean isValidClassesAttended(int classesAttended) {
-        try {
-            if (classesAttended < 0) {
-                System.out.println("Classes attended must be 0 or more.");
-                UI.printDivider();
-                return false;
-            }
-            return true;
-        } catch (NumberFormatException e) {
-            LOGGER.log(Level.WARNING, "Invalid input for classes attended: " + classesAttended, e);
-            System.out.println("Invalid input for classes attended. Please enter a valid whole number.");
+
+        if (classesAttended < 0) {
+            System.out.println("Classes attended must be 0 or more.");
             UI.printDivider();
             return false;
         }
+
+        return true;
     }
 
     private static boolean isValidGrade(double grade) {
-        try {
-            if (grade < 0 || grade > 100) {
-                System.out.println("Grade must be between 0 and 100. Please enter a valid number.");
-                UI.printDivider();
-                return false;
-            }
-            return true;
-        } catch (NumberFormatException e) {
-            LOGGER.log(Level.WARNING, "Invalid input for grade: " + grade, e);
-            UI.printValidNumberError();
+
+        if (grade < 0 || grade > 100) {
+            System.out.println("Grade must be between 0 and 100. Please enter a valid number.");
             UI.printDivider();
             return false;
         }
+
+        return true;
     }
 
     // @@author Cryolian
