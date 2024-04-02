@@ -1,7 +1,6 @@
-package classify.commands;
+package classify.data;
 
-import classify.data.DataReader;
-import classify.data.DataWriter;
+import classify.commands.Commands;
 import classify.student.Student;
 
 import java.io.IOException;
@@ -9,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //@@author blackmirag3
-public class FileIOCommands extends Commands {
+public class DataHandler extends Commands {
     private static final String DATA_DIRECTORY_PATH = "data/studentInfo";
     private static final String DATA_FILE_PATH = DATA_DIRECTORY_PATH + "/Student_Information.txt";
     private static final String ARCHIVE_DIRECTORY_PATH = "data/archive";
