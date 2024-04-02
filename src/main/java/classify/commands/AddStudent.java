@@ -103,7 +103,7 @@ public class AddStudent {
      *                          before being prompted
      * @return The valid non-empty name entered by the user.
      */
-    private static String checkForEmptyName(ArrayList<Student> masterStudentList, Scanner in, String studentName) {
+    public static String checkForEmptyName(ArrayList<Student> masterStudentList, Scanner in, String studentName) {
         String name;
         while (true) {
 
