@@ -1,6 +1,6 @@
 package classify;
 
-import classify.commands.FileIOCommands;
+import classify.data.DataHandler;
 import classify.student.StudentList;
 import classify.user.InputParsing;
 import classify.ui.UI;
@@ -20,8 +20,8 @@ public class Classify {
      */
     public static void main(String[] args) throws IOException {
         //@@author blackmirag3
-        FileIOCommands.readStudentInfo(StudentList.masterStudentList);
-        FileIOCommands.readArchive(StudentList.archiveList);
+        DataHandler.readStudentInfo(StudentList.masterStudentList);
+        DataHandler.readArchive(StudentList.archiveList);
         // @@author ParthGandhiNUS
         UI.printWelcomeMessage();
         UI.printUserPrompt();
