@@ -1,9 +1,7 @@
 @startuml DateStoring
-
 skinparam classAttributeIconSize 0
-
 package student {
-    
+
     class StudentList {
         {static} +masterStudentList:Student[]
         {static} +recentlyDeletedList:Student[]
