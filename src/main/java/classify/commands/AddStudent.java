@@ -57,7 +57,7 @@ public class AddStudent {
             return;
         }
 
-        //@@ author ParthGandhiNUS
+        //@@author ParthGandhiNUS
         assert number > 0 && number < 100000000 : NUMBER_IS_OUTSIDE_THE_ACCEPTABLE_RANGE;
 
         //@@author Cryolian
