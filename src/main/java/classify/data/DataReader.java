@@ -49,15 +49,15 @@ public class DataReader {
             
             //Set Phone Number
             try {
-            student.getAttributes().setPhoneNumber(Integer.parseInt(inputArr[2].trim()));
+                student.getAttributes().setPhoneNumber(Integer.parseInt(inputArr[2].trim()));
             } catch (NumberFormatException e) {
                 UI.println("Error parsing the phone number.");
             }
 
             //Set Last Payment Date
             try {
-            LocalDate inputLastPaymentDate = convertStringInput(inputArr[3].trim());
-            student.getAttributes().setLastPaymentDate(inputLastPaymentDate);
+                LocalDate inputLastPaymentDate = convertStringInput(inputArr[3].trim());
+                student.getAttributes().setLastPaymentDate(inputLastPaymentDate);
             } catch (DateTimeParseException e) {
                 UI.println("Error parsing the last payment date.");
             }
