@@ -2,7 +2,6 @@ package classify.data;
 
 import classify.commands.Commands;
 import classify.student.Student;
-import classify.ui.DataUI;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,14 +31,10 @@ public class DataHandler extends Commands {
      * @throws IOException  When unable to get the Student_Information.txt file or has any input errors
      */
     public static void readStudentInfo(ArrayList<Student> list) throws IOException{
-        try{
-            System.out.println("Trying to load Student info");
-            DataWriter.createParentFileFolder(DATA_DIRECTORY_PATH);
-            DataReader.initialiseData(list, DATA_FILE_PATH);
-        } catch (IOException e) {
-            DataUI.printCreateFailure();
-            throw e;
-        }
+        
+        System.out.println("Trying to load Student info");
+        DataWriter.createParentFileFolder(DATA_DIRECTORY_PATH);
+        DataReader.initialiseData(list, DATA_FILE_PATH);
     }
 
     /**
@@ -59,13 +54,8 @@ public class DataHandler extends Commands {
      * @throws IOException  When unable to get the Student_Information.txt file or has any input errors
      */
     public static void readArchive(ArrayList<Student> list) throws IOException {
-        try{
-            System.out.println("Trying to load Student Archive.");
-            DataWriter.createParentFileFolder(ARCHIVE_DIRECTORY_PATH);
-            DataReader.initialiseData(list, ARCHIVE_FILE_PATH);
-        } catch (IOException e) {
-            DataUI.printCreateFailure();
-            throw e;
-        }
+        System.out.println("Trying to load Student Archive.");
+        DataWriter.createParentFileFolder(ARCHIVE_DIRECTORY_PATH);
+        DataReader.initialiseData(list, ARCHIVE_FILE_PATH);
     }
 }
