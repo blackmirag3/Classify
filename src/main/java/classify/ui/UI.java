@@ -11,7 +11,7 @@ public class UI {
     private static final String EMPTY_SUBJECT_ERROR = "No subjects and grades found for this student.";
     private static final String NULL_ATTRIBUTE_ERROR = "No attributes found for this student.";
     private static final String EDIT_PROMPT = "How would you like to update a student's subject? (enter blank to exit)";
-    private static final String EDIT_TYPES_PROMPT = "Add, Edit or Delete: ";
+    private static final String EDIT_TYPES_PROMPT = "Add, Edit (subjects), Number, Remarks, Payment or Delete: ";
     private static final String EMPTY_LIST_ERROR = "Currently no students in list.";
     private static final String VALID_NUMBER_ERROR = "A valid number was not entered. Please input a valid number. ";
     private static final String PHONE_NUMBER_PROMPT = "Please input a valid phone number: ";
