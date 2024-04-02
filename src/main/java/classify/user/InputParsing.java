@@ -1,6 +1,12 @@
 package classify.user;
 
-import classify.commands.*;
+import classify.commands.AddStudent;
+import classify.commands.ArchiveCommands;
+import classify.commands.DeleteCommands;
+import classify.commands.EditStudent;
+import classify.commands.ListStudentsCommand;
+import classify.commands.StudentSorter;
+import classify.commands.ViewStudent;
 import classify.data.DataHandler;
 import classify.student.Student;
 import classify.ui.UI;
