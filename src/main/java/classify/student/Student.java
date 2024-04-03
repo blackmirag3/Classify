@@ -68,6 +68,13 @@ public class Student {
     }
 
     //@@author ParthGandhiNUS
+    /**
+     * This code accesses the current students' Subject details.
+     * It then uses a Stringbuilder to build the string in the proper format to be used
+     * for the Student_Information text file 
+     * 
+     * @return Returns a String to store all subject attributes associated with a certain student.
+     */
     public String listOfSubjectAttributes(){
         List<SubjectGrade> currentStudent = this.getAttributes().getSubjectGrades();
 
@@ -84,14 +91,10 @@ public class Student {
         for (int i = 0; i < numberOfSubjects ; i++){
             //Subject Name
             StringBuilder subject = new StringBuilder(currentStudent.get(i).getSubject());
-            
             //Grade information
-            String gradeInfo = Double.toString(currentStudent.get(i).getGrade());
-            StringBuilder gradeInformation = new StringBuilder(gradeInfo);
-            
+            StringBuilder gradeInformation = doubleToString(currentStudent.get(i).getGrade());
             //Class Attended Information
-            String classInfo = Integer.toString(currentStudent.get(i).getClassesAttended());
-            StringBuilder classInformation = new StringBuilder(classInfo);           
+            StringBuilder classInformation = integerToString(currentStudent.get(i).getClassesAttended());           
 
             subjectInfo.append(subject);
             subjectInfo.append(separateSubjectInfo);
@@ -100,10 +103,39 @@ public class Student {
             subjectInfo.append(classInformation);
             subjectInfo.append(separateSubject);
         }
-
         return subjectInfo.toString();
     }
 
+    /**
+     * Converts an double input to StringBuilder form
+     * 
+     * @param input     an integer which needs to be converted to a StringBuilder Format
+     * @return          Stringbuilder format of the double value
+     */
+    public static StringBuilder doubleToString(Double input){
+        String outputData = Double.toString(input);
+        StringBuilder output = new StringBuilder(outputData);
+        return output;
+    }
+
+    /**
+     * Converts an integer input to StringBuilder form
+     * 
+     * @param input     an integer which needs to be converted to a StringBuilder Format 
+     * @return          Stringbuilder format of the integer value
+     */
+    public static StringBuilder integerToString(Integer input){
+        String outputData = Integer.toString(input);
+        StringBuilder output = new StringBuilder(outputData);
+        return output;
+    }
+
+    /**
+     * Builds a string in the proper storing format
+     * 
+     * @return      a String in the correct format to be stored 
+     *              in the Student_Information Text File
+     */
     public String textFileInputString() {
         return String.format("%s ~~ %s ~~ %s ~~ %s ~~ %s ~~ %s",
             getName().trim(), 

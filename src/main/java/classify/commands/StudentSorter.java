@@ -146,6 +146,11 @@ public class StudentSorter {
     }
 
     //@@author alalal47
+    /**
+     * Prints out the list of student with their last payment date.
+     * 
+     * @param students Takes in an arraylist of all the students.
+     */
     private static void listStudentsWithLastPaidDate(ArrayList<Student> students) {
         int i = 1;
         for (Student student : students) {
