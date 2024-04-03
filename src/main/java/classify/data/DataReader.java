@@ -94,7 +94,7 @@ public class DataReader {
                     student.getAttributes().addSubjectGrade(newSubject);
                 }
             } catch (ArrayIndexOutOfBoundsException e) {
-                
+                UI.println("Error reading in subjects.");
             }
             
             logger.log(Level.INFO, "Student added successfully.");
