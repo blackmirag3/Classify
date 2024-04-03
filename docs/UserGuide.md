@@ -230,7 +230,7 @@ Sort complete!
 
 **Q**: What inputs are not allowed?
 
-**A** The inputs that are banned (which are used for file saving) are `#` and `~`. In the event the program does not understand the saved file due to irresponsible behaviour, it is to be expected and hence the user has been warned.
+**A**: The inputs that are banned (which are used for file saving) are `#` and `~`. In the event the program does not understand the saved file due to irresponsible behaviour, it is to be expected and hence the user has been warned.
 
 ## Command Summary
 
@@ -272,6 +272,12 @@ Archives specified student. Removes student from current list and adds student t
 
 ### `unarchive <student>`
 Unarchives specified student. Moves student from archive to current list.
+
+### `undo`
+Undoes the last deleted entry.
+
+### `restore` <student>
+Restores the student from the current session.
 
 ### `help` 
 Generates the list of commands.
