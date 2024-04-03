@@ -63,7 +63,7 @@ public class DeleteCommands extends Commands {
     public static void restoreStudent(ArrayList<Student> masterStudentList, ArrayList<Student> recentlyDeletedList,
                                       Scanner in, String studentName) {
         //@@author blackmirag3
-        if (studentName == null) {
+        if (studentName == null || studentName.isBlank()) {
             studentName = promptName(in);
         }
 
@@ -86,6 +86,10 @@ public class DeleteCommands extends Commands {
 
         //@@author Cryolian
         } catch (NameNumberMatchException e) {
+            UI.printDivider();
+            return;
+        } catch (NullPointerException e) {
+            UI.printDivider();
             return;
         }
 
