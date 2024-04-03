@@ -27,6 +27,8 @@ Within our program, a student can be stored with their
 
 We have determined these to be the attributes important to running a working tuition centre. Based on these attributes, our program also has functions to sort students based on grades, subjects, improvements since joining the centre.
 
+<div style="page-break-after: always;"></div>
+
 ## Quick Start
 
 1. Ensure that you have __Java 11 or above__ installed.
@@ -89,7 +91,8 @@ Adds in the most recently deleted student back into the runtime database.
 Finds a specific deleted student and adds it back into the runtime database.
 
 # Usage
-//todo add usage guide for our different commands
+
+**Please note that if any of the following characters are entered in any string prompts, `#, - and ~`, they will be replaced and your command may be deemed invalid.**
 
 ### Adding a student: `add`
 Initialises an interface for adding a student and their relevant details to the database. Allows the user to do add or add [name]
@@ -193,7 +196,7 @@ Deletes the student from the list. Allows the user to do delete [student] or jus
 
 Format: `delete` or `delete NAME`
 
-Depending on whether the user entered the student's name or not during the command, fields will be printed out in the terminal, awaiting a user input each time.
+Depending on whether the user entered the student's name or not during the command, a field will be printed out in the terminal, awaiting a user input.
 
 ``` 
 Example:
@@ -203,7 +206,33 @@ Enter student name:
 wario
 Student removed successfully!
 ```
+### - Restore a student to the working list `restore`
+Restores a student deleted in the current session. Allows the user to do restore [student] or just restore.
 
+Format: `restore` or `restore NAME`
+
+Depending on whether the user entered the student's name or not during the command, a field will be printed out in the terminal, awaiting a user input.
+
+```
+Example:
+restore
+Enter student name: 
+mario
+Student has been restored!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+### - Undo a delete and restore the deleted student to the working list
+Undoes the latest delete. Used by typing `undo`
+
+Format: `undo`
+
+```
+Example:
+undo
+Last delete undone!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 ### - Sort the list of students `sort`
 Sorts the list of students based on the following input. Allows the user to do sort [type] or just sort
 
@@ -248,7 +277,8 @@ Sort complete!
 
 **Q**: What inputs are not allowed?
 
-**A**: The inputs that are banned (which are used for file saving) are `#` and `~`. In the event the program does not understand the saved file due to irresponsible behaviour, it is to be expected and hence the user has been warned.
+**A**: The inputs that are banned (which are used for file saving) are `#` and `~`, and in all cases except for dates, `-`. 
+In the event you choose to continue with using these characters, the user would have to the behaviour that follows (replacing them with other characters) and hence  has been warned.
 
 ## Command Summary
 
@@ -294,7 +324,7 @@ Unarchives specified student. Moves student from archive to current list.
 ### `undo`
 Undoes the last deleted entry.
 
-### `restore` <student>
+### `restore <student>`
 Restores the student from the current session.
 
 ### `help` 

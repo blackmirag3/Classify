@@ -13,6 +13,9 @@ public class UserInput {
 
         if  (userInput.trim().contains(" ")) {
             commandWithName = userInput.split(" ", 2);
+            commandWithName[1] = commandWithName[1].replace('~', ' ');
+            commandWithName[1] = commandWithName[1].replace('-', '_');
+            commandWithName[1] = commandWithName[1].replace('#', ' ').trim();
         } else {
             commandWithName[0] = userInput.trim();
         }

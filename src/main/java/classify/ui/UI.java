@@ -309,7 +309,7 @@ public class UI {
         System.out.println(NO_RECENT_DELETES);
     }
 
-    //@@ author tayponghee
+    //@@author tayponghee
     public static void printTotalClassesAttended(int classes) {
         System.out.println(TOTAL_CLASSES_ATTENDED_ACROSS_ALL_SUBJECTS + classes);
     }
