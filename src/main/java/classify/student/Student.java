@@ -8,6 +8,8 @@ import java.time.LocalDate;
  * added later.
  */
 public class Student {
+    private static final String SUBJECTINFOSEPARATOR = " ## ";
+    private static final String SUBJECTSEPARATIOR = " #--# ";
 
     //@@author Cryolian
     public String name;
