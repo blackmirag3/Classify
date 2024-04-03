@@ -2,6 +2,7 @@ package classify.commands;
 
 import classify.student.Student;
 import classify.student.StudentList;
+import classify.student.SubjectGrade;
 import classify.ui.UI;
 
 import java.util.ArrayList;
@@ -99,14 +100,26 @@ public class ListStudentsCommand {
 
     /**
      * Lists all students in the provided list along with their total classes attended.
+     * If the user had left the classes attended blank for that subject,
+     * it would not be counted into the total classes attended.
      *
      * @param masterStudentList The list of all students.
      */
     private static void listStudentsWithTotalClasses(ArrayList<Student> masterStudentList) {
         int i = 1;
         for (Student student : masterStudentList) {
+            int totalClassesAttended = 0;
+            
+            for (SubjectGrade subjectGrade : student.getAttributes().getSubjectGrades()) {
+                if (subjectGrade.getClassesAttended() >= 0) {
+                    totalClassesAttended += subjectGrade.getClassesAttended();
+                } else {
+                    totalClassesAttended += 0;
+                }
+            }
+
             System.out.println(i + "." + student.getName() + TOTAL_CLASSES_ATTENDED +
-                    student.getTotalClassesAttended());
+                    totalClassesAttended);
             i++;
         }
     }
