@@ -57,12 +57,8 @@ public class InputParsing {
             System.out.println("Student list is null.");
         }
         // @@author tayponghee
-        String name = userCommand[0];
-        if (name.isBlank()) {
-            UI.println("Invalid name found.");
-            UI.printDivider();
-            return;
-        }
+        String name = userCommand[1];
+
         switch (userCommand[0]) {
         case ADD:
             AddStudent.addStudent(masterStudentList, in, userCommand[1]);
@@ -281,6 +277,11 @@ public class InputParsing {
     public static Student findStudentByName(ArrayList<Student> masterStudentList, String name, Scanner in) {
 
         //@@author Cryolian
+
+        if (name == null || name.isBlank()) {
+            return null;
+        }
+
         ArrayList<Student> studentsWithMatchingNames = new ArrayList<Student>();
         for (Student student : masterStudentList) {
             if (student.getName().equalsIgnoreCase(name)) {

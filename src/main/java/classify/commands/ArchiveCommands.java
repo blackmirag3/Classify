@@ -88,7 +88,7 @@ public class ArchiveCommands {
     }
 
     private static Student getStudent(ArrayList<Student> archiveList, String name, Scanner in) {
-        if (name == null) {
+        if (name == null || name.isBlank()) {
             name = Commands.promptName(in);
         }
         Student student = InputParsing.findStudentByName(archiveList, name, in);
