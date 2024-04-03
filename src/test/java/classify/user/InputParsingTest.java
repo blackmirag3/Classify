@@ -108,6 +108,12 @@ public class InputParsingTest {
                                              + System.lineSeparator() +
                 "                            Currently available types: name, classes, payment"
                                              + System.lineSeparator() +
+                "archive                     Removes the specified student from the list and archives them," +
+                                             " can be used directly by archive [name]."
+                                             + System.lineSeparator() +
+                "unarchive                   Removes the specified student from the archive and adds them to the list" +
+                                             ", can be used directly by unarchive [name]."
+                                             + System.lineSeparator() +
                 "help                        Prints this help message" +
             System.lineSeparator() + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
 

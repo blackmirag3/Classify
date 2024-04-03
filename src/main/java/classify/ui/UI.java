@@ -85,6 +85,8 @@ public class UI {
         printListHelpMessage();
         printByeHelpMessage();
         printSortHelpMessage();
+        printArchiveHelpMessage();
+        printUnarchiveHelpMessage();
         System.out.println("help                        Prints this help message");
     }
 
@@ -103,6 +105,17 @@ public class UI {
         System.out.println("undo                        Restores the last student deleted in the current session.");
     }
 
+    private static void printArchiveHelpMessage() {
+        System.out.println("archive                     " +
+                "Removes the specified student from the list and archives them, can be used directly by archive" +
+                " [name].");
+    }
+
+    private static void printUnarchiveHelpMessage() {
+        System.out.println("unarchive                   " +
+                "Removes the specified student from the archive and adds them to the list, can be used directly by" +
+                " unarchive [name].");
+    }
     //@@ author Cryolian
     private static void printByeHelpMessage() {
         System.out.println("bye                         Exits Classify");
