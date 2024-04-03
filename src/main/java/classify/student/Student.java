@@ -68,8 +68,13 @@ public class Student {
 
     //@@author ParthGandhiNUS
     public String textFileInputString() {
-        return String.format("%s ~~ %s ~~ %s ~~ %s ~~ %s",getName().trim(), getAttributes().getGender(), 
-            getAttributes().getPhoneNumber(),getAttributes().getLastPaymentDate(), getAttributes().getRemarks());
+        return String.format("%s ~~ %s ~~ %s ~~ %s ~~ %s ~~ %s",
+            getName().trim(), 
+            getAttributes().getGender(), 
+            getAttributes().getPhoneNumber(),
+            getAttributes().getLastPaymentDate(),
+            getAttributes().getRemarks(),
+            listOfSubjectAttributes());
     }
 
     //@@author Cryolian
