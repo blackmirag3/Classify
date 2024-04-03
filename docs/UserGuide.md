@@ -19,10 +19,10 @@ The product is capable of storing students, and generating outputs based on prov
 
 Within our program, a student can be stored with their 
 - Subjects taken
-- Grades in those subjects
+- Number grades of those subjects
 - Phone Number
 - Gender
-- Last Payment Dates 
+- Last Payment Date
 - Remarks
 
 We have determined these to be the attributes important to running a working tuition centre. Based on these attributes, our program also has functions to sort students based on grades, subjects, improvements since joining the centre.
@@ -79,6 +79,14 @@ Sorts the masterlist of students from the lowest number of classes attended to h
 ### - Sort the list by latest fee payment date `sort payment`
 
 Sorts the masterlist of students from the oldest date to the most recent. When the user types list, it will generate the updated sorted list.
+
+### - Undo the most recent delete action `undo`
+
+Adds in the most recently deleted student back into the runtime database.
+
+### - Restore a specific deleted student `restore`
+
+Finds a specific deleted student and adds it back into the runtime database.
 
 # Usage
 //todo add usage guide for our different commands
@@ -155,7 +163,7 @@ Name of student to edit (enter blank to exit):
 toad
 No subjects and grades found for this student.
 How would you like to update a student's subject? (enter blank to exit)
-Add, Edit or Delete: 
+Add(subject), Edit(subject), Number, Remarks, Payment or Delete(subject): 
 add
 Subject (enter nothing to skip): Math
 Current marks out of 100 (blank to skip) : 
@@ -165,7 +173,16 @@ Enter Classes Attended (blank to skip):
 Do you want to add another subject and grade? (yes/no)
 no
 How would you like to update a student's subject? (enter blank to exit)
-Add, Edit or Delete: 
+Add(subject), Edit(subject), Number, Remarks, Payment or Delete(subject):
+payment
+Current stored date: 12/12/2023
+Please input their last payment date in the format of YYYY-MM-DD. Enter blank to input today's date.
+
+Apr 03, 2024 8:09:34 PM classify.user.InputParsing parseDateFromString
+INFO: Storing today as the last payment date.
+
+How would you like to update a student's subject? (enter blank to exit)
+Add(subject), Edit(subject), Number, Remarks, Payment or Delete(subject):
 
 Exiting edit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -218,6 +235,7 @@ sort payment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Sort complete!
 ```
+
 ## FAQ
 
 **Q**: How do I transfer my data to another computer? 
