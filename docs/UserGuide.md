@@ -1,7 +1,7 @@
 # User Guide for **Classify**
 
 ## Preface
-With the increased competititiveness of cohorts in Singapore, tuition centres have become more prevalent than ever before. 
+With the increased competitiveness of cohorts in Singapore, tuition centres have become more prevalent than ever before. 
 
 According to a **[newspaper article](https://www.straitstimes.com/singapore/education/families-spent-14b-on-private-tuition-for-kids-last-year-as-parents-fork-out)** in The Straits Times, billions of dollars are spent in the tuition industry in Singapore every single year. 
 
@@ -228,6 +228,10 @@ Sort complete!
 
 **A**: In the jar directory (folder containing jar file), data is stored in the "data" folder (./data). You can import the contents within this data directory to that of the jar directory on the new computer.
 
+**Q**: What inputs are not allowed?
+
+**A**: The inputs that are banned (which are used for file saving) are `#` and `~`. In the event the program does not understand the saved file due to irresponsible behaviour, it is to be expected and hence the user has been warned.
+
 ## Command Summary
 
 ### `add <student>` 
@@ -268,6 +272,12 @@ Archives specified student. Removes student from current list and adds student t
 
 ### `unarchive <student>`
 Unarchives specified student. Moves student from archive to current list.
+
+### `undo`
+Undoes the last deleted entry.
+
+### `restore` <student>
+Restores the student from the current session.
 
 ### `help` 
 Generates the list of commands.
