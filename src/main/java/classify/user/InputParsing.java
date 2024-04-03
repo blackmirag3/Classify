@@ -47,6 +47,7 @@ public class InputParsing {
     private static final String LAST_PAID_DATE = "3. Date of last fee payment: ";
     private static final int NUMBER_TOO_SMALL = 80000000;
     private static final int NUMBER_TOO_BIG = 1000_000_00;
+    private static final String CLASSES_ATTENDED_MUST_BE_MORE = "Classes attended must be 0 or more.";
 
     public static void parseUserCommand(String[] userCommand, ArrayList<Student> masterStudentList,
             ArrayList<Student> recentlyDeletedList,
@@ -128,6 +129,14 @@ public class InputParsing {
         }
     }
 
+
+    /**
+     * 
+     * Function which leads to the chooseListType Function
+     * 
+     * @param masterStudentList List of the students used in the chooseListType function
+     * @param scanner Scanner used for the chooseListType function
+     */
     //@@author tayponghee
     public static void parseListCommand(ArrayList<Student> masterStudentList, Scanner scanner) {
         UI.printListCommandStart();
@@ -323,18 +332,37 @@ public class InputParsing {
         return null;
     }
 
+    //@@author ParthGandhiNUS
+    /**
+     * 
+     * Returns a true or false depending on user input for number of lines
+     * 
+     * @param classesAttended   Takes in the integer input by the user
+     * @return True if number of classes attended is greater than 0 and false otherwise.
+     * 
+     */
     //@@author blackmirag3
     public static boolean isValidClassesAttended(int classesAttended) {
 
         if (classesAttended < 0) {
-            System.out.println("Classes attended must be 0 or more.");
+            //@@author ParthGandhiNUS
+            UI.println(CLASSES_ATTENDED_MUST_BE_MORE);
+            //@@author blackmirag3
             UI.printDivider();
             return false;
         }
-
         return true;
     }
-
+    //@@author ParthGandhiNUS
+    /**
+     * 
+     * Returns a true or false depending on user input for grade input
+     * 
+     * @param grade   Takes in the double input by the user for the subject grade
+     * @return False if number of subject grade is less than 0 or more than 100
+     *         Returns true otherwise
+     */
+    //@@author blackmirag3
     private static boolean isValidGrade(double grade) {
 
         if (grade < 0 || grade > 100) {
@@ -372,6 +400,16 @@ public class InputParsing {
         return number;
     }
 
+    //@@author ParthGandhiNUS
+    /**
+     * 
+     * Uses the scanner to read the all the characters input by the user
+     * 
+     * @param in Scanner takes in the next line input by user
+     * @return  integer value of the characters input by the user
+     * @throws NumberFormatException in the event that the characters input by the user are not numbers
+     */
+    //@@author Cryolian
     private static int readInPhoneNumber(Scanner in) throws NumberFormatException {
 
         String input = in.nextLine().trim();
@@ -379,10 +417,20 @@ public class InputParsing {
         return Integer.parseInt(input);
     }
 
+    //@@author ParthGandhiNUS
+    /**
+     * 
+     * Returns true or false depending on whether the number is a valid Singapore phone number
+     * 
+     * @param number Integer number input by user
+     * @return True if the number is a valid Singapore Number, false otherwise
+     */
+    //@@author Cryolian
     private static boolean checkNumberValidity(int number) {
         return number > NUMBER_TOO_SMALL && number < NUMBER_TOO_BIG;
     }
 
+    //@@author ParthGandhiNUS
     /**
      * A prompting input to scan in a string from the user input.
      * 
@@ -390,6 +438,7 @@ public class InputParsing {
      * @return "Unknown" if blank was inputted, or the
      *         trimmed string inputted by the user.
      */
+    //@@author Cryolian
     public static String readInString(Scanner in) {
 
         String string = in.nextLine();
@@ -400,6 +449,8 @@ public class InputParsing {
 
     }
 
+    
+    //@@author Cryolian
     public static LocalDate readInDate(Scanner in) {
 
         String userInput;
@@ -415,6 +466,8 @@ public class InputParsing {
         return paymentDate;
     }
 
+    
+    //@@author Cryolian
     protected static LocalDate parseDateFromString(String string) {
 
         if (string.isBlank()) {
@@ -434,13 +487,13 @@ public class InputParsing {
 
         return paymentDate;
     }
-
+    //@@author Cryolian
     private static LocalDate printInvalidDateMessage() {
         LOGGER.log(Level.WARNING, "Invalid date format entered." + '\n');
         UI.printInvalidDateFormatError();
         return LocalDate.now().plusDays(2);
     }
-
+    //@@author Cryolian
     private static boolean isDateValid(LocalDate paymentDate) {
 
         if (paymentDate.isAfter(LocalDate.now().plusDays(1)) ||
