@@ -30,7 +30,6 @@ public class EditStudent {
      * @param in         The scanner object to read user input.
      * @param name       The name of the student if the user has entered it when invoking the function.
      */
-    // @@author blackmirag3
     public static void editStudent(ArrayList<Student> list, Scanner in, String name) {
         if (list.isEmpty()) {
             UI.printEmptyListError();
@@ -254,6 +253,7 @@ public class EditStudent {
 
         }
     }
+
     // @@author alalal47
     /**
      * Removes the subject that the user inputs from a particular student

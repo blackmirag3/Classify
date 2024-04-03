@@ -91,7 +91,7 @@ public class DeleteCommands extends Commands {
 
     }
     
-    //@@author blackmirag3
+    //@@author alalal47
     /**
      * Restores the latest deleted student that has not yet been restored
      *
