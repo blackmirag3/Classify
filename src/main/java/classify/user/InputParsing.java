@@ -404,6 +404,7 @@ public class InputParsing {
 
         String userInput;
         LocalDate paymentDate;
+        UI.promptForLastPaymentDate();
         do {
 
             userInput = in.nextLine();

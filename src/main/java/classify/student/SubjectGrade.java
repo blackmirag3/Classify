@@ -1,14 +1,14 @@
 package classify.student;
-//@@author tayponghee
+
 public class SubjectGrade {
     private String subject;
     private double grade;
-    private static int classesAttended;
+    private int classesAttended;
 
     public SubjectGrade(String subject, double grade, int classesAttended) {
         this.subject = subject;
         this.grade = grade;
-        SubjectGrade.classesAttended = classesAttended;
+        this.classesAttended = classesAttended;
     }
 
     public String getSubject() {
@@ -19,11 +19,10 @@ public class SubjectGrade {
         return grade;
     }
 
-    public static int getClassesAttended() {
+    public int getClassesAttended() {
         return classesAttended;
     }
 
-    //@@author blackmirag3
     public void setSubject(String subject) {
         this.subject = subject;
     }
@@ -33,6 +32,6 @@ public class SubjectGrade {
     }
 
     public void setClassesAttended(int classesAttended) {
-        SubjectGrade.classesAttended = classesAttended;
+        this.classesAttended = classesAttended;
     }
 }
