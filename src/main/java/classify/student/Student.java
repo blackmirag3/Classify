@@ -1,6 +1,7 @@
 package classify.student;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Meant to represent a particular student of the tuition centre.
@@ -8,6 +9,8 @@ import java.time.LocalDate;
  * added later.
  */
 public class Student {
+    private static final String SUBJECTINFOSEPARATOR = " ## ";
+    private static final String SUBJECTSEPARATIOR = " #--# ";
 
     //@@author Cryolian
     public String name;
@@ -65,9 +68,50 @@ public class Student {
     }
 
     //@@author ParthGandhiNUS
+    public String listOfSubjectAttributes(){
+        List<SubjectGrade> currentStudent = this.getAttributes().getSubjectGrades();
+
+        StringBuilder subjectInfo = new StringBuilder("");
+        StringBuilder separateSubjectInfo = new StringBuilder(SUBJECTINFOSEPARATOR);
+        StringBuilder separateSubject = new StringBuilder(SUBJECTSEPARATIOR);
+        //Checks for an empty list
+        if (currentStudent.isEmpty()){
+            return subjectInfo.toString();
+        }
+
+        int numberOfSubjects = currentStudent.size();
+
+        for (int i = 0; i < numberOfSubjects ; i++){
+            //Subject Name
+            StringBuilder subject = new StringBuilder(currentStudent.get(i).getSubject());
+            
+            //Grade information
+            String gradeInfo = Double.toString(currentStudent.get(i).getGrade());
+            StringBuilder gradeInformation = new StringBuilder(gradeInfo);
+            
+            //Class Attended Information
+            String classInfo = Integer.toString(currentStudent.get(i).getClassesAttended());
+            StringBuilder classInformation = new StringBuilder(classInfo);           
+
+            subjectInfo.append(subject);
+            subjectInfo.append(separateSubjectInfo);
+            subjectInfo.append(gradeInformation);
+            subjectInfo.append(separateSubjectInfo);
+            subjectInfo.append(classInformation);
+            subjectInfo.append(separateSubject);
+        }
+
+        return subjectInfo.toString();
+    }
+
     public String textFileInputString() {
-        return String.format("%s ~~ %s ~~ %s ~~ %s ~~ %s",getName().trim(), getAttributes().getGender(), 
-            getAttributes().getPhoneNumber(),getAttributes().getLastPaymentDate(), getAttributes().getRemarks());
+        return String.format("%s ~~ %s ~~ %s ~~ %s ~~ %s ~~ %s",
+            getName().trim(), 
+            getAttributes().getGender(), 
+            getAttributes().getPhoneNumber(),
+            getAttributes().getLastPaymentDate(),
+            getAttributes().getRemarks(),
+            listOfSubjectAttributes());
     }
 
     //@@author Cryolian
