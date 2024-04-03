@@ -86,6 +86,10 @@ public class DeleteCommands extends Commands {
 
         //@@author Cryolian
         } catch (NameNumberMatchException e) {
+            UI.printDivider();
+            return;
+        } catch (NullPointerException e) {
+            UI.printDivider();
             return;
         }
 
