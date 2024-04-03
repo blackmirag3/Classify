@@ -23,8 +23,6 @@ public class AddStudent {
     private static final String SUBJECT_ENTER_NOTHING_TO_SKIP = "Subject (enter nothing to skip): ";
     private static final String STUDENT_ADDED_SUCCESSFULLY = "Student added successfully.";
     private static final String NUMBER_IS_OUTSIDE_THE_ACCEPTABLE_RANGE = "Number is outside the acceptable range.";
-    private static final String STUDENT_WITH_THE_SAME_NAME_ALREADY_EXISTS =
-            "Student with the same name already exists.";
 
     /**
      * Adds a new student to the list of students.
