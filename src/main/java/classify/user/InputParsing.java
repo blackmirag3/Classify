@@ -61,7 +61,6 @@ public class InputParsing {
             AddStudent.addStudent(masterStudentList, in, userCommand[1]);
             // @@author ParthGandhiNUS
             assert masterStudentList != null;
-
             break;
 
         case VIEW:
@@ -72,9 +71,6 @@ public class InputParsing {
         // @@author alalal47
         case DELETE:
             DeleteCommands.deleteStudent(masterStudentList, recentlyDeletedList, in, userCommand[1]);
-            // @@author ParthGandhiNUS
-
-            // @@author alalal47
             break;
 
         case RESTORE:
@@ -408,7 +404,7 @@ public class InputParsing {
 
         String userInput;
         LocalDate paymentDate;
-
+        UI.promptForLastPaymentDate();
         do {
 
             userInput = in.nextLine();

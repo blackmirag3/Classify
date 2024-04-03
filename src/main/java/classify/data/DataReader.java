@@ -1,8 +1,10 @@
 package classify.data;
 
 import classify.student.Student;
+import classify.student.StudentList;
 import classify.ui.DataUI;
 import classify.user.InputParsing;
+import classify.user.NameNumberMatchException;
 import classify.ui.UI;
 
 import java.io.BufferedReader;
@@ -11,6 +13,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -35,17 +40,57 @@ public class DataReader {
 
         if (studentFileInput != null){
 
-            Student student = new Student(studentFileInput);
-
+            String [] inputArr = studentFileInput.split("~~");
+            
+            //Set Name
+            Student student = new Student(inputArr[0].trim());
             masterStudentList.add(student);
+
+            //Set Gender
+            student.getAttributes().setGender(inputArr[1].trim());
+            
+            //Set Phone Number
+            try {
+                //@@author Cryolian
+                int phoneNumber = Integer.parseInt(inputArr[2].trim());
+                StudentList.checkNameNumberPair(masterStudentList, student.getName(), phoneNumber);
+                student.getAttributes().setPhoneNumber(phoneNumber);
+
+                //@@author ParthGandhiNUS
+            } catch (NumberFormatException e) {
+                UI.println("Error parsing the phone number.");
+
+            } catch (NameNumberMatchException e) {
+                UI.println("Existing name and number pair found");
+                masterStudentList.remove(student);
+                return;
+            }
+
+            //Set Last Payment Date
+            try {
+                LocalDate inputLastPaymentDate = convertStringInput(inputArr[3].trim());
+                student.getAttributes().setLastPaymentDate(inputLastPaymentDate);
+            } catch (DateTimeParseException e) {
+                UI.println("Error parsing the last payment date.");
+            }
+
+            //Set remarks
+            student.getAttributes().setRemarks(inputArr[4].trim());
+            
             logger.log(Level.INFO, "Student added successfully.");
             UI.printStudentAdded();
             UI.printDivider();
         }
     }
 
-    //@@author blackmirag3
+    public static LocalDate convertStringInput(String input) throws DateTimeParseException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
+        LocalDate dateToReturn = LocalDate.parse(input,formatter);
+        return dateToReturn;
+    }
+  
+    //@@author blackmirag3
     /**
      * Initialises student array list from specified data file.
      * Creates new data file if data file not found

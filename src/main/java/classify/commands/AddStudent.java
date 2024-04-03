@@ -58,7 +58,7 @@ public class AddStudent {
             return;
         }
 
-        //@@ author ParthGandhiNUS
+        //@@author ParthGandhiNUS
         assert number > 0 && number < 100000000 : NUMBER_IS_OUTSIDE_THE_ACCEPTABLE_RANGE;
 
         //@@author Cryolian
@@ -104,7 +104,7 @@ public class AddStudent {
      *                          before being prompted
      * @return The valid non-empty name entered by the user.
      */
-    private static String checkForEmptyName(ArrayList<Student> masterStudentList, Scanner in, String studentName) {
+    public static String checkForEmptyName(ArrayList<Student> masterStudentList, Scanner in, String studentName) {
         String name;
         while (true) {
 
