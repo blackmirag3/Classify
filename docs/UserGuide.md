@@ -193,7 +193,7 @@ Deletes the student from the list. Allows the user to do delete [student] or jus
 
 Format: `delete` or `delete NAME`
 
-Depending on whether the user entered the student's name or not during the command, fields will be printed out in the terminal, awaiting a user input each time.
+Depending on whether the user entered the student's name or not during the command, a field will be printed out in the terminal, awaiting a user input.
 
 ``` 
 Example:
@@ -203,7 +203,33 @@ Enter student name:
 wario
 Student removed successfully!
 ```
+### - Restore a student to the working list `restore`
+Restores a student deleted in the current session. Allows the user to do restore [student] or just restore.
 
+Format: `restore` or `restore NAME`
+
+Depending on whether the user entered the student's name or not during the command, a field will be printed out in the terminal, awaiting a user input.
+
+```
+Example:
+restore
+Enter student name: 
+mario
+Student has been restored!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+### - Undo a delete and restore the deleted student to the working list
+Undoes the latest delete. Used by typing `undo`
+
+Format: `undo`
+
+```
+Example:
+undo
+Last delete undone!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 ### - Sort the list of students `sort`
 Sorts the list of students based on the following input. Allows the user to do sort [type] or just sort
 
@@ -294,7 +320,7 @@ Unarchives specified student. Moves student from archive to current list.
 ### `undo`
 Undoes the last deleted entry.
 
-### `restore` <student>
+### `restore <student>`
 Restores the student from the current session.
 
 ### `help` 
