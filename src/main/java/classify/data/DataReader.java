@@ -2,6 +2,7 @@ package classify.data;
 
 import classify.student.Student;
 import classify.student.StudentList;
+import classify.student.SubjectGrade;
 import classify.ui.DataUI;
 import classify.user.InputParsing;
 import classify.user.NameNumberMatchException;
@@ -76,6 +77,23 @@ public class DataReader {
 
             //Set remarks
             student.getAttributes().setRemarks(inputArr[4].trim());
+
+            //Get all Subject Info
+            String [] allSubjects = (inputArr[5].trim()).split("#--#");
+            int numberOfSubjects = allSubjects.length;
+
+            for (int i = 0; i < numberOfSubjects ; i++){
+                String [] subjectDetailedInfo = allSubjects[i].split("##");
+                //Subject Name
+                String subjectName = subjectDetailedInfo[0].trim();
+                //Subject Grade
+                double subjectGrades = Double.parseDouble(subjectDetailedInfo[1].trim());
+                //Classes attended for this subject
+                int subjectClassesAttended = Integer.parseInt(subjectDetailedInfo[2].trim());
+
+                SubjectGrade newSubject = new SubjectGrade(subjectName, subjectGrades, subjectClassesAttended);
+                student.getAttributes().addSubjectGrade(newSubject);
+            }
             
             logger.log(Level.INFO, "Student added successfully.");
             UI.printStudentAdded();
