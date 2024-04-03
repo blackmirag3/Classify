@@ -112,19 +112,21 @@ public class AddStudent {
             } else {
                 name = studentName.trim();
                 studentName = NOTEMPTY;
+                
+                //@@author tayponghee
+                assert studentName != null;
             }
 
-            //@@author tayponghee
-            assert studentName != null;
-
-            if (name.isEmpty()) {
+            if (name == null || name.isEmpty()) {
                 UI.printEmptyNameMessage();
                 UI.printDivider();
             } else {
                 break;
             }
+
         }
         return name;
+
     }
 
     /**
