@@ -339,7 +339,6 @@ public class InputParsing {
 
     //@@author ParthGandhiNUS
     /**
-     * 
      * Returns a true or false depending on user input for number of lines
      * 
      * @param classesAttended   Takes in the integer input by the user
@@ -360,7 +359,6 @@ public class InputParsing {
     }
     //@@author ParthGandhiNUS
     /**
-     * 
      * Returns a true or false depending on user input for grade input
      * 
      * @param grade   Takes in the double input by the user for the subject grade
@@ -407,7 +405,6 @@ public class InputParsing {
 
     //@@author ParthGandhiNUS
     /**
-     * 
      * Uses the scanner to read the all the characters input by the user
      * 
      * @param in Scanner takes in the next line input by user
@@ -424,7 +421,6 @@ public class InputParsing {
 
     //@@author ParthGandhiNUS
     /**
-     * 
      * Returns true or false depending on whether the number is a valid Singapore phone number
      * 
      * @param number Integer number input by user
