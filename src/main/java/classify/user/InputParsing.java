@@ -46,7 +46,7 @@ public class InputParsing {
     private static final String TOTAL_NUMBER_OF_CLASSES_ATTENDED = "2. Total number of classes attended:";
     private static final String LAST_PAID_DATE = "3. Date of last fee payment: ";
     private static final int NUMBER_TOO_SMALL = 80000000;
-    private static final int NUMBER_TOO_BIG = 1000_000_000;
+    private static final int NUMBER_TOO_BIG = 1000_000_00;
 
     public static void parseUserCommand(String[] userCommand, ArrayList<Student> masterStudentList,
             ArrayList<Student> recentlyDeletedList,

@@ -76,7 +76,6 @@ public class AddStudent {
         UI.promptForGender();
         student.getAttributes().setGender(InputParsing.readInString(in));
 
-        UI.promptForLastPaymentDate();
         student.getAttributes().setLastPaymentDate(InputParsing.readInDate(in));
 
         UI.promptForRemarks();
