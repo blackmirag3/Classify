@@ -22,7 +22,7 @@ public class Classify {
         //@@author blackmirag3
         DataHandler.readStudentInfo(StudentList.masterStudentList);
         DataHandler.readArchive(StudentList.archiveList);
-        // @@author ParthGandhiNUS
+        //@@author ParthGandhiNUS
         UI.printWelcomeMessage();
         UI.printUserPrompt();
 

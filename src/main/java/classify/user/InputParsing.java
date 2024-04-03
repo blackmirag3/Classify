@@ -56,6 +56,12 @@ public class InputParsing {
             System.out.println("Student list is null.");
         }
         // @@author tayponghee
+        String name = userCommand[0];
+        if (name.isBlank()) {
+            UI.println("Invalid name found.");
+            UI.printDivider();
+            return;
+        }
         switch (userCommand[0]) {
         case ADD:
             AddStudent.addStudent(masterStudentList, in, userCommand[1]);
@@ -68,7 +74,7 @@ public class InputParsing {
             UI.printDivider();
             break;
 
-        // @@author alalal47
+        //@@author alalal47
         case DELETE:
             DeleteCommands.deleteStudent(masterStudentList, recentlyDeletedList, in, userCommand[1]);
             break;
@@ -86,7 +92,7 @@ public class InputParsing {
             UI.printDivider();
             break;
 
-        // @@author ParthGandhiNUS
+        //@@author ParthGandhiNUS
         case BYE:
             UI.printEndConversation();
             DataHandler.writeStudentInfo(masterStudentList);
@@ -100,7 +106,7 @@ public class InputParsing {
             }
             break;
 
-        // @@ author tayponghee
+        //@@ author tayponghee
         case SORT:
             sortStudents(masterStudentList, in, userCommand[1]);
             break;
@@ -109,7 +115,7 @@ public class InputParsing {
             handleViewSubjectCommand(masterStudentList, in, userCommand[1]);
             break;
 
-        // @@author blackmirag3
+        //@@author blackmirag3
         case EDIT:
             EditStudent.editStudent(masterStudentList, in, userCommand[1]);
             break;
@@ -346,7 +352,7 @@ public class InputParsing {
         return true;
     }
 
-    // @@author Cryolian
+    //@@author Cryolian
     /**
      * Creates a looping prompt asking for a phone number.
      * Only exits the loop when either an exception is thrown,
@@ -396,7 +402,16 @@ public class InputParsing {
         if (string.isBlank()) {
             return DEFAULT_STRING_VALUE;
         }
-        return string.trim();
+        string = string.replace('#', ' ');
+        string = string.replace('-', ' ');
+        string = string.replace('~', ' ');
+        string = string.trim();
+
+        if (string.isBlank()) {
+            return DEFAULT_STRING_VALUE;
+        }
+
+        return string;
 
     }
 

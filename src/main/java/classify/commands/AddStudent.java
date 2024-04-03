@@ -65,8 +65,7 @@ public class AddStudent {
             StudentList.checkNameNumberPair(StudentList.masterStudentList, name, number);
             StudentList.checkNameNumberPair(StudentList.recentlyDeletedList, name, number);
         } catch (NameNumberMatchException e) {
-            UI.println("Student and Phone number pair found. Please input a new name" 
-                    + " or a new phone number");
+            UI.println("Student and Phone number pair found. Please restore this student instead.");
             UI.printDivider();
             return;
         }
@@ -112,19 +111,21 @@ public class AddStudent {
             } else {
                 name = studentName.trim();
                 studentName = NOTEMPTY;
+                
+                //@@author tayponghee
+                assert studentName != null;
             }
 
-            //@@author tayponghee
-            assert studentName != null;
-
-            if (name.isEmpty()) {
+            if (name == null || name.isEmpty()) {
                 UI.printEmptyNameMessage();
                 UI.printDivider();
             } else {
                 break;
             }
+
         }
         return name;
+
     }
 
     /**

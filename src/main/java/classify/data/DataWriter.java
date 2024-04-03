@@ -18,7 +18,6 @@ import java.util.List;
 public class DataWriter {
     private static final String NEWLINE = "\n";
     
-    //@@author ParthGandhiNUS
     /**
      * Accesses the parent directory to try to make the parent directory.
      * Tries to write the lines which are made by the writeStudentInfo Method

@@ -98,9 +98,6 @@ We created a parent `Details` class as those are information not specifically re
 
 However, our current implementation is not very secure as one can access every field of a `Student` object just by having access to it or the `StudentAttribute` object, which can be done via accessing the `static masterStudentList` variable.In future updates, we could possibly implement a Facade Pattern to better hide sensitive details.
 
-
-
-
 ### Data Commands Component
 
 This section refers to `DataHandler.java`, `DataReader.java`, and `DataStorage.java` classes.
@@ -200,7 +197,11 @@ Classify serves as an attempt to modernise administrative tasks in education ins
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
 |v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
+|v1.0|existing user|add a student to the database|utilise the functions of the program on a new student.
+|v1.0|existing user|be able to easily update personal information for specific students such as contact details and emergency contacts|contact them or their parents easily.
+|v1.0|existing user|search for students by name in the system|readily pull up data when asked.|
+|v2.0|existing user|store my data in a file|transfer data between computers.|
+|v2.0|existing user|sort the students by different attributes|compare them at a glance.|
 
 ## Non-Functional Requirements
 
