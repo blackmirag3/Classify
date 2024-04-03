@@ -56,6 +56,12 @@ public class InputParsing {
             System.out.println("Student list is null.");
         }
         // @@author tayponghee
+        String name = userCommand[0];
+        if (name.isBlank()) {
+            UI.println("Invalid name found.");
+            UI.printDivider();
+            return;
+        }
         switch (userCommand[0]) {
         case ADD:
             AddStudent.addStudent(masterStudentList, in, userCommand[1]);
@@ -396,7 +402,16 @@ public class InputParsing {
         if (string.isBlank()) {
             return DEFAULT_STRING_VALUE;
         }
-        return string.trim();
+        string = string.replace('#', ' ');
+        string = string.replace('-', ' ');
+        string = string.replace('~', ' ');
+        string = string.trim();
+
+        if (string.isBlank()) {
+            return DEFAULT_STRING_VALUE;
+        }
+
+        return string;
 
     }
 

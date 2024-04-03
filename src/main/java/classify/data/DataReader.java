@@ -28,8 +28,6 @@ public class DataReader {
 
     public static Scanner in = new Scanner(System.in);
 
-
-    //@@author ParthGandhiNUS
     /**
      * Method restores the previous student list by accessing the
      * line-by-line information in the Student_Information.txt
@@ -79,20 +77,24 @@ public class DataReader {
             student.getAttributes().setRemarks(inputArr[4].trim());
 
             //Get all Subject Info
-            String [] allSubjects = (inputArr[5].trim()).split("#--#");
-            int numberOfSubjects = allSubjects.length;
+            try {
+                String [] allSubjects = (inputArr[5].trim()).split("#--#");
+                int numberOfSubjects = allSubjects.length;
 
-            for (int i = 0; i < numberOfSubjects ; i++){
-                String [] subjectDetailedInfo = allSubjects[i].split("##");
-                //Subject Name
-                String subjectName = subjectDetailedInfo[0].trim();
-                //Subject Grade
-                double subjectGrades = Double.parseDouble(subjectDetailedInfo[1].trim());
-                //Classes attended for this subject
-                int subjectClassesAttended = Integer.parseInt(subjectDetailedInfo[2].trim());
+                for (int i = 0; i < numberOfSubjects ; i++){
+                    String [] subjectDetailedInfo = allSubjects[i].split("##");
+                    //Subject Name
+                    String subjectName = subjectDetailedInfo[0].trim();
+                    //Subject Grade
+                    double subjectGrades = Double.parseDouble(subjectDetailedInfo[1].trim());
+                    //Classes attended for this subject
+                    int subjectClassesAttended = Integer.parseInt(subjectDetailedInfo[2].trim());
 
-                SubjectGrade newSubject = new SubjectGrade(subjectName, subjectGrades, subjectClassesAttended);
-                student.getAttributes().addSubjectGrade(newSubject);
+                    SubjectGrade newSubject = new SubjectGrade(subjectName, subjectGrades, subjectClassesAttended);
+                    student.getAttributes().addSubjectGrade(newSubject);
+                }
+            } catch (ArrayIndexOutOfBoundsException e) {
+                
             }
             
             logger.log(Level.INFO, "Student added successfully.");

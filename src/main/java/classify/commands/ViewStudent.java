@@ -30,7 +30,7 @@ public class ViewStudent {
 
         String name;
 
-        //@@ author alalal47
+        //@@author alalal47
         if (studentName == null) {
             UI.printStudentNamePrompt();
             name = in.nextLine();

@@ -20,7 +20,7 @@ public class EditStudent {
     private static final String DELETE = "delete";
     private static final String DEFAULT_STRING_VALUE = "Unknown";
 
-    // @@author alalal47
+    //@@author alalal47
     /**
      * Prompts the user to input a name for the student whose details are to be edited, if the user has not used the
      * command with a name flag.
@@ -67,7 +67,7 @@ public class EditStudent {
         editStudentAttributes(in, student);
     }
 
-    // @@author alalal47
+    //@@author alalal47
     /**
      * Displays the attributes of the student that the user has chosen to edit, and prints the options available for
      * editing.
@@ -77,7 +77,7 @@ public class EditStudent {
      * @param in            The scanner object to read user input.
      * @param student       The student that the user has chosen to edit.
      */
-    // @@author blackmirag3
+    //@@author blackmirag3
     private static void editStudentAttributes(Scanner in, Student student) {
         StudentAttributes attributes = student.getAttributes();
         ViewStudent.showAttributes(attributes);
@@ -125,27 +125,28 @@ public class EditStudent {
 
         }
     }
-    // @@author alalal47
+
+    //@@author alalal47
     /**
      * Edits the last payment date for a particular student
      *
      * @param in               The scanner object to read user input.
      * @param attributes       The attributes object of the student that the user has chosen to edit.
      */
-    // @@author Cryolian
+    //@@author Cryolian
     private static void editPaymentDate(Scanner in, StudentAttributes attributes) {
         UI.println("Current stored date: " + attributes.getLastPaymentDate());
         attributes.setLastPaymentDate(InputParsing.readInDate(in));
     }
 
-    // @@author alalal47
+    //@@author alalal47
     /**
      * Edits the last payment date for a particular student
      *
      * @param in               The scanner object to read user input.
      * @param attributes       The attributes object of the student that the user has chosen to edit.
      */
-    // @@author Cryolian
+    //@@author Cryolian
     private static void editRemarks(Scanner in, StudentAttributes attributes) {
         UI.println(attributes.getRemarks());
         UI.printDivider();
@@ -161,14 +162,14 @@ public class EditStudent {
         UI.printDivider();
     }
 
-    // @@author alalal47
+    //@@author alalal47
     /**
      * Edits the phone number for a particular student
      *
      * @param in               The scanner object to read user input.
      * @param attributes       The attributes object of the student that the user has chosen to edit.
      */
-    // @@author Cryolian
+    //@@author Cryolian
     private static void editNumber(Scanner in, StudentAttributes attributes) {
         try {
             openNumberEditInterface(in, attributes);
@@ -182,7 +183,7 @@ public class EditStudent {
         UI.printDivider();
     }
 
-    // @@author alalal47
+    //@@author alalal47
     /**
      * Displays the interface to guide the user on how to edit the phone number for a particular student.
      * Displays the current number and instructions to stop editing
@@ -190,7 +191,7 @@ public class EditStudent {
      * @param in               The scanner object to read user input.
      * @param attributes       The attributes object of the student that the user has chosen to edit.
      */
-    // @@author Cryolian
+    //@@author Cryolian
     private static void openNumberEditInterface(Scanner in, StudentAttributes attributes)
             throws NameNumberMatchException, NumberFormatException {
 
@@ -202,11 +203,11 @@ public class EditStudent {
         if (number != attributes.getPhoneNumber()){
             StudentList.checkNameNumberPair(StudentList.masterStudentList, attributes.getName(), number);
         }
-        // @@author Cryolian
+        //@@author Cryolian
         attributes.setPhoneNumber(number);
     }
 
-    // @@author blackmirag3
+    //@@author blackmirag3
     /**
      * Prompts the user to edit subject, grade, and classes attended for student.
      * Continues to prompt the user until user enters blank to exit.
@@ -254,7 +255,7 @@ public class EditStudent {
         }
     }
 
-    // @@author alalal47
+    //@@author alalal47
     /**
      * Removes the subject that the user inputs from a particular student
      * Continues to prompt the user until user enters blank to exit.
@@ -262,7 +263,7 @@ public class EditStudent {
      * @param in               The scanner object to read user input.
      * @param attributes       The attributes object of the student that the user has chosen to edit.
      */
-    // @@author blackmirag3
+    //@@author blackmirag3
     private static void deleteAttribute(Scanner in, StudentAttributes attributes) {
         while (true) {
 
