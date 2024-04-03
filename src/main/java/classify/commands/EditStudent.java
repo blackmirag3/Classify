@@ -30,17 +30,6 @@ public class EditStudent {
      * @param in         The scanner object to read user input.
      * @param name       The name of the student if the user has entered it when invoking the function.
      */
-    // @@author blackmirag3
-
-    /***
-     * Searches for specified student in a list and edit attributes of found student
-     * Prompts for input from user for name if student is not found in list
-     * Prompts for input from user for name if there is no valid string input for name
-     *
-     * @param list ArrayList containing students
-     * @param in Scanner instance
-     * @param name String containing student's name
-     */
     public static void editStudent(ArrayList<Student> list, Scanner in, String name) {
         if (list.isEmpty()) {
             UI.printEmptyListError();
