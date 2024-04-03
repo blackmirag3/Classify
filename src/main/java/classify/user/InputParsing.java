@@ -135,9 +135,8 @@ public class InputParsing {
         }
     }
 
-
+    //ParthGandhiNUS
     /**
-     * 
      * Function which leads to the chooseListType Function
      * 
      * @param masterStudentList List of the students used in the chooseListType function

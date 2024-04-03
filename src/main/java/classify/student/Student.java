@@ -69,7 +69,6 @@ public class Student {
 
     //@@author ParthGandhiNUS
     /**
-     * 
      * This code accesses the current students' Subject details.
      * It then uses a Stringbuilder to build the string in the proper format to be used
      * for the Student_Information text file 
@@ -108,7 +107,6 @@ public class Student {
     }
 
     /**
-     * 
      * Converts an double input to StringBuilder form
      * 
      * @param input     an integer which needs to be converted to a StringBuilder Format
@@ -133,7 +131,6 @@ public class Student {
     }
 
     /**
-     * 
      * Builds a string in the proper storing format
      * 
      * @return      a String in the correct format to be stored 
