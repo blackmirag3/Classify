@@ -199,7 +199,11 @@ public class EditStudent {
         UI.println("Current Number: " + String.valueOf(attributes.getPhoneNumber()));
         UI.println("Type in and enter the letter a if you wish to stop editing.");
         int number = InputParsing.promptForPhoneNumber(in);
-        StudentList.checkNameNumberPair(StudentList.masterStudentList, attributes.getName(), number);
+        //@@author ParthGandhiNUS
+        if (number != attributes.getPhoneNumber()){
+            StudentList.checkNameNumberPair(StudentList.masterStudentList, attributes.getName(), number);
+        }
+        // @@author Cryolian
         attributes.setPhoneNumber(number);
     }
 
