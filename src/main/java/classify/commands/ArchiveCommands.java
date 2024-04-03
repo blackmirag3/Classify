@@ -71,7 +71,7 @@ public class ArchiveCommands {
 
         //@@author Cryolian
         try {
-            StudentList.checkNameNumberPair(archiveList, name, student.getPhoneNumber());
+            StudentList.checkNameNumberPair(archiveList, student.getName(), student.getPhoneNumber());
         } catch (NameNumberMatchException e) {
             UI.println("Existing student found with the same name and number");
             UI.printDivider();
@@ -88,7 +88,7 @@ public class ArchiveCommands {
     }
 
     private static Student getStudent(ArrayList<Student> archiveList, String name, Scanner in) {
-        if (name == null) {
+        if (name == null || name.isBlank()) {
             name = Commands.promptName(in);
         }
         Student student = InputParsing.findStudentByName(archiveList, name, in);

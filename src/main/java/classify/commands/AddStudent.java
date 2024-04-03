@@ -65,7 +65,8 @@ public class AddStudent {
             StudentList.checkNameNumberPair(StudentList.masterStudentList, name, number);
             StudentList.checkNameNumberPair(StudentList.recentlyDeletedList, name, number);
         } catch (NameNumberMatchException e) {
-            UI.println("Student and Phone number pair found. Please restore this student instead.");
+            UI.println("Student and Phone number pair found. If not found in the list, " +
+                    "please restore the student instead.");
             UI.printDivider();
             return;
         }
