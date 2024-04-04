@@ -118,6 +118,8 @@ If the user chooses to delete or archive a student, it would be saved to an arch
 
 The two text files are will be created under a directory called data, in which two separate file paths will be created if it is not already found on the user's desktop. 
 
+![DataStoringObjectDiagramUML](./diagrams/src/DataStoring/ObjectDiagram.png)
+
 #### Design Considerations
 
 In order to ensure the proper usage of OOP principles (such as encapsulation), we have segregated the 3 classes to read,store and handle the data.

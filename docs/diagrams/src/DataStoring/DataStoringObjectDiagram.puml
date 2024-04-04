@@ -1,0 +1,47 @@
+@startuml ObjectDiagram
+
+object DataHandler {
+    DATA_DIRECTORY_PATH = "data/studentInfo"
+    DATA_FILE_PATH = "data/studentInfo/Student_Information.txt"
+    ARCHIVE_DIRECTORY_PATH = "data/archive"
+    ARCHIVE_FILE_PATH = "data/archive/student_archive.txt"
+}
+
+object DataReader {
+    in = new Scanner(System.in)
+}
+
+object DataWriter {
+    NEWLINE = "\n"
+}
+
+object Student {
+    name = "Woi Ming"
+    attributes = StudentAttributes
+}
+
+object StudentList {
+    masterStudentList = ArrayList<Student>
+    recentlyDeletedList = ArrayList<Student>
+    studentList = ArrayList<Student>
+}
+
+object StudentAttributes {
+    subjectGrades = List<SubjectGrade>
+}
+
+object SubjectGrade {
+    subject = "Programming Methodology I"
+    grade = 66.6
+    classesAttended = 35
+}
+
+DataHandler "1" --> "1" DataWriter
+DataHandler "1" --> "1" DataReader
+DataHandler "1" --> "1" StudentList
+DataHandler "1" --> "1" StudentAttributes
+StudentAttributes "1" --> "0..*" SubjectGrade
+StudentList "1" --> "0..*" Student
+Student "1" --> "1" StudentAttributes
+
+@enduml
