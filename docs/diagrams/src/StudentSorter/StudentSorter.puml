@@ -1,4 +1,5 @@
 @startuml StudentSorter
+skinparam classAttributeIconSize 0
 
 package student {
     class StudentSorter {
