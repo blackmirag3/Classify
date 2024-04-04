@@ -174,7 +174,6 @@ or duplicate names are encountered.
 
 The `AddStudent` class contributes to the overall functionality of the application by providing a streamlined process for adding new students and ensuring data integrity within the student database.
 
-
 ### StudentSorter Component
 
 The `StudentSorter` class facilitates sorting of the list of students based on various criterion.
@@ -226,7 +225,30 @@ Classify serves as an attempt to modernise administrative tasks in education ins
 
 ## Non-Functional Requirements
 
-{Give non-functional requirements}
+1. **Performance**:
+   - The system should respond to user actions within 2 seconds under normal operating conditions.
+   - It should be able to handle a minimum of 100 concurrent users without significant degradation in performance.
+   - The system should encompass all basic data types that an administer would need to know about a student to register them for classes in the tuition centre.
+
+2. **Reliability**:
+   - In the event the program crashes, the data that was last updated into the storage should not be destroyed.
+
+3. **Scalability**:
+   - The system should be designed to accommodate future growth in the number of students and users.
+
+4. **Usability**:
+   - The user interface should be intuitive and easy to navigate, requiring minimal training for users to become proficient.
+   - Error messages should be clear and informative, guiding users on how to resolve issues.
+
+5. **Compatibility**:
+   - It should be platform-independent, allowing users to access it from different operating systems.
+
+6. **Maintainability**:
+   - The codebase should be well-documented and follow coding standards to facilitate future maintenance and enhancements.
+   - Logging and monitoring mechanisms should be in place to track system usage and identify potential issues.
+
+7. **Data Management**:
+   - File saving should done whenever a change has been made to the Master List.
 
 ## Glossary
 
