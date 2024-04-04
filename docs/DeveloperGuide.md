@@ -74,7 +74,11 @@ All the while these commands are being processed, the runtime database `masterSt
 
 To facilitate the management of students within a tuition centre, it is imperative to have easy access and storage of important information regarding said personnel.
 
-Seen below is an UML diagram of the relevant classes dealing with storage.
+Seen below is an UML diagram of the relevant classes dealing with storage, which is done in the form of storing the array list in a text file format.
+
+This text file would have the details of the student's name and their attributes, in the following order: subject, grade, classes taken for that subject, phone number, last paid date and remarks.
+
+In the following component, the guide would go into detail about the implementation for writing and reading to the text file.
 
 ![DataStoringUML](./diagrams/src/DataStoring/DateStoring.png)
 
@@ -108,11 +112,26 @@ This text file is created locally on the users' computer for easy access and ret
 
 Currently there is a polling system set in place where every change in the list of students (eg, addition, deletion, modification) would override the current working text file on the users' computer.
 
-We intend to further the functionalities of this component by allowing us to add attributes (phone number, subjects, last fee payment date),
+As stated above, all the names and attributes associated with each student will be saved to the main text file, named Student_Information.txt.
+
+If the user chooses to delete or archive a student, it would be saved to an archive file, named student_archive.txt. If the user chooses to unarchive a student or undo a recent deletion, it will be brought back to the main text file.
+
+The two text files are will be created under a directory called data, in which two separate file paths will be created if it is not already found on the user's desktop. 
 
 #### Design Considerations
 
 In order to ensure the proper usage of OOP principles (such as encapsulation), we have segregated the 3 classes to read,store and handle the data.
+
+Moreover, the regex used to separate the different types of data in the file type have been chosen in a way which would not affect normal user operation needs. If the user chooses to use the banned characters, the input parser would replace them, as shown below:
+
+Banned characters: 
+`#`,`~` and `-`
+
+- `#` changes to ` `.
+- `~` changes to ` `.
+- `-` changes to `_`.
+
+This will prevent the user from messing with the way the program reads and writes to the text files, preventing corruption of the database due to improper usage.
 
 #### Implementation and Rationale
 
