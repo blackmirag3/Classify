@@ -121,12 +121,29 @@ public class AddStudent {
                 UI.printEmptyNameMessage();
                 UI.printDivider();
             } else {
+                name = capitaliseFirstLetter(name);
                 break;
             }
 
         }
         return name;
 
+    }
+
+    /**
+     * Capitalises the first letter of a string and converts the rest of the string to lowercase.
+     *
+     * @param name The input string to capitalise.
+     * @return The string with the first letter capitalised and the rest of the letters converted to lowercase.
+     */
+    private static String capitaliseFirstLetter(String name) {
+        if (!name.isEmpty()) {
+            String firstLetter = name.substring(0, 1).toUpperCase();
+            String restOfName = name.substring(1).toLowerCase();
+            return firstLetter + restOfName;
+        } else {
+            return name;
+        }
     }
 
     /**

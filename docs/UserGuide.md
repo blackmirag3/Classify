@@ -99,6 +99,13 @@ Initialises an interface for adding a student and their relevant details to the 
 
 Students of the same name can be added so long as they possess a different phone number. Students with the same phone number can be added so long as they have different names.
 
+The first letter of the student's name will be capitalised, while the 2nd letter onwards will be lowercase, regardless of initial input.
+
+Example:
+- James -> James
+- james -> James
+- jaMeS -> James
+
 Format: `add` or `add NAME`
 
 Depending on whether the user entered the student's name or not during the command, fields will be printed out in the terminal, awaiting a user input each time.
@@ -143,7 +150,7 @@ view wario
 
 Student details: 
 Name: wario
-Phone Number: 12345678
+Phone Number: 97655678
 Gender: male
 Last Payment Date: 12/12/2023
 Remarks: Unknown
