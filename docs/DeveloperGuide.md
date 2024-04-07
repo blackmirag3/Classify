@@ -226,9 +226,9 @@ Classify serves as an attempt to modernise administrative tasks in education ins
 ## Non-Functional Requirements
 
 1. **Performance**:
-   - The system should respond to user actions within 2 seconds under normal operating conditions.
+   - The system should respond to user actions within 1 second under normal operating conditions.
    - It should be able to handle a minimum of 100 concurrent users without significant degradation in performance.
-   - The system should encompass all basic data types that an administer would need to know about a student to register them for classes in the tuition centre.
+   - The system should encompass all basic data types that an administrator would need to know about a student to register them for classes in the tuition centre.
 
 2. **Reliability**:
    - In the event the program crashes, the data that was last updated into the storage should not be destroyed.

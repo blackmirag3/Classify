@@ -141,9 +141,8 @@ public class AddStudent {
             String firstLetter = name.substring(0, 1).toUpperCase();
             String restOfName = name.substring(1).toLowerCase();
             return firstLetter + restOfName;
-        } else {
-            return name;
         }
+        return name;
     }
 
     /**
@@ -199,10 +198,8 @@ public class AddStudent {
 
             if (response.equals(YES)) {
                 break;
-
             } else if (response.equals(NO)) {
                 return true;
-
             } else {
                 UI.printInvalidResponse();
             }
@@ -244,4 +241,5 @@ public class AddStudent {
             }
         }
     }
+
 }

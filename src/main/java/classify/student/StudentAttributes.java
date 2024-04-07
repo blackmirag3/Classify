@@ -3,6 +3,7 @@ package classify.student;
 import java.util.ArrayList;
 import java.util.List;
 
+//@@author tayponghee
 public class StudentAttributes extends Details {
     private Student student;
     private List<SubjectGrade> subjectGrades;
@@ -33,6 +34,7 @@ public class StudentAttributes extends Details {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
+        //@@author Cryolian
         sb.append("StudentAttributes{" +
                 "name: '" + student.getName() + '\'' +
                 ", H/P: " + String.valueOf(phoneNumber) + '\'' +
@@ -43,7 +45,8 @@ public class StudentAttributes extends Details {
         for (SubjectGrade subjectGrade : subjectGrades) {
             sb.append(subjectGrade.toString()).append(", ");
         }
-        
+
+        //@@author tayponghee
         sb.append("]}");
         return sb.toString();
     }

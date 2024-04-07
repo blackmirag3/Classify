@@ -25,7 +25,7 @@ public class StudentSorter {
      * Sorts the list of students based on the specified choice.
      *
      * @param masterStudentList The list of students to be sorted.
-     * @param choice            The sorting criterion ("1" for name, "2" for total classes).
+     * @param choice            The sorting criterion ("1" for name, "2" for total classes, "3" for last paid date).
      * @param in                The Scanner object for user input.
      */
     public static void sortByChoice(ArrayList<Student> masterStudentList, String choice, Scanner in) {
