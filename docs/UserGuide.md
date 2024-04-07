@@ -61,6 +61,7 @@ Removes a student from the master list of students.
 ### - Produce a list of all the students who takes a subject `list`, enter, then followed by `subject name`
 
 Displays a list of all the students with that associated subject taken in the tuition centre.
+If user enters different letter cases from subjects stored, the system will still match strings regardless of letter case for user intuitiveness.
 
 ### Produce a list of all students `list`, enter, enter, `1`
 
@@ -103,10 +104,12 @@ User is expected to add only student's name as registered in NRIC or passport.
 
 The first letter of the student's name will be capitalised, while the 2nd letter onwards will be lowercase, regardless of initial input.
 
+However, if the name contains multiple parts, each corresponding first letter after every space will be capitalised as well.
+
 Example:
-- James -> James
-- james -> James
-- jaMeS -> James
+- James wong bing xuan -> James Wong Bing Xuan
+- james WONG BING XUAN -> James Wong Bing Xuan
+- jaMeS WONG binG Xuan -> James Wong Bing Xuan
 
 Format: `add` or `add NAME`
 
@@ -145,6 +148,14 @@ Views a student's details. Allows the user to do view [name] or just view.
 Format: `view` or `view NAME`
 
 Depending on whether the user entered the student's name or not during the command, fields will be printed out in the terminal, awaiting a user input each time.
+If user enters different letter cases from name stored data, the system will still match strings regardless of letter case for user intuitiveness.
+
+How it works (cases for input):
+- In the list: Stored as `James Wong`
+- view James Wong -> James Wong
+- view james wong -> james wong
+- view JAMES WONG -> JAMES WONG
+  * so, regardless of what the user uses for capitalisation of the name, the program will recognise that uppercase and lowercases should return the same student.
 
 ``` 
 Example:

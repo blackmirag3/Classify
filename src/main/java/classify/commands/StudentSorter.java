@@ -80,7 +80,6 @@ public class StudentSorter {
     private static void listStudentsByName(ArrayList<Student> masterStudentList) {
         masterStudentList.sort(StudentComparators.nameComparator);
         listStudents(masterStudentList);
-        UI.printDivider();
     }
 
     /**

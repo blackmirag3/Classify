@@ -136,6 +136,7 @@ public class AddStudent {
             } else {
                 InputParsing.checkForSpecialCharacters(name);
                 name = capitaliseFirstLetter(name);
+                name = splitName(name);
                 break;
             }
 
@@ -146,18 +147,37 @@ public class AddStudent {
     }
 
     /**
-     * Capitalises the first letter of a string and converts the rest of the string to lowercase.
+     * Capitalizes the first letter of each word in a string.
      *
-     * @param name The input string to capitalise.
-     * @return The string with the first letter capitalised and the rest of the letters converted to lowercase.
+     * @param name The input string to capitalize.
+     * @return The string with the first letter of each word capitalized.
      */
-    private static String capitaliseFirstLetter(String name) {
+    private static String splitName(String name) {
         if (!name.isEmpty()) {
-            String firstLetter = name.substring(0, 1).toUpperCase();
-            String restOfName = name.substring(1).toLowerCase();
-            return firstLetter + restOfName;
+            StringBuilder result = new StringBuilder();
+            String[] words = name.split("\\s");
+            return capitaliseFirstLetters(words, result);
         }
         return name;
+    }
+
+    /**
+     * Iterates through each word in the input array, capitalizes the first letter,
+     * and converts every other letter to lowercase.
+     *
+     * @param words The array of words to capitalize.
+     * @param result The StringBuilder object to store the capitalized words.
+     * @return The string with the first letter of each word capitalized and every other letter in lowercase.
+     */
+    private static String capitaliseFirstLetters(String[] words, StringBuilder result) {
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                result.append(Character.toUpperCase(word.charAt(0)))
+                        .append(word.substring(1).toLowerCase())
+                        .append(" ");
+            }
+        }
+        return result.toString().trim();
     }
 
     /**
