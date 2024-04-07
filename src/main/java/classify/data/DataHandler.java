@@ -2,6 +2,7 @@ package classify.data;
 
 import classify.commands.Commands;
 import classify.student.Student;
+import classify.student.StudentList;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,8 +21,18 @@ public class DataHandler extends Commands {
      * 
      * @param list ArrayList containing the current students
      */
-    public static void writeStudentInfo(List <Student> list){
+    public static void writeStudentInfo(List <Student> list) {
+        System.out.println("DEBUG");
         DataWriter.writeStudentInfoFile(list, DATA_DIRECTORY_PATH, DATA_FILE_PATH);
+    }
+
+    /***
+     * Saves master student list to Student_Information.txt
+     * Calls the writeStudentInfoFile function to update Student_Information.txt
+     */
+    public static void writeStudentInfo() {
+        System.out.println("DEBUG");
+        DataWriter.writeStudentInfoFile(StudentList.masterStudentList, DATA_DIRECTORY_PATH, DATA_FILE_PATH);
     }
 
     /**
@@ -31,7 +42,7 @@ public class DataHandler extends Commands {
      * @throws IOException  When unable to get the Student_Information.txt file or has any input errors
      */
     public static void readStudentInfo(ArrayList<Student> list) throws IOException{
-        
+
         System.out.println("Trying to load Student info");
         DataWriter.createParentFileFolder(DATA_DIRECTORY_PATH);
         DataReader.initialiseData(list, DATA_FILE_PATH);

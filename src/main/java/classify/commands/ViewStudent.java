@@ -4,6 +4,7 @@ import classify.student.Student;
 import classify.student.StudentAttributes;
 import classify.student.SubjectGrade;
 import classify.ui.UI;
+import classify.user.ClassifyExceptions;
 import classify.user.InputParsing;
 
 import java.util.ArrayList;
@@ -45,24 +46,36 @@ public class ViewStudent {
         Student foundStudent = InputParsing.findStudentByName(masterStudentList, name, in);
 
         if (foundStudent != null) {
-            logger.log(Level.INFO, "Viewing student details: " + name);
-
-            UI.printDivider();
-            UI.printStudentDetails();
-            UI.printStudentName(name);
-            UI.printStudentDetails(foundStudent);
-            StudentAttributes attributes = foundStudent.getAttributes();
-            showAttributes(attributes);
-
+            showStudentInfo(foundStudent);
             int totalClassesAttended = getTotalClassesAttended(foundStudent);
             UI.printTotalClassesAttended(totalClassesAttended);
-
         } else {
             logger.log(Level.WARNING, "Student not found: " + name);
             UI.printStudentNotFound();
         }
     }
 
+    //@@author blackmirag3
+    /***
+     * Prints all student info, including details and subjects
+     * @param foundStudent
+     */
+
+    //@@author tayponghee
+    public static void showStudentInfo(Student foundStudent) {
+        String name;
+        name = foundStudent.getName();
+        logger.log(Level.INFO, "Viewing student details: " + name);
+
+        UI.printDivider();
+        UI.printStudentDetails();
+        UI.printStudentName(name);
+        UI.printStudentDetails(foundStudent);
+        StudentAttributes attributes = foundStudent.getAttributes();
+        showAttributes(attributes);
+    }
+
+    //@@author tayponghee
     /**
      * Calculates the total number of classes attended by the student across all subjects.
      * If the user does not specify the number of classes the student attended for that subject, i.e.
@@ -125,8 +138,8 @@ public class ViewStudent {
             } else {
                 UI.println(NO_CLASSES_FOUND);
             }
-
-            UI.printDivider();
+            System.out.println(" ");
         }
+        UI.printDivider();
     }
 }
