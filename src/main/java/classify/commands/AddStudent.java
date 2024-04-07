@@ -141,9 +141,8 @@ public class AddStudent {
             String firstLetter = name.substring(0, 1).toUpperCase();
             String restOfName = name.substring(1).toLowerCase();
             return firstLetter + restOfName;
-        } else {
-            return name;
         }
+            return name;
     }
 
     /**
