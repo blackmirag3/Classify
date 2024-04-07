@@ -50,7 +50,7 @@ public class AddStudent {
         try {
             number = InputParsing.promptForPhoneNumber(in);
         } catch (NumberFormatException e) {
-            UI.printValidNumberError();
+            UI.println("Non-number character found.");
             UI.println("Exiting the adding interface.");
             UI.printDivider();
             return;

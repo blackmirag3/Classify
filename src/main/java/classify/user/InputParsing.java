@@ -391,7 +391,7 @@ public class InputParsing {
      *         or 10-digit number if not.
      * @throws NumberFormatException thrown if invalid number is give
      */
-    public static int promptForPhoneNumber(Scanner in) throws NumberFormatException {
+    public static int promptForPhoneNumber(Scanner in) throws NumberFormatException{
 
         int number = 0;
 
@@ -429,7 +429,7 @@ public class InputParsing {
      */
     //@@author Cryolian
     private static boolean checkNumberValidity(int number) {
-        return number >= NUMBER_TOO_SMALL && number <= NUMBER_TOO_BIG;
+        return number >= NUMBER_TOO_SMALL && number < NUMBER_TOO_BIG;
     }
 
     //@@author ParthGandhiNUS
@@ -459,7 +459,6 @@ public class InputParsing {
         return string;
 
     }
-
     
     //@@author Cryolian
     public static LocalDate readInDate(Scanner in) {
