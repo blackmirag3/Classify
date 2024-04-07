@@ -198,10 +198,8 @@ public class AddStudent {
 
             if (response.equals(YES)) {
                 break;
-
             } else if (response.equals(NO)) {
                 return true;
-
             } else {
                 UI.printInvalidResponse();
             }
@@ -243,4 +241,5 @@ public class AddStudent {
             }
         }
     }
+
 }
