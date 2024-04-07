@@ -97,6 +97,7 @@ public class EditStudent extends Commands {
             default:
                 break;
             }
+            DataHandler.writeStudentInfo();
         }
     }
 
@@ -255,8 +256,14 @@ public class EditStudent extends Commands {
             //exit clause
             if (newName.isBlank()) {
                 return;
-                
-            } else if (attributes.findSubject(newName) != null) {
+            }
+
+            SubjectGrade foundSubject = attributes.findSubject(newName);
+
+            if (foundSubject == currentSubject) {
+                System.out.println("New subject name same as current.");
+
+            } else if (foundSubject != null) {
                 UI.printSubjectAlreadyExists();
 
             } else {

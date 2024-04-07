@@ -4,7 +4,6 @@ import classify.student.Student;
 import classify.student.StudentAttributes;
 import classify.student.SubjectGrade;
 import classify.ui.UI;
-import classify.user.ClassifyExceptions;
 import classify.user.InputParsing;
 
 import java.util.ArrayList;

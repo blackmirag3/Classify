@@ -173,41 +173,49 @@ Classes Attended: 1
 ```
 
 ### - Edit details of a student `edit`
-Edit a student's details. Allows the user to do edit [student] or just edit.
+Edit a student's details and subjects. Allows the user to do edit [student] or just edit.
 
 Format: `edit` or `edit NAME`
 
-Depending on whether the user entered the student's name or not during the command, fields will be printed out in the terminal, awaiting a user input each time.
+If user has not entered a name, they will be prompted to input a name.
+If the name input matches that of an existing student, edit mode will be entered for that student.
+A list of actions will be printed and user can enter the respective index to select action to take.
+Each action has its own step by step prompts for user to follow.
 
 ```
 Example:
-edit
-Name of student to edit (enter blank to exit):
-toad
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Welcome to Classify!
+What can I do for you today?
+>> edit
+Name of student to edit (blank to exit):
+>> vincent
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Student details: 
+Name: Vincent
+
+Phone Number: 99999999
+Gender: Unknown
+Last Payment Date: 2024-04-08
+Remarks: Unknown
+
 No subjects and grades found for this student.
-How would you like to update a student's subject? (enter blank to exit)
-Add(subject), Edit(subject), Number, Remarks, Payment or Delete(subject): 
-add
-Subject (enter nothing to skip): Math
+How would you like to edit student?Enter index (blank to exit):
+1. Add subject
+2. Modify subject
+3. Delete subject
+4. Modify phone number
+6. Modify payment date
+5. Modify remarks
+>> 1
+Subject (enter nothing to skip): PE
 Current marks out of 100 (blank to skip) : 
-95
+>> 1
 Enter Classes Attended (blank to skip): 
-11
+>> 10
 Do you want to add another subject and grade? (yes/no)
-no
-How would you like to update a student's subject? (enter blank to exit)
-Add(subject), Edit(subject), Number, Remarks, Payment or Delete(subject):
-payment
-Current stored date: 12/12/2023
-Please input their last payment date in the format of YYYY-MM-DD. Enter blank to input today's date.
-
-Apr 03, 2024 8:09:34 PM classify.user.InputParsing parseDateFromString
-INFO: Storing today as the last payment date.
-
-How would you like to update a student's subject? (enter blank to exit)
-Add(subject), Edit(subject), Number, Remarks, Payment or Delete(subject):
-
-Exiting edit
+>> no
+What else can I do for you today?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 

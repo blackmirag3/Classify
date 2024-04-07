@@ -22,7 +22,6 @@ public class DataHandler extends Commands {
      * @param list ArrayList containing the current students
      */
     public static void writeStudentInfo(List <Student> list) {
-        System.out.println("DEBUG");
         DataWriter.writeStudentInfoFile(list, DATA_DIRECTORY_PATH, DATA_FILE_PATH);
     }
 
@@ -31,7 +30,6 @@ public class DataHandler extends Commands {
      * Calls the writeStudentInfoFile function to update Student_Information.txt
      */
     public static void writeStudentInfo() {
-        System.out.println("DEBUG");
         DataWriter.writeStudentInfoFile(StudentList.masterStudentList, DATA_DIRECTORY_PATH, DATA_FILE_PATH);
     }
 

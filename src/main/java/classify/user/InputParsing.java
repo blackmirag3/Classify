@@ -460,7 +460,13 @@ public class            InputParsing {
 
     }
 
-    
+    //@@author blackmirag3
+
+    /**
+     * Prompts for date input and parses input into LocalDate type
+     * @param in Scanner to take in user input
+     * @return paymentDate containing date input converted from string
+     */
     //@@author Cryolian
     public static LocalDate readInDate(Scanner in) {
 
