@@ -142,7 +142,7 @@ public class AddStudent {
             String restOfName = name.substring(1).toLowerCase();
             return firstLetter + restOfName;
         }
-            return name;
+        return name;
     }
 
     /**
