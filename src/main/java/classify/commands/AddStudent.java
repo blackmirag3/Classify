@@ -69,6 +69,10 @@ public class AddStudent {
                     "please restore the student instead.");
             UI.printDivider();
             return;
+        } catch (NullPointerException e) {
+            UI.println("Null pointer thrown. Something went wrong.");
+            UI.printDivider();
+            return;
         }
 
         student.getAttributes().setPhoneNumber(number);
