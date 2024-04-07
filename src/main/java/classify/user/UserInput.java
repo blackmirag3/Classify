@@ -7,17 +7,21 @@ public class UserInput {
      * @param userInput : String which the user inputs
      * @return String[] which contains the command in [0] and name in [1] if the user chose to input it
      */
-    public static String[] processInput(String userInput){
+    public static String[] processInput(String userInput) {
 
         String[] commandWithName = new String[2];
 
-        if  (userInput.trim().contains(" ")) {
-            commandWithName = userInput.split(" ", 2);
-            commandWithName[1] = commandWithName[1].replace('~', ' ');
-            commandWithName[1] = commandWithName[1].replace('-', '_');
-            commandWithName[1] = commandWithName[1].replace('#', ' ').trim();
-        } else {
-            commandWithName[0] = userInput.trim();
+        try {
+            if  (userInput.trim().contains(" ")) {
+                commandWithName = userInput.split(" ", 2);
+                
+                InputParsing.checkForSpecialCharacters(commandWithName[1]);
+
+            } else {
+                commandWithName[0] = userInput.trim();
+            }
+        } catch (InvalidCharacterException e) {
+            return null;
         }
 
         commandWithName[0] = commandWithName[0].toLowerCase();

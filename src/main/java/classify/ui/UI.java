@@ -336,6 +336,7 @@ public class UI {
 
     public static void printPhoneNumberPrompt() {
         System.out.println(PHONE_NUMBER_PROMPT);
+        System.out.println("Enter a non-number or blank to exit interface.");
     }
     
     public static void printValidNumberError() {

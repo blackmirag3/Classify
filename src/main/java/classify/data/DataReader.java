@@ -5,6 +5,7 @@ import classify.student.StudentList;
 import classify.student.SubjectGrade;
 import classify.ui.DataUI;
 import classify.user.InputParsing;
+import classify.user.InvalidCharacterException;
 import classify.user.NameNumberMatchException;
 import classify.ui.UI;
 
@@ -52,19 +53,24 @@ public class DataReader {
             try {
                 //@@author Cryolian
                 int phoneNumber = Integer.parseInt(inputArr[2].trim());
-                StudentList.checkNameNumberPair(masterStudentList, student.getName(), phoneNumber);
+                StudentList.checkNameNumberPair(StudentList.masterStudentList, student.getName(), phoneNumber);
+                StudentList.checkNameNumberPair(StudentList.archiveList, student.getName(), phoneNumber);
                 student.getAttributes().setPhoneNumber(phoneNumber);
+                InputParsing.checkForSpecialCharacters(student.getName());
 
-                //@@author ParthGandhiNUS
             } catch (NumberFormatException e) {
                 UI.println("Error parsing the phone number.");
-
+                return;
             } catch (NameNumberMatchException e) {
                 UI.println("Existing name and number pair found");
                 masterStudentList.remove(student);
                 return;
+            } catch (InvalidCharacterException e) {
+                UI.println("Skipping invalid save entry.");
+                return;
             }
 
+            //@@author ParthGandhiNUS
             //Set Last Payment Date
             try {
                 LocalDate inputLastPaymentDate = convertStringInput(inputArr[3].trim());

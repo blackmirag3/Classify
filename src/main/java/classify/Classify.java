@@ -3,9 +3,8 @@ package classify;
 import classify.data.DataHandler;
 import classify.student.StudentList;
 import classify.user.InputParsing;
-import classify.ui.UI;
 import classify.user.UserInput;
-
+import classify.ui.UI;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -24,13 +23,15 @@ public class Classify {
         DataHandler.readArchive(StudentList.archiveList);
         //@@author ParthGandhiNUS
         UI.printWelcomeMessage();
+        
+        // Takes in input from the user, and processes input to determine if it contains a command and a name   
+        String[] userCommand;
 
-        // Takes in input from the user, and processes input to determine if it contains a command and a name
-        String[] userCommand = UserInput.processInput(in.nextLine());
+        userCommand = UserInput.processInput(in.nextLine());
 
         // Set up polling for the first word input by the user.
         // If user's first word is "bye", will exit the while loop.
-        while (!(userCommand[0].equals("bye"))){
+        while (userCommand == null || !(userCommand[0].equals("bye"))){
             InputParsing.parseUserCommand(userCommand, StudentList.masterStudentList, StudentList.recentlyDeletedList,
                     StudentList.archiveList, in);
             UI.printSubsequentUserPrompt();
