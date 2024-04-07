@@ -99,6 +99,8 @@ Initialises an interface for adding a student and their relevant details to the 
 
 Students of the same name can be added so long as they possess a different phone number. Students with the same phone number can be added so long as they have different names.
 
+User is expected to add only student's name as registered in NRIC or passport. 
+
 The first letter of the student's name will be capitalised, while the 2nd letter onwards will be lowercase, regardless of initial input.
 
 Example:
