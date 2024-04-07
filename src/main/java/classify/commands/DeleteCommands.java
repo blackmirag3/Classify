@@ -36,6 +36,8 @@ public class DeleteCommands extends Commands {
             UI.printStudentDeleted();
         } else {
             UI.printStudentNotFound();
+            UI.printDivider();
+            return;
         }
 
         UI.printDivider();
