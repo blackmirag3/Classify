@@ -429,7 +429,7 @@ public class InputParsing {
      */
     //@@author Cryolian
     private static boolean checkNumberValidity(int number) {
-        return number > NUMBER_TOO_SMALL && number < NUMBER_TOO_BIG;
+        return number >= NUMBER_TOO_SMALL && number <= NUMBER_TOO_BIG;
     }
 
     //@@author ParthGandhiNUS

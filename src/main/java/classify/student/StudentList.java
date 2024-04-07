@@ -112,7 +112,7 @@ public class StudentList {
      * @throws nameNumberMatchException Thrown if a match is found.
      */
     public static void checkNameNumberPair(ArrayList<Student> studentList, String name, int number)
-            throws NameNumberMatchException {
+            throws NameNumberMatchException, NullPointerException {
 
         for (Student s : studentList) {
             if (s.getName().equalsIgnoreCase(name) && s.getPhoneNumber() == number) {
