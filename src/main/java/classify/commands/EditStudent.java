@@ -202,6 +202,8 @@ public class EditStudent {
         //@@author ParthGandhiNUS
         if (number != attributes.getPhoneNumber()){
             StudentList.checkNameNumberPair(StudentList.masterStudentList, attributes.getName(), number);
+            StudentList.checkNameNumberPair(StudentList.recentlyDeletedList, attributes.getName(), number);
+            StudentList.checkNameNumberPair(StudentList.archiveList, attributes.getName(), number);
         }
         //@@author Cryolian
         attributes.setPhoneNumber(number);

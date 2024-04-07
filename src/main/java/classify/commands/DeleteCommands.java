@@ -30,9 +30,9 @@ public class DeleteCommands extends Commands {
         }
 
         //@@author alalal47
-        Student foundStudent = InputParsing.findStudentByName(masterStudentList, studentName, in);
+        Student student = InputParsing.findStudentByName(masterStudentList, studentName, in);
 
-        if (foundStudent != null) {
+        if (student != null) {
             UI.printStudentDeleted();
         } else {
             UI.printStudentNotFound();
@@ -43,11 +43,11 @@ public class DeleteCommands extends Commands {
         UI.printDivider();
         //@@author blackmirag3
         if (recentlyDeletedList != null) {
-            recentlyDeletedList.add(foundStudent);
+            recentlyDeletedList.add(student);
         }
-        masterStudentList.remove(foundStudent);
+        masterStudentList.remove(student);
         //@@author alalal47
-        assert masterStudentList.contains(foundStudent) == false : "student should be removed";
+        assert masterStudentList.contains(student) == false : "student should be removed";
         DataHandler.writeStudentInfo(masterStudentList);
 
     }
@@ -69,9 +69,9 @@ public class DeleteCommands extends Commands {
             studentName = promptName(in);
         }
 
-        Student foundStudent = InputParsing.findStudentByName(recentlyDeletedList, studentName, in);
+        Student student = InputParsing.findStudentByName(recentlyDeletedList, studentName, in);
 
-        if (foundStudent != null) {
+        if (student != null) {
             UI.printRestoreMessage();
         } else {
             UI.printStudentNotFound();
@@ -79,12 +79,13 @@ public class DeleteCommands extends Commands {
 
         //@@author Cryolian
         try {
-            StudentList.checkNameNumberPair(masterStudentList, studentName, foundStudent.getPhoneNumber());
+            StudentList.checkNameNumberPair(StudentList.masterStudentList, student.name, student.getPhoneNumber());
+            StudentList.checkNameNumberPair(StudentList.archiveList, student.name, student.getPhoneNumber());
 
             //@@author blackmirag3
             UI.printDivider();
-            masterStudentList.add(foundStudent);
-            recentlyDeletedList.remove(foundStudent);
+            masterStudentList.add(student);
+            recentlyDeletedList.remove(student);
 
         //@@author Cryolian
         } catch (NameNumberMatchException e) {

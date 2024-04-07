@@ -52,17 +52,21 @@ public class InputParsing {
     public static void parseUserCommand(String[] userCommand, ArrayList<Student> masterStudentList,
             ArrayList<Student> recentlyDeletedList,
             ArrayList<Student> archiveList, Scanner in) {
-        // @@author blackmirag3
+        //@@author blackmirag3
         if (masterStudentList == null) {
             System.out.println("Student list is null.");
         }
-        // @@author tayponghee
-        String name = userCommand[1];
+        //@@author tayponghee
+        
+        if (userCommand == null ) {
+            UI.printDivider();
+            return;
+        }
 
         switch (userCommand[0]) {
         case ADD:
             AddStudent.addStudent(masterStudentList, in, userCommand[1]);
-            // @@author ParthGandhiNUS
+            //@@author ParthGandhiNUS
             assert masterStudentList != null;
             break;
 
@@ -358,6 +362,7 @@ public class InputParsing {
         }
         return true;
     }
+    
     //@@author ParthGandhiNUS
     /**
      * Returns a true or false depending on user input for grade input
@@ -391,7 +396,7 @@ public class InputParsing {
      *         or 10-digit number if not.
      * @throws NumberFormatException thrown if invalid number is give
      */
-    public static int promptForPhoneNumber(Scanner in) throws NumberFormatException {
+    public static int promptForPhoneNumber(Scanner in) throws NumberFormatException{
 
         int number = 0;
 
@@ -429,7 +434,7 @@ public class InputParsing {
      */
     //@@author Cryolian
     private static boolean checkNumberValidity(int number) {
-        return number >= NUMBER_TOO_SMALL && number <= NUMBER_TOO_BIG;
+        return number >= NUMBER_TOO_SMALL && number < NUMBER_TOO_BIG;
     }
 
     //@@author ParthGandhiNUS
@@ -459,9 +464,13 @@ public class InputParsing {
         return string;
 
     }
-
     
     //@@author Cryolian
+    /**
+     * Prompts the user for a date in a format of YYYY--MM--DD
+     * @param in The scanner object to read in the user input.
+     * @return   A valid LocalDate object from the user input.
+     */
     public static LocalDate readInDate(Scanner in) {
 
         String userInput;
@@ -479,6 +488,13 @@ public class InputParsing {
 
     
     //@@author Cryolian
+    /**
+     * Converts a string into a date format. If blank is entered, the current date is 
+     * returned.
+     * 
+     * @param string The String to convert to a LocalDate object.
+     * @return       A date parsed from the string or the current date as a LocalDate object.
+     */
     protected static LocalDate parseDateFromString(String string) {
 
         if (string.isBlank()) {
@@ -504,6 +520,7 @@ public class InputParsing {
         UI.printInvalidDateFormatError();
         return LocalDate.now().plusDays(2);
     }
+
     //@@author Cryolian
     private static boolean isDateValid(LocalDate paymentDate) {
 
@@ -516,6 +533,28 @@ public class InputParsing {
 
         return true;
 
+    }
+
+    /**
+     * Checks if a string contains the special characters #,- or ~
+     * 
+     * @param string                     String to check.
+     * @throws InvalidCharacterException Thrown if the special characters are found.
+     */
+    public static void checkForSpecialCharacters(String string)
+            throws InvalidCharacterException {
+        if (string == null) {
+            return;
+        }
+
+        if (string.contains("~")
+                || string.contains("-")
+                || string.contains("#")
+            ) {
+
+            throw new InvalidCharacterException();
+
+        }
     }
 
 }
