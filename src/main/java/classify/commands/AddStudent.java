@@ -8,6 +8,7 @@ import classify.student.StudentList;
 import classify.student.SubjectGrade;
 import classify.ui.UI;
 import classify.user.InputParsing;
+import classify.user.InvalidCharacterException;
 import classify.user.NameNumberMatchException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -39,7 +40,12 @@ public class AddStudent {
     public static void addStudent(ArrayList<Student> masterStudentList, Scanner in, String studentName) {
         String name;
 
-        name = checkForEmptyName(masterStudentList, in, studentName);
+        try {
+            name = checkForEmptyName(masterStudentList, in, studentName);
+        } catch (InvalidCharacterException e) {
+            UI.printDivider();
+            return;
+        } 
         
         Student student = new Student(name);
         addSubject(in, student.getAttributes());
@@ -50,7 +56,7 @@ public class AddStudent {
         try {
             number = InputParsing.promptForPhoneNumber(in);
         } catch (NumberFormatException e) {
-            UI.println("Non-number character found.");
+            UI.println("Non-number or blank character found.");
             UI.println("Exiting the adding interface.");
             UI.printDivider();
             return;
@@ -64,6 +70,7 @@ public class AddStudent {
         try {
             StudentList.checkNameNumberPair(StudentList.masterStudentList, name, number);
             StudentList.checkNameNumberPair(StudentList.recentlyDeletedList, name, number);
+            StudentList.checkNameNumberPair(StudentList.archiveList, name, number);
         } catch (NameNumberMatchException e) {
             UI.println("Student and Phone number pair found. If not found in the list, " +
                     "please restore the student instead.");
@@ -105,8 +112,10 @@ public class AddStudent {
      *                          before being prompted
      * @return The valid non-empty name entered by the user.
      */
-    public static String checkForEmptyName(ArrayList<Student> masterStudentList, Scanner in, String studentName) {
+    public static String checkForEmptyName(ArrayList<Student> masterStudentList, Scanner in, String studentName)
+            throws InvalidCharacterException {
         String name;
+
         while (true) {
 
             //@@author alalal47
@@ -125,11 +134,13 @@ public class AddStudent {
                 UI.printEmptyNameMessage();
                 UI.printDivider();
             } else {
+                InputParsing.checkForSpecialCharacters(name);
                 name = capitaliseFirstLetter(name);
                 break;
             }
 
         }
+
         return name;
 
     }

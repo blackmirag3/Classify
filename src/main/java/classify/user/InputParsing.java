@@ -52,17 +52,21 @@ public class InputParsing {
     public static void parseUserCommand(String[] userCommand, ArrayList<Student> masterStudentList,
             ArrayList<Student> recentlyDeletedList,
             ArrayList<Student> archiveList, Scanner in) {
-        // @@author blackmirag3
+        //@@author blackmirag3
         if (masterStudentList == null) {
             System.out.println("Student list is null.");
         }
-        // @@author tayponghee
-        String name = userCommand[1];
+        //@@author tayponghee
+        
+        if (userCommand == null ) {
+            UI.printDivider();
+            return;
+        }
 
         switch (userCommand[0]) {
         case ADD:
             AddStudent.addStudent(masterStudentList, in, userCommand[1]);
-            // @@author ParthGandhiNUS
+            //@@author ParthGandhiNUS
             assert masterStudentList != null;
             break;
 
@@ -515,6 +519,22 @@ public class InputParsing {
 
         return true;
 
+    }
+
+    public static void checkForSpecialCharacters(String string)
+            throws InvalidCharacterException {
+        if (string == null) {
+            return;
+        }
+
+        if (string.contains("~")
+                || string.contains("-")
+                || string.contains("#")
+                ) {
+
+            throw new InvalidCharacterException();
+
+        }
     }
 
 }
