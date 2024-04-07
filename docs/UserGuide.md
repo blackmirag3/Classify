@@ -61,6 +61,7 @@ Removes a student from the master list of students.
 ### - Produce a list of all the students who takes a subject `list`, enter, then followed by `subject name`
 
 Displays a list of all the students with that associated subject taken in the tuition centre.
+If user enters different letter cases from subjects stored, the system will still match strings regardless of letter case for user intuitiveness.
 
 ### Produce a list of all students `list`, enter, enter, `1`
 
@@ -145,6 +146,7 @@ Views a student's details. Allows the user to do view [name] or just view.
 Format: `view` or `view NAME`
 
 Depending on whether the user entered the student's name or not during the command, fields will be printed out in the terminal, awaiting a user input each time.
+If user enters different letter cases from name stored data, the system will still match strings regardless of letter case for user intuitiveness.
 
 ``` 
 Example:
