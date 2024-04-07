@@ -362,6 +362,7 @@ public class InputParsing {
         }
         return true;
     }
+    
     //@@author ParthGandhiNUS
     /**
      * Returns a true or false depending on user input for grade input
@@ -465,6 +466,11 @@ public class InputParsing {
     }
     
     //@@author Cryolian
+    /**
+     * Prompts the user for a date in a format of YYYY--MM--DD
+     * @param in The scanner object to read in the user input.
+     * @return   A valid LocalDate object from the user input.
+     */
     public static LocalDate readInDate(Scanner in) {
 
         String userInput;
@@ -482,6 +488,13 @@ public class InputParsing {
 
     
     //@@author Cryolian
+    /**
+     * Converts a string into a date format. If blank is entered, the current date is 
+     * returned.
+     * 
+     * @param string The String to convert to a LocalDate object.
+     * @return       A date parsed from the string or the current date as a LocalDate object.
+     */
     protected static LocalDate parseDateFromString(String string) {
 
         if (string.isBlank()) {
@@ -507,6 +520,7 @@ public class InputParsing {
         UI.printInvalidDateFormatError();
         return LocalDate.now().plusDays(2);
     }
+
     //@@author Cryolian
     private static boolean isDateValid(LocalDate paymentDate) {
 
@@ -521,6 +535,12 @@ public class InputParsing {
 
     }
 
+    /**
+     * Checks if a string contains the special characters #,- or ~
+     * 
+     * @param string                     String to check.
+     * @throws InvalidCharacterException Thrown if the special characters are found.
+     */
     public static void checkForSpecialCharacters(String string)
             throws InvalidCharacterException {
         if (string == null) {
@@ -530,7 +550,7 @@ public class InputParsing {
         if (string.contains("~")
                 || string.contains("-")
                 || string.contains("#")
-                ) {
+            ) {
 
             throw new InvalidCharacterException();
 

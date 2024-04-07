@@ -1,7 +1,5 @@
 package classify.user;
 
-import classify.ui.UI;
-
 public class UserInput {
     //@@author alalal47
     /**

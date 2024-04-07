@@ -3,9 +3,8 @@ package classify;
 import classify.data.DataHandler;
 import classify.student.StudentList;
 import classify.user.InputParsing;
-import classify.ui.UI;
 import classify.user.UserInput;
-
+import classify.ui.UI;
 import java.io.IOException;
 import java.util.Scanner;
 
