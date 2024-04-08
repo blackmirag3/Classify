@@ -9,11 +9,14 @@ import java.util.List;
 
 //@@author blackmirag3
 public class DataHandler extends Commands {
+    //@@author ParthGandhiNUS
     private static final String DATA_DIRECTORY_PATH = "data/studentInfo";
     private static final String DATA_FILE_PATH = DATA_DIRECTORY_PATH + "/Student_Information.txt";
+    //@@author blackmirag3
     private static final String ARCHIVE_DIRECTORY_PATH = "data/archive";
     private static final String ARCHIVE_FILE_PATH = ARCHIVE_DIRECTORY_PATH + "/student_archive.txt";
 
+    //@@author ParthGandhiNUS
     /**
      * Function which is called to generate an arrayList "lines" which updates according to the users' inputs.
      * Calls the writeStudentInfoFile function to update Student_Information.txt
@@ -37,6 +40,7 @@ public class DataHandler extends Commands {
         DataReader.initialiseData(list, DATA_FILE_PATH);
     }
 
+    //@@author blackmirag3
     /**
      * writes student info arraylist into archive file and creates new archive file if one is not found
      *
