@@ -298,7 +298,11 @@ Sort complete!
 **Q**: What inputs are not allowed?
 
 **A**: The inputs that are banned (which are used for file saving) are `#` and `~`, and in all cases except for dates, `-`. 
-In the event you choose to continue with using these characters, the user would have to the behaviour that follows (replacing them with other characters) and hence  has been warned.
+
+**Q**: (Follow up from above) Why are other special characters not banned?
+
+**A**: Due to the ever-changing climate of what is considered a name (and more), we have limited the bans to 3 special characters above only. In the event your name or other identification metrics contains `#`, `~` or `-`, we seek for your understanding.
+
 
 ## Command Summary
 
