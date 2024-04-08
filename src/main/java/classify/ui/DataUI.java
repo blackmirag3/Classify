@@ -12,6 +12,12 @@ public class DataUI extends UI {
     private static final String LOAD_DATA_SUCCESS_MESSAGE = "Data loaded sucessfully!";
     private static final String UPDATE_SUCCESS_MESSAGE = "Data update success!";
     private static final String FILE_IO_ERROR_MESSAGE = "File IO Error.";
+    private static final String PHONE_NUMBER_PARSE_ERROR = "Error parsing the phone number.";
+    private static final String NAME_NUMBER_PAIR = "Existing name and number pair found";
+    private static final String INVALID_CHARACTER ="Skipping invalid save entry.";
+    private static final String LAST_PAYMENT_DATE_ERROR ="Error parsing the last payment date.";
+    private static final String NO_SUBJECT_DATA ="Student does not have any subjects currently!";
+    private static final String INDEX_OUT_OF_BOUNDS = "Error reading in subjects data.";
 
     //@@author blackmirag3
     public static void printLoadSuccess() {
@@ -45,5 +51,30 @@ public class DataUI extends UI {
 
     public static void printRetrieveData() {
         System.out.println(RETRIEVING_DATA_MESSAGE);
+    }
+
+    //@@author ParthGandhiNUS
+    public static void phoneNumberParsingError() {
+        System.out.println(PHONE_NUMBER_PARSE_ERROR);
+    }
+
+    public static void nameNumberPair() {
+        System.out.println(NAME_NUMBER_PAIR);
+    }
+    
+    public static void invalidCharacterExceptionMessage() {
+        System.out.println(INVALID_CHARACTER);
+    }
+
+    public static void lastPaymentDateParseExceptionMessage() {
+        System.out.println(LAST_PAYMENT_DATE_ERROR);
+    }
+
+    public static void noSubjectMessage() {
+        System.out.println(NO_SUBJECT_DATA);
+    }
+
+    public static void arrayIndexOutOfBoundsMessage() {
+        System.out.println(INDEX_OUT_OF_BOUNDS);
     }
 }
