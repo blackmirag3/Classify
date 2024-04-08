@@ -41,6 +41,7 @@ public class DataReader {
     /**
      * Method restores the previous student list by accessing the
      * line-by-line information in the Student_Information.txt
+     * All information about the student is updated.
      *
      * @param studentFileInput  Line-by-line information of strings in the Student_Information.txt
      * @param masterStudentList The list of all students
@@ -60,7 +61,6 @@ public class DataReader {
             
             //Set Phone Number
             try {
-                //@@author Cryolian
                 int phoneNumber = Integer.parseInt(inputArr[TWO].trim());
                 StudentList.checkNameNumberPair(StudentList.masterStudentList, student.getName(), phoneNumber);
                 StudentList.checkNameNumberPair(StudentList.archiveList, student.getName(), phoneNumber);
@@ -68,24 +68,23 @@ public class DataReader {
                 InputParsing.checkForSpecialCharacters(student.getName());
 
             } catch (NumberFormatException e) {
-                UI.println("Error parsing the phone number.");
+                DataUI.phoneNumberParsingError();
                 return;
             } catch (NameNumberMatchException e) {
-                UI.println("Existing name and number pair found");
+                DataUI.nameNumberPair();
                 masterStudentList.remove(student);
                 return;
             } catch (InvalidCharacterException e) {
-                UI.println("Skipping invalid save entry.");
+                DataUI.invalidCharacterExceptionMessage();
                 return;
             }
 
-            //@@author ParthGandhiNUS
             //Set Last Payment Date
             try {
                 LocalDate inputLastPaymentDate = convertStringInput(inputArr[THREE].trim());
                 student.getAttributes().setLastPaymentDate(inputLastPaymentDate);
             } catch (DateTimeParseException e) {
-                UI.println("Error parsing the last payment date.");
+                DataUI.lastPaymentDateParseExceptionMessage();
             }
 
             //Set remarks
@@ -96,20 +95,26 @@ public class DataReader {
                 String [] allSubjects = (inputArr[FIVE].trim()).split(SUBJECT_REGEX);
                 int numberOfSubjects = allSubjects.length;
 
-                for (int i = 0; i < numberOfSubjects ; i++){
-                    String [] subjectDetailedInfo = allSubjects[i].split(SUBJECT_INFO_REGEX);
-                    //Subject Name
-                    String subjectName = subjectDetailedInfo[ZERO].trim();
-                    //Subject Grade
-                    double subjectGrades = Double.parseDouble(subjectDetailedInfo[ONE].trim());
-                    //Classes attended for this subject
-                    int subjectClassesAttended = Integer.parseInt(subjectDetailedInfo[TWO].trim());
+                if (numberOfSubjects == 1 && allSubjects[0].isEmpty()){
+                    DataUI.noSubjectMessage();
+                } else {
 
-                    SubjectGrade newSubject = new SubjectGrade(subjectName, subjectGrades, subjectClassesAttended);
-                    student.getAttributes().addSubjectGrade(newSubject);
+                    for (int i = 0; i < numberOfSubjects ; i++){
+                        String [] subjectDetailedInfo = allSubjects[i].split(SUBJECT_INFO_REGEX);
+                        //Subject Name
+                        String subjectName = subjectDetailedInfo[ZERO].trim();
+                        //Subject Grade
+                        double subjectGrades = Double.parseDouble(subjectDetailedInfo[ONE].trim());
+                        //Classes attended for this subject
+                        int subjectClassesAttended = Integer.parseInt(subjectDetailedInfo[TWO].trim());
+
+                        //Add Subject and attributes to the student
+                        SubjectGrade newSubject = new SubjectGrade(subjectName, subjectGrades, subjectClassesAttended);
+                        student.getAttributes().addSubjectGrade(newSubject);
+                    }
                 }
             } catch (ArrayIndexOutOfBoundsException e) {
-                UI.println("Error reading in subjects.");
+                DataUI.arrayIndexOutOfBoundsMessage();
             }
             
             logger.log(Level.INFO, "Student added successfully.");
