@@ -25,6 +25,15 @@ import java.util.logging.Logger;
 
 //@@author ParthGandhiNUS
 public class DataReader {
+    private static final String MAIN_REGEX = "~~";
+    private static final String SUBJECT_REGEX = "#--#";
+    private static final String SUBJECT_INFO_REGEX = "##";
+    private static final Integer ZERO = 0;
+    private static final Integer ONE = 1;
+    private static final Integer TWO = 2;
+    private static final Integer THREE = 3;
+    private static final Integer FOUR = 4;
+    private static final Integer FIVE = 5;
     private static final Logger logger = Logger.getLogger(InputParsing.class.getName());
 
     public static Scanner in = new Scanner(System.in);
@@ -40,19 +49,19 @@ public class DataReader {
 
         if (studentFileInput != null){
 
-            String [] inputArr = studentFileInput.split("~~");
+            String [] inputArr = studentFileInput.split(MAIN_REGEX);
             
             //Set Name
-            Student student = new Student(inputArr[0].trim());
+            Student student = new Student(inputArr[ZERO].trim());
             masterStudentList.add(student);
 
             //Set Gender
-            student.getAttributes().setGender(inputArr[1].trim());
+            student.getAttributes().setGender(inputArr[ONE].trim());
             
             //Set Phone Number
             try {
                 //@@author Cryolian
-                int phoneNumber = Integer.parseInt(inputArr[2].trim());
+                int phoneNumber = Integer.parseInt(inputArr[TWO].trim());
                 StudentList.checkNameNumberPair(StudentList.masterStudentList, student.getName(), phoneNumber);
                 StudentList.checkNameNumberPair(StudentList.archiveList, student.getName(), phoneNumber);
                 student.getAttributes().setPhoneNumber(phoneNumber);
@@ -73,28 +82,28 @@ public class DataReader {
             //@@author ParthGandhiNUS
             //Set Last Payment Date
             try {
-                LocalDate inputLastPaymentDate = convertStringInput(inputArr[3].trim());
+                LocalDate inputLastPaymentDate = convertStringInput(inputArr[THREE].trim());
                 student.getAttributes().setLastPaymentDate(inputLastPaymentDate);
             } catch (DateTimeParseException e) {
                 UI.println("Error parsing the last payment date.");
             }
 
             //Set remarks
-            student.getAttributes().setRemarks(inputArr[4].trim());
+            student.getAttributes().setRemarks(inputArr[FOUR].trim());
 
             //Get all Subject Info
             try {
-                String [] allSubjects = (inputArr[5].trim()).split("#--#");
+                String [] allSubjects = (inputArr[FIVE].trim()).split(SUBJECT_REGEX);
                 int numberOfSubjects = allSubjects.length;
 
                 for (int i = 0; i < numberOfSubjects ; i++){
-                    String [] subjectDetailedInfo = allSubjects[i].split("##");
+                    String [] subjectDetailedInfo = allSubjects[i].split(SUBJECT_INFO_REGEX);
                     //Subject Name
-                    String subjectName = subjectDetailedInfo[0].trim();
+                    String subjectName = subjectDetailedInfo[ZERO].trim();
                     //Subject Grade
-                    double subjectGrades = Double.parseDouble(subjectDetailedInfo[1].trim());
+                    double subjectGrades = Double.parseDouble(subjectDetailedInfo[ONE].trim());
                     //Classes attended for this subject
-                    int subjectClassesAttended = Integer.parseInt(subjectDetailedInfo[2].trim());
+                    int subjectClassesAttended = Integer.parseInt(subjectDetailedInfo[TWO].trim());
 
                     SubjectGrade newSubject = new SubjectGrade(subjectName, subjectGrades, subjectClassesAttended);
                     student.getAttributes().addSubjectGrade(newSubject);
