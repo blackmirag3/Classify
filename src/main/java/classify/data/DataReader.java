@@ -28,12 +28,15 @@ public class DataReader {
     private static final String MAIN_REGEX = "~~";
     private static final String SUBJECT_REGEX = "#--#";
     private static final String SUBJECT_INFO_REGEX = "##";
-    private static final Integer ZERO = 0;
-    private static final Integer ONE = 1;
-    private static final Integer TWO = 2;
-    private static final Integer THREE = 3;
-    private static final Integer FOUR = 4;
-    private static final Integer FIVE = 5;
+    private static final Integer NAME = 0;
+    private static final Integer SUBJECT_NAME = 0;
+    private static final Integer GENDER = 1;
+    private static final Integer GRADE_FOR_SUBJECT = 1;
+    private static final Integer PHONE_NUMBER = 2;
+    private static final Integer NUMBER_OF_CLASSES_ATTENDED = 2;
+    private static final Integer LAST_PAYMENT_DATE = 3;
+    private static final Integer REMARKS = 4;
+    private static final Integer SUBJECTS = 5;
     private static final Logger logger = Logger.getLogger(InputParsing.class.getName());
 
     public static Scanner in = new Scanner(System.in);
@@ -47,26 +50,21 @@ public class DataReader {
      * @param masterStudentList The list of all students
      */
     public static void restoreStudentList(String studentFileInput, ArrayList <Student> masterStudentList ){
-
         if (studentFileInput != null){
-
             String [] inputArr = studentFileInput.split(MAIN_REGEX);
             
             //Set Name
-            Student student = new Student(inputArr[ZERO].trim());
+            Student student = new Student(inputArr[NAME].trim());
             masterStudentList.add(student);
-
             //Set Gender
-            student.getAttributes().setGender(inputArr[ONE].trim());
-            
+            student.getAttributes().setGender(inputArr[GENDER].trim());
             //Set Phone Number
             try {
-                int phoneNumber = Integer.parseInt(inputArr[TWO].trim());
+                int phoneNumber = Integer.parseInt(inputArr[PHONE_NUMBER].trim());
                 StudentList.checkNameNumberPair(StudentList.masterStudentList, student.getName(), phoneNumber);
                 StudentList.checkNameNumberPair(StudentList.archiveList, student.getName(), phoneNumber);
                 student.getAttributes().setPhoneNumber(phoneNumber);
                 InputParsing.checkForSpecialCharacters(student.getName());
-
             } catch (NumberFormatException e) {
                 DataUI.phoneNumberParsingError();
                 return;
@@ -78,38 +76,25 @@ public class DataReader {
                 DataUI.invalidCharacterExceptionMessage();
                 return;
             }
-
             //Set Last Payment Date
             try {
-                LocalDate inputLastPaymentDate = convertStringInput(inputArr[THREE].trim());
+                LocalDate inputLastPaymentDate = convertStringInput(inputArr[LAST_PAYMENT_DATE].trim());
                 student.getAttributes().setLastPaymentDate(inputLastPaymentDate);
             } catch (DateTimeParseException e) {
                 DataUI.lastPaymentDateParseExceptionMessage();
             }
-
             //Set remarks
-            student.getAttributes().setRemarks(inputArr[FOUR].trim());
-
+            student.getAttributes().setRemarks(inputArr[REMARKS].trim());
             //Get all Subject Info
             try {
-                String [] allSubjects = (inputArr[FIVE].trim()).split(SUBJECT_REGEX);
+                String [] allSubjects = (inputArr[SUBJECTS].trim()).split(SUBJECT_REGEX);
                 int numberOfSubjects = allSubjects.length;
 
                 if (numberOfSubjects == 1 && allSubjects[0].isEmpty()){
                     DataUI.noSubjectMessage();
                 } else {
-
-                    for (int i = 0; i < numberOfSubjects ; i++){
-                        String [] subjectDetailedInfo = allSubjects[i].split(SUBJECT_INFO_REGEX);
-                        //Subject Name
-                        String subjectName = subjectDetailedInfo[ZERO].trim();
-                        //Subject Grade
-                        double subjectGrades = Double.parseDouble(subjectDetailedInfo[ONE].trim());
-                        //Classes attended for this subject
-                        int subjectClassesAttended = Integer.parseInt(subjectDetailedInfo[TWO].trim());
-
-                        //Add Subject and attributes to the student
-                        SubjectGrade newSubject = new SubjectGrade(subjectName, subjectGrades, subjectClassesAttended);
+                    for (String allSubject : allSubjects) {
+                        SubjectGrade newSubject = getAllSubjectInformation(allSubject);
                         student.getAttributes().addSubjectGrade(newSubject);
                     }
                 }
@@ -123,11 +108,37 @@ public class DataReader {
         }
     }
 
+    /**
+     * Takes in the string containing all the info regarding a students' subject
+     *
+     * @param allSubjects String containing all the subject's information
+     * @return all the subject information which needs to be added as a SubjectGrade
+     */
+    private static SubjectGrade getAllSubjectInformation(String allSubjects) {
+        String [] subjectDetailedInfo = allSubjects.split(SUBJECT_INFO_REGEX);
+        //Subject Name
+        String subjectName = subjectDetailedInfo[SUBJECT_NAME].trim();
+        //Subject Grade
+        double subjectGrades = Double.parseDouble(subjectDetailedInfo[GRADE_FOR_SUBJECT].trim());
+        //Classes attended for this subject
+        int subjectClassesAttended = Integer.parseInt(subjectDetailedInfo[NUMBER_OF_CLASSES_ATTENDED]
+                .trim());
+
+        //Add Subject and attributes to the student
+        return new SubjectGrade(subjectName, subjectGrades, subjectClassesAttended);
+    }
+
+    /**
+     * Simple function to convert the date from String form to LocalDate Form
+     *
+     * @param input is the data about the date of the last payment in String form
+     * @return the data about the date of last payment in the LocalDate form
+     * @throws DateTimeParseException if there is some error experienced when trying to convert to LocalDate format
+     */
     public static LocalDate convertStringInput(String input) throws DateTimeParseException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        LocalDate dateToReturn = LocalDate.parse(input,formatter);
-        return dateToReturn;
+        return LocalDate.parse(input,formatter);
     }
   
     //@@author blackmirag3
