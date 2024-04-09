@@ -102,6 +102,8 @@ public class EditStudent extends Commands {
                 break;
 
             default:
+                UI.println("No such command found. Please try again");
+                UI.printDivider();
                 break;
             }
             DataHandler.writeStudentInfo();
