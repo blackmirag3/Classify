@@ -3,9 +3,9 @@
 hide footbox
 
 
-participant ":UserInput" as UI
-participant ":InputParsing" as IP
-participant ":Command" as commands 
+participant "UserInput" as UI
+participant "InputParsing" as IP
+participant "Command" as commands 
 participant "DataHandler" as fioc
 
 -> UI : processInput(String)

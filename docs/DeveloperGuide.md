@@ -80,7 +80,7 @@ This text file would have the details of the student's name and their attributes
 
 In the following component, the guide would go into detail about the implementation for writing and reading to the text file.
 
-![DataStoringUML](./diagrams/src/DataStoring/DateStoring.png)
+![DataStoringUML](./diagrams/src/DataStoring/DataStoring.png)
 
 #### Design considerations
 
@@ -96,7 +96,7 @@ Since both classes are referencing each other, it was easy for us to link it wit
 
 Please see the diagram below to see how identifying a student works.
 
-![studentIdentification](./diagrams/src/DataStoring/Student%20Identification.png)
+![studentIdentification](./diagrams/src/DataStoring/StudentIdentification.png)
 
 We created a parent `Details` class as those are information not specifically related to students. It can thus be repurposed in future updates should we wish to expand this application into a personnel management system, which would include employees of the tuition centre.
 

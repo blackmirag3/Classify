@@ -4,6 +4,7 @@ hide circle
 class StudentList {
     {static} +masterStudentList:Student[]
     {static} +recentlyDeletedList:Student[]
+    {static} +archiveList:Student[]
     +studentList:Student[]
     --
     Methods omitted
