@@ -107,9 +107,7 @@ public class DataReader {
         }
 
         masterStudentList.add(student);
-        logger.log(Level.INFO, "Student added successfully.");
-        UI.printStudentAdded();
-        UI.printDivider();
+        logger.log(Level.INFO, student.getName() + " added successfully.");
     }
 
     /**
