@@ -440,6 +440,8 @@ public class            InputParsing {
     //@@author ParthGandhiNUS
     /**
      * A prompting input to scan in a string from the user input.
+     * If special characters are found, the default string value 
+     * is returned.
      * 
      * @param in The scanner class to scan inputs from.
      * @return "Unknown" if blank was inputted, or the
@@ -455,7 +457,7 @@ public class            InputParsing {
         
         try {
             InputParsing.checkForSpecialCharacters(string);
-        } catch (Exception e) {
+        } catch (InvalidCharacterException e) {
             UI.println("Invalid characters found");
             UI.println("Storing 'Unknown' or cancelling edit");
             return DEFAULT_STRING_VALUE;

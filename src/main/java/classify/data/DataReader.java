@@ -48,6 +48,10 @@ public class DataReader {
      */
     public static void restoreStudentList(String studentFileInput, ArrayList <Student> masterStudentList ){
 
+        if (studentFileInput.trim().isBlank()) {
+            return;
+        }
+
         if (studentFileInput != null){
 
             String [] inputArr = studentFileInput.split(MAIN_REGEX);

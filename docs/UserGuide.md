@@ -200,7 +200,7 @@ Last Payment Date: 2024-04-08
 Remarks: Unknown
 
 No subjects and grades found for this student.
-How would you like to edit student?Enter index (blank to exit):
+How would you like to edit student? Enter index (blank to exit):
 1. Add subject
 2. Modify subject
 3. Delete subject
