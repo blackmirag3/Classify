@@ -75,17 +75,21 @@ public class DataReader {
                 StudentList.checkNameNumberPair(StudentList.archiveList, student.getName(), phoneNumber);
                 student.getAttributes().setPhoneNumber(phoneNumber);
 
+                //Set remarks
+                student.getAttributes().setRemarks(inputArr[FOUR].trim());
+                InputParsing.checkForSpecialCharacters(inputArr[FOUR]);
+
             } catch (NumberFormatException e) {
                 DataUI.phoneNumberParsingError();
                 return;
             } catch (NameNumberMatchException e) {
                 DataUI.nameNumberPair();
+                UI.println("Save file must have been tampered with. -_-");
                 return;
             } catch (InvalidCharacterException e) {
                 DataUI.invalidCharacterExceptionMessage();
                 return;
             }
-
             //Set Last Payment Date
             try {
                 LocalDate inputLastPaymentDate = convertStringInput(inputArr[THREE].trim());
@@ -93,9 +97,6 @@ public class DataReader {
             } catch (DateTimeParseException e) {
                 DataUI.lastPaymentDateParseExceptionMessage();
             }
-
-            //Set remarks
-            student.getAttributes().setRemarks(inputArr[FOUR].trim());
 
             //Get all Subject Info
             try {
@@ -129,8 +130,6 @@ public class DataReader {
 
             masterStudentList.add(student);
             logger.log(Level.INFO, "Student added successfully.");
-            UI.printStudentAdded();
-            UI.printDivider();
         }
     }
 
