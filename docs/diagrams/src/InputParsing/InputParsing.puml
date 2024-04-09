@@ -1,40 +1,47 @@
 @startuml InputParsing
+hide circle
+note "Inconsequential methods and attributes omitted" as n1
 
-class Classify {
-    
+class InputParsing {
+    findStudentByName(masterStudentList:Student[], name:String)
 }
 
-package user {
-    class InputParsing {
-        findStudentByName(masterStudentList:Student[], name:String)
-    }
+class UserInput {
 
-    class Ui {
-
-    }
-
-    class UserInput {
-
-    }
 }
 
-package student {
-    class AddStudent {
-        addStudent();
-    }
-
-    class ViewStudent {
-        viewStudent();
-    }
+class AddStudent {
+    addStudent(:Student);
 }
 
-Classify ..> InputParsing
-Classify ..> UserInput
-Classify ..> Ui
-UserInput ...l> Ui
-InputParsing ...r> Ui
-InputParsing ..> student
+class ViewStudent {
+    viewStudent(:Student);
+}
 
-note "Inconsequential methods and attributes omitted" as N1
+class EditStudent {
+    editStudent(:Student);
+}
+
+class DeleteCommands{
+    deleteStudent(:Student);
+    restoreStudent(:Student);
+}
+
+class ListStudentCommands {
+    list(:Student[]);
+}
+
+class ArchiveCommands {
+    archiveStudent(:Student);
+    unarchiveStudent(:Student);
+}
+
+InputParsing ..r> UserInput
+InputParsing ..> AddStudent
+InputParsing ..> ViewStudent
+InputParsing ..> EditStudent
+InputParsing ..> DeleteCommands
+InputParsing ..> ListStudentCommands
+InputParsing ..> ArchiveCommands
 
 @enduml

@@ -58,12 +58,10 @@ public class DataReader {
 
         //Set Name
         Student student = new Student(inputArr[NAME].trim());
-        masterStudentList.add(student);
         //Set Gender
         student.getAttributes().setGender(inputArr[GENDER].trim());
         //Set Phone Number
         try {
-
             InputParsing.checkForSpecialCharacters(student.getName());
             InputParsing.checkForSpecialCharacters(student.getGender());
             int phoneNumber = Integer.parseInt(inputArr[PHONE_NUMBER].trim());
@@ -109,9 +107,7 @@ public class DataReader {
         }
 
         masterStudentList.add(student);
-        logger.log(Level.INFO, "Student added successfully.");
-        UI.printStudentAdded();
-        UI.printDivider();
+        logger.log(Level.INFO, student.getName() + " added successfully.");
     }
 
     /**

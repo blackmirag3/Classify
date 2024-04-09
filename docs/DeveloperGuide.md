@@ -74,13 +74,13 @@ All the while these commands are being processed, the runtime database `masterSt
 
 To facilitate the management of students within a tuition centre, it is imperative to have easy access and storage of important information regarding said personnel.
 
-Seen below is an UML diagram of the relevant classes dealing with storage, which is done in the form of storing the array list in a text file format.
+Seen below is an UML diagram of the relevant classes dealing with storing a student's details within the program runtime.
 
 This text file would have the details of the student's name and their attributes, in the following order: subject, grade, classes taken for that subject, phone number, last paid date and remarks.
 
 In the following component, the guide would go into detail about the implementation for writing and reading to the text file.
 
-![DataStoringUML](./diagrams/src/DataStoring/DateStoring.png)
+![DataStoringUML](./diagrams/src/DataStoring/DataStoring.png)
 
 #### Design considerations
 
@@ -96,7 +96,7 @@ Since both classes are referencing each other, it was easy for us to link it wit
 
 Please see the diagram below to see how identifying a student works.
 
-![studentIdentification](./diagrams/src/DataStoring/Student%20Identification.png)
+![studentIdentification](./diagrams/src/DataStoring/StudentIdentification.png)
 
 We created a parent `Details` class as those are information not specifically related to students. It can thus be repurposed in future updates should we wish to expand this application into a personnel management system, which would include employees of the tuition centre.
 
