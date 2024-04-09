@@ -16,6 +16,7 @@ import classify.ui.UI;
 
 //@@author blackmirag3
 public class EditStudent extends Commands {
+    private static final String SEVEN = "7";
     private static final String ONE = "1";
     private static final String TWO = "2";
     private static final String THREE = "3";
@@ -58,9 +59,9 @@ public class EditStudent extends Commands {
 
         StudentAttributes attributes = student.getAttributes();
         ViewStudent.showStudentInfo(student);
-        UI.printEditPrompt();
 
         while (true) {
+            UI.printEditPrompt();
             String command = in.nextLine().trim();
 
             if (command.isBlank()) {
@@ -74,31 +75,31 @@ public class EditStudent extends Commands {
             case ONE:
                 AddStudent.addSubject(in, attributes);
                 student.setAttributes(attributes);
-                return;
+                break;
 
             case TWO:
                 editSubject(in, attributes);
-                return;
+                break;
 
             case THREE:
                 deleteSubject(in, attributes);
-                return;
+                break;
 
             case FOUR:
                 editNumber(in, attributes);
-                return;
+                break;
 
             case FIVE:
                 editRemarks(in, attributes);
-                return;
+                break;
 
             case SIX:
                 editPaymentDate(in, attributes);
-                return;
+                break;
             
-            case "7":
+            case SEVEN:
                 editGender(in, attributes);
-                return;
+                break;
 
             default:
                 break;

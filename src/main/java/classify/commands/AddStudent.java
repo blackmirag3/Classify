@@ -15,6 +15,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 
 import static classify.user.InputParsing.LOGGER;
+import static classify.user.InputParsing.readInString;
 
 //@@author tayponghee
 public class AddStudent {
@@ -192,9 +193,9 @@ public class AddStudent {
         while (true) {
             //@@ author blackmirag3
             System.out.print(SUBJECT_ENTER_NOTHING_TO_SKIP);
-            String subject = in.nextLine().trim();
+            String subject = readInString(in);
 
-            if (subject.isBlank()) {
+            if (subject.isBlank() || subject.equals(InputParsing.DEFAULT_STRING_VALUE)) {
                 UI.printNoSubjectsAdded();
                 break;
 

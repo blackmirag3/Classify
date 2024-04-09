@@ -22,7 +22,6 @@ import java.util.logging.Logger;
 public class            InputParsing {
     public static final Logger LOGGER = Logger.getLogger(InputParsing.class.getName());
     private static final String EARLIER_POSSIBLE_DATE = "1970-01-01";
-    private static final String DEFAULT_STRING_VALUE = "Unknown";
     private static final String BYE = "bye";
     private static final String LIST = "list";
     private static final String ADD = "add";
@@ -48,6 +47,7 @@ public class            InputParsing {
     private static final int NUMBER_TOO_SMALL = 80000000;
     private static final int NUMBER_TOO_BIG = 1000_000_00;
     private static final String CLASSES_ATTENDED_MUST_BE_MORE = "Classes attended must be 0 or more.";
+    public static final String DEFAULT_STRING_VALUE = "Unknown";
 
     public static void parseUserCommand(String[] userCommand, ArrayList<Student> masterStudentList,
             ArrayList<Student> recentlyDeletedList,

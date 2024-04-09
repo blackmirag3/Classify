@@ -54,7 +54,6 @@ public class DataReader {
             
             //Set Name
             Student student = new Student(inputArr[ZERO].trim());
-            masterStudentList.add(student);
 
             //Set Gender
             student.getAttributes().setGender(inputArr[ONE].trim());
