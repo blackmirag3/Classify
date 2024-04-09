@@ -33,4 +33,23 @@ public class TextFileParser {
     }
 
     //private void 
+    private static Integer findMatchingFile(File[] filelist, String userInput) {
+        String input = userInput.toLowerCase().trim();
+        for (int i = 0; i < filelist.length; i++){
+            String fileName = filelist[i].getName().toLowerCase().trim();
+            int dotIndex = fileName.lastIndexOf('.');
+            String fileNameWithoutType = fileName.substring(0,dotIndex);
+            
+            // Return match with the type
+            if (input.equals(fileName)){
+                return i;
+            }
+
+            // Return match without the type
+            if (input.equals(fileNameWithoutType)){
+                return i;
+            }
+        }
+        return -1;
+    }
 }
