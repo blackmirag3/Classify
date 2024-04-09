@@ -99,4 +99,8 @@ public class ArchiveCommands {
         }
         return student;
     }
+
+    public static void viewArchive() {
+
+    }
 }

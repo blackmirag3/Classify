@@ -16,13 +16,13 @@ import classify.ui.UI;
 
 //@@author blackmirag3
 public class EditStudent extends Commands {
-    private static final String SEVEN = "7";
     private static final String ONE = "1";
     private static final String TWO = "2";
     private static final String THREE = "3";
     private static final String FOUR = "4";
     private static final String FIVE = "5";
     private static final String SIX = "6";
+    private static final String SEVEN = "7";
     private static final String DEFAULT_STRING_VALUE = "Unknown";
 
     public static void editStudent(Scanner in, String name) {
