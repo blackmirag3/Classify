@@ -23,8 +23,6 @@ public class Classify {
         DataHandler.readArchive(StudentList.archiveList);
         //@@author ParthGandhiNUS
         UI.printWelcomeMessage();
-        UI.printUserPrompt();
-
         
         // Takes in input from the user, and processes input to determine if it contains a command and a name   
         String[] userCommand;
@@ -36,6 +34,7 @@ public class Classify {
         while (userCommand == null || !(userCommand[0].equals("bye"))){
             InputParsing.parseUserCommand(userCommand, StudentList.masterStudentList, StudentList.recentlyDeletedList,
                     StudentList.archiveList, in);
+            UI.printSubsequentUserPrompt();
             userCommand = UserInput.processInput(in.nextLine());
         }
 

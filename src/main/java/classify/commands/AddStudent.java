@@ -200,7 +200,6 @@ public class AddStudent {
 
             } else if (attributes.findSubject(subject) != null) {
                 // rejects subject if existing subject of same name exists in students'
-                // attributes
                 UI.printSubjectAlreadyExists();
                 break;
 

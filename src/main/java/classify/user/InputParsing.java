@@ -19,7 +19,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class InputParsing {
+public class            InputParsing {
     public static final Logger LOGGER = Logger.getLogger(InputParsing.class.getName());
     private static final String EARLIER_POSSIBLE_DATE = "1970-01-01";
     private static final String DEFAULT_STRING_VALUE = "Unknown";
@@ -118,7 +118,7 @@ public class InputParsing {
 
         //@@author blackmirag3
         case EDIT:
-            EditStudent.editStudent(masterStudentList, in, userCommand[1]);
+            EditStudent.editStudent(in, userCommand[1]);
             break;
 
         case ARCHIVE:
@@ -464,7 +464,7 @@ public class InputParsing {
         return string;
 
     }
-    
+
     //@@author Cryolian
     /**
      * Prompts the user for a date in a format of YYYY--MM--DD
