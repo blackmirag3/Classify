@@ -183,9 +183,8 @@ public class UI {
     }
 
     public static void printProcessTextFileInput(){
-        System.out.println("Process                     " +
-                "Processes a text file which has been added by a user" +
-                " Process ");
+        System.out.println("process                     " +
+                "Processes a text file which has been added by a user");
     }
 
     //@@author blackmirag3
