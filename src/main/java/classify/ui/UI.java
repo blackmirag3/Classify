@@ -301,6 +301,7 @@ public class UI {
         System.out.println(EDIT_COMMAND_MODIFY_PHONE_NUMBER_PROMPT);
         System.out.println(EDIT_COMMAND_MODIFY_PAYMENT_DATE_PROMPT);
         System.out.println(EDIT_COMMAND_MODIFY_REMARKS_PROMPT);
+        System.out.println("6. Edit Gender.");
     }
 
     //@@ author tayponghee

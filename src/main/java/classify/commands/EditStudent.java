@@ -1,5 +1,7 @@
 package classify.commands;
 
+import static classify.user.InputParsing.readInString;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -87,11 +89,15 @@ public class EditStudent extends Commands {
                 return;
 
             case FIVE:
-                editPaymentDate(in, attributes);
+                editRemarks(in, attributes);
                 return;
 
             case SIX:
-                editRemarks(in, attributes);
+                editPaymentDate(in, attributes);
+                return;
+            
+            case "7":
+                editGender(in, attributes);
                 return;
 
             default:
@@ -135,6 +141,22 @@ public class EditStudent extends Commands {
 
         attributes.setRemarks(newRemarks);
         UI.printDivider();
+    }
+
+    private static void editGender(Scanner in, StudentAttributes attributes) {
+        UI.println(attributes.getGender());
+        UI.printDivider();
+        UI.println("Enter blank to stop editing.");
+
+        String newGender = InputParsing.readInString(in);
+
+        if (newGender.equals(DEFAULT_STRING_VALUE)) {
+            return;
+        }
+
+        attributes.setGender(newGender);
+        UI.printDivider();
+
     }
 
     //@@author alalal47
@@ -253,10 +275,10 @@ public class EditStudent extends Commands {
         
         while (true) {
             System.out.print("New subject name (enter nothing to skip): ");
-            String newName = in.nextLine().trim();
+            String newName = readInString(in);
 
             //exit clause
-            if (newName.isBlank()) {
+            if (newName.isBlank() || newName.equals(DEFAULT_STRING_VALUE)) {
                 return;
             }
 

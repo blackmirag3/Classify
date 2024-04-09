@@ -73,7 +73,7 @@ public class AddStudent {
             StudentList.checkNameNumberPair(StudentList.archiveList, name, number);
         } catch (NameNumberMatchException e) {
             UI.println("Student and Phone number pair found. If not found in the list, " +
-                    "please restore the student instead.");
+                    "please restore or unarchive the student instead.");
             UI.printDivider();
             return;
         } catch (NullPointerException e) {

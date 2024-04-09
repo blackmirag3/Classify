@@ -452,12 +452,12 @@ public class            InputParsing {
         if (string.isBlank()) {
             return DEFAULT_STRING_VALUE;
         }
-        string = string.replace('#', ' ');
-        string = string.replace('-', ' ');
-        string = string.replace('~', ' ');
-        string = string.trim();
-
-        if (string.isBlank()) {
+        
+        try {
+            InputParsing.checkForSpecialCharacters(string);
+        } catch (Exception e) {
+            UI.println("Invalid characters found");
+            UI.println("Storing 'Unknown' or cancelling edit");
             return DEFAULT_STRING_VALUE;
         }
 
@@ -478,7 +478,7 @@ public class            InputParsing {
         UI.promptForLastPaymentDate();
         do {
 
-            userInput = in.nextLine();
+            userInput = in.nextLine().trim();
             paymentDate = parseDateFromString(userInput);
 
         } while (!isDateValid(paymentDate));
