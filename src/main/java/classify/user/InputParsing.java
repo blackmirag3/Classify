@@ -20,9 +20,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class InputParsing {
+    public static final String DEFAULT_STRING_VALUE = "Unknown";
     public static final Logger LOGGER = Logger.getLogger(InputParsing.class.getName());
     private static final String EARLIER_POSSIBLE_DATE = "1970-01-01";
-    private static final String DEFAULT_STRING_VALUE = "Unknown";
     private static final String BYE = "bye";
     private static final String LIST = "list";
     private static final String ADD = "add";
@@ -103,7 +103,7 @@ public class InputParsing {
             if (userCommand[1] != null) {
                 UI.printInvalidListCommand();
             } else {
-                parseListCommand(masterStudentList, in);
+                parseListCommand(masterStudentList, archiveList, recentlyDeletedList, in);
             }
             break;
 
@@ -118,7 +118,7 @@ public class InputParsing {
 
         //@@author blackmirag3
         case EDIT:
-            EditStudent.editStudent(masterStudentList, in, userCommand[1]);
+            EditStudent.editStudent(in, userCommand[1]);
             break;
 
         case ARCHIVE:
@@ -143,10 +143,11 @@ public class InputParsing {
      * @param scanner Scanner used for the chooseListType function
      */
     //@@author tayponghee
-    public static void parseListCommand(ArrayList<Student> masterStudentList, Scanner scanner) {
+    public static void parseListCommand(ArrayList<Student> masterStudentList, ArrayList<Student> archiveList
+                                        , ArrayList<Student> deletedList, Scanner scanner) {
         UI.printListCommandStart();
         String subject = scanner.nextLine().trim();
-        ListStudentsCommand.chooseListType(masterStudentList, scanner, subject);
+        ListStudentsCommand.chooseListType(masterStudentList, archiveList, deletedList, scanner, subject);
     }
 
     /**
@@ -440,6 +441,8 @@ public class InputParsing {
     //@@author ParthGandhiNUS
     /**
      * A prompting input to scan in a string from the user input.
+     * If special characters are found, the default string value 
+     * is returned.
      * 
      * @param in The scanner class to scan inputs from.
      * @return "Unknown" if blank was inputted, or the
@@ -452,19 +455,19 @@ public class InputParsing {
         if (string.isBlank()) {
             return DEFAULT_STRING_VALUE;
         }
-        string = string.replace('#', ' ');
-        string = string.replace('-', ' ');
-        string = string.replace('~', ' ');
-        string = string.trim();
-
-        if (string.isBlank()) {
+        
+        try {
+            InputParsing.checkForSpecialCharacters(string);
+        } catch (InvalidCharacterException e) {
+            UI.println("Invalid characters found");
+            UI.println("Storing 'Unknown' or cancelling edit");
             return DEFAULT_STRING_VALUE;
         }
 
         return string;
 
     }
-    
+
     //@@author Cryolian
     /**
      * Prompts the user for a date in a format of YYYY--MM--DD
@@ -478,7 +481,7 @@ public class InputParsing {
         UI.promptForLastPaymentDate();
         do {
 
-            userInput = in.nextLine();
+            userInput = in.nextLine().trim();
             paymentDate = parseDateFromString(userInput);
 
         } while (!isDateValid(paymentDate));

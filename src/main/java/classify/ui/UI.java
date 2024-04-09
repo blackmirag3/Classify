@@ -10,9 +10,15 @@ public class UI {
             "attended across all subjects: ";
     private static final String EMPTY_SUBJECT_ERROR = "No subjects and grades found for this student.";
     private static final String NULL_ATTRIBUTE_ERROR = "No attributes found for this student.";
-    private static final String EDIT_PROMPT = "How would you like to update a student's subject? (enter blank to exit)";
-    private static final String EDIT_TYPES_PROMPT = "Add(subject), Edit(subject), Number, Remarks, Payment " 
-            + "or Delete(subject): ";
+    private static final String EDIT_COMMAND_PROMPT = "How would you like to edit student? " +
+            "Enter index (blank to exit):";
+    private static final String EDIT_COMMAND_ADD_SUBJECT_PROMPT = "1. Add subject";
+    private static final String EDIT_COMMAND_MODIFY_SUBJECT_PROMPT = "2. Modify subject";
+    private static final String EDIT_COMMAND_DELETE_SUBJECT_PROMPT = "3. Delete subject";
+    private static final String EDIT_COMMAND_MODIFY_PHONE_NUMBER_PROMPT = "4. Modify phone number";
+    private static final String EDIT_COMMAND_MODIFY_REMARKS_PROMPT = "5. Modify remarks";
+    private static final String EDIT_COMMAND_MODIFY_PAYMENT_DATE_PROMPT = "6. Modify payment date";
+    private static final String EDIT_COMMAND_DELETED_SUBJECT_MESSAGE = "Subject deleted successfully!";
     private static final String EMPTY_LIST_ERROR = "Currently no students in list.";
     private static final String VALID_NUMBER_ERROR = "A valid number was not entered. Please input a valid number. ";
     private static final String PHONE_NUMBER_PROMPT = "Please input a valid phone number: ";
@@ -38,6 +44,7 @@ public class UI {
     private static final String CLASSIFY_GOODBYE_MESSAGE = "Hope you've had a productive day. See you again! Goodbye!";
     private static final String WRONG_INPUT_MESSAGE = "No such command, type \"help\" to view all commands";
     //@@author blackmirag3
+    private static final String WHAT_ELSE_CAN_I_DO_FOR_YOU_TODAY = "What else can I do for you today?";
     private static final String STUDENT_DETAILS_PROMPT = "Enter student details: ";
     private static final String STUDENT_NAME_PROMPT = "Enter student name: ";
     private static final String STUDENT_DETAILS_MESSAGE = "Student details: ";
@@ -54,6 +61,9 @@ public class UI {
     private static final String DELETE_UNDONE_MESSAGE = "Last delete undone!";
     private static final String STUDENT_RESTORED_MESSAGE = "Student has been restored!";
     private static final String NO_RECENT_DELETES = "No recent deletes found!";
+    private static final String STUDENTS_IN_ARCHIVE = "3. List of students in archive";
+    private static final String STUDENTS_IN_DELETED = "4. List of students in recently deleted";
+    private static final String ENTER_ONE_TWO_THREE_FOUR = "Enter your choice (1, 2, 3 or 4):";
     //@@ author tayponghee
     private static final String ADD_SUBJECT =
             "Do you want to add another subject and grade? (yes/no)";
@@ -69,8 +79,6 @@ public class UI {
     private static final String CHOOSE_THE_TYPE_OF_LIST_TO_DISPLAY = "Choose the type of list to display: (index only)";
     private static final String FULL_STUDENT_LIST = "1. Full student list";
     private static final String STUDENTS_WITH_TOTAL_CLASSES = "2. List of students with total classes attended";
-    private static final String ENTER_ONE_TWO = "Enter your choice (1 or 2):";
-
     //@@author alalal47
     /**
      * Displays the help message to teach users how to use Classify.
@@ -162,6 +170,7 @@ public class UI {
     public static void printWelcomeMessage() {
         printDivider();
         System.out.println(WELCOME_TO_CLASSIFY);
+        System.out.println(WHAT_CAN_I_DO_FOR_YOU_TODAY);
     }
 
     /**
@@ -173,8 +182,8 @@ public class UI {
     }
 
     //@@author blackmirag3
-    public static void printUserPrompt() {
-        System.out.println(WHAT_CAN_I_DO_FOR_YOU_TODAY);
+    public static void printSubsequentUserPrompt() {
+        System.out.println(WHAT_ELSE_CAN_I_DO_FOR_YOU_TODAY);
         printDivider();
     }
     public static void printWrongInput() {
@@ -194,10 +203,14 @@ public class UI {
         System.out.println(STUDENT_DETAILS_MESSAGE);
     }
 
+    /***
+     * Print students's details
+     * @param student Student instance of whom details to print
+     */
     public static void printStudentDetails(Student student) {
-        System.out.println(STUDENT_PHONE_MESSAGE + student.getAttributes().getPhoneNumber() + "\n");
-        System.out.println(STUDENT_GENDER_MESSAGE + student.getAttributes().getGender() + "\n");
-        System.out.println(STUDENT_PAYMENT_MESSAGE + student.getAttributes().getLastPaymentDate() + "\n");
+        System.out.println(STUDENT_PHONE_MESSAGE + student.getAttributes().getPhoneNumber());
+        System.out.println(STUDENT_GENDER_MESSAGE + student.getAttributes().getGender());
+        System.out.println(STUDENT_PAYMENT_MESSAGE + student.getAttributes().getLastPaymentDate());
         System.out.println(STUDENT_REMARKS_MESSAGE + student.getAttributes().getRemarks() + "\n");
     }
 
@@ -211,38 +224,86 @@ public class UI {
     }
 
     //@@author blackmirag3
+
+    /***
+     * Print message for successful subject deletion under edit command.
+     */
+    public static void printSubjectDeleted() {
+        System.out.println(EDIT_COMMAND_DELETED_SUBJECT_MESSAGE);
+    }
+
+    /***
+     * Print prompt for classes attended
+     */
     public static void printClassesAttendedPrompt() {
         System.out.println(CLASSES_ATTENDED_PROMPT);
     }
 
+    /***
+     * Print attendance count
+     * @param attendance int containing attendance count
+     */
     public static void printClassesAttended(int attendance) {
         System.out.println(CLASSES_ATTENDED_MESSAGE + attendance);
     }
 
+    /***
+     * Print student not found message.
+     */
     public static void printStudentNotFound() {
         System.out.println(STUDENT_NOT_FOUND_MESSAGE);
     }
 
+    /***
+     * Print student added message.
+     */
     public static void printStudentAdded() {
         System.out.println(STUDENT_ADDED_MESSAGE);
     }
 
+    /***
+     * Print deleted student message.
+     */
     public static void printStudentDeleted() {
         System.out.println(STUDENT_DELETED_MESSAGE);
     }
 
+    /***
+     * Prints student's name
+     * @param name String containing student's name.
+     */
     public static void printSubjectName(String name) {
         System.out.println(SUBJECT_MESSAGE + name);
     }
 
+    /***
+     * Prints student grades
+     * @param grades Double containing students grade to print.
+     */
     public static void printStudentGrades(Double grades) {
         System.out.println(STUDENT_GRADES_MESSAGE + grades);
     }
 
+    /***
+     * Prints prompt for user to enter student grade.
+     */
     public static void printStudentGradesPrompt() {
         System.out.println(STUDENT_GRADES_PROMPT);
     }
 
+    /***
+     * Prints prompts for edit student command.
+     */
+    public static void printEditPrompt() {
+        System.out.println(EDIT_COMMAND_PROMPT);
+        System.out.println(EDIT_COMMAND_ADD_SUBJECT_PROMPT);
+        System.out.println(EDIT_COMMAND_MODIFY_SUBJECT_PROMPT);
+        System.out.println(EDIT_COMMAND_DELETE_SUBJECT_PROMPT);
+        System.out.println(EDIT_COMMAND_MODIFY_PHONE_NUMBER_PROMPT);
+        System.out.println(EDIT_COMMAND_MODIFY_REMARKS_PROMPT);
+        System.out.println(EDIT_COMMAND_MODIFY_PAYMENT_DATE_PROMPT);
+        System.out.println("7. Edit Gender.");
+    }
 
     //@@ author tayponghee
     public static void printStudentList(ArrayList<Student> students) {
@@ -286,11 +347,6 @@ public class UI {
 
     public static void printEmptyListError() {
         System.out.println(EMPTY_LIST_ERROR);
-    }
-
-    public static void printEditPrompt() {
-        System.out.println(EDIT_PROMPT);
-        System.out.println(EDIT_TYPES_PROMPT);
     }
 
     public static void printEmptySubjectError() {
@@ -372,6 +428,8 @@ public class UI {
         System.out.println(CHOOSE_THE_TYPE_OF_LIST_TO_DISPLAY);
         System.out.println(FULL_STUDENT_LIST);
         System.out.println(STUDENTS_WITH_TOTAL_CLASSES);
-        System.out.println(ENTER_ONE_TWO);
+        System.out.println(STUDENTS_IN_ARCHIVE);
+        System.out.println(STUDENTS_IN_DELETED);
+        System.out.println(ENTER_ONE_TWO_THREE_FOUR);
     }
 }

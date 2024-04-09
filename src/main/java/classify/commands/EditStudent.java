@@ -1,8 +1,11 @@
 package classify.commands;
 
+import static classify.user.InputParsing.readInString;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import classify.data.DataHandler;
 import classify.student.Student;
 import classify.student.StudentAttributes;
 import classify.student.StudentList;
@@ -11,118 +14,99 @@ import classify.user.InputParsing;
 import classify.user.NameNumberMatchException;
 import classify.ui.UI;
 
-public class EditStudent {
-    private static final String NUMBER = "number";
-    private static final String PAYMENT = "payment";
-    private static final String REMARKS = "remarks";
-    private static final String ADD = "add";
-    private static final String EDIT = "edit";
-    private static final String DELETE = "delete";
+//@@author blackmirag3
+public class EditStudent extends Commands {
+    private static final String ONE = "1";
+    private static final String TWO = "2";
+    private static final String THREE = "3";
+    private static final String FOUR = "4";
+    private static final String FIVE = "5";
+    private static final String SIX = "6";
+    private static final String SEVEN = "7";
     private static final String DEFAULT_STRING_VALUE = "Unknown";
 
-    //@@author alalal47
-    /**
-     * Prompts the user to input a name for the student whose details are to be edited, if the user has not used the
-     * command with a name flag.
-     *
-     *
-     * @param list       The list of all students.
-     * @param in         The scanner object to read user input.
-     * @param name       The name of the student if the user has entered it when invoking the function.
-     */
-    public static void editStudent(ArrayList<Student> list, Scanner in, String name) {
-        if (list.isEmpty()) {
-            UI.printEmptyListError();
+    public static void editStudent(Scanner in, String name) {
+        Student student = getStudent(in, name);
+        if (student == null) {
+            UI.printStudentNotFound();
             return;
         }
-
-        Student student = null;
-
-        if (name != null) {
-            student = InputParsing.findStudentByName(list, name, in);
-            if (student == null) {
-                UI.printStudentNotFound();
-            }
-        }
-
-        while (student == null) {
-
-            System.out.println("Name of student to edit (enter blank to exit):");
-            name = in.nextLine().trim();
-
-            if (name.isBlank()) {
-                System.out.println("Exiting edit.");
-                return;
-            }
-
-            student = InputParsing.findStudentByName(list, name, in);
-
-            if (student != null) {
-                break;
-            } else {
-                UI.printStudentNotFound();
-            }
-        }
-
-        editStudentAttributes(in, student);
+        editStudentDetails(in, student);
     }
 
-    //@@author alalal47
-    /**
-     * Displays the attributes of the student that the user has chosen to edit, and prints the options available for
-     * editing.
-     * Allows user to select options for editing, for example, editing the saved phone number.
-     * The user can exit the edit state by pressing enter.
-     *
-     * @param in            The scanner object to read user input.
-     * @param student       The student that the user has chosen to edit.
-     */
-    //@@author blackmirag3
-    private static void editStudentAttributes(Scanner in, Student student) {
+    private static Student getStudent(Scanner in, String name) {
+
+        ArrayList<Student> list = StudentList.masterStudentList;
+        if (list.isEmpty()) {
+            UI.printEmptyListError();
+            return null;
+        }
+
+        if (name == null) {
+            System.out.println("Name of student to edit (blank to exit):");
+            name = in.nextLine().trim();
+        }
+
+        //quick exit clause
+        if (name.isBlank()) {
+            return null;
+        }
+
+        return InputParsing.findStudentByName(list, name, in);
+    }
+
+    private static void editStudentDetails(Scanner in, Student student) {
+
         StudentAttributes attributes = student.getAttributes();
-        ViewStudent.showAttributes(attributes);
+        ViewStudent.showStudentInfo(student);
 
         while (true) {
             UI.printEditPrompt();
             String command = in.nextLine().trim();
+
             if (command.isBlank()) {
-                System.out.println("Exiting edit");
+                System.out.println("Exiting edit.");
                 UI.printDivider();
                 return;
             }
 
             switch (command) {
 
-            case ADD:
+            case ONE:
                 AddStudent.addSubject(in, attributes);
                 student.setAttributes(attributes);
                 break;
 
-            case EDIT:
-                editAttribute(in, attributes);
+            case TWO:
+                editSubject(in, attributes);
                 break;
 
-            case DELETE:
-                deleteAttribute(in, attributes);
+            case THREE:
+                deleteSubject(in, attributes);
                 break;
 
-            // @@author Cryolian
-            case NUMBER:
+            case FOUR:
                 editNumber(in, attributes);
                 break;
 
-            case PAYMENT:
-                editPaymentDate(in, attributes);
-                break;
-
-            case REMARKS:
+            case FIVE:
                 editRemarks(in, attributes);
                 break;
 
+            case SIX:
+                editPaymentDate(in, attributes);
+                break;
+            
+            case SEVEN:
+                editGender(in, attributes);
+                break;
+
             default:
+                UI.println("No such command found. Please try again");
+                UI.printDivider();
                 break;
             }
-
+            DataHandler.writeStudentInfo();
         }
     }
 
@@ -160,6 +144,22 @@ public class EditStudent {
 
         attributes.setRemarks(newRemarks);
         UI.printDivider();
+    }
+
+    private static void editGender(Scanner in, StudentAttributes attributes) {
+        UI.println(attributes.getGender());
+        UI.printDivider();
+        UI.println("Enter blank to stop editing.");
+
+        String newGender = InputParsing.readInString(in);
+
+        if (newGender.equals(DEFAULT_STRING_VALUE)) {
+            return;
+        }
+
+        attributes.setGender(newGender);
+        UI.printDivider();
+
     }
 
     //@@author alalal47
@@ -218,42 +218,85 @@ public class EditStudent {
      * @param attributes The StudentAttributes object to store the attributes of the
      *                   student.
      */
-    private static void editAttribute(Scanner in, StudentAttributes attributes) {
+    private static void editSubject(Scanner in, StudentAttributes attributes) {
+
+        SubjectGrade currentSubject = promptForSubject(in, attributes);
+        updateSubjectName(in, attributes, currentSubject);
+        updateSubjectGrade(in, currentSubject);
+        updateSubjectAttendance(in, currentSubject);
+        //System.out.println("Subject updated.");
+    }
+
+    private static void updateSubjectAttendance(Scanner in, SubjectGrade currentSubject) {
+
+        if (currentSubject == null) {
+            return;
+        }
+        int newClassesAttended = AddStudent.promptForClassesAttended(in);
+        currentSubject.setClassesAttended(newClassesAttended);
+    }
+
+    private static void updateSubjectGrade(Scanner in, SubjectGrade currentSubject) {
+
+        if (currentSubject == null) {
+            return;
+        }
+        double newGrade = InputParsing.promptForGrade(in);
+        if (newGrade != -1) {
+            currentSubject.setGrade(newGrade);
+        }
+    }
+
+    private static SubjectGrade promptForSubject(Scanner in, StudentAttributes attributes) {
 
         while (true) {
-
             System.out.print("Subject to edit (enter nothing to exit): ");
             String subjectToFind = in.nextLine().trim();
 
+            //early exit clause
             if (subjectToFind.isBlank()) {
                 System.out.println("No subject edited.");
-                return;
+                return null;
             }
 
             SubjectGrade currentSubject = attributes.findSubject(subjectToFind);
-
-            if (currentSubject != null) {
-                System.out.print("New subject name (enter nothing to skip): ");
-                String newName = in.nextLine().trim();
-
-                if (!newName.isBlank()) {
-                    currentSubject.setSubject(newName);
-                }
-
-                double newGrade = InputParsing.promptForGrade(in);
-
-                if (newGrade != -1) {
-                    currentSubject.setGrade(newGrade);
-                }
-
-                int newClassesAttended = AddStudent.promptForClassesAttended(in);
-                currentSubject.setClassesAttended(newClassesAttended);
-                System.out.println("Subject updated.");
-
+            
+            if (currentSubject == null) {
+                System.out.println("Subject not found");
+                
             } else {
-                System.out.println("Subject not found.");
+                return currentSubject;
+            }
+        }
+    }
+
+    private static void updateSubjectName(Scanner in, StudentAttributes attributes,
+                                   SubjectGrade currentSubject) {
+        if (currentSubject == null) {
+            return;
+        }
+        
+        while (true) {
+            System.out.print("New subject name (enter nothing to skip): ");
+            String newName = readInString(in);
+
+            //exit clause
+            if (newName.isBlank() || newName.equals(DEFAULT_STRING_VALUE)) {
+                return;
             }
 
+            SubjectGrade foundSubject = attributes.findSubject(newName);
+
+            if (foundSubject == currentSubject) {
+                System.out.println("New subject name same as current.");
+
+            } else if (foundSubject != null) {
+                UI.printSubjectAlreadyExists();
+
+            } else {
+                currentSubject.setSubject(newName);
+                return;
+            }
         }
     }
 
@@ -266,12 +309,13 @@ public class EditStudent {
      * @param attributes       The attributes object of the student that the user has chosen to edit.
      */
     //@@author blackmirag3
-    private static void deleteAttribute(Scanner in, StudentAttributes attributes) {
+    private static void deleteSubject(Scanner in, StudentAttributes attributes) {
         while (true) {
 
             System.out.println("Subject to delete (enter blank to exit)");
             String subjectToDelete = in.nextLine().trim();
 
+            //exit clause
             if (subjectToDelete.isBlank()) {
                 System.out.println("no subject deleted");
                 return;

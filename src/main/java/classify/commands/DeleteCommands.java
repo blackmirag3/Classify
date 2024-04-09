@@ -53,8 +53,8 @@ public class DeleteCommands extends Commands {
     }
 
     /**
-     * Removes a student from the list.
-     * Adds the removed student to a recently deleted list, where the student's information can be recovered
+     * Restores a student from the list.
+     * Adds the removed student back from the recently deleted list to the masterlist.
      *
      * @param masterStudentList   The list of all students.
      * @param recentlyDeletedList The list of recently deleted students
@@ -86,6 +86,7 @@ public class DeleteCommands extends Commands {
             UI.printDivider();
             masterStudentList.add(student);
             recentlyDeletedList.remove(student);
+            DataHandler.writeStudentInfo();
 
         //@@author Cryolian
         } catch (NameNumberMatchException e) {

@@ -50,62 +50,68 @@ public class DataReader {
      * @param masterStudentList The list of all students
      */
     public static void restoreStudentList(String studentFileInput, ArrayList <Student> masterStudentList ){
-        if (studentFileInput != null){
-            String [] inputArr = studentFileInput.split(MAIN_REGEX);
-            
-            //Set Name
-            Student student = new Student(inputArr[NAME].trim());
-            masterStudentList.add(student);
-            //Set Gender
-            student.getAttributes().setGender(inputArr[GENDER].trim());
-            //Set Phone Number
-            try {
-                int phoneNumber = Integer.parseInt(inputArr[PHONE_NUMBER].trim());
-                StudentList.checkNameNumberPair(StudentList.masterStudentList, student.getName(), phoneNumber);
-                StudentList.checkNameNumberPair(StudentList.archiveList, student.getName(), phoneNumber);
-                student.getAttributes().setPhoneNumber(phoneNumber);
-                InputParsing.checkForSpecialCharacters(student.getName());
-            } catch (NumberFormatException e) {
-                DataUI.phoneNumberParsingError();
-                return;
-            } catch (NameNumberMatchException e) {
-                DataUI.nameNumberPair();
-                masterStudentList.remove(student);
-                return;
-            } catch (InvalidCharacterException e) {
-                DataUI.invalidCharacterExceptionMessage();
-                return;
-            }
-            //Set Last Payment Date
-            try {
-                LocalDate inputLastPaymentDate = convertStringInput(inputArr[LAST_PAYMENT_DATE].trim());
-                student.getAttributes().setLastPaymentDate(inputLastPaymentDate);
-            } catch (DateTimeParseException e) {
-                DataUI.lastPaymentDateParseExceptionMessage();
-            }
-            //Set remarks
-            student.getAttributes().setRemarks(inputArr[REMARKS].trim());
-            //Get all Subject Info
-            try {
-                String [] allSubjects = (inputArr[SUBJECTS].trim()).split(SUBJECT_REGEX);
-                int numberOfSubjects = allSubjects.length;
 
-                if (numberOfSubjects == 1 && allSubjects[0].isEmpty()){
-                    DataUI.noSubjectMessage();
-                } else {
-                    for (String allSubject : allSubjects) {
-                        SubjectGrade newSubject = getAllSubjectInformation(allSubject);
-                        student.getAttributes().addSubjectGrade(newSubject);
-                    }
-                }
-            } catch (ArrayIndexOutOfBoundsException e) {
-                DataUI.arrayIndexOutOfBoundsMessage();
-            }
-            
-            logger.log(Level.INFO, "Student added successfully.");
-            UI.printStudentAdded();
-            UI.printDivider();
+        if (studentFileInput.trim().isBlank()) {
+            return;
         }
+        String[] inputArr = studentFileInput.split(MAIN_REGEX);
+
+        //Set Name
+        Student student = new Student(inputArr[NAME].trim());
+        masterStudentList.add(student);
+        //Set Gender
+        student.getAttributes().setGender(inputArr[GENDER].trim());
+        //Set Phone Number
+        try {
+
+            InputParsing.checkForSpecialCharacters(student.getName());
+            InputParsing.checkForSpecialCharacters(student.getGender());
+            int phoneNumber = Integer.parseInt(inputArr[PHONE_NUMBER].trim());
+            StudentList.checkNameNumberPair(StudentList.masterStudentList, student.getName(), phoneNumber);
+            StudentList.checkNameNumberPair(StudentList.archiveList, student.getName(), phoneNumber);
+            student.getAttributes().setPhoneNumber(phoneNumber);
+        } catch (NumberFormatException e) {
+            DataUI.phoneNumberParsingError();
+            return;
+        } catch (NameNumberMatchException e) {
+            DataUI.nameNumberPair();
+            return;
+        } catch (InvalidCharacterException e) {
+            DataUI.invalidCharacterExceptionMessage();
+            return;
+        }
+        //Set Last Payment Date
+        try {
+            LocalDate inputLastPaymentDate = convertStringInput(inputArr[LAST_PAYMENT_DATE].trim());
+            student.getAttributes().setLastPaymentDate(inputLastPaymentDate);
+        } catch (DateTimeParseException e) {
+            DataUI.lastPaymentDateParseExceptionMessage();
+        }
+        //Set remarks
+        student.getAttributes().setRemarks(inputArr[REMARKS].trim());
+        //Get all Subject Info
+        try {
+            String [] allSubjects = (inputArr[SUBJECTS].trim()).split(SUBJECT_REGEX);
+            int numberOfSubjects = allSubjects.length;
+
+            if (numberOfSubjects == 1 && allSubjects[0].isEmpty()){
+                DataUI.noSubjectMessage();
+            } else {
+                for (String allSubject : allSubjects) {
+                    SubjectGrade newSubject = getAllSubjectInformation(allSubject);
+                    student.getAttributes().addSubjectGrade(newSubject);
+                }
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            UI.println("Error reading in subjects.");
+        } catch (InvalidCharacterException e) {
+            UI.println("Invalid character found in subject. Skipping subsequent entries.");
+        }
+
+        masterStudentList.add(student);
+        logger.log(Level.INFO, "Student added successfully.");
+        UI.printStudentAdded();
+        UI.printDivider();
     }
 
     /**
@@ -113,11 +119,13 @@ public class DataReader {
      *
      * @param allSubjects String containing all the subject's information
      * @return all the subject information which needs to be added as a SubjectGrade
+     * @throws InvalidCharacterException Exception if the character is invalid
      */
-    private static SubjectGrade getAllSubjectInformation(String allSubjects) {
+    private static SubjectGrade getAllSubjectInformation(String allSubjects) throws InvalidCharacterException {
         String [] subjectDetailedInfo = allSubjects.split(SUBJECT_INFO_REGEX);
         //Subject Name
         String subjectName = subjectDetailedInfo[SUBJECT_NAME].trim();
+        InputParsing.checkForSpecialCharacters(subjectName);
         //Subject Grade
         double subjectGrades = Double.parseDouble(subjectDetailedInfo[GRADE_FOR_SUBJECT].trim());
         //Classes attended for this subject

@@ -57,7 +57,7 @@ public class StudentAttributes extends Details {
         for (SubjectGrade subjectGrade : subjectGrades) {
             String currentSubjectName = subjectGrade.getSubject();
 
-            if (currentSubjectName.equals(subjectName)) {
+            if (currentSubjectName.equalsIgnoreCase(subjectName)) {
                 return subjectGrade;
             }
         }
