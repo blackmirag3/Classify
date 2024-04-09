@@ -1,5 +1,6 @@
 package classify.textfilecode;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
@@ -16,13 +17,15 @@ public class TextFileHandler {
     private static final String CURRENT_FILES = "Current Files in your Input Folder:";
     private static final String INPUT_TEXT_FILE_DIRECTORY = "./data/inputFolder";
     private static final String IO_EXCEPTION_MESSAGE_FOR_TEXT_FILE = "Something went horribly wrong while creating your data folder!";
+    public static final File currentDirectory = new File (INPUT_TEXT_FILE_DIRECTORY);
 
     public static void process(ArrayList<Student> masterStudentList, Scanner in, String textFileName) {
-        
         createTextFileDirectory();
         // Print out the current files in your folder
         UI.println(CURRENT_FILES);
         TextFileReader.printCurrentInputFolder(INPUT_TEXT_FILE_DIRECTORY);
+        TextFileParser.promptForFileSelection();
+        TextFileParser.parseUserSelection(currentDirectory, in);
     }
 
     /**
