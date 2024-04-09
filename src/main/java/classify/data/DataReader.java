@@ -106,15 +106,15 @@ public class DataReader {
                     DataUI.noSubjectMessage();
                 } else {
 
-                for (int i = 0; i < numberOfSubjects ; i++){
-                    String [] subjectDetailedInfo = allSubjects[i].split(SUBJECT_INFO_REGEX);
-                    //Subject Name
-                    String subjectName = subjectDetailedInfo[ZERO].trim();
-                    InputParsing.checkForSpecialCharacters(subjectName);
-                    //Subject Grade
-                    double subjectGrades = Double.parseDouble(subjectDetailedInfo[ONE].trim());
-                    //Classes attended for this subject
-                    int subjectClassesAttended = Integer.parseInt(subjectDetailedInfo[TWO].trim());
+                    for (int i = 0; i < numberOfSubjects ; i++){
+                        String [] subjectDetailedInfo = allSubjects[i].split(SUBJECT_INFO_REGEX);
+                        //Subject Name
+                        String subjectName = subjectDetailedInfo[ZERO].trim();
+                        InputParsing.checkForSpecialCharacters(subjectName);
+                        //Subject Grade
+                        double subjectGrades = Double.parseDouble(subjectDetailedInfo[ONE].trim());
+                        //Classes attended for this subject
+                        int subjectClassesAttended = Integer.parseInt(subjectDetailedInfo[TWO].trim());
 
                         //Add Subject and attributes to the student
                         SubjectGrade newSubject = new SubjectGrade(subjectName, subjectGrades, subjectClassesAttended);
