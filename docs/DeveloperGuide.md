@@ -74,13 +74,13 @@ All the while these commands are being processed, the runtime database `masterSt
 
 To facilitate the management of students within a tuition centre, it is imperative to have easy access and storage of important information regarding said personnel.
 
-Seen below is an UML diagram of the relevant classes dealing with storage, which is done in the form of storing the array list in a text file format.
+Seen below is an UML diagram of the relevant classes dealing with storing a student's details within the program runtime.
 
 This text file would have the details of the student's name and their attributes, in the following order: subject, grade, classes taken for that subject, phone number, last paid date and remarks.
 
 In the following component, the guide would go into detail about the implementation for writing and reading to the text file.
 
-![DataStoringUML](./diagrams/src/DataStoring/DateStoring.png)
+![DataStoringUML](./diagrams/src/DataStoring/DataStoring.png)
 
 #### Design considerations
 
@@ -96,7 +96,7 @@ Since both classes are referencing each other, it was easy for us to link it wit
 
 Please see the diagram below to see how identifying a student works.
 
-![studentIdentification](./diagrams/src/DataStoring/Student%20Identification.png)
+![studentIdentification](./diagrams/src/DataStoring/StudentIdentification.png)
 
 We created a parent `Details` class as those are information not specifically related to students. It can thus be repurposed in future updates should we wish to expand this application into a personnel management system, which would include employees of the tuition centre.
 
@@ -219,9 +219,20 @@ Classify serves as an attempt to modernise administrative tasks in education ins
 |v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
 |v1.0|existing user|add a student to the database|utilise the functions of the program on a new student.
 |v1.0|existing user|be able to easily update personal information for specific students such as contact details and emergency contacts|contact them or their parents easily.
+|v1.0|existing user|track when a student last paid their fees|know whether to remind their parents about payment. 
+|v1.0|existing user|track the number of classes a student has attended|track their participation and corresponding fees to pay.
 |v1.0|existing user|search for students by name in the system|readily pull up data when asked.|
+|v1.0|existing user|input remarks for any student|check for any special considerations.
 |v2.0|existing user|store my data in a file|transfer data between computers.|
 |v2.0|existing user|sort the students by different attributes|compare them at a glance.|
+|v2.0|existing user|quickly archive and unarchive students|easily remove them from the database when they take long absences or go on holidays.
+|v2.0|existing user|delete a student from the database|stop tracking them when they have outgrown the age limits of the tuition.
+|v2.0|existing user|undo a delete action|quickly recover a student that I may have accidentally deleted
+|v2.0|existing user|add students with different names|add students with the same name without a numerical identifier behind.
+|v2.0|existing user|sort all students by classes attended|track who will likely score the highest in their national examinations.
+|v2.0|existing user|edit subject details for students|stop tracking these subjects when they are no longer being taken.
+|v2.0|existing user|sort students by their subjects taken|know who exactly are taking those subjects
+
 
 ## Non-Functional Requirements
 

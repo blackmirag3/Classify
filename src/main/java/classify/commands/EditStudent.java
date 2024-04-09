@@ -16,13 +16,13 @@ import classify.ui.UI;
 
 //@@author blackmirag3
 public class EditStudent extends Commands {
-    private static final String ONE = "1";
-    private static final String TWO = "2";
-    private static final String THREE = "3";
-    private static final String FOUR = "4";
-    private static final String FIVE = "5";
-    private static final String SIX = "6";
-    private static final String SEVEN = "7";
+    private static final String ADD_SUBJECT = "1";
+    private static final String EDIT_SUBJECT = "2";
+    private static final String DELETE_SUBJECT = "3";
+    private static final String EDIT_NUMBER = "4";
+    private static final String EDIT_REMARKS = "5";
+    private static final String EDIT_PAYMENT_DATE = "6";
+    private static final String EDIT_GENDER = "7";
     private static final String DEFAULT_STRING_VALUE = "Unknown";
 
     public static void editStudent(Scanner in, String name) {
@@ -72,32 +72,32 @@ public class EditStudent extends Commands {
 
             switch (command) {
 
-            case ONE:
+            case ADD_SUBJECT:
                 AddStudent.addSubject(in, attributes);
                 student.setAttributes(attributes);
                 break;
 
-            case TWO:
+            case EDIT_SUBJECT:
                 editSubject(in, attributes);
                 break;
 
-            case THREE:
+            case DELETE_SUBJECT:
                 deleteSubject(in, attributes);
                 break;
 
-            case FOUR:
+            case EDIT_NUMBER:
                 editNumber(in, attributes);
                 break;
 
-            case FIVE:
+            case EDIT_REMARKS:
                 editRemarks(in, attributes);
                 break;
 
-            case SIX:
+            case EDIT_PAYMENT_DATE:
                 editPaymentDate(in, attributes);
                 break;
             
-            case SEVEN:
+            case EDIT_GENDER:
                 editGender(in, attributes);
                 break;
 
