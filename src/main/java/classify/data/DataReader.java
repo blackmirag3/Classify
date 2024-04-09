@@ -61,18 +61,22 @@ public class DataReader {
             
             //Set Phone Number
             try {
+
+                InputParsing.checkForSpecialCharacters(student.getName());
+
+                student.getAttributes().setGender(inputArr[ONE].trim());
+                InputParsing.checkForSpecialCharacters(student.getGender());
+
                 int phoneNumber = Integer.parseInt(inputArr[TWO].trim());
                 StudentList.checkNameNumberPair(StudentList.masterStudentList, student.getName(), phoneNumber);
                 StudentList.checkNameNumberPair(StudentList.archiveList, student.getName(), phoneNumber);
                 student.getAttributes().setPhoneNumber(phoneNumber);
-                InputParsing.checkForSpecialCharacters(student.getName());
 
             } catch (NumberFormatException e) {
                 DataUI.phoneNumberParsingError();
                 return;
             } catch (NameNumberMatchException e) {
                 DataUI.nameNumberPair();
-                masterStudentList.remove(student);
                 return;
             } catch (InvalidCharacterException e) {
                 DataUI.invalidCharacterExceptionMessage();
@@ -99,14 +103,15 @@ public class DataReader {
                     DataUI.noSubjectMessage();
                 } else {
 
-                    for (int i = 0; i < numberOfSubjects ; i++){
-                        String [] subjectDetailedInfo = allSubjects[i].split(SUBJECT_INFO_REGEX);
-                        //Subject Name
-                        String subjectName = subjectDetailedInfo[ZERO].trim();
-                        //Subject Grade
-                        double subjectGrades = Double.parseDouble(subjectDetailedInfo[ONE].trim());
-                        //Classes attended for this subject
-                        int subjectClassesAttended = Integer.parseInt(subjectDetailedInfo[TWO].trim());
+                for (int i = 0; i < numberOfSubjects ; i++){
+                    String [] subjectDetailedInfo = allSubjects[i].split(SUBJECT_INFO_REGEX);
+                    //Subject Name
+                    String subjectName = subjectDetailedInfo[ZERO].trim();
+                    InputParsing.checkForSpecialCharacters(subjectName);
+                    //Subject Grade
+                    double subjectGrades = Double.parseDouble(subjectDetailedInfo[ONE].trim());
+                    //Classes attended for this subject
+                    int subjectClassesAttended = Integer.parseInt(subjectDetailedInfo[TWO].trim());
 
                         //Add Subject and attributes to the student
                         SubjectGrade newSubject = new SubjectGrade(subjectName, subjectGrades, subjectClassesAttended);
@@ -114,9 +119,12 @@ public class DataReader {
                     }
                 }
             } catch (ArrayIndexOutOfBoundsException e) {
-                DataUI.arrayIndexOutOfBoundsMessage();
+                UI.println("Error reading in subjects.");
+            } catch (InvalidCharacterException e) {
+                UI.println("Invalid character found in subject. Skipping subsequent entries.");
             }
-            
+
+            masterStudentList.add(student);
             logger.log(Level.INFO, "Student added successfully.");
             UI.printStudentAdded();
             UI.printDivider();
