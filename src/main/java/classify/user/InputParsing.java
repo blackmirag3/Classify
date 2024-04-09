@@ -103,7 +103,7 @@ public class InputParsing {
             if (userCommand[1] != null) {
                 UI.printInvalidListCommand();
             } else {
-                parseListCommand(masterStudentList, in);
+                parseListCommand(masterStudentList, archiveList, recentlyDeletedList, in);
             }
             break;
 
@@ -143,10 +143,11 @@ public class InputParsing {
      * @param scanner Scanner used for the chooseListType function
      */
     //@@author tayponghee
-    public static void parseListCommand(ArrayList<Student> masterStudentList, Scanner scanner) {
+    public static void parseListCommand(ArrayList<Student> masterStudentList, ArrayList<Student> archiveList
+                                        , ArrayList<Student> deletedList, Scanner scanner) {
         UI.printListCommandStart();
         String subject = scanner.nextLine().trim();
-        ListStudentsCommand.chooseListType(masterStudentList, scanner, subject);
+        ListStudentsCommand.chooseListType(masterStudentList, archiveList, deletedList, scanner, subject);
     }
 
     /**
