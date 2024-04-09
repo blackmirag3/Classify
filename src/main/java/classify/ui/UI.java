@@ -10,7 +10,7 @@ public class UI {
             "attended across all subjects: ";
     private static final String EMPTY_SUBJECT_ERROR = "No subjects and grades found for this student.";
     private static final String NULL_ATTRIBUTE_ERROR = "No attributes found for this student.";
-    private static final String EDIT_COMMAND_PROMPT = "How would you like to edit student?" +
+    private static final String EDIT_COMMAND_PROMPT = "How would you like to edit student? " +
             "Enter index (blank to exit):";
     private static final String EDIT_COMMAND_ADD_SUBJECT_PROMPT = "1. Add subject";
     private static final String EDIT_COMMAND_MODIFY_SUBJECT_PROMPT = "2. Modify subject";
@@ -299,8 +299,9 @@ public class UI {
         System.out.println(EDIT_COMMAND_MODIFY_SUBJECT_PROMPT);
         System.out.println(EDIT_COMMAND_DELETE_SUBJECT_PROMPT);
         System.out.println(EDIT_COMMAND_MODIFY_PHONE_NUMBER_PROMPT);
-        System.out.println(EDIT_COMMAND_MODIFY_PAYMENT_DATE_PROMPT);
         System.out.println(EDIT_COMMAND_MODIFY_REMARKS_PROMPT);
+        System.out.println(EDIT_COMMAND_MODIFY_PAYMENT_DATE_PROMPT);
+        System.out.println("7. Edit Gender.");
     }
 
     //@@ author tayponghee

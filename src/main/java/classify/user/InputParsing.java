@@ -22,7 +22,6 @@ import java.util.logging.Logger;
 public class            InputParsing {
     public static final Logger LOGGER = Logger.getLogger(InputParsing.class.getName());
     private static final String EARLIER_POSSIBLE_DATE = "1970-01-01";
-    private static final String DEFAULT_STRING_VALUE = "Unknown";
     private static final String BYE = "bye";
     private static final String LIST = "list";
     private static final String ADD = "add";
@@ -48,6 +47,7 @@ public class            InputParsing {
     private static final int NUMBER_TOO_SMALL = 80000000;
     private static final int NUMBER_TOO_BIG = 1000_000_00;
     private static final String CLASSES_ATTENDED_MUST_BE_MORE = "Classes attended must be 0 or more.";
+    public static final String DEFAULT_STRING_VALUE = "Unknown";
 
     public static void parseUserCommand(String[] userCommand, ArrayList<Student> masterStudentList,
             ArrayList<Student> recentlyDeletedList,
@@ -440,6 +440,8 @@ public class            InputParsing {
     //@@author ParthGandhiNUS
     /**
      * A prompting input to scan in a string from the user input.
+     * If special characters are found, the default string value 
+     * is returned.
      * 
      * @param in The scanner class to scan inputs from.
      * @return "Unknown" if blank was inputted, or the
@@ -452,12 +454,12 @@ public class            InputParsing {
         if (string.isBlank()) {
             return DEFAULT_STRING_VALUE;
         }
-        string = string.replace('#', ' ');
-        string = string.replace('-', ' ');
-        string = string.replace('~', ' ');
-        string = string.trim();
-
-        if (string.isBlank()) {
+        
+        try {
+            InputParsing.checkForSpecialCharacters(string);
+        } catch (InvalidCharacterException e) {
+            UI.println("Invalid characters found");
+            UI.println("Storing 'Unknown' or cancelling edit");
             return DEFAULT_STRING_VALUE;
         }
 
@@ -478,7 +480,7 @@ public class            InputParsing {
         UI.promptForLastPaymentDate();
         do {
 
-            userInput = in.nextLine();
+            userInput = in.nextLine().trim();
             paymentDate = parseDateFromString(userInput);
 
         } while (!isDateValid(paymentDate));

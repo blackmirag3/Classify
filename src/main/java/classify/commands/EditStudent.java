@@ -1,5 +1,7 @@
 package classify.commands;
 
+import static classify.user.InputParsing.readInString;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,6 +16,7 @@ import classify.ui.UI;
 
 //@@author blackmirag3
 public class EditStudent extends Commands {
+    private static final String SEVEN = "7";
     private static final String ONE = "1";
     private static final String TWO = "2";
     private static final String THREE = "3";
@@ -56,9 +59,9 @@ public class EditStudent extends Commands {
 
         StudentAttributes attributes = student.getAttributes();
         ViewStudent.showStudentInfo(student);
-        UI.printEditPrompt();
 
         while (true) {
+            UI.printEditPrompt();
             String command = in.nextLine().trim();
 
             if (command.isBlank()) {
@@ -72,27 +75,31 @@ public class EditStudent extends Commands {
             case ONE:
                 AddStudent.addSubject(in, attributes);
                 student.setAttributes(attributes);
-                return;
+                break;
 
             case TWO:
                 editSubject(in, attributes);
-                return;
+                break;
 
             case THREE:
                 deleteSubject(in, attributes);
-                return;
+                break;
 
             case FOUR:
                 editNumber(in, attributes);
-                return;
+                break;
 
             case FIVE:
-                editPaymentDate(in, attributes);
-                return;
+                editRemarks(in, attributes);
+                break;
 
             case SIX:
-                editRemarks(in, attributes);
-                return;
+                editPaymentDate(in, attributes);
+                break;
+            
+            case SEVEN:
+                editGender(in, attributes);
+                break;
 
             default:
                 break;
@@ -135,6 +142,22 @@ public class EditStudent extends Commands {
 
         attributes.setRemarks(newRemarks);
         UI.printDivider();
+    }
+
+    private static void editGender(Scanner in, StudentAttributes attributes) {
+        UI.println(attributes.getGender());
+        UI.printDivider();
+        UI.println("Enter blank to stop editing.");
+
+        String newGender = InputParsing.readInString(in);
+
+        if (newGender.equals(DEFAULT_STRING_VALUE)) {
+            return;
+        }
+
+        attributes.setGender(newGender);
+        UI.printDivider();
+
     }
 
     //@@author alalal47
@@ -253,10 +276,10 @@ public class EditStudent extends Commands {
         
         while (true) {
             System.out.print("New subject name (enter nothing to skip): ");
-            String newName = in.nextLine().trim();
+            String newName = readInString(in);
 
             //exit clause
-            if (newName.isBlank()) {
+            if (newName.isBlank() || newName.equals(DEFAULT_STRING_VALUE)) {
                 return;
             }
 
