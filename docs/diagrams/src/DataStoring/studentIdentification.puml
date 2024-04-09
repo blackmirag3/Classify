@@ -1,62 +1,46 @@
 @startuml Student Identification
 footbox off
 
-participant Class as class
-participant findStudentByName as fsbname
-database "masterStudentList:Student[ ]" as msl
-participant findStudentByNumber as fsbnumber
-participant User as user
+participant InputParsing as fsbname
+participant StudentList as msl
 
-
-class -> fsbname : name:String
-activate class
-
-note left
-    Class here refers to a function 
-    or class that calls
-    the findStudentByName function
-end note
+-> fsbname : findStudentByName()
 
 activate fsbname
 
     fsbname -> msl : name:String
     activate msl
-    msl -> fsbname : students:Student[N]
+    msl --> fsbname : students:Student[N]
     deactivate msl
 
 alt N == 0
 
-    fsbname -> class : null
+    <-- fsbname : null
 
 else N == 1
 
-    fsbname -> class : :Student
+    <-- fsbname : :Student
 
 else N > 1
 
-    fsbname -> fsbnumber : students:Student[N]
-    activate fsbnumber
+    fsbname -> fsbname : students:Student[N]
+    activate fsbname
 
-    fsbnumber -> user : promptForPhoneNumber():int
-    activate user 
-    user -> fsbnumber : number:int
-    deactivate user
+    <- fsbname : promptForPhoneNumber():int
+    -->  fsbname : number:int
 
-    alt number matches
-        fsbnumber -> fsbname : :Student
-        fsbname -> class : :Student
+    opt number matches
+        fsbname --> fsbname : :Student
+        <-- fsbname : :Student
 
     else 
-        fsbnumber -> fsbname : null
-        deactivate fsbnumber 
+        fsbname --> fsbname : null
+        deactivate fsbname 
 
-        fsbname -> class : null
+        <-- fsbname : null
         deactivate fsbname
     end
         
 end
-
-
-deactivate class
 
 @enduml

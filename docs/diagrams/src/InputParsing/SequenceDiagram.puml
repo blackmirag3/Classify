@@ -19,7 +19,7 @@ IP -> commands : command to execute
 activate commands
 note over commands  
     this command class could refer to 
-    AddStudent, EditStudent, or more
+    AddStudent, EditStudent, or more.
 end note
 commands -> fioc : update stored database
 activate fioc

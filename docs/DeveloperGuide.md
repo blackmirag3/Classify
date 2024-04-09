@@ -74,7 +74,7 @@ All the while these commands are being processed, the runtime database `masterSt
 
 To facilitate the management of students within a tuition centre, it is imperative to have easy access and storage of important information regarding said personnel.
 
-Seen below is an UML diagram of the relevant classes dealing with storage, which is done in the form of storing the array list in a text file format.
+Seen below is an UML diagram of the relevant classes dealing with storing a student's details within the program runtime.
 
 This text file would have the details of the student's name and their attributes, in the following order: subject, grade, classes taken for that subject, phone number, last paid date and remarks.
 
