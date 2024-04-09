@@ -50,3 +50,7 @@ Given below are my contributions to the project:
   * Updating of non-specific documentation, e.g. non-functional requirements
   * Weekly reminders on deadlines for tasks
   * Handling of pull requests (Examples: [link 1](https://github.com/AY2324S2-CS2113-T13-3/tp/pull/159) [link 2](https://github.com/AY2324S2-CS2113-T13-3/tp/pull/153) [link 3](https://github.com/AY2324S2-CS2113-T13-3/tp/pull/145))
+  * Contributions to Junit tests
+    * [StudentAttributesTest]
+    * [StudentSorterTest]
+    * [SubjectGradeTest]
