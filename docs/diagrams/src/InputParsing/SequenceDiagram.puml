@@ -2,40 +2,32 @@
 
 hide footbox
 
-actor ":User" as u
+
 participant ":UserInput" as UI
 participant ":InputParsing" as IP
-collections ":Commands" as commands
-database "masterStudentList:Student[ ]" as msl
-participant ":FileIOCommands" as fioc
-database "studentInfo.txt" as studentInfo
+participant ":Command" as commands 
+participant "DataHandler" as fioc
 
-
-u -> UI : processInput(String)
-activate u
+-> UI : processInput(String)
 activate UI
-UI -> u : userCommand:String[ ]
+<- UI  : userCommand:String[ ]
 deactivate UI
 
-u -> IP : parseUserCommand(userCommand:String[ ])
+-> IP : parseUserCommand(userCommand:String[ ])
 activate IP
 IP -> commands : command to execute
 activate commands
-commands -> msl : update runtime database
-activate msl
+note over commands  
+    this command class could refer to 
+    AddStudent, EditStudent, or more
+end note
 commands -> fioc : update stored database
 activate fioc
-fioc -> studentInfo : write in msl
-activate studentInfo
-studentInfo --> fioc 
-deactivate studentInfo
 fioc --> commands
 deactivate fioc
-msl --> commands
-deactivate msl
 commands --> IP
 deactivate commands
-IP --> u
+<-- IP
 deactivate IP
 
 @enduml
