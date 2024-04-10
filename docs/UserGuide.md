@@ -23,6 +23,8 @@
 - [FAQ](/docs/UserGuide.md/#faq)
 ---
 
+<div style="page-break-after: always;"></div>
+
 ## Preface
 With the increased competitiveness of cohorts in Singapore, tuition centres have become more prevalent than ever before. 
 
@@ -35,6 +37,8 @@ In such a fast-growing market, it is important that these tuition centres use be
 These systems enable tutors and administrative staff to focus on more pressing issues and work on catering to every students' needs instead of being swamped with paperwork. 
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ## Introduction
 
@@ -53,8 +57,6 @@ Within our program, a student can be stored with their
 We have determined these to be the attributes important to running a working tuition centre. Based on these attributes, our program also has functions to sort students based on grades, subjects, improvements since joining the centre.
 
 ---
-<div style="page-break-after: always;"></div>
-
 
 ## Quick Start
 
@@ -67,6 +69,7 @@ java -jar ./Classify.jar
 ```
 5. Run the command ```help``` within the program to get a quick view of the available commands.
 ---
+<div style="page-break-after: always;"></div>
 
 ## Features 
 
@@ -149,6 +152,9 @@ Prints a message with instructions on how to use the features of Classify.
 Exits the program.
 
 ---
+
+<div style="page-break-after: always;"></div>
+
 # Usage
 
 **Please note that if any of the following characters are entered in any string prompts, `#, - and ~`, they will be replaced and your command may be deemed invalid.**
@@ -532,7 +538,7 @@ Hope you've had a productive day. See you again! Goodbye!
 ```
 ---
 
-
+<div style="page-break-after: always;"></div>
 
 ## Command Summary
 This section provides a quick overview of all the commands used in our Classify.
@@ -569,6 +575,9 @@ This section provides a quick overview of all the commands used in our Classify.
 |`bye`|Terminates the program.|[Bye](#exit-classify-bye)|
 
 ---
+
+<div style="page-break-after: always;"></div>
+
 ## FAQ
 
 **Q**: How do I transfer my data to another computer? 
