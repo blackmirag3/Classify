@@ -1,5 +1,6 @@
 package classify.textfilecode;
 
+import classify.commands.AddStudent;
 import classify.student.Student;
 import classify.student.SubjectGrade;
 import classify.ui.UI;
@@ -27,6 +28,8 @@ public class TextFileParser {
     private static final Integer NAME = 0;
     private static final Integer GRADE_FOR_SUBJECT = 1;
     private static final String INPUT_TEXT_FILE_DIRECTORY = "./data/inputFolder";
+    private static final String INVALID_CHAR_MESSAGE = "Invalid character found in subject.";
+
     /**
      * Boolean that checks for the filetype of the files.
      * Returns true if filetype is .txt, false otherwise. 
@@ -149,7 +152,7 @@ public class TextFileParser {
 
         try{
             //Set Name
-            Student student = new Student(inputArr[NAME].trim());
+            Student student = new Student(AddStudent.splitName(inputArr[NAME].trim()));
             InputParsing.checkForSpecialCharacters(student.getName());
             //Set grades
             double subjectGrades = Double.parseDouble(inputArr[GRADE_FOR_SUBJECT].trim());
@@ -158,7 +161,7 @@ public class TextFileParser {
             masterStudentList.add(student);
             student.getAttributes().addSubjectGrade(newSubject);
         } catch (InvalidCharacterException e) {
-            UI.println("Invalid character found in subject. Skipping subsequent entries.");
+            UI.println(INVALID_CHAR_MESSAGE);
         }
     }
 

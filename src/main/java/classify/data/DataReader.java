@@ -1,5 +1,6 @@
 package classify.data;
 
+import classify.commands.AddStudent;
 import classify.student.Student;
 import classify.student.StudentList;
 import classify.student.SubjectGrade;
@@ -57,7 +58,7 @@ public class DataReader {
         String[] inputArr = studentFileInput.split(MAIN_REGEX);
 
         //Set Name
-        Student student = new Student(inputArr[NAME].trim());
+        Student student = new Student(AddStudent.splitName(inputArr[NAME].trim()));
         //Set Gender
         student.getAttributes().setGender(inputArr[GENDER].trim());
         //Set remarks
