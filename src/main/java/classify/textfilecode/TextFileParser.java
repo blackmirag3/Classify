@@ -58,8 +58,16 @@ public class TextFileParser {
         System.out.println(REQUEST_TO_TRY_AGAIN);
         System.out.println(FILE_SELECTION_PROMPT);
     }
-    
-    public static void parseUserSelection(File currentDirectory, Scanner in, ArrayList <Student> masterStudentList){
+
+    /**
+     * Take in users' input for the file they want to process and enter parseTextFile Method.
+     * If file is not found, user is prompted for other files.
+     *
+     * @param currentDirectory Directory containing the contents inside inputFolder
+     * @param in Scanner to scan users' inputs
+     * @param masterStudentList StudentList where students will be added.
+     */
+    public static void parseUserSelection(File currentDirectory, Scanner in, ArrayList<Student> masterStudentList){
         File[] fileList = currentDirectory.listFiles();
         String userInput = in.nextLine();
 
@@ -72,11 +80,16 @@ public class TextFileParser {
             parseUserSelection(TextFileHandler.CURRENT_DIRECTORY, in, masterStudentList);
             return;
         }
-        
         parseTextFile(fileList, matchIndex, masterStudentList);
-                
     }
 
+    /**
+     * Selects data from the correct file and starts reading it.
+     *
+     * @param fileList List of all the text files in the inputFolder directory
+     * @param matchIndex index of the matching file in the list of Files
+     * @param masterStudentList StudentList where students will be added.
+     */
     private static void parseTextFile(File[] fileList, Integer matchIndex, ArrayList <Student> masterStudentList){
         String fileNameString = fileList[matchIndex].getName().trim();
         String fullFilePath = INPUT_TEXT_FILE_DIRECTORY + "/" + fileNameString;
@@ -92,6 +105,12 @@ public class TextFileParser {
 
     }
 
+    /**
+     * Parse the students' subject name and classes attended before going over all the students taking this class
+     *
+     * @param line Every line of the file selected by user
+     * @param masterStudentList StudentList where students will be added.
+     */
     private static void fetchDataFromTextFile(BufferedReader line, ArrayList <Student> masterStudentList) {
         try{
             String firstLine = line.readLine();
@@ -104,14 +123,23 @@ public class TextFileParser {
 
             while (line.ready()){
                 String input = line.readLine();
-                decodeTextFile(input, subjectName, totalClassesAttended, masterStudentList);
+                deconstructTextFile(input, subjectName, totalClassesAttended, masterStudentList);
             }
         } catch (IOException e) {
             UI.println(ERROR_ACCESSING_THE_FILE);
         }
     }
 
-    private static void decodeTextFile (String textFileInput, String subjectName,
+    /**
+     * Adds the new students into the student list and adds their subject, grade, and classes attended.
+     * Default value is used for gender, phone number, remarks.
+     *
+     * @param textFileInput Every line of the text file with the students' information
+     * @param subjectName Common subject of the students
+     * @param classesAttended Common number of classes attended
+     * @param masterStudentList StudentList where students will be added.
+     */
+    private static void deconstructTextFile (String textFileInput, String subjectName,
                                         Integer classesAttended, ArrayList <Student> masterStudentList){
         if (textFileInput.trim().isBlank()){
             return;
