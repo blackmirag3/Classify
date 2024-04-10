@@ -1,7 +1,10 @@
-package classify.student;
+package classify.commands;
 //@@author tayponghee
 
-import classify.commands.ViewStudent;
+import classify.student.Student;
+import classify.student.StudentAttributes;
+import classify.student.SubjectGrade;
+
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;

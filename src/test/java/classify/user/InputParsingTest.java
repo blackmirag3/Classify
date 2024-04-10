@@ -1,6 +1,7 @@
 package classify.user;
 
 import classify.student.Student;
+import classify.student.StudentList;
 
 import org.junit.jupiter.api.Test;
 
@@ -161,4 +162,30 @@ public class InputParsingTest {
         assertEquals(date, LocalDate.now().plusDays(2));
 
     }
+
+    @Test
+    public void findStudentByNameMultipleTest() {
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        String userInputName = "Alpha";
+        String userInputNumber = "88888888";
+
+        System.setIn(new ByteArrayInputStream((userInputNumber).getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        StudentList studentList = new StudentList();
+        Student alpha1 = new Student("Alpha");
+        Student alpha2 = new Student("Alpha");
+
+        alpha1.getAttributes().setPhoneNumber(99999999);
+        studentList.addStudent(alpha1);
+        alpha2.getAttributes().setPhoneNumber(88888888);
+        studentList.addStudent(alpha2);
+
+        Student target = InputParsing.findStudentByName(studentList.studentList, userInputName, scanner);
+        assertEquals(alpha2, target);
+    }
+
 }
