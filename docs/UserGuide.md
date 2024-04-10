@@ -90,11 +90,11 @@ Sorts the masterlist of students from the lowest number of classes attended to h
 
 Sorts the masterlist of students from the oldest date to the most recent. When the user types list, it will generate the updated sorted list.
 
-### - Undo the most recent delete action `undo`
+### - Undo the most recent delete action
 
 Adds in the most recently deleted student back into the runtime database.
 
-### - Restore a specific deleted student `restore`
+### - Restore a specific deleted student
 
 Finds a specific deleted student and adds it back into the runtime database.
 
