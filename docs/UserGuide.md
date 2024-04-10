@@ -549,11 +549,14 @@ This section provides a quick overview of all the commands used in our Classify.
 |`list`, press enter, <br>  [subject]|Displays the list of students that has taken that subject.|[List](#display-the-list-of-students-list)|
 |`list`, press enter, <br> press enter, [1]|Displays the list of students that is registered in the tuition centre.|[List](#display-the-list-of-students-list)|
 |`list`,  press enter, <br> press enter, [2]|Displays the list of students that is registered in the tuition centre with the total number of classes taken.|[List](#display-the-list-of-students-list)|
-|**Sort**| |
+|`list`, press enter, <br> press enter, [3]|Displays the list of students that is registered in the tuition centre with their phone numbers beside their names|[List](#display-the-list-of-students-list)|
+|`list`, press enter, <br> press enter, [4]|Displays the list of students who were archived.|[List](#display-the-list-of-students-list)|
+|`list`, press enter, <br> press enter, [5]|Displays the list of students who were recently deleted from the master list.|[List](#display-the-list-of-students-list) |
+|**Sort**| [List](#display-the-list-of-students-list)|
 |`sort <name>`|Sorts the list lexicographically. <br> If the word `name` is not specified in the initial command, the program will prompt the user for an appropriate flag.|[Sort](#sort-the-list-of-students-sort)|
 |`sort <payment>`|Sorts the list by the last fee payment date of a student. <br> If the word `payment` is not specified in the initial command, the program will prompt the user for an appropriate flag.|[Sort](#sort-the-list-of-students-sort)|
 |`sort <classes>`|Sorts the list by the number of classes a student has attended. <br> If the word `classes` is not specified in the initial command, the program will prompt the user for an appropriate flag.|[Sort](#sort-the-list-of-students-sort)|
-|`view_subject <subject>`|Lists all the students associated with that subject. <br> If the user specifies the subject in the initial command, the list will be generated and the command will be terminated. <br> If the user does not specify the subject, the programme will continuously prompt the user for a subject, <br> until they choose to terminate the command.|[Need To FIX](#produce-a-list-of-all-the-students-who-takes-a-subject)|
+|`view_subject <subject>`|Lists all the students associated with that subject. <br> If the user specifies the subject in the initial command, the list will be generated and the command will be terminated. <br> If the user does not specify the subject, the programme will continuously prompt the user for a subject, <br> until they choose to terminate the command.|[NEED TO FIX](#produce-a-list-of-all-the-students-who-takes-a-subject)|
 |**Process**| |
 |`process`, press enter,<br>`<text_file_name>`| Processes a text file containing a list of students taking the same subject and having attended the same number of lessons. <br> Adds all of them into the current list with their individual grades for the subject. <br> Will need to manually input their other attributes (eg. phone number, gender, etc) |[Process](#process-a-list-of-students-from-a-text-file-process)|
 |**Archive**| |
@@ -585,62 +588,3 @@ This section provides a quick overview of all the commands used in our Classify.
 **A**: Due to the ever-changing climate of what is considered a name (and more), we have limited the bans to 3 special characters above only. In the event your name or other identification metrics contains `#`, `~` or `-`, we seek for your understanding.
 
 ---
-
-## Command Summary
-
-### `add <student>` 
-Adds a student into the list. If the name of the student is not specified in the initial command, the program will prompt the user for the name.
-
-### `list`, press enter, [subject] 
-Displays the list of students that has taken that subject.
-
-### `list`, press enter, press enter, [1]
-Displays the list of students that is registered in the tuition centre.
-
-### `list`, press enter, press enter, [2]
-Displays the list of students that is registered in the tuition centre with the total number of classes taken.
-
-### `list`, press enter, press enter, [3]
-Displays the list of students that is registered in the tuition centre with their phone numbers beside their names
-
-### `list`, press enter, press enter, [4]
-Displays the list of students who were archived.
-
-### `list`, press enter, press enter, [5]
-Displays the list of students who were recently deleted from the master list.
-
-### `view <student>` 
-Views a students details. If the name of the student is not specified in the initial command, the program will prompt the user for the name.
-
-### `delete <student>`
-Deletes the student from the list. If the name of the student is not specified in the initial command, the program will prompt the user for the name.
-
-### `edit <student>` 
-Allows the user to edit the details of the student. If the name of the student is not specified in the initial command, the program will prompt the user for the name.
-
-### `sort <name>` 
-Sorts the list lexicographically. If the word `name` is not specified in the initial command, the program will prompt the user for an appropriate flag.
-
-### `sort <payment>` 
-Sorts the list by the last fee payment date of a student. If the word `payment` is not specified in the initial command, the program will prompt the user for an appropriate flag.
-
-### `sort <classes>`
-Sorts the list by the number of classes a student has attended. If the word `classes` is not specified in the initial command, the program will prompt the user for an appropriate flag.
-
-### `archive <student>`
-Archives specified student. Removes student from current list and adds student to archive.
-
-### `unarchive <student>`
-Unarchives specified student. Moves student from archive to current list.
-
-### `undo`
-Undoes the last deleted entry.
-
-### `restore <student>`
-Restores the student from the current session.
-
-### `help` 
-Generates the list of commands.
-
-### `bye`
-Terminates the program.
