@@ -527,6 +527,15 @@ Displays the list of students that is registered in the tuition centre.
 ### `list`, press enter, press enter, [2]
 Displays the list of students that is registered in the tuition centre with the total number of classes taken.
 
+### `list`, press enter, press enter, [3]
+Displays the list of students that is registered in the tuition centre with their phone numbers beside their names
+
+### `list`, press enter, press enter, [4]
+Displays the list of students who were archived.
+
+### `list`, press enter, press enter, [5]
+Displays the list of students who were recently deleted from the master list.
+
 ### `view <student>` 
 Views a students details. If the name of the student is not specified in the initial command, the program will prompt the user for the name.
 
@@ -544,9 +553,6 @@ Sorts the list by the last fee payment date of a student. If the word `payment` 
 
 ### `sort <classes>`
 Sorts the list by the number of classes a student has attended. If the word `classes` is not specified in the initial command, the program will prompt the user for an appropriate flag.
-
-### `view_subject <subject>` 
-Lists all the students associated with that subject. If the user specifies the subject in the initial command, the list will be generated and the command will be terminated. If the user does not specify the subject, the programme will continuously prompt the user for a subject, until they choose to terminate the command.
 
 ### `archive <student>`
 Archives specified student. Removes student from current list and adds student to archive.
