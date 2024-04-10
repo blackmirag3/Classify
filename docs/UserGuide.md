@@ -545,9 +545,6 @@ Sorts the list by the last fee payment date of a student. If the word `payment` 
 ### `sort <classes>`
 Sorts the list by the number of classes a student has attended. If the word `classes` is not specified in the initial command, the program will prompt the user for an appropriate flag.
 
-### `view_subject <subject>` 
-Lists all the students associated with that subject. If the user specifies the subject in the initial command, the list will be generated and the command will be terminated. If the user does not specify the subject, the programme will continuously prompt the user for a subject, until they choose to terminate the command.
-
 ### `archive <student>`
 Archives specified student. Removes student from current list and adds student to archive.
 
