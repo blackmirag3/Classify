@@ -114,6 +114,21 @@ public class DeleteCommands extends Commands {
             return;
         }
         Student student = recentlyDeletedList.get(recentlyDeletedList.size() - 1);
+
+        try {
+            StudentList.checkNameNumberPair(StudentList.masterStudentList, student.getName(), 
+                    student.getPhoneNumber());
+
+            StudentList.checkNameNumberPair(StudentList.archiveList, student.getName(), student.getPhoneNumber());
+        } catch (NameNumberMatchException e) {
+            UI.println("Name number match found in archive or master list.");
+            UI.println("Save file may have been tampered with.");
+            UI.println("Removing student from recently deleted list.");
+            recentlyDeletedList.remove(student);
+            UI.printDivider();
+            return;
+        } 
+
         masterStudentList.add(student);
         recentlyDeletedList.remove(student);
         UI.printDeleteUndone();

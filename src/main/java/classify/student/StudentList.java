@@ -113,6 +113,10 @@ public class StudentList {
      */
     public static void checkNameNumberPair(ArrayList<Student> studentList, String name, int number)
             throws NameNumberMatchException, NullPointerException {
+        
+        if (studentList == null || studentList.isEmpty()) {
+            return;
+        }
 
         for (Student s : studentList) {
             if (s.getName().equalsIgnoreCase(name) && s.getPhoneNumber() == number) {
@@ -124,6 +128,30 @@ public class StudentList {
                     == false: "something went wrong";
 
             //@@author Cryolian
+        }
+
+    }
+
+    /**
+     * Function checks if a name and number pair already exists in a given list.
+     * Throws an exception if it does.
+     * @param studentList               List to check through for the name and number.
+     * @param name                      Name of the student to find.
+     * @param number                    Phone number of the student to find.
+     * @throws nameNumberMatchException Thrown if a match is found.
+     */
+    public static void checkNameNumberPair(StudentList studentList, String name, int number)
+            throws NameNumberMatchException, NullPointerException {
+        
+        if (studentList.studentList == null || studentList.studentList.isEmpty()) {
+            return;
+        }
+
+        for (Student s : studentList.studentList) {
+            if (s.getName().equalsIgnoreCase(name) && s.getPhoneNumber() == number) {
+                throw new NameNumberMatchException("Student with the same " +
+                        "name and phone number found.");
+            }
         }
 
     }
