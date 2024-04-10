@@ -60,13 +60,12 @@ public class DataReader {
         Student student = new Student(inputArr[NAME].trim());
         //Set Gender
         student.getAttributes().setGender(inputArr[GENDER].trim());
+        //Set remarks
+        student.getAttributes().setRemarks(inputArr[REMARKS].trim());
         //Set Phone Number
         try {
-            InputParsing.checkForSpecialCharacters(student.getName());
-            InputParsing.checkForSpecialCharacters(student.getGender());
             int phoneNumber = Integer.parseInt(inputArr[PHONE_NUMBER].trim());
-            StudentList.checkNameNumberPair(StudentList.masterStudentList, student.getName(), phoneNumber);
-            StudentList.checkNameNumberPair(StudentList.archiveList, student.getName(), phoneNumber);
+            requiredDataChecks(student, phoneNumber);
             student.getAttributes().setPhoneNumber(phoneNumber);
         } catch (NumberFormatException e) {
             DataUI.phoneNumberParsingError();
@@ -85,29 +84,56 @@ public class DataReader {
         } catch (DateTimeParseException e) {
             DataUI.lastPaymentDateParseExceptionMessage();
         }
-        //Set remarks
-        student.getAttributes().setRemarks(inputArr[REMARKS].trim());
         //Get all Subject Info
         try {
-            String [] allSubjects = (inputArr[SUBJECTS].trim()).split(SUBJECT_REGEX);
-            int numberOfSubjects = allSubjects.length;
-
-            if (numberOfSubjects == 1 && allSubjects[0].isEmpty()){
-                DataUI.noSubjectMessage();
-            } else {
-                for (String allSubject : allSubjects) {
-                    SubjectGrade newSubject = getAllSubjectInformation(allSubject);
-                    student.getAttributes().addSubjectGrade(newSubject);
-                }
-            }
+            addDifferentSubjectData(inputArr, student);
         } catch (ArrayIndexOutOfBoundsException e) {
             UI.println("Error reading in subjects.");
         } catch (InvalidCharacterException e) {
             UI.println("Invalid character found in subject. Skipping subsequent entries.");
         }
-
         masterStudentList.add(student);
         logger.log(Level.INFO, student.getName() + " added successfully.");
+    }
+
+    /**
+     * This function does the necessary checks for all the students in the StudentInformation.txt file.
+     * It throws exceptions if any of the checks are violated
+     *
+     * @param student Refers to the student which is to be added to the masterStudentList
+     * @param phoneNumber Refers to the phone number stored in text file for this particular student.
+     * @throws InvalidCharacterException Thrown when an invalid character is used.
+     * @throws NameNumberMatchException Thrown when there are matching phone numbers in archive or master list.
+     */
+    private static void requiredDataChecks(Student student, int phoneNumber) throws InvalidCharacterException,
+            NameNumberMatchException {
+        InputParsing.checkForSpecialCharacters(student.getName());
+        InputParsing.checkForSpecialCharacters(student.getGender());
+        InputParsing.checkForSpecialCharacters(student.getAttributes().getRemarks());
+        StudentList.checkNameNumberPair(StudentList.masterStudentList, student.getName(), phoneNumber);
+        StudentList.checkNameNumberPair(StudentList.archiveList, student.getName(), phoneNumber);
+    }
+
+    /**
+     * Parses the data for the different subjects a student is taking and calls getAllSubjectInformation method
+     *
+     * @param inputArr Refers to the array containing data about the Students' Subjects
+     * @param student Refers to the student which is to be added to the masterStudentList
+     * @throws InvalidCharacterException Thrown when an invalid character is used.
+     */
+    private static void addDifferentSubjectData(String[] inputArr, Student student) throws InvalidCharacterException {
+        String [] allSubjects = (inputArr[SUBJECTS].trim()).split(SUBJECT_REGEX);
+        int numberOfSubjects = allSubjects.length;
+
+        if (numberOfSubjects == 1 && allSubjects[0].isEmpty()){
+            DataUI.noSubjectMessage();
+            return;
+        }
+
+        for (String allSubject : allSubjects) {
+            SubjectGrade newSubject = getAllSubjectInformation(allSubject);
+            student.getAttributes().addSubjectGrade(newSubject);
+        }
     }
 
     /**
