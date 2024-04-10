@@ -163,7 +163,7 @@ public class ListStudentsCommand {
      *
      * @param masterStudentList The list of all students.
      */
-    private static void listStudentsWithPhoneNumbers(ArrayList<Student> masterStudentList) {
+    public static void listStudentsWithPhoneNumbers(ArrayList<Student> masterStudentList) {
         int i = 1;
         for (Student student : masterStudentList) {
             int phoneNumber = student.getAttributes().getPhoneNumber();
