@@ -79,7 +79,8 @@ public class UI {
     private static final String CHOOSE_THE_TYPE_OF_LIST_TO_DISPLAY = "Choose the type of list to display: (index only)";
     private static final String FULL_STUDENT_LIST = "1. Full student list";
     private static final String STUDENTS_WITH_TOTAL_CLASSES = "2. List of students with total classes attended";
-    private static final String LIST_OF_STUDENTS_WITH_PHONE_NUMBER_SHOWN = "5. List of students with phone number shown";
+    private static final String LIST_OF_STUDENTS_WITH_PHONE_NUMBER_SHOWN =
+            "5. List of students with phone number shown";
     //@@author alalal47
     /**
      * Displays the help message to teach users how to use Classify.
