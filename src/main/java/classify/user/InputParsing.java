@@ -184,35 +184,6 @@ public class InputParsing {
         }
     }
 
-    /**
-     * Finds students with the specified subject and displays them to the user.
-     * Continuously prompts the user to enter a subject name until they choose to
-     * exit.
-     *
-     * @param masterStudentList The list of all students.
-     * @param in                The scanner object to read user input.
-     */
-    private static void findStudentsWithSubject(ArrayList<Student> masterStudentList, Scanner in) {
-        while (true) {
-            System.out.println(ENTER_THE_SUBJECT_NAME_TYPE_EXIT_TO_GO_BACK);
-            String input = in.nextLine().trim();
-
-            if (input.equalsIgnoreCase(EXIT)) {
-                System.out.println(EXITED_THE_COMMAND);
-                UI.printDivider();
-                return;
-            }
-
-            if (!input.isEmpty()) {
-                ListStudentsCommand.listStudentsBySubject(masterStudentList, input);
-                return;
-            } else {
-                System.out.println("Please enter a valid subject name.");
-            }
-        }
-    }
-
-
     //@@author blackmirag3
     /**
      * Prompts for grade from user input and checks format
