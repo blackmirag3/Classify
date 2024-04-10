@@ -61,8 +61,8 @@ public class UI {
     private static final String DELETE_UNDONE_MESSAGE = "Last delete undone!";
     private static final String STUDENT_RESTORED_MESSAGE = "Student has been restored!";
     private static final String NO_RECENT_DELETES = "No recent deletes found!";
-    private static final String STUDENTS_IN_ARCHIVE = "3. List of students in archive";
-    private static final String STUDENTS_IN_DELETED = "4. List of students in recently deleted";
+    private static final String STUDENTS_IN_ARCHIVE = "4. List of students in archive";
+    private static final String STUDENTS_IN_DELETED = "5. List of students in recently deleted";
     private static final String ENTER_ONE_TWO_THREE_FOUR = "Enter your choice (1, 2, 3, 4 or 5):";
     //@@ author tayponghee
     private static final String ADD_SUBJECT =
@@ -80,7 +80,7 @@ public class UI {
     private static final String FULL_STUDENT_LIST = "1. Full student list";
     private static final String STUDENTS_WITH_TOTAL_CLASSES = "2. List of students with total classes attended";
     private static final String LIST_OF_STUDENTS_WITH_PHONE_NUMBER_SHOWN =
-            "5. List of students with phone number shown";
+            "3. List of students with phone number shown";
     //@@author alalal47
     /**
      * Displays the help message to teach users how to use Classify.
@@ -135,7 +135,9 @@ public class UI {
     private static void printListHelpMessage() {
         System.out.println("list                        Displays the list of all students");
         System.out.println("                            Currently available types: Whole student list, with " +
-                "total classes attended or by certain subject only");
+                "with total classes attended, with phone number, ");
+        System.out.println("                            the archived list, the recently deleted list or " +
+                "by certain subject only.");
     }
 
     private static void printDeleteHelpMessage() {
@@ -436,9 +438,9 @@ public class UI {
         System.out.println(CHOOSE_THE_TYPE_OF_LIST_TO_DISPLAY);
         System.out.println(FULL_STUDENT_LIST);
         System.out.println(STUDENTS_WITH_TOTAL_CLASSES);
+        System.out.println(LIST_OF_STUDENTS_WITH_PHONE_NUMBER_SHOWN);
         System.out.println(STUDENTS_IN_ARCHIVE);
         System.out.println(STUDENTS_IN_DELETED);
-        System.out.println(LIST_OF_STUDENTS_WITH_PHONE_NUMBER_SHOWN);
         System.out.println(ENTER_ONE_TWO_THREE_FOUR);
     }
 }
