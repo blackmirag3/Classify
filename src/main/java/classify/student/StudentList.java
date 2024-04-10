@@ -109,7 +109,7 @@ public class StudentList {
      * @param studentList               List to check through for the name and number.
      * @param name                      Name of the student to find.
      * @param number                    Phone number of the student to find.
-     * @throws nameNumberMatchException Thrown if a match is found.
+     * @throws NameNumberMatchException Thrown if a match is found.
      */
     public static void checkNameNumberPair(ArrayList<Student> studentList, String name, int number)
             throws NameNumberMatchException, NullPointerException {

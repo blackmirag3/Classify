@@ -61,6 +61,27 @@ public class InputParsingTest {
         assertEquals(expectedOutput.trim(), printedOutput);
     }
 
+    @Test
+    public void testEditCommand() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        ArrayList<Student> students = new ArrayList<>();
+        ArrayList<Student> recentlyDeletedList = new ArrayList<>();
+        ArrayList<Student> archiveList = new ArrayList<>();
+        String [] commands = new String[2];
+        commands[0] = "edit";
+
+        InputParsing.parseUserCommand(commands, students, recentlyDeletedList, archiveList, new Scanner(System.in));
+
+        System.setOut(System.out);
+        String printedOutput = outputStream.toString();
+        String expectedOutput = "Currently no students in list." + System.lineSeparator() +
+                "No student found to edit!" + System.lineSeparator();
+
+        assertEquals(expectedOutput, printedOutput);
+    }
+
     //@@author alalal47
     @Test
     public void testHelpCommand() {
