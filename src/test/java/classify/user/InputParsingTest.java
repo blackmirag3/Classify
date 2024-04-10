@@ -118,6 +118,8 @@ public class InputParsingTest {
                 "unarchive                   Removes the specified student from the archive and adds them to the list" +
                                              ", can be used directly by unarchive [name]."
                                              + System.lineSeparator() +
+                "process                     Processes a text file which has been added by a user"
+                                             + System.lineSeparator() +
                 "help                        Prints this help message" +
             System.lineSeparator() + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
 
