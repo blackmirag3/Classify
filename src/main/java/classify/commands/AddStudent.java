@@ -152,7 +152,7 @@ public class AddStudent {
      * @param name The input string to capitalize.
      * @return The string with the first letter of each word capitalized.
      */
-    private static String splitName(String name) {
+    public static String splitName(String name) {
         if (!name.isEmpty()) {
             StringBuilder result = new StringBuilder();
             String[] words = name.split("\\s");
