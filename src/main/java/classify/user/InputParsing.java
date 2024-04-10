@@ -35,7 +35,6 @@ public class InputParsing {
     private static final String SORT = "sort";
     private static final String ARCHIVE = "archive";
     private static final String UNARCHIVE = "unarchive";
-    private static final String VIEW_SUBJECT = "view_subject";
     private static final String ENTER_THE_SUBJECT_NAME_TYPE_EXIT_TO_GO_BACK = 
             "Enter the subject name (type 'exit' to go back):";
     private static final String EXIT = "exit";
@@ -112,10 +111,6 @@ public class InputParsing {
             sortStudents(masterStudentList, in, userCommand[1]);
             break;
 
-        case VIEW_SUBJECT:
-            handleViewSubjectCommand(masterStudentList, in, userCommand[1]);
-            break;
-
         //@@author blackmirag3
         case EDIT:
             EditStudent.editStudent(in, userCommand[1]);
@@ -188,55 +183,6 @@ public class InputParsing {
             }
         }
     }
-
-    /**
-     * Lets the user check view a list of students with that corresponding subject.
-     * If the user types view_subject [subject], it will only generate the list of
-     * students with that subject,
-     * then exit.
-     * If the user types view_subject, the user can continuously view all students
-     * that
-     * have that subject, until they exit the command.
-     *
-     * @param masterStudentList The list of all students.
-     * @param in                The user's input.
-     */
-    private static void handleViewSubjectCommand(ArrayList<Student> masterStudentList, Scanner in, String subject) {
-        if (subject != null && !subject.isEmpty()) {
-            ListStudentsCommand.listStudentsBySubject(masterStudentList, subject);
-        } else {
-            findStudentsWithSubject(masterStudentList, in);
-        }
-    }
-
-    /**
-     * Finds students with the specified subject and displays them to the user.
-     * Continuously prompts the user to enter a subject name until they choose to
-     * exit.
-     *
-     * @param masterStudentList The list of all students.
-     * @param in                The scanner object to read user input.
-     */
-    private static void findStudentsWithSubject(ArrayList<Student> masterStudentList, Scanner in) {
-        while (true) {
-            System.out.println(ENTER_THE_SUBJECT_NAME_TYPE_EXIT_TO_GO_BACK);
-            String input = in.nextLine().trim();
-
-            if (input.equalsIgnoreCase(EXIT)) {
-                System.out.println(EXITED_THE_COMMAND);
-                UI.printDivider();
-                return;
-            }
-
-            if (!input.isEmpty()) {
-                ListStudentsCommand.listStudentsBySubject(masterStudentList, input);
-                return;
-            } else {
-                System.out.println("Please enter a valid subject name.");
-            }
-        }
-    }
-
 
     //@@author blackmirag3
     /**
