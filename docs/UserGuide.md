@@ -527,6 +527,15 @@ Displays the list of students that is registered in the tuition centre.
 ### `list`, press enter, press enter, [2]
 Displays the list of students that is registered in the tuition centre with the total number of classes taken.
 
+### `list`, press enter, press enter, [3]
+Displays the list of students that is registered in the tuition centre with their phone numbers beside their names
+
+### `list`, press enter, press enter, [4]
+Displays the list of students who were archived.
+
+### `list`, press enter, press enter, [5]
+Displays the list of students who were recently deleted from the master list.
+
 ### `view <student>` 
 Views a students details. If the name of the student is not specified in the initial command, the program will prompt the user for the name.
 
