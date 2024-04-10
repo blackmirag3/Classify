@@ -141,7 +141,7 @@ public class ListStudentsCommand {
      *
      * @param masterStudentList The list of all students.
      */
-    private static void listStudentsWithTotalClasses(ArrayList<Student> masterStudentList) {
+    static void listStudentsWithTotalClasses(ArrayList<Student> masterStudentList) {
         int i = 1;
         for (Student student : masterStudentList) {
             int totalClassesAttended = 0;
