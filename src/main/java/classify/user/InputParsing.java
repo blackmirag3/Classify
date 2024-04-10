@@ -35,7 +35,6 @@ public class InputParsing {
     private static final String SORT = "sort";
     private static final String ARCHIVE = "archive";
     private static final String UNARCHIVE = "unarchive";
-    private static final String VIEW_SUBJECT = "view_subject";
     private static final String ENTER_THE_SUBJECT_NAME_TYPE_EXIT_TO_GO_BACK = 
             "Enter the subject name (type 'exit' to go back):";
     private static final String EXIT = "exit";
@@ -112,10 +111,6 @@ public class InputParsing {
             sortStudents(masterStudentList, in, userCommand[1]);
             break;
 
-        case VIEW_SUBJECT:
-            handleViewSubjectCommand(masterStudentList, in, userCommand[1]);
-            break;
-
         //@@author blackmirag3
         case EDIT:
             EditStudent.editStudent(in, userCommand[1]);
@@ -186,26 +181,6 @@ public class InputParsing {
                 sortType = null;
                 UI.println(StudentSorter.INVALID_CHOICE);
             }
-        }
-    }
-
-    /**
-     * Lets the user check view a list of students with that corresponding subject.
-     * If the user types view_subject [subject], it will only generate the list of
-     * students with that subject,
-     * then exit.
-     * If the user types view_subject, the user can continuously view all students
-     * that
-     * have that subject, until they exit the command.
-     *
-     * @param masterStudentList The list of all students.
-     * @param in                The user's input.
-     */
-    private static void handleViewSubjectCommand(ArrayList<Student> masterStudentList, Scanner in, String subject) {
-        if (subject != null && !subject.isEmpty()) {
-            ListStudentsCommand.listStudentsBySubject(masterStudentList, subject);
-        } else {
-            findStudentsWithSubject(masterStudentList, in);
         }
     }
 
