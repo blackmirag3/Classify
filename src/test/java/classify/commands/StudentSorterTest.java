@@ -21,6 +21,10 @@ public class StudentSorterTest {
     public static final String SCIENCE = "Science";
     public static final String MATH = "Math";
 
+    /**
+     * A test class to verify the sorting functionality provided by the StudentSorter class.
+     * It contains test cases to ensure the proper sorting of students based on different criteria.
+     */
     @Test
     public void testSortByChoice() {
         ArrayList<Student> students = new ArrayList<>();
