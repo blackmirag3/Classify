@@ -100,7 +100,10 @@ public class InputParsingTest {
                 "list                        Displays the list of all students"
                                              + System.lineSeparator() +
                 "                            Currently available types: Whole student list, with " +
-                                             "total classes attended or by certain subject only"
+                                             "with total classes attended, with phone number, "
+                                             + System.lineSeparator() +
+                "                            the archived list, the recently deleted list or " +
+                                             "by certain subject only."
                                              + System.lineSeparator() +
                 "bye                         Exits Classify"
                                              + System.lineSeparator() +
