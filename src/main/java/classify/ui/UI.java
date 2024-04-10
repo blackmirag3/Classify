@@ -97,6 +97,7 @@ public class UI {
         printSortHelpMessage();
         printArchiveHelpMessage();
         printUnarchiveHelpMessage();
+        printProcessTextFileInputMessage();
         System.out.println("help                        Prints this help message");
     }
 
@@ -183,6 +184,11 @@ public class UI {
     public static void printEndConversation() {
         System.out.println(CLASSIFY_GOODBYE_MESSAGE);
         printDivider();
+    }
+
+    public static void printProcessTextFileInputMessage(){
+        System.out.println("process                     " +
+                "Processes a text file which has been added by a user");
     }
 
     //@@author blackmirag3

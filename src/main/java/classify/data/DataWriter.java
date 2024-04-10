@@ -50,9 +50,8 @@ public class DataWriter {
      * Used to create the parent folder for a certain file
      * 
      * @param parentPath    Path file containing the path of folder we want to make the text file in
-     * @throws IOException  Triggers whenever the input for the path or creation of the directory is improper
      */
-    public static void createParentFileFolder (String parentPath) throws IOException {
+    public static void createParentFileFolder (String parentPath) {
         try{
             Path path = Paths.get(parentPath);
             Files.createDirectories(path);
@@ -61,7 +60,6 @@ public class DataWriter {
             //Ignore this error as this should not cause any issues, we dont want replicas of the same file
         } catch (IOException e){
             DataUI.printCreateFailure();
-            throw e;
         }
     }
 }
