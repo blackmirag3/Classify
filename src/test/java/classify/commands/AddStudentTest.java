@@ -2,6 +2,7 @@ package classify.commands;
 //@@author tayponghee
 
 import classify.student.Student;
+import classify.student.StudentList;
 import classify.user.InputParsing;
 import classify.user.InvalidCharacterException;
 import org.junit.jupiter.api.Test;
@@ -62,6 +63,17 @@ class AddStudentTest {
         Student foundStudent = InputParsing.findStudentByName(masterStudentList, BANANA_REPUBLIC, scanner);
 
         assertNull(foundStudent);
+    }
+
+    //@@author Cryolian
+    @Test 
+    void addSpecialCharactersTest() {
+        StudentList studentList = new StudentList();
+        Scanner scanner = new Scanner("muli----");
+
+        AddStudent.addStudent(studentList.studentList, scanner, null);
+        assertTrue(studentList.studentList.size() == 0);
+
     }
 
 }

@@ -187,4 +187,5 @@ public class InputParsingTest {
         Student target = InputParsing.findStudentByName(studentList.studentList, userInputName, scanner);
         assertEquals(alpha2, target);
     }
+
 }
