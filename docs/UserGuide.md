@@ -42,44 +42,51 @@ java -jar ./Classify.jar
 
 ## Features 
 
-### - Add a student `add`
+### - Add a student 
 
 Initialises the process of adding in a student. 
 
-### - View details of a student `view`
+### - View details of a student
 
 Prints out the details of a given student in the interface.
 
-### - Edit details of a student `edit`
+### - Edit details of a student
 
 Initialises the process of editing both academic and non-academic details of a student.
 
-### - Delete a student from the working list `delete`
-
+### - Delete a student from the working list
 Removes a student from the master list of students. 
 
-### - Produce a list of all the students who takes a subject `list`, enter, then followed by `subject name`
+### - Produce a list of all the students who takes a subject
 
 Displays a list of all the students with that associated subject taken in the tuition centre.
 If user enters different letter cases from subjects stored, the system will still match strings regardless of letter case for user intuitiveness.
 
-### Produce a list of all students `list`, enter, enter, `1`
+### Produce a list of all students
 
 Displays a list of all the students at the tuition centre with no other parameters shown.
 
-### Produce a list of all students with total classes attended `list`, enter, enter, `2`
+### Produce a list of all students with total classes attended
 
 Displays a list of all the students with their total classes attended at the tuition centre.
 
-### - Sort the list lexicographically, from A to Z `sort name`
+### Produce a list of students moved to archive
+
+Displays a list of all the students that are moved to archive.
+
+### Produce a list of students that were recently deleted
+
+Displays a list of all students who were recently deleted.
+
+### - Sort the list lexicographically, from A to Z
 
 Sorts the masterlist of students from A to Z. When the user types list, it will generate the updated sorted list.
 
-### - Sort the list by total classes attended `sort classes`
+### - Sort the list by total classes attended
 
 Sorts the masterlist of students from the lowest number of classes attended to highest. When the user types list, it will generate the updated sorted list.
 
-### - Sort the list by latest fee payment date `sort payment`
+### - Sort the list by latest fee payment date
 
 Sorts the masterlist of students from the oldest date to the most recent. When the user types list, it will generate the updated sorted list.
 
