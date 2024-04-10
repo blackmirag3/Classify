@@ -20,9 +20,7 @@ public class Classify {
     public static void main(String[] args) throws IOException {
         //@@author ParthGandhiNUS
         DataHandler.readStudentInfo(StudentList.masterStudentList);
-        //@@author blackmirag3
         DataHandler.readArchive(StudentList.archiveList);
-        //@@author ParthGandhiNUS
         UI.printWelcomeMessage();
         
         // Takes in input from the user, and processes input to determine if it contains a command and a name   
