@@ -42,54 +42,80 @@ java -jar ./Classify.jar
 
 ## Features 
 
-### - Add a student `add`
+### - Add a student 
 
 Initialises the process of adding in a student. 
 
-### - View details of a student `view`
+### - View details of a student
 
 Prints out the details of a given student in the interface.
 
-### - Edit details of a student `edit`
+### - Edit details of a student
 
 Initialises the process of editing both academic and non-academic details of a student.
 
-### - Delete a student from the working list `delete`
-
+### - Delete a student from the working list
 Removes a student from the master list of students. 
 
-### - Produce a list of all the students who takes a subject `list`, enter, then followed by `subject name`
+### - Add a student to the archive
+Removes a student from the master list of students and adds them to the archive.
+
+### - Unarchive a student
+Removes a student from the archive and adds them to the master list of students.
+
+### - Produce a list of all the students who takes a subject
 
 Displays a list of all the students with that associated subject taken in the tuition centre.
 If user enters different letter cases from subjects stored, the system will still match strings regardless of letter case for user intuitiveness.
 
-### Produce a list of all students `list`, enter, enter, `1`
+### - Produce a list of all students
 
 Displays a list of all the students at the tuition centre with no other parameters shown.
 
-### Produce a list of all students with total classes attended `list`, enter, enter, `2`
+### - Produce a list of all students with total classes attended
 
 Displays a list of all the students with their total classes attended at the tuition centre.
 
-### - Sort the list lexicographically, from A to Z `sort name`
+### - Produce a list of students in the archive
 
-Sorts the masterlist of students from A to Z. When the user types list, it will generate the updated sorted list.
+Displays a list of all the students that have been moved to archive.
 
-### - Sort the list by total classes attended `sort classes`
+### - Produce a list of students that were recently deleted
 
-Sorts the masterlist of students from the lowest number of classes attended to highest. When the user types list, it will generate the updated sorted list.
+Displays a list of all students who were recently deleted.
 
-### - Sort the list by latest fee payment date `sort payment`
+### - Produce a list of students with their phone numbers
 
-Sorts the masterlist of students from the oldest date to the most recent. When the user types list, it will generate the updated sorted list.
+Displays a list of all students with their phone numbers.
 
-### - Undo the most recent delete action `undo`
+### - Sort the list lexicographically, from A to Z
+
+Sorts the master list of students from A to Z. When the user types list, it will generate the updated sorted list.
+
+### - Sort the list by total classes attended
+
+Sorts the master  list of students from the lowest number of classes attended to highest. When the user types list, it will generate the updated sorted list.
+
+### - Sort the list by latest fee payment date
+
+Sorts the master list of students from the oldest date to the most recent. When the user types list, it will generate the updated sorted list.
+
+### - Undo the most recent delete action
 
 Adds in the most recently deleted student back into the runtime database.
 
-### - Restore a specific deleted student `restore`
+### - Restore a specific deleted student
 
 Finds a specific deleted student and adds it back into the runtime database.
+
+### - Display help message
+
+Prints a message with instructions on how to use the features of Classify.
+
+### - Exit Classify
+
+Exits the program.
+
 
 # Usage
 
@@ -155,7 +181,7 @@ How it works (cases for input):
 - view James Wong -> James Wong
 - view james wong -> james wong
 - view JAMES WONG -> JAMES WONG
-  * so, regardless of what the user uses for capitalisation of the name, the program will recognise that uppercase and lowercases should return the same student.
+  * Regardless of what capitalisation the user uses for the name, the program will recognise that upper and lower cases should return the same student.
 
 ``` 
 Example:
@@ -224,7 +250,8 @@ Deletes the student from the list. Allows the user to do delete [student] or jus
 
 Format: `delete` or `delete NAME`
 
-Depending on whether the user entered the student's name or not during the command, a field will be printed out in the terminal, awaiting a user input.
+Depending on whether the user entered the student's name or not during the command, 
+a field will be printed out in the terminal, awaiting a user input.
 
 ``` 
 Example:
@@ -239,7 +266,8 @@ Restores a student deleted in the current session. Allows the user to do restore
 
 Format: `restore` or `restore NAME`
 
-Depending on whether the user entered the student's name or not during the command, a field will be printed out in the terminal, awaiting a user input.
+Depending on whether the user entered the student's name or not during the command, 
+a field will be printed out in the terminal, awaiting a user input.
 
 ```
 Example:
@@ -250,7 +278,7 @@ Student has been restored!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
-### - Undo a delete and restore the deleted student to the working list
+### - Undo a delete and restore the deleted student to the working list `undo`
 Undoes the latest delete. Used by typing `undo`
 
 Format: `undo`
@@ -261,12 +289,149 @@ undo
 Last delete undone!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
+
+### - Display the list of students `list`
+Displays the list of all students, or students with a specified subject. 
+The user can further specify if they would like to display the full student list, 
+the list with the total classes attended, as well as the list of students in the archive or in the recently deleted list.
+
+Format: `list`
+
+Allows the user to specify a subject, then displays all students with that subject. 
+If the field is left blank, students will be displayed regardless of the subjects they have.
+The user can then select by index, from 4 additional options to either display all students in the master list,
+all students in the master list as well as the total number of classes they have attended.
+Alternatively, the user can choose to display either the students in the recently deleted list or the archive.
+
+```
+Example:
+list
+Enter subject name (leave blank for all students):
+math
+Students with the subject "math":
+- Toad
+- Wario
+- Mario
+- Luigi
+- Moyai
+- Peach
+- Daisy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+list
+Enter subject name (leave blank for all students):
+
+Choose the type of list to display: (index only)
+1. Full student list
+2. List of students with total classes attended
+3. List of students with phone number shown
+4. List of students in archive
+5. List of students in recently deleted
+Enter your choice (1, 2, 3, 4 or 5):
+2
+List of students with total classes attended:
+1.Toad - Total Classes Attended: 13
+2.Wario - Total Classes Attended: 14
+3.Mario - Total Classes Attended: 15
+4.Luigi - Total Classes Attended: 16
+5.Moyai - Total Classes Attended: 17
+6.Peach - Total Classes Attended: 18
+7.Daisy - Total Classes Attended: 19
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+list
+Enter subject name (leave blank for all students):
+
+Choose the type of list to display: (index only)
+1. Full student list
+2. List of students with total classes attended
+3. List of students with phone number shown
+4. List of students in archive
+5. List of students in recently deleted
+Enter your choice (1, 2, 3, 4 or 5):
+3
+List of students with phone numbers:
+1.Toad - Phone Number: 91234567
+2.Wario - Phone Number: 97654321
+3.Mario - Phone Number: 81234567
+4.Luigi - Phone Number: 87654321
+5.Moyai - Phone Number: 88776655
+6.Peach - Phone Number: 99887766
+7.Daisy - Phone Number: 88997766
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+list
+Enter subject name (leave blank for all students):
+
+Choose the type of list to display: (index only)
+1. Full student list
+2. List of students with total classes attended
+3. List of students with phone number shown
+4. List of students in archive
+5. List of students in recently deleted
+Enter your choice (1, 2, 3, 4 or 5):
+5
+List of students in recently deleted: 
+1.Toad
+2.Peach
+3.Moyai
+4.Mario
+Currently, there are 4 students in the list.
+```
+
+### - Move a student from the master list to the archive `archive`
+Adds a student to the archive and deletes them from the master list. Allows the user to do archive [name] or just archive.
+
+Format: `archive`, `archive NAME`
+
+Depending on whether the user entered the student's name or not during the command, 
+a field will be printed out in the terminal, awaiting a user input.
+
+```
+Example:
+archive wario
+Archive List: 
+Analysing Inputs...
+Directory loaded successfully!
+Data update success!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Runtime Database: 
+Analysing Inputs...
+Directory loaded successfully!
+Data update success!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+### - Move a student from the archive back to the master list `unarchive`
+Removes a student from the archive and adds them back to the master list. Allows the user to do unarchive [name] or just unarchive.
+
+Format: `unarchive`, `unarchive NAME`
+
+Depending on whether the user entered the student's name or not during the command, 
+a field will be printed out in the terminal, awaiting a user input.
+
+```
+Example:
+unarchive wario
+Archive List: 
+Analysing Inputs...
+Directory loaded successfully!
+Data update success!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Runtime List: 
+Analysing Inputs...
+Directory loaded successfully!
+Data update success!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
 ### - Sort the list of students `sort`
-Sorts the list of students based on the following input. Allows the user to do sort [type] or just sort
+Sorts the list of students based on the following input. Allows the user to do sort [type] or just sort.
 
 Format: `sort`, `sort name`, `sort classes` or `sort payment`
 
-Depending on whether the user entered the student's name or not during the command, fields will be printed out in the terminal, awaiting a user input each time.
+Depending on whether the user entered the student's name or not during the command, 
+fields will be printed out in the terminal, awaiting a user input each time.
 
 ```
 Example:
@@ -291,6 +456,42 @@ sort payment
 3.wario - Date of last payment: 2024-03-30
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Sort complete!
+```
+
+### - Display instructions on how to use Classify `help`
+Prints instructions which detail how to use all the features of Classify.
+
+Format: `help`
+
+```
+Example:
+help
+add                         Adds a student to the student list, expects a name, grade and lessons attended, can be used directly with a name e.g. add [name]
+edit                        Edits a students details, expects a name, can be used directly with a name e.g. edit [name]
+view                        Views a students details, expects a name, can be used directly with a name e.g. add [name]
+delete                      Deletes a student from the student list, expects a name, can be used directly with a name e.g. add [name]
+restore                     Restore a student deleted within the current session, expects a name, can be used directly by restore [name].
+undo                        Restores the last student deleted in the current session.
+list                        Displays the list of all students
+                            Currently available types: Whole student list, with total classes attended, with phone number, the archived list, the recently deleted list or by certain subject only.
+bye                         Exits Classify
+sort                        Sorts the student list by the input parameter, expects an attribute to sort by, can be used directly by sort [type].
+                            Currently available types: name, classes, payment
+archive                     Removes the specified student from the list and archives them, can be used directly by archive [name].
+unarchive                   Removes the specified student from the archive and adds them to the list, can be used directly by unarchive [name].
+help                        Prints this help message
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+### - Exit Classify `bye`
+Exits the Classify program.
+
+Format: `bye`
+```
+Example:
+bye
+Hope you've had a productive day. See you again! Goodbye!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
 ## FAQ

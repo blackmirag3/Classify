@@ -52,7 +52,7 @@ Given below are my contributions to the project:
   * Handling of pull requests (Examples: [link 1](https://github.com/AY2324S2-CS2113-T13-3/tp/pull/159) [link 2](https://github.com/AY2324S2-CS2113-T13-3/tp/pull/153) [link 3](https://github.com/AY2324S2-CS2113-T13-3/tp/pull/145))
   * Contributions to Junit tests
     * [StudentAttributesTest](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/src/test/java/classify/student/StudentAttributesTest.java)
-    * [StudentSorterTest](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/src/test/java/classify/student/StudentSorterTest.java)
+    * [StudentSorterTest](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/src/test/java/classify/commands/StudentSorterTest.java)
     * [SubjectGradeTest](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/src/test/java/classify/student/SubjectGradeTest.java)
-    * [AddStudentTest](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/src/test/java/classify/student/AddStudentTest.java)
-    * [ViewStudentTest](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/src/test/java/classify/student/ViewStudentTest.java)
+    * [AddStudentTest](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/src/test/java/classify/commands/AddStudentTest.java)
+    * [ViewStudentTest](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/src/test/java/classify/commands/ViewStudentTest.java)

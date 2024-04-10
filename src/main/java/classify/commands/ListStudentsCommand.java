@@ -13,8 +13,8 @@ public class ListStudentsCommand {
 
     private static final String LIST_ALL = "1";
     private static final String LIST_ALL_WITH_CLASSES = "2";
-    private static final String LIST_ARCHIVE = "3";
-    private static final String LIST_DELETED = "4";
+    private static final String LIST_ARCHIVE = "4";
+    private static final String LIST_DELETED = "5";
     private static final String LIST_OF_STUDENTS_IN_ARCHIVE =
             "List of students in archive: ";
     private static final String LIST_OF_STUDENTS_IN_RECENTLY_DELETED =
@@ -25,6 +25,11 @@ public class ListStudentsCommand {
             "List of students with total classes attended:";
     private static final String INVALID_CHOICE = "Invalid choice!";
     private static final String TOTAL_CLASSES_ATTENDED = " - Total Classes Attended: ";
+    private static final String LIST_PHONE_NUMBERS = "3";
+    private static final String LIST_OF_STUDENTS_WITH_PHONE_NUMBERS = "List of students with phone numbers:";
+    private static final String PHONE_NUM = " - Phone Number: ";
+    private static final String INVALID_PHONE_NUMBER = " - Invalid Phone Number! Save file may be corrupt.";
+
 
     /**
      * Lets the user view a list of students, optionally filtered by subject.
@@ -112,6 +117,14 @@ public class ListStudentsCommand {
             UI.println(LIST_OF_STUDENTS_WITH_TOTAL_CLASSES_ATTENDED);
 
             listStudentsWithTotalClasses(masterStudentList);
+            StudentList.printCurrentArrayMessage(masterStudentList);
+            UI.printDivider();
+            break;
+
+        case LIST_PHONE_NUMBERS:
+            UI.println(LIST_OF_STUDENTS_WITH_PHONE_NUMBERS);
+            listStudentsWithPhoneNumbers(masterStudentList);
+            StudentList.printCurrentArrayMessage(masterStudentList);
             UI.printDivider();
             break;
 
@@ -146,4 +159,33 @@ public class ListStudentsCommand {
             i++;
         }
     }
+
+    /**
+     * Lists all students with their phone numbers.
+     *
+     * @param masterStudentList The list of all students.
+     */
+    public static void listStudentsWithPhoneNumbers(ArrayList<Student> masterStudentList) {
+        int i = 1;
+        for (Student student : masterStudentList) {
+            int phoneNumber = student.getAttributes().getPhoneNumber();
+            if (isValidPhoneNumber(phoneNumber)) {
+                System.out.println(i + "." + student.getName() + PHONE_NUM + phoneNumber);
+            } else {
+                System.out.println(i + "." + student.getName() + INVALID_PHONE_NUMBER);
+            }
+            i++;
+        }
+    }
+
+    /**
+     * Checks if a phone number is valid.
+     *
+     * @param phoneNumber The phone number to be checked.
+     * @return true if the phone number is valid, false otherwise.
+     */
+    private static boolean isValidPhoneNumber(int phoneNumber) {
+        return (phoneNumber >= 80000000 && phoneNumber <= 99999999);
+    }
+
 }
