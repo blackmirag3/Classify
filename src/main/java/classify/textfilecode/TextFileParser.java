@@ -28,7 +28,10 @@ public class TextFileParser {
     private static final Integer NAME = 0;
     private static final Integer GRADE_FOR_SUBJECT = 1;
     private static final String INPUT_TEXT_FILE_DIRECTORY = "./data/inputFolder";
-    private static final String INVALID_CHAR_MESSAGE = "Invalid character found in subject.";
+    private static final String INVALID_CHAR_MESSAGE = "Invalid character found.";
+    private static final String INVALID_NUMBER_MESSAGE = "Invalid Number format found.";
+    private static final String SUBJECT_REGEX = "Subject:";
+    private static final String CLASSES_ATTENDED_REGEX = "Classes Attended:";
 
     /**
      * Boolean that checks for the filetype of the files.
@@ -117,11 +120,11 @@ public class TextFileParser {
     private static void fetchDataFromTextFile(BufferedReader line, ArrayList <Student> masterStudentList) {
         try{
             String firstLine = line.readLine();
-            String [] subjectInfoStrings = firstLine.split("Subject:");
+            String [] subjectInfoStrings = firstLine.split(SUBJECT_REGEX);
             String subjectName = subjectInfoStrings[1].trim();
 
             String secondLine = line.readLine();
-            String [] classInfoStrings = secondLine.split("Classes Attended:");
+            String [] classInfoStrings = secondLine.split(CLASSES_ATTENDED_REGEX);
             int totalClassesAttended = Integer.parseInt(classInfoStrings[1].trim());
 
             while (line.ready()){
@@ -162,6 +165,8 @@ public class TextFileParser {
             student.getAttributes().addSubjectGrade(newSubject);
         } catch (InvalidCharacterException e) {
             UI.println(INVALID_CHAR_MESSAGE);
+        } catch (NumberFormatException e) {
+            UI.println(INVALID_NUMBER_MESSAGE);
         }
     }
 

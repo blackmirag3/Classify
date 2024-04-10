@@ -39,6 +39,9 @@ public class DataReader {
     private static final Integer REMARKS = 4;
     private static final Integer SUBJECTS = 5;
     private static final Logger logger = Logger.getLogger(InputParsing.class.getName());
+    private static final String INVALID_CHAR_MESSAGE = "Invalid character found.";
+    private static final String INVALID_NUMBER_MESSAGE = "Invalid Number format found.";
+    private static final String ARRAY_INDEX_MESSAGE = "Error reading in subjects.";
 
     public static Scanner in = new Scanner(System.in);
 
@@ -89,9 +92,9 @@ public class DataReader {
         try {
             addDifferentSubjectData(inputArr, student);
         } catch (ArrayIndexOutOfBoundsException e) {
-            UI.println("Error reading in subjects.");
+            UI.println(ARRAY_INDEX_MESSAGE);
         } catch (InvalidCharacterException e) {
-            UI.println("Invalid character found in subject. Skipping subsequent entries.");
+            UI.println(INVALID_CHAR_MESSAGE);
         }
         masterStudentList.add(student);
         logger.log(Level.INFO, student.getName() + " added successfully.");
@@ -132,8 +135,14 @@ public class DataReader {
         }
 
         for (String allSubject : allSubjects) {
-            SubjectGrade newSubject = getAllSubjectInformation(allSubject);
-            student.getAttributes().addSubjectGrade(newSubject);
+            try {
+                SubjectGrade newSubject = getAllSubjectInformation(allSubject);
+                student.getAttributes().addSubjectGrade(newSubject);
+            } catch (InvalidCharacterException e) {
+                UI.println(INVALID_CHAR_MESSAGE);
+            } catch (NumberFormatException e){
+                UI.println(INVALID_NUMBER_MESSAGE);
+            }
         }
     }
 
@@ -144,7 +153,8 @@ public class DataReader {
      * @return all the subject information which needs to be added as a SubjectGrade
      * @throws InvalidCharacterException Exception if the character is invalid
      */
-    private static SubjectGrade getAllSubjectInformation(String allSubjects) throws InvalidCharacterException {
+    private static SubjectGrade getAllSubjectInformation(String allSubjects) throws InvalidCharacterException,
+            NumberFormatException {
         String [] subjectDetailedInfo = allSubjects.split(SUBJECT_INFO_REGEX);
         //Subject Name
         String subjectName = subjectDetailedInfo[SUBJECT_NAME].trim();
