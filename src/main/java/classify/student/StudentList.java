@@ -113,6 +113,10 @@ public class StudentList {
      */
     public static void checkNameNumberPair(ArrayList<Student> studentList, String name, int number)
             throws NameNumberMatchException, NullPointerException {
+        
+        if (studentList == null || studentList.isEmpty()) {
+            return;
+        }
 
         for (Student s : studentList) {
             if (s.getName().equalsIgnoreCase(name) && s.getPhoneNumber() == number) {

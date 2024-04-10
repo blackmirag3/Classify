@@ -1,5 +1,6 @@
 @startuml StudentSorter
 skinparam classAttributeIconSize 0
+hide circle
 
 class StudentSorter {
     + NAME: String

@@ -18,8 +18,9 @@ public class Classify {
      * @throws IOException  Thrown when error reading file.
      */
     public static void main(String[] args) throws IOException {
-        //@@author blackmirag3
+        //@@author ParthGandhiNUS
         DataHandler.readStudentInfo(StudentList.masterStudentList);
+        //@@author blackmirag3
         DataHandler.readArchive(StudentList.archiveList);
         //@@author ParthGandhiNUS
         UI.printWelcomeMessage();

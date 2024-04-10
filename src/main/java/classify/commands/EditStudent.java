@@ -21,7 +21,7 @@ public class EditStudent extends Commands {
     private static final String DELETE_SUBJECT = "3";
     private static final String EDIT_NUMBER = "4";
     private static final String EDIT_REMARKS = "5";
-    private static final String EDIT_PAYMENT = "6";
+    private static final String EDIT_PAYMENT_DATE = "6";
     private static final String EDIT_GENDER = "7";
     private static final String DEFAULT_STRING_VALUE = "Unknown";
 
@@ -93,7 +93,7 @@ public class EditStudent extends Commands {
                 editRemarks(in, attributes);
                 break;
 
-            case EDIT_PAYMENT:
+            case EDIT_PAYMENT_DATE:
                 editPaymentDate(in, attributes);
                 break;
             
