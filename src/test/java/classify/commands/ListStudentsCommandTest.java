@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ListStudentsWithPhoneNumbersTest {
+class ListStudentsCommandTest {
 
     private static final String YIXIN = "Yi Xin";
     private static final String GERARD = "Gerard";
