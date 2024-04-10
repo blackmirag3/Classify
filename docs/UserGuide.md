@@ -78,6 +78,10 @@ Displays a list of all the students that are moved to archive.
 
 Displays a list of all students who were recently deleted.
 
+### Produce a list of students with their phone numbers
+
+Displays a list of all students with their phone numbers.
+
 ### - Sort the list lexicographically, from A to Z
 
 Sorts the masterlist of students from A to Z. When the user types list, it will generate the updated sorted list.
