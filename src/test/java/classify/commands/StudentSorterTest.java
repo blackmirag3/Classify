@@ -22,8 +22,8 @@ public class StudentSorterTest {
     public static final String MATH = "Math";
 
     /**
-     * A test class to verify the sorting functionality provided by the StudentSorter class.
-     * It contains test cases to ensure the proper sorting of students based on different criteria.
+     * Test case to verify the sorting of students by different criteria.
+     * It tests the sorting functionality based on specified sorting choices.
      */
     @Test
     public void testSortByChoice() {
