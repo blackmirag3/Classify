@@ -26,7 +26,7 @@ public class StudentListTest {
         } catch (NameNumberMatchException e) {
             exceptionThrown = true;
         } catch (NullPointerException e) {
-
+            exceptionThrown = false; //wrong exception thrown
         }
 
         assertEquals(studentList.studentList.get(0), alpha);
