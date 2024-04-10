@@ -60,6 +60,8 @@ public class DataReader {
         Student student = new Student(inputArr[NAME].trim());
         //Set Gender
         student.getAttributes().setGender(inputArr[GENDER].trim());
+        //Set remarks
+        student.getAttributes().setRemarks(inputArr[REMARKS].trim());
         //Set Phone Number
         try {
             int phoneNumber = Integer.parseInt(inputArr[PHONE_NUMBER].trim());
@@ -82,8 +84,6 @@ public class DataReader {
         } catch (DateTimeParseException e) {
             DataUI.lastPaymentDateParseExceptionMessage();
         }
-        //Set remarks
-        student.getAttributes().setRemarks(inputArr[REMARKS].trim());
         //Get all Subject Info
         try {
             addDifferentSubjectData(inputArr, student);
