@@ -324,9 +324,9 @@ Enter subject name (leave blank for all students):
 Choose the type of list to display: (index only)
 1. Full student list
 2. List of students with total classes attended
-3. List of students in archive
-4. List of students in recently deleted
-5. List of students with phone number shown
+3. List of students with phone number shown
+4. List of students in archive
+5. List of students in recently deleted
 Enter your choice (1, 2, 3, 4 or 5):
 2
 List of students with total classes attended:
@@ -345,11 +345,32 @@ Enter subject name (leave blank for all students):
 Choose the type of list to display: (index only)
 1. Full student list
 2. List of students with total classes attended
-3. List of students in archive
-4. List of students in recently deleted
-5. List of students with phone number shown
+3. List of students with phone number shown
+4. List of students in archive
+5. List of students in recently deleted
 Enter your choice (1, 2, 3, 4 or 5):
-4
+3
+List of students with phone numbers:
+1.Toad - Phone Number: 91234567
+2.Wario - Phone Number: 97654321
+3.Mario - Phone Number: 81234567
+4.Luigi - Phone Number: 87654321
+5.Moyai - Phone Number: 88776655
+6.Peach - Phone Number: 99887766
+7.Daisy - Phone Number: 88997766
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+list
+Enter subject name (leave blank for all students):
+
+Choose the type of list to display: (index only)
+1. Full student list
+2. List of students with total classes attended
+3. List of students with phone number shown
+4. List of students in archive
+5. List of students in recently deleted
+Enter your choice (1, 2, 3, 4 or 5):
+5
 List of students in recently deleted: 
 1.Toad
 2.Peach
@@ -452,7 +473,7 @@ delete                      Deletes a student from the student list, expects a n
 restore                     Restore a student deleted within the current session, expects a name, can be used directly by restore [name].
 undo                        Restores the last student deleted in the current session.
 list                        Displays the list of all students
-                            Currently available types: Whole student list, with total classes attended or by certain subject only
+                            Currently available types: Whole student list, with total classes attended, with phone number, the archived list, the recently deleted list or by certain subject only.
 bye                         Exits Classify
 sort                        Sorts the student list by the input parameter, expects an attribute to sort by, can be used directly by sort [type].
                             Currently available types: name, classes, payment
