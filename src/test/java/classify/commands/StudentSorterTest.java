@@ -1,8 +1,11 @@
-package classify.student;
+//@@author tayponghee
+package classify.commands;
 
 import org.junit.jupiter.api.Test;
 
-import classify.commands.StudentSorter;
+import classify.student.Student;
+import classify.student.StudentAttributes;
+import classify.student.SubjectGrade;
 
 import java.util.ArrayList;
 
