@@ -25,6 +25,11 @@ public class ListStudentsCommand {
             "List of students with total classes attended:";
     private static final String INVALID_CHOICE = "Invalid choice!";
     private static final String TOTAL_CLASSES_ATTENDED = " - Total Classes Attended: ";
+    private static final String LIST_PHONE_NUMBERS = "5";
+    private static final String LIST_OF_STUDENTS_WITH_PHONE_NUMBERS = "List of students with phone numbers:";
+    private static final String PHONE_NUM = " - Phone Number: ";
+    private static final String INVALID_PHONE_NUMBER = " - Invalid Phone Number! Save file may be corrupt.";
+
 
     /**
      * Lets the user view a list of students, optionally filtered by subject.
@@ -115,6 +120,12 @@ public class ListStudentsCommand {
             UI.printDivider();
             break;
 
+        case LIST_PHONE_NUMBERS:
+            UI.println(LIST_OF_STUDENTS_WITH_PHONE_NUMBERS);
+            listStudentsWithPhoneNumbers(masterStudentList);
+            UI.printDivider();
+            break;
+
         default:
             UI.println(INVALID_CHOICE);
         }
@@ -146,4 +157,33 @@ public class ListStudentsCommand {
             i++;
         }
     }
+
+    /**
+     * Lists all students with their phone numbers.
+     *
+     * @param masterStudentList The list of all students.
+     */
+    public static void listStudentsWithPhoneNumbers(ArrayList<Student> masterStudentList) {
+        int i = 1;
+        for (Student student : masterStudentList) {
+            int phoneNumber = student.getAttributes().getPhoneNumber();
+            if (isValidPhoneNumber(phoneNumber)) {
+                System.out.println(i + "." + student.getName() + PHONE_NUM + phoneNumber);
+            } else {
+                System.out.println(i + "." + student.getName() + INVALID_PHONE_NUMBER);
+            }
+            i++;
+        }
+    }
+
+    /**
+     * Checks if a phone number is valid.
+     *
+     * @param phoneNumber The phone number to be checked.
+     * @return true if the phone number is valid, false otherwise.
+     */
+    private static boolean isValidPhoneNumber(int phoneNumber) {
+        return (phoneNumber >= 80000000 && phoneNumber <= 99999999);
+    }
+
 }
