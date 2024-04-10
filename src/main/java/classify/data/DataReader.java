@@ -109,6 +109,7 @@ public class DataReader {
             NameNumberMatchException {
         InputParsing.checkForSpecialCharacters(student.getName());
         InputParsing.checkForSpecialCharacters(student.getGender());
+        InputParsing.checkForSpecialCharacters(student.getAttributes().getRemarks());
         StudentList.checkNameNumberPair(StudentList.masterStudentList, student.getName(), phoneNumber);
         StudentList.checkNameNumberPair(StudentList.archiveList, student.getName(), phoneNumber);
     }
@@ -126,11 +127,12 @@ public class DataReader {
 
         if (numberOfSubjects == 1 && allSubjects[0].isEmpty()){
             DataUI.noSubjectMessage();
-        } else {
-            for (String allSubject : allSubjects) {
-                SubjectGrade newSubject = getAllSubjectInformation(allSubject);
-                student.getAttributes().addSubjectGrade(newSubject);
-            }
+            return;
+        }
+
+        for (String allSubject : allSubjects) {
+            SubjectGrade newSubject = getAllSubjectInformation(allSubject);
+            student.getAttributes().addSubjectGrade(newSubject);
         }
     }
 
