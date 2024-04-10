@@ -188,7 +188,8 @@ public class UI {
 
     public static void printProcessTextFileInputMessage(){
         System.out.println("process                     " +
-                "Processes a text file which has been added by a user");
+                "Processes a text file containing a list of students taking the same subject and the same number " +
+                "of classes.");
     }
 
     //@@author blackmirag3
