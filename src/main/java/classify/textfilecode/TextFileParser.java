@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 //@@author ParthGandhiNUS
@@ -26,12 +27,15 @@ public class TextFileParser {
     private static final String NO_MATCH_FOUND = "No Match Found!";
     private static final String ERROR_ACCESSING_THE_FILE = "Something went wrong while accessing the file";
     private static final Integer NAME = 0;
-    private static final Integer GRADE_FOR_SUBJECT = 1;
+    private static final Integer PHONE_NUMBER = 1;
+    private static final Integer GRADE_FOR_SUBJECT = 2;
     private static final String INPUT_TEXT_FILE_DIRECTORY = "./data/inputFolder";
     private static final String INVALID_CHAR_MESSAGE = "Invalid character found.";
     private static final String INVALID_NUMBER_MESSAGE = "Invalid Number format found.";
     private static final String SUBJECT_REGEX = "Subject:";
     private static final String CLASSES_ATTENDED_REGEX = "Classes Attended:";
+    private static final String INVALID_PHONE_NUMBER_MESSAGE="'s phone number is not a valid Singapore phone number." +
+        " Please edit this students' phone number with the edit command!";
 
     /**
      * Boolean that checks for the filetype of the files.
@@ -87,6 +91,33 @@ public class TextFileParser {
             return;
         }
         parseTextFile(fileList, matchIndex, masterStudentList);
+    }
+
+    /**
+     * This method returns the index of file which matches the user's input for file to be processed
+     * 
+     * @param fileList List of files in current directory
+     * @param userInput User's input
+     * @return Returns the index of the match found or else returns -1.
+     */
+    private static Integer findMatchingFile(File[] fileList, String userInput) {
+        String input = userInput.toLowerCase().trim();
+        for (int i = 0; i < fileList.length; i++){
+            String fileName = fileList[i].getName().toLowerCase().trim();
+            int dotIndex = fileName.lastIndexOf(DOT);
+            String fileNameWithoutType = fileName.substring(0,dotIndex);
+            
+            // Return match with the type
+            if (input.equals(fileName)){
+                return i;
+            }
+
+            // Return match without the type
+            if (input.equals(fileNameWithoutType)){
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -155,14 +186,18 @@ public class TextFileParser {
 
         try{
             //Set Name
-            Student student = new Student(AddStudent.splitName(inputArr[NAME].trim()));
+            String studentNameString = AddStudent.splitName(inputArr[NAME].trim());
+            Student student = new Student(studentNameString);
             InputParsing.checkForSpecialCharacters(student.getName());
+            //Set phone_number
+            int phoneNumber = Integer.parseInt(inputArr[PHONE_NUMBER].trim());
             //Set grades
             double subjectGrades = Double.parseDouble(inputArr[GRADE_FOR_SUBJECT].trim());
             //Put Everything together
             SubjectGrade newSubject = new SubjectGrade(subjectName, subjectGrades, classesAttended);
-            masterStudentList.add(student);
-            student.getAttributes().addSubjectGrade(newSubject);
+            //Adding the student / Subject in existing student
+            masterStudentListAddition(masterStudentList, studentNameString, student, phoneNumber,
+                    subjectName, newSubject);
         } catch (InvalidCharacterException e) {
             UI.println(INVALID_CHAR_MESSAGE);
         } catch (NumberFormatException e) {
@@ -171,29 +206,102 @@ public class TextFileParser {
     }
 
     /**
-     * This method returns the index of file which matches the user's input for file to be processed
+     * This method checks for a current student in the list.
+     * It adds a new student and the applicable attributes if a student with the same name and number
+     * is not found in the list.
+     * It adds a new subject attributes if a student with the same name and number is found in the list.
      * 
-     * @param fileList List of files in current directory
-     * @param userInput User's input
-     * @return Returns the index of the match found or else returns -1.
+     * @param masterStudentList StudentList where students will be added
+     * @param studentNameString Name of the student
+     * @param student Instance of Student 
+     * @param phoneNumber Phone number of the student
+     * @param newSubject Instance of subject to be added
      */
-    private static Integer findMatchingFile(File[] fileList, String userInput) {
-        String input = userInput.toLowerCase().trim();
-        for (int i = 0; i < fileList.length; i++){
-            String fileName = fileList[i].getName().toLowerCase().trim();
-            int dotIndex = fileName.lastIndexOf(DOT);
-            String fileNameWithoutType = fileName.substring(0,dotIndex);
-            
-            // Return match with the type
-            if (input.equals(fileName)){
-                return i;
+    private static void masterStudentListAddition(ArrayList<Student> masterStudentList, String studentNameString,
+                                                  Student student,int phoneNumber, String subjectName,
+                                                  SubjectGrade newSubject) {
+        if (matchingNameNumber (masterStudentList, studentNameString, phoneNumber)){
+            Integer indexOfStudent = matchingStudentIndex(masterStudentList, studentNameString, phoneNumber);
+            if (!(matchingSubject(masterStudentList, subjectName, indexOfStudent))){
+                masterStudentList.get(indexOfStudent).getAttributes().addSubjectGrade(newSubject);
             }
+        } else {
+            masterStudentList.add(student);
+            addPhoneNumber(studentNameString, student, phoneNumber);
+            student.getAttributes().addSubjectGrade(newSubject);
+        }
+    }
 
-            // Return match without the type
-            if (input.equals(fileNameWithoutType)){
+    /**
+     * Adds the phone number field for a new student or returns a message for invalid phone number
+     * 
+     * @param studentNameString Name of the student
+     * @param student Instance of Student 
+     * @param phoneNumber Phone number of the student
+     */
+    private static void addPhoneNumber(String studentNameString, Student student, int phoneNumber) {
+        if (InputParsing.checkNumberValidity(phoneNumber)){
+            student.getAttributes().setPhoneNumber(phoneNumber);
+        } else {
+            UI.println(studentNameString + INVALID_PHONE_NUMBER_MESSAGE);
+        }
+    }
+
+    /**
+     * Function returns the index of the matching student in the masterStudentList.
+     * 
+     * @param masterStudentList List to check through for the name and number
+     * @param name              Name of the student to find
+     * @param number            Phone number of the student to find.
+     * @return                  Index of the student in masterStudentList
+     */
+    private static Integer matchingStudentIndex (ArrayList<Student> masterStudentList, String name, int number){
+        Integer listSize = masterStudentList.size();
+
+        for (int i = 0; i < listSize; i++) {
+            if (masterStudentList.get(i).getName().equalsIgnoreCase(name) && 
+                masterStudentList.get(i).getPhoneNumber() == number) {
                 return i;
             }
         }
         return -1;
     }
+    
+    /**
+     * Checks if the subject we are trying to add is already a subject that the student is taking. 
+     * Returns true if student takes that subject and false otherwise.
+     * 
+     * @param masterStudentList List to obtain student
+     * @param subjectName name of the subject that is getting added
+     * @return True if subject is found attributed to that particular student. False otherwise.
+     */
+    private static boolean matchingSubject(ArrayList<Student> masterStudentList, String subjectName,
+                                           Integer indexOfStudent) {
+        List<SubjectGrade> studentSubjects = masterStudentList.get(indexOfStudent).getAttributes().getSubjectGrades();
+        for (SubjectGrade subject : studentSubjects){
+            if (subject.getSubject().equalsIgnoreCase(subjectName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+        
+
+    //@@author Cryolian
+    /**
+     * Function checks if a name and number pair already exists in a given list.
+     * 
+     * @param masterStudentList  List to check through for the name and number
+     * @param name               Name of the student to find
+     * @param number             Phone number of the student to find.
+     * @return                   True if a student with the same name and number is found in the list,false otherwise.
+     */
+    private static boolean matchingNameNumber (ArrayList<Student> masterStudentList, String name, int number) {
+        for (Student student : masterStudentList) {
+            if (student.getName().equalsIgnoreCase(name) && student.getPhoneNumber() == number) {
+                return true;
+            }
+        }
+        return false;
+    } 
 }
