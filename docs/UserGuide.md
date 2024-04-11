@@ -10,17 +10,17 @@
   - [`View`](#view-details-of-a-student-view)
   - [`Delete`](#delete-a-student-from-the-working-list-delete)
   - [`Edit`](#edit-details-of-a-student-edit)
+  - [`Restore`](#restore-a-student-to-the-working-list-restore)
+  - [`Undo`](#undo-a-delete-and-restore-the-deleted-student-to-the-working-list-undo)
   - [`List`](#display-the-list-of-students-list)
   - [`Sort`](#sort-the-list-of-students-sort)
   - [`Process`](#process-a-list-of-students-from-a-text-file-process)
   - [`Archive`](#move-a-student-from-the-master-list-to-the-archive-archive)
   - [`Unarchive`](#move-a-student-from-the-archive-back-to-the-master-list-unarchive)
-  - [`Undo`](#undo-a-delete-and-restore-the-deleted-student-to-the-working-list-undo)
-  - [`Restore`](#restore-a-student-to-the-working-list-restore)
   - [`Help`](#display-instructions-on-how-to-use-classify-help)
   - [`Bye`](#exit-classify-bye)
 - [Command Summary](#command-summary)
-- [FAQ](/docs/UserGuide.md/#faq)
+- [FAQ](#faq)
 ---
 
 <div style="page-break-after: always;"></div>
@@ -184,7 +184,7 @@ Thus, please be informed and educated that our software only works in countries 
 To be specific, this is referring to a city-state republic in South East Asia, that lies in the timezone GMT +8 in the Straits of Johor. 
 Some may debate that our time zone is actually GMT+7.5 or GMT+7, but it was changed to facilitate business deals and decisions with other financial hubs in the region thanks to our capitalistic overlords.
 
-#### Example: 
+#### Example usage:
 ``` 
 add wario
 
@@ -222,7 +222,7 @@ How it works (cases for input):
 - view JAMES WONG -> JAMES WONG
   * Regardless of what capitalisation the user uses for the name, the program will recognise that upper and lower cases should return the same student.
 
-#### Example:
+#### Example usage:
 ``` 
 view wario
 
@@ -239,9 +239,9 @@ Classes Attended: 1
 For any student that exists within the programme's master, archive and recently deleted list, the user cannot add new students with a name-phone number pair that matches that of the existing student.
 
 The following is an example of trying to add a new student that matches the name and phone number of an already existing student.
-```
-Example:
 
+#### Example usage:
+```
 add awesomesjh
 Subject (enter nothing to skip):
 No subjects added.
@@ -260,7 +260,7 @@ Format: `delete` or `delete NAME`
 Depending on whether the user entered the student's name or not during the command, 
 a field will be printed out in the terminal, awaiting a user input.
 
-#### Delete example:
+#### Example usage:
 ``` 
 delete
 
@@ -275,23 +275,26 @@ Edit a student's details and subjects. Allows the user to do edit [student] or j
 Format: `edit` or `edit NAME`
 
 If user has not entered a name, they will be prompted to input a name.
-Once programme received name input, the student master list will be searched for the name.
+Once programme received name input, the student master list will be searched for the name. Name search is not case-sensitive.
 
 If the name input matches that of an existing student, edit mode will be entered for that student.
 If 2 students with the same name is found, the user will be prompted to enter the desired student's phone number to select them.
 
-In edit mode, a list of actions will be printed and user can enter the respective index to select action to take.
-The following actions can be executed:
-- Add new subject to student
-- Modify student's existing subject
-- Delete student's existing subject
-- Modify student's phone number
-- Modify student's payment date
-- Modify student's remarks
+In edit mode, a list of actions will be printed and user can choose from a list of actions to take.
+The following actions (listed along with their indexes) can be executed:
+- 1 Add new subject to student
+- 2 Modify student's existing subject
+- 3 Delete student's existing subject
+- 4 Modify student's phone number
+- 5 Modify student's remarks
+- 6 Modify student's payment date
+- 7 Modify student's gender
 
-Each action has its own step by step prompts for user to follow, as seen in examples below.
+The user can enter the action's index to execute the respective action, e.g. user can input "1" to add new subject.
 
-#### Edit examples:
+Each action has its own step by step prompts for user to follow, as seen in below.
+
+#### Example usages:
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Welcome to Classify!
@@ -303,7 +306,7 @@ Name of student to edit (blank to exit):
 Student details: 
 Name: Vincent
 
-Phone Number: 99999999
+Phone Number: 83227277
 Gender: Unknown
 Last Payment Date: 2024-04-08
 Remarks: Unknown
@@ -314,8 +317,9 @@ How would you like to edit student? Enter index (blank to exit):
 2. Modify subject
 3. Delete subject
 4. Modify phone number
-6. Modify payment date
 5. Modify remarks
+6. Modify payment date
+7. Edit Gender.
 >> 1
 Subject (enter nothing to skip): PE
 Current marks out of 100 (blank to skip) : 
@@ -348,7 +352,7 @@ Format: `delete` or `delete NAME`
 Depending on whether the user entered the student's name or not during the command, 
 a field will be printed out in the terminal, awaiting a user input.
 
-#### Example:
+#### Example usage:
 ``` 
 delete
 
@@ -366,7 +370,7 @@ Format: `restore` or `restore NAME`
 Depending on whether the user entered the student's name or not during the command, 
 a field will be printed out in the terminal, awaiting a user input.
 
-#### Example:
+#### Example usage:
 ```
 restore
 Enter student name: 
@@ -378,8 +382,6 @@ Student has been restored!
 ### Undo a delete and restore the deleted student to the working list `undo`
 Undoes the latest "delete student". Used by typing `undo`
 
-This command does not undo changes from the "edit" command.
-
 Format: `undo`
 
 ```
@@ -388,6 +390,8 @@ undo
 Last delete undone!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
+
+Note: This command does not undo changes from the `edit` command.
 
 ### Display the list of students `list`
 Displays the list of all students, or students with a specified subject. 
@@ -404,7 +408,7 @@ all students in the master list as well as the total number of classes they have
 
 Alternatively, the user can choose to display either the students in the recently deleted list or the archive.
 
-#### Example:
+#### Example usage:
 ```
 list
 Enter subject name (leave blank for all students):
@@ -495,65 +499,6 @@ List of students in recently deleted:
 4.Mario
 Currently, there are 4 students in the list.
 ```
-### Move a student from the master list to the archive `archive`
-Adds a student to the archive and deletes them from the master list. Allows the user to do archive [name] or just archive.
-
-Format: `archive`, `archive NAME`
-
-Depending on whether the user entered the student's name or not during the command, 
-a field will be printed out in the terminal, awaiting a user input.
-
-For any archived student, the user will be unable to add a student with the same name and contact number pair as the archived.
-
-#### Archive example:
-```
-archive wario
-Archive List: 
-Analysing Inputs...
-Directory loaded successfully!
-Data update success!
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Runtime Database: 
-Analysing Inputs...
-Directory loaded successfully!
-Data update success!
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-```
-
-### Move a student from the archive back to the master list `unarchive`
-Removes a student from the archive and adds them back to the master list. Allows the user to do unarchive [name] or just unarchive.
-
-Format: `unarchive`, `unarchive NAME`
-
-Depending on whether the user entered the student's name or not during the command, 
-a field will be printed out in the terminal, awaiting a user input.
-
-If a student that exists in the archive data file matches the name and phone number of an already existing student, the archived student cannot be unarchived and will be overwritten subsequently.
-
-#### Valid student in archive:
-
-```
-unarchive wario
-Archive List: 
-Analysing Inputs...
-Directory loaded successfully!
-Data update success!
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Runtime List: 
-Analysing Inputs...
-Directory loaded successfully!
-Data update success!
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-```
-
-#### Invalid student:
-
-```
-unarchive yeeter
-No student found!
-What else can I do for you today?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-```
 
 ### Sort the list of students `sort`
 Sorts the list of students based on the following input. Allows the user to do sort [type] or just sort.
@@ -563,7 +508,7 @@ Format: `sort`, `sort name`, `sort classes` or `sort payment`
 Depending on whether the user entered the student's name or not during the command, 
 fields will be printed out in the terminal, awaiting a user input each time.
 
-#### Example:
+#### Example usage:
 
 ```
 sort
@@ -631,7 +576,70 @@ Directory loaded successfully!
 Data update success!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
+### Move a student from the master list to the archive `archive`
+Adds a student to the archive and deletes them from the master list. Allows the user to do archive [name] or just archive.
 
+Format: `archive`, `archive NAME`
+
+Depending on whether the user entered the student's name or not during the command,
+a field will be printed out in the terminal, awaiting a user input.
+
+For any archived student, the user will be unable to add a student with the same name and contact number pair as the archived.
+
+
+#### Example usage:
+```
+archive wario
+Archive List: 
+Analysing Inputs...
+Directory loaded successfully!
+Data update success!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Runtime Database: 
+Analysing Inputs...
+Directory loaded successfully!
+Data update success!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+The user can then view currently archived students using the `list` command.
+
+### Move a student from the archive back to the master list `unarchive`
+Removes a student from the archive and adds them back to the master list. Allows the user to do unarchive [name] or just unarchive.
+
+Format: `unarchive`, `unarchive NAME`
+
+Depending on whether the user entered the student's name or not during the command,
+a field will be printed out in the terminal, awaiting a user input.
+
+The user can then view currently archived students using the `list` command.
+
+#### Valid student in archive:
+
+```
+unarchive wario
+Archive List: 
+Analysing Inputs...
+Directory loaded successfully!
+Data update success!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Runtime List: 
+Analysing Inputs...
+Directory loaded successfully!
+Data update success!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+#### Invalid student:
+
+```
+unarchive yeeter
+No student found!
+What else can I do for you today?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+If a student that exists in the archive data file matches the name and phone number of an already existing student,
+the archived student will not be loaded into the archive list and will be overwritten subsequently.
 
 
 ### Display instructions on how to use Classify `help`
@@ -639,7 +647,7 @@ Prints instructions which detail how to use all the features of Classify.
 
 Format: `help`
 
-#### Example:
+#### Example usage:
 ```
 help
 add                         Adds a student to the student list, expects a name, grade and lessons attended, can be used directly with a name e.g. add [name]
@@ -664,8 +672,9 @@ help                        Prints this help message
 Exits the Classify program.
 
 Format: `bye`
+
+#### Example usage:
 ```
-Example:
 bye
 Hope you've had a productive day. See you again! Goodbye!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -678,34 +687,35 @@ Hope you've had a productive day. See you again! Goodbye!
 This section provides a quick overview of all the commands used in our Classify.
 
 
-|Command|Description| View Command|
-|--|--|--|
-|**General**| |
-|`add <student>`| - Adds a student into the list. <br> - If the name of the student is not specified in the initial command, <br> the program will prompt the user for the name.|[Add](#adding-a-student-add)|
-|`view <student>`|Views a students details. <br> If the name of the student is not specified in the initial command, the program will prompt the user for the name.|[View](#view-details-of-a-student-view)|
-|`delete <student>`|Deletes the student from the list. <br> If the name of the student is not specified in the initial command, the program will prompt the user for the name.|[Delete](#delete-a-student-from-the-working-list-delete)|
-|`edit <student>`|Allows the user to edit the details of the student. <br> If the name of the student is not specified in the initial command, the program will prompt the user for the name.|[Edit](#edit-details-of-a-student-edit)|
-|**List**| |
-|`list`, press enter, <br>  [subject]|Displays the list of students that has taken that subject.|[List](#display-the-list-of-students-list)|
-|`list`, press enter, <br> press enter, [1]|Displays the list of students that is registered in the tuition centre.|[List](#display-the-list-of-students-list)|
-|`list`,  press enter, <br> press enter, [2]|Displays the list of students that is registered in the tuition centre with the total number of classes taken.|[List](#display-the-list-of-students-list)|
-|`list`, press enter, <br> press enter, [3]|Displays the list of students that is registered in the tuition centre with their phone numbers beside their names|[List](#display-the-list-of-students-list)|
-|`list`, press enter, <br> press enter, [4]|Displays the list of students who were archived.|[List](#display-the-list-of-students-list)|
-|`list`, press enter, <br> press enter, [5]|Displays the list of students who were recently deleted from the master list.|[List](#display-the-list-of-students-list) |
-|**Sort**| [List](#display-the-list-of-students-list)|
-|`sort <name>`|Sorts the list lexicographically. <br> If the word `name` is not specified in the initial command, the program will prompt the user for an appropriate flag.|[Sort](#sort-the-list-of-students-sort)|
-|`sort <payment>`|Sorts the list by the last fee payment date of a student. <br> If the word `payment` is not specified in the initial command, the program will prompt the user for an appropriate flag.|[Sort](#sort-the-list-of-students-sort)|
-|`sort <classes>`|Sorts the list by the number of classes a student has attended. <br> If the word `classes` is not specified in the initial command, the program will prompt the user for an appropriate flag.|[Sort](#sort-the-list-of-students-sort)|
-|**Process**| |
-|`process`, press enter,<br>`<text_file_name>`| Processes a text file containing a list of students taking the same subject and having attended the same number of lessons. <br> Adds all of them into the current list with their individual grades for the subject. <br> Will need to manually input their other attributes (eg. phone number, gender, etc) |[Process](#process-a-list-of-students-from-a-text-file-process)|
-|**Archive**| |
-|`archive <student>`|Archives specified student. Removes student from current list and adds student to archive.|[Archive](#move-a-student-from-the-master-list-to-the-archive-archive)|
-|`unarchive <student>`|Unarchives specified student. Moves student from archive to current list.|[Unarchive](#move-a-student-from-the-archive-back-to-the-master-list-unarchive)|
-|`undo`|Undoes the last deleted entry.|[Undo](#undo-a-delete-and-restore-the-deleted-student-to-the-working-list-undo)|
-|`restore <student>`|Restores the student from the current session|[Restore](#restore-a-student-to-the-working-list-restore)|
-|**Others**| |
-|`help`|Generates the list of commands.|[Help](#display-instructions-on-how-to-use-classify-help)|
-|`bye`|Terminates the program.|[Bye](#exit-classify-bye)|
+| Command                                       |Description| View Command|
+|-----------------------------------------------|--|--|
+| **General**                                   | |
+| `add <student>`                               | - Adds a student into the list. <br> - If the name of the student is not specified in the initial command, <br> the program will prompt the user for the name.|[Add](#adding-a-student-add)|
+| `view <student>`                              |Views a students details. <br> If the name of the student is not specified in the initial command, the program will prompt the user for the name.|[View](#view-details-of-a-student-view)|
+| `delete <student>`                            |Deletes the student from the list. <br> If the name of the student is not specified in the initial command, the program will prompt the user for the name.|[Delete](#delete-a-student-from-the-working-list-delete)|
+| `edit <student>`                              |Allows the user to edit the details of the student. <br> If the name of the student is not specified in the initial command, the program will prompt the user for the name.|[Edit](#edit-details-of-a-student-edit)|
+| **Listing**                                   | |
+| `list`, press enter, <br>  [subject]          |Displays the list of students that has taken that subject.|[List](#display-the-list-of-students-list)|
+| `list`, press enter, <br> press enter, [1]    |Displays the list of students that is registered in the tuition centre.|[List](#display-the-list-of-students-list)|
+| `list`,  press enter, <br> press enter, [2]   |Displays the list of students that is registered in the tuition centre with the total number of classes taken.|[List](#display-the-list-of-students-list)|
+| `list`, press enter, <br> press enter, [3]    |Displays the list of students that is registered in the tuition centre with their phone numbers beside their names|[List](#display-the-list-of-students-list)|
+| `list`, press enter, <br> press enter, [4]    |Displays the list of students who were archived.|[List](#display-the-list-of-students-list)|
+| `list`, press enter, <br> press enter, [5]    |Displays the list of students who were recently deleted from the master list.|[List](#display-the-list-of-students-list) |
+| **Sorting**                                   | [List](#display-the-list-of-students-list)|
+| `sort <name>`                                 |Sorts the list lexicographically. <br> If the word `name` is not specified in the initial command, the program will prompt the user for an appropriate flag.|[Sort](#sort-the-list-of-students-sort)|
+| `sort <payment>`                              |Sorts the list by the last fee payment date of a student. <br> If the word `payment` is not specified in the initial command, the program will prompt the user for an appropriate flag.|[Sort](#sort-the-list-of-students-sort)|
+| `sort <classes>`                              |Sorts the list by the number of classes a student has attended. <br> If the word `classes` is not specified in the initial command, the program will prompt the user for an appropriate flag.|[Sort](#sort-the-list-of-students-sort)|
+| **Processing**                                | |
+| `process`, press enter,<br>`<text_file_name>` | Processes a text file containing a list of students taking the same subject and having attended the same number of lessons. <br> Adds all of them into the current list with their individual grades for the subject. <br> Will need to manually input their other attributes (eg. phone number, gender, etc) |[Process](#process-a-list-of-students-from-a-text-file-process)|
+| **Archiving**                                 | |
+| `archive <student>`                           |Archives specified student. Removes student from current list and adds student to archive.|[Archive](#move-a-student-from-the-master-list-to-the-archive-archive)|
+| `unarchive <student>`                         |Unarchives specified student. Moves student from archive to current list.|[Unarchive](#move-a-student-from-the-archive-back-to-the-master-list-unarchive)|
+| **Recently Deleted**                          | |
+| `undo`                                        |Undoes the last deleted entry.|[Undo](#undo-a-delete-and-restore-the-deleted-student-to-the-working-list-undo)|
+| `restore <student>`                           |Restores the student from the current session|[Restore](#restore-a-student-to-the-working-list-restore)|
+| **Others**                                    | |
+| `help`                                        |Generates the list of commands.|[Help](#display-instructions-on-how-to-use-classify-help)|
+| `bye`                                         |Terminates the program.|[Bye](#exit-classify-bye)|
 
 ---
 
