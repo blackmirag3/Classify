@@ -223,7 +223,7 @@ public class DataReader {
                 UI.printDivider();
             }
         }
-        //@@author ParthGandhiNUS
+            //@@author ParthGandhiNUS
             DataUI.printLoadSuccess();
             UI.printDivider();
     }
