@@ -266,7 +266,7 @@ public class InputParsing {
      * 
      * @param studentList List of students to look for.
      * @param in          Scanner to parse in the user input.
-     * @return            Student with rigth name and number pair.
+     * @return            Student with right name and number pair.
      */
     private static Student findStudentByNumber(ArrayList<Student> studentList, Scanner in) {
         assert studentList.size() > 1 : "List should contain more than one Student";
@@ -387,7 +387,7 @@ public class InputParsing {
      * @return True if the number is a valid Singapore Number, false otherwise
      */
     //@@author Cryolian
-    private static boolean checkNumberValidity(int number) {
+    public static boolean checkNumberValidity(int number) {
         return number >= NUMBER_TOO_SMALL && number < NUMBER_TOO_BIG;
     }
 
