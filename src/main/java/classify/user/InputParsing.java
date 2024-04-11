@@ -9,6 +9,7 @@ import classify.commands.StudentSorter;
 import classify.commands.ViewStudent;
 import classify.data.DataHandler;
 import classify.student.Student;
+import classify.textfilecode.TextFileHandler;
 import classify.ui.UI;
 
 import java.time.LocalDate;
@@ -25,6 +26,7 @@ public class InputParsing {
     private static final String EARLIER_POSSIBLE_DATE = "1970-01-01";
     private static final String BYE = "bye";
     private static final String LIST = "list";
+    private static final String PROCESS_FILE = "process";
     private static final String ADD = "add";
     private static final String VIEW = "view";
     private static final String DELETE = "delete";
@@ -105,6 +107,11 @@ public class InputParsing {
             } else {
                 parseListCommand(masterStudentList, archiveList, recentlyDeletedList, in);
             }
+            break;
+        
+        case PROCESS_FILE:
+            TextFileHandler.process(masterStudentList, in);
+            DataHandler.writeStudentInfo(masterStudentList);
             break;
 
         //@@ author tayponghee
@@ -260,7 +267,7 @@ public class InputParsing {
      * 
      * @param studentList List of students to look for.
      * @param in          Scanner to parse in the user input.
-     * @return            Student with rigth name and number pair.
+     * @return            Student with right name and number pair.
      */
     private static Student findStudentByNumber(ArrayList<Student> studentList, Scanner in) {
         assert studentList.size() > 1 : "List should contain more than one Student";
@@ -384,7 +391,7 @@ public class InputParsing {
      * @return True if the number is a valid Singapore Number, false otherwise
      */
     //@@author Cryolian
-    private static boolean checkNumberValidity(int number) {
+    public static boolean checkNumberValidity(int number) {
         return number >= NUMBER_TOO_SMALL && number < NUMBER_TOO_BIG;
     }
 

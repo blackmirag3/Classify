@@ -2,6 +2,7 @@ package classify;
 
 import classify.data.DataHandler;
 import classify.student.StudentList;
+import classify.textfilecode.TextFileHandler;
 import classify.user.InputParsing;
 import classify.user.UserInput;
 import classify.ui.UI;
@@ -20,9 +21,10 @@ public class Classify {
     public static void main(String[] args) throws IOException {
         //@@author ParthGandhiNUS
         DataHandler.readStudentInfo(StudentList.masterStudentList);
-        //@@author blackmirag3
         DataHandler.readArchive(StudentList.archiveList);
+
         //@@author ParthGandhiNUS
+        TextFileHandler.createTextFileDirectory();
         UI.printWelcomeMessage();
         
         // Takes in input from the user, and processes input to determine if it contains a command and a name   
