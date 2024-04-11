@@ -256,7 +256,7 @@ public class TextFileParser {
      * @return                  Index of the student in masterStudentList
      */
     private static Integer matchingStudentIndex (ArrayList<Student> masterStudentList, String name, int number){
-        Integer listSize = masterStudentList.size();
+        int listSize = masterStudentList.size();
 
         for (int i = 0; i < listSize; i++) {
             if (masterStudentList.get(i).getName().equalsIgnoreCase(name) && 
