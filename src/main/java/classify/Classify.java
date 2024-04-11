@@ -21,8 +21,8 @@ public class Classify {
     public static void main(String[] args) throws IOException {
         //@@author ParthGandhiNUS
         DataHandler.readStudentInfo(StudentList.masterStudentList);
-        //@@author blackmirag3
         DataHandler.readArchive(StudentList.archiveList);
+
         //@@author ParthGandhiNUS
         TextFileHandler.createTextFileDirectory();
         UI.printWelcomeMessage();

@@ -61,6 +61,27 @@ public class InputParsingTest {
         assertEquals(expectedOutput.trim(), printedOutput);
     }
 
+    @Test
+    public void testEditCommand() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        ArrayList<Student> students = new ArrayList<>();
+        ArrayList<Student> recentlyDeletedList = new ArrayList<>();
+        ArrayList<Student> archiveList = new ArrayList<>();
+        String [] commands = new String[2];
+        commands[0] = "edit";
+
+        InputParsing.parseUserCommand(commands, students, recentlyDeletedList, archiveList, new Scanner(System.in));
+
+        System.setOut(System.out);
+        String printedOutput = outputStream.toString();
+        String expectedOutput = "Currently no students in list." + System.lineSeparator() +
+                "No student found to edit!" + System.lineSeparator();
+
+        assertEquals(expectedOutput, printedOutput);
+    }
+
     //@@author alalal47
     @Test
     public void testHelpCommand() {
@@ -118,7 +139,8 @@ public class InputParsingTest {
                 "unarchive                   Removes the specified student from the archive and adds them to the list" +
                                              ", can be used directly by unarchive [name]."
                                              + System.lineSeparator() +
-                "process                     Processes a text file which has been added by a user"
+                "process                     Processes a text file containing a list of students taking the same"+
+                                             " subject and the same number of classes."
                                              + System.lineSeparator() +
                 "help                        Prints this help message" +
             System.lineSeparator() + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";

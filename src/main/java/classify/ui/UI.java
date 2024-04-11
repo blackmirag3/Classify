@@ -51,7 +51,7 @@ public class UI {
     private static final String STUDENT_NAME_MESSAGE = "Name: ";
     private static final String CLASSES_ATTENDED_PROMPT = "Enter Classes Attended (blank to skip): ";
     private static final String CLASSES_ATTENDED_MESSAGE = "Classes Attended: ";
-    private static final String STUDENT_NOT_FOUND_MESSAGE = "Student not found!";
+    private static final String STUDENT_NOT_FOUND_MESSAGE = "No student found to edit!";
     private static final String STUDENT_ADDED_MESSAGE = "Student added successfully!";
     private static final String STUDENT_DELETED_MESSAGE = "Student removed successfully!";
     private static final String SUBJECT_MESSAGE = "Subject: ";
@@ -188,7 +188,8 @@ public class UI {
 
     public static void printProcessTextFileInputMessage(){
         System.out.println("process                     " +
-                "Processes a text file which has been added by a user");
+                "Processes a text file containing a list of students taking the same subject and the same number " +
+                "of classes.");
     }
 
     //@@author blackmirag3
