@@ -47,6 +47,7 @@ public class InputParsing {
     private static final int NUMBER_TOO_SMALL = 80000000;
     private static final int NUMBER_TOO_BIG = 1000_000_00;
     private static final String CLASSES_ATTENDED_MUST_BE_MORE = "Classes attended must be 0 or more.";
+    private static final String CLASSES_ATTENDED_MUST_BE_LESS = "Classes attended must be less than 500.";
 
     public static void parseUserCommand(String[] userCommand, ArrayList<Student> masterStudentList,
             ArrayList<Student> recentlyDeletedList,
@@ -297,13 +298,16 @@ public class InputParsing {
      * @return True if number of classes attended is greater than 0 and false otherwise.
      * 
      */
-    //@@author blackmirag3
     public static boolean isValidClassesAttended(int classesAttended) {
 
         if (classesAttended < 0) {
-            //@@author ParthGandhiNUS
             UI.println(CLASSES_ATTENDED_MUST_BE_MORE);
-            //@@author blackmirag3
+            UI.printDivider();
+            return false;
+        }
+
+        if (classesAttended > 500) {
+            UI.println(CLASSES_ATTENDED_MUST_BE_LESS);
             UI.printDivider();
             return false;
         }
