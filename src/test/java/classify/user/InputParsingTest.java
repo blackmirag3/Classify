@@ -77,7 +77,7 @@ public class InputParsingTest {
         System.setOut(System.out);
         String printedOutput = outputStream.toString();
         String expectedOutput = "Currently no students in list." + System.lineSeparator() +
-                "No student found to edit!" + System.lineSeparator();
+                "No student found!" + System.lineSeparator();
 
         assertEquals(expectedOutput, printedOutput);
     }

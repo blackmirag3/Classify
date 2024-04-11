@@ -67,7 +67,7 @@ public class EditTest {
         System.setOut(System.out);
         String printedOutput = outputStream.toString();
         String expectedOutput = "Name of student to edit (blank to exit):" + System.lineSeparator() +
-                "No student found to edit!" + System.lineSeparator();
+                "No student found!" + System.lineSeparator();
         assertEquals(printedOutput, expectedOutput);
     }
 }
