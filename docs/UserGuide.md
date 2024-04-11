@@ -423,7 +423,47 @@ Sort complete!
 ```
 
 ### Process a list of students from a text file `process`
-Reads a text file in the inputFolder folder inside data. 
+Reads a text file in the inputFolder folder located inside the data folder.
+
+:exclamation: The text file which is being processed **MUST** follow the format shown here[insert stuff here].
+
+Format: `process`, press enter, `filename` (without filetype) **or** `filename.txt` (with filetype)
+
+The processed file will add the students into the masterStudentList with relevant attributes for subject name, grades, and classes attended.
+
+:exclamation: All other student attributes (eg. gender, phone number, remarks, etc) must be updated by the user.
+
+#### Without Filetype
+```
+process
+Current Files in your Input Folder:
+1. mathclass.txt
+2. scienceclass.txt
+
+Please enter the exact name of the file you'd like to process:
+mathclass
+Fetching the data from mathclass.txt.
+Analysing Inputs...
+Directory loaded successfully!
+Data update success!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+#### With Filetype
+```
+process
+Current Files in your Input Folder:
+1. mathclass.txt
+2. scienceclass.txt
+
+Please enter the exact name of the file you'd like to process:
+scienceclass.txt
+Fetching the data from scienceclass.txt.
+Analysing Inputs...
+Directory loaded successfully!
+Data update success!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 ### Move a student from the master list to the archive `archive`
 Adds a student to the archive and deletes them from the master list. Allows the user to do archive [name] or just archive.
