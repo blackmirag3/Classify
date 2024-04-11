@@ -423,7 +423,47 @@ Sort complete!
 ```
 
 ### Process a list of students from a text file `process`
-Reads a text file in the inputFolder folder inside data. 
+Reads a text file in the inputFolder folder located inside the data folder.
+
+:exclamation: The text file which is being processed **MUST** follow the format shown here[insert stuff here].
+
+Format: `process`, press enter, `filename` (without filetype) **or** `filename.txt` (with filetype)
+
+The processed file will add the students into the masterStudentList with relevant attributes for subject name, grades, and classes attended.
+
+:exclamation: All other student attributes (eg. gender, phone number, remarks, etc) must be updated by the user.
+
+#### Without Filetype
+```
+process
+Current Files in your Input Folder:
+1. mathclass.txt
+2. scienceclass.txt
+
+Please enter the exact name of the file you'd like to process:
+mathclass
+Fetching the data from mathclass.txt.
+Analysing Inputs...
+Directory loaded successfully!
+Data update success!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+#### With Filetype
+```
+process
+Current Files in your Input Folder:
+1. mathclass.txt
+2. scienceclass.txt
+
+Please enter the exact name of the file you'd like to process:
+scienceclass.txt
+Fetching the data from scienceclass.txt.
+Analysing Inputs...
+Directory loaded successfully!
+Data update success!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 ### Move a student from the master list to the archive `archive`
 Adds a student to the archive and deletes them from the master list. Allows the user to do archive [name] or just archive.
@@ -562,7 +602,6 @@ This section provides a quick overview of all the commands used in our Classify.
 |`sort <name>`|Sorts the list lexicographically. <br> If the word `name` is not specified in the initial command, the program will prompt the user for an appropriate flag.|[Sort](#sort-the-list-of-students-sort)|
 |`sort <payment>`|Sorts the list by the last fee payment date of a student. <br> If the word `payment` is not specified in the initial command, the program will prompt the user for an appropriate flag.|[Sort](#sort-the-list-of-students-sort)|
 |`sort <classes>`|Sorts the list by the number of classes a student has attended. <br> If the word `classes` is not specified in the initial command, the program will prompt the user for an appropriate flag.|[Sort](#sort-the-list-of-students-sort)|
-|`view_subject <subject>`|Lists all the students associated with that subject. <br> If the user specifies the subject in the initial command, the list will be generated and the command will be terminated. <br> If the user does not specify the subject, the programme will continuously prompt the user for a subject, <br> until they choose to terminate the command.|[NEED TO FIX](#produce-a-list-of-all-the-students-who-takes-a-subject)|
 |**Process**| |
 |`process`, press enter,<br>`<text_file_name>`| Processes a text file containing a list of students taking the same subject and having attended the same number of lessons. <br> Adds all of them into the current list with their individual grades for the subject. <br> Will need to manually input their other attributes (eg. phone number, gender, etc) |[Process](#process-a-list-of-students-from-a-text-file-process)|
 |**Archive**| |
