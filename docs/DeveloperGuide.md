@@ -288,8 +288,8 @@ Classify serves as an attempt to modernise administrative tasks in education ins
 ### Deleting a student from the student list
 1. Deleting a student that exists in the student list
    1. Prerequisites: Add one student named `joe` to the list with the `add` command
-   2. Test case: `delete joe` <br />
-   Expected: `view joe` shows Student not found!
+   2. Test case: `delete joe`<br />
+   Expected: `view joe` shows Student not found!<br />
    `list` followed by enter, enter again, and `1` which displays a list of all students, does not show any student named `joe`.
 
 ### Displaying a list of students
@@ -307,3 +307,11 @@ Classify serves as an attempt to modernise administrative tasks in education ins
    1. Prerequisites: Delete at least one student in the list with the `delete` command
    2. Test case: `list`, enter, enter, `5`<br />
    Expected: A list of all students that have been deleted in the current session is printed.
+
+### Restoring a recently deleted student
+1. Restore a student from the recently deleted list
+   1. Prerequisites: Have at least one student named `joe` deleted in the current session with the `delete joe` command
+   2. Test case: `restore joe`<br /> 
+   Expected: `view joe` will display the attributes that `joe` had before being deleted.<br />
+   `joe` will be shown in any lists that specify attributes they possess.
+             
