@@ -19,7 +19,7 @@ import static classify.user.InputParsing.readInString;
 
 //@@author tayponghee
 public class AddStudent {
-    private static final String NOTEMPTY = "THIS STRING IS NOT EMPTY";
+    private static final String NOT_EMPTY = "THIS STRING IS NOT EMPTY";
     private static final String YES = "yes";
     private static final String NO = "no";
     private static final String SUBJECT_ENTER_NOTHING_TO_SKIP = "Subject (enter nothing to skip): ";
@@ -125,7 +125,7 @@ public class AddStudent {
                 name = in.nextLine().trim();
             } else {
                 name = studentName.trim();
-                studentName = NOTEMPTY;
+                studentName = NOT_EMPTY;
                 
                 //@@author tayponghee
                 assert studentName != null;
