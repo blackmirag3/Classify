@@ -216,11 +216,13 @@ public class DataReader {
                 DataUI.printDataDeletionPromptMessage();
                 promptDataDeletion();
                 UI.printDivider();
+                StudentList.masterStudentList.clear();
             } catch (IOException e) {
                 DataUI.printFileCorruptedMessage();
                 DataUI.printDataDeletionPromptMessage();
                 promptDataDeletion();
                 UI.printDivider();
+                StudentList.masterStudentList.clear();
             }
         }
         //@@author ParthGandhiNUS
