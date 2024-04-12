@@ -408,19 +408,23 @@ all students in the master list as well as the total number of classes they have
 
 Alternatively, the user can choose to display either the students in the recently deleted list or the archive.
 
+Do note that there is a difference between 0 and no classes attended found. If the program displays 0 classes attended,
+it means that the user entered the field 0 when adding the student. 
+If it says no classes found, it means the user skipped that field when adding the student.
+
 #### Example usage:
 ```
 list
 Enter subject name (leave blank for all students):
 math
 Students with the subject "math":
-- Toad
-- Wario
-- Mario
-- Luigi
-- Moyai
-- Peach
-- Daisy
+- Toad - Classes Attended for math: 12
+- Wario - Classes Attended for math: 5
+- Mario - Classes Attended for math: 8
+- Luigi - Classes Attended for math: 0
+- Moyai - Classes Attended for math: 11
+- Peach - No Classes Attended found for math
+- Daisy - No Classes Attended found for math
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 list

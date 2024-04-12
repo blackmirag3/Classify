@@ -1,4 +1,5 @@
 package classify.student;
+//@@author tayponghee
 
 import org.junit.jupiter.api.Test;
 import java.util.List;
@@ -117,5 +118,39 @@ public class StudentAttributesTest {
         subjectGrade.setClassesAttended(25);
         assertEquals(25, subjectGrade.getClassesAttended());
     }
-}
 
+    /**
+     * Test case to verify finding a subject grade by subject name.
+     * It checks if the correct subject grade is returned.
+     */
+    @Test
+    public void testFindSubject() {
+        Student student = new Student(JOHN_DOE);
+        StudentAttributes attributes = new StudentAttributes(student);
+        SubjectGrade subjectGrade = new SubjectGrade(MATH, 90.5, 20);
+
+        attributes.addSubjectGrade(subjectGrade);
+
+        SubjectGrade foundSubject = attributes.findSubject(MATH);
+
+        assertEquals(subjectGrade, foundSubject);
+    }
+
+    /**
+     * Test case to verify deleting a subject grade by subject name.
+     * It checks if the subject grade is successfully deleted.
+     */
+    @Test
+    public void testDeleteSubject() {
+        Student student = new Student(JOHN_DOE);
+        StudentAttributes attributes = new StudentAttributes(student);
+        SubjectGrade subjectGrade = new SubjectGrade(MATH, 90.5, 20);
+
+        attributes.addSubjectGrade(subjectGrade);
+
+        attributes.deleteSubject(MATH);
+
+        assertTrue(attributes.getSubjectGrades().isEmpty());
+    }
+
+}

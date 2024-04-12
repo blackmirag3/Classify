@@ -71,4 +71,13 @@ public class DataHandler extends Commands {
         DataWriter.createParentFileFolder(ARCHIVE_DIRECTORY_PATH);
         DataReader.initialiseData(list, ARCHIVE_FILE_PATH);
     }
+
+    //@@author alalal47
+    /**
+     * This accesses Student_Information.txt and calls the emptyDataFile function.
+     * Only used in cases of data corruption that cannot be resolved by the user.
+     */
+    public static void deleteStudentInfo() {
+        DataWriter.emptyDataFile(DATA_DIRECTORY_PATH, DATA_FILE_PATH);
+    }
 }

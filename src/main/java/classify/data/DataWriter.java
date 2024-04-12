@@ -51,7 +51,7 @@ public class DataWriter {
      * 
      * @param parentPath    Path file containing the path of folder we want to make the text file in
      */
-    public static void createParentFileFolder (String parentPath) {
+    public static void createParentFileFolder(String parentPath) {
         try{
             Path path = Paths.get(parentPath);
             Files.createDirectories(path);
@@ -60,6 +60,22 @@ public class DataWriter {
             //Ignore this error as this should not cause any issues, we dont want replicas of the same file
         } catch (IOException e){
             DataUI.printCreateFailure();
+        }
+    }
+
+    //@@author alalal47
+    /**
+     * Used to delete the contents of the file containing student information.
+     * Only used in the case of corruption that cannot be resolved by the user.
+     */
+    public static void emptyDataFile(String folderPath, String filePath) {
+        try {
+            createParentFileFolder(folderPath);
+            FileWriter overwriteBlank = new FileWriter(filePath);
+            overwriteBlank.write("");
+            DataUI.printFileDeletionCompleteMessage();
+        } catch (IOException e) {
+            DataUI.printFileIOError();
         }
     }
 }

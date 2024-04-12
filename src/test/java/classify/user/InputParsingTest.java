@@ -43,6 +43,52 @@ public class InputParsingTest {
         assertEquals(expectedOutput.trim(), printedOutput);
     }
 
+    @Test
+    public void testListCommandWithInvalidArgument() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        ArrayList<Student> masterStudentList = new ArrayList<>();
+        ArrayList<Student> recentlyDeletedList = new ArrayList<>();
+        ArrayList<Student> archiveList = new ArrayList<>();
+        String[] commands = new String[2];
+        commands[0] = "list";
+        commands[1] = "random_argument";
+        InputParsing.parseUserCommand(commands, masterStudentList, recentlyDeletedList,
+                archiveList, new Scanner(System.in));
+
+        System.setOut(System.out);
+
+        String printedOutput = outputStream.toString().trim();
+        String expectedOutput = "Type 'list' only!";
+
+
+        assertEquals(expectedOutput.trim(), printedOutput);
+    }
+
+    @Test
+    public void testDeleteCommandWithNonExistentStudent() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        ArrayList<Student> masterStudentList = new ArrayList<>();
+        ArrayList<Student> recentlyDeletedList = new ArrayList<>();
+        ArrayList<Student> archiveList = new ArrayList<>();
+        String[] commands = new String[2];
+        commands[0] = "delete";
+        commands[1] = "NonExistentStudent";
+        InputParsing.parseUserCommand(commands, masterStudentList, recentlyDeletedList,
+                archiveList, new Scanner(System.in));
+
+        System.setOut(System.out);
+
+        String printedOutput = outputStream.toString().trim();
+        String expectedOutput = "Student not found! Cannot be deleted." +
+                System.lineSeparator() + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+
+        assertEquals(expectedOutput.trim(), printedOutput);
+    }
+
     //@@author blackmirag3
     @Test
     public void testUnknownCommand() {

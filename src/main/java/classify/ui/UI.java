@@ -65,6 +65,7 @@ public class UI {
     private static final String STUDENTS_IN_ARCHIVE = "4. List of students in archive";
     private static final String STUDENTS_IN_DELETED = "5. List of students in recently deleted";
     private static final String ENTER_ONE_TWO_THREE_FOUR = "Enter your choice (1, 2, 3, 4 or 5):";
+
     //@@ author tayponghee
     private static final String ADD_SUBJECT =
             "Do you want to add another subject and grade? (yes/no)";
@@ -82,6 +83,7 @@ public class UI {
     private static final String STUDENTS_WITH_TOTAL_CLASSES = "2. List of students with total classes attended";
     private static final String LIST_OF_STUDENTS_WITH_PHONE_NUMBER_SHOWN =
             "3. List of students with phone number shown";
+    private static final String STUDENT_NOT_FOUND_CANNOT_BE_DELETED = "Student not found! Cannot be deleted.";
     //@@author alalal47
     /**
      * Displays the help message to teach users how to use Classify.
@@ -416,7 +418,7 @@ public class UI {
         System.out.println(SUBJECT_ALREADY_EXISTS);
     }
 
-    public static void printWrongNumberFormat () {
+    public static void printWrongNumberFormat() {
         System.out.println(WRONG_NUMBER_FORMAT);
     }
 
@@ -436,7 +438,11 @@ public class UI {
         System.out.println(NO_STUDENTS_FOUND_WITH_THE_SUBJECT + subject);
     }
 
-    public static void printListAllStudentsChoice () {
+    public static void printStudentToDeleteNotFound() {
+        System.out.println(STUDENT_NOT_FOUND_CANNOT_BE_DELETED);
+    }
+
+    public static void printListAllStudentsChoice() {
         System.out.println(CHOOSE_THE_TYPE_OF_LIST_TO_DISPLAY);
         System.out.println(FULL_STUDENT_LIST);
         System.out.println(STUDENTS_WITH_TOTAL_CLASSES);
