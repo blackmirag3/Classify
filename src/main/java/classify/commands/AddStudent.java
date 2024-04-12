@@ -78,7 +78,7 @@ public class AddStudent {
             UI.printDivider();
             return;
         } catch (NullPointerException e) {
-            UI.println("Null pointer thrown. Something went wrong.");
+            UI.printNullPointerException();
             UI.printDivider();
             return;
         }

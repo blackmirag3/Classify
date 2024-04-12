@@ -84,6 +84,8 @@ public class UI {
     private static final String LIST_OF_STUDENTS_WITH_PHONE_NUMBER_SHOWN =
             "3. List of students with phone number shown";
     private static final String STUDENT_NOT_FOUND_CANNOT_BE_DELETED = "Student not found! Cannot be deleted.";
+    private static final String NULL_POINTER_THROWN_SOMETHING_WENT_WRONG =
+            "Null pointer thrown. Something went wrong.";
     //@@author alalal47
     /**
      * Displays the help message to teach users how to use Classify.
@@ -449,5 +451,9 @@ public class UI {
         System.out.println(STUDENTS_IN_ARCHIVE);
         System.out.println(STUDENTS_IN_DELETED);
         System.out.println(ENTER_ONE_TWO_THREE_FOUR);
+    }
+
+    public static void printNullPointerException() {
+        System.out.println(NULL_POINTER_THROWN_SOMETHING_WENT_WRONG);
     }
 }
