@@ -186,7 +186,7 @@ public class DataReader {
     /**
      * Initialises student array list from specified data file.
      * Creates new data file if data file not found
-     *
+     * If corruption is detected, prompts user to manually rectify it or gives the option to empty the file.
      *
      * @param list ArrayList containing Students
      * @param filePath String containing path to data file
@@ -205,14 +205,60 @@ public class DataReader {
             DataUI.printRetrieveData();
 
             //@@author ParthGandhiNUS
-            while (line.ready()) {
-                restoreStudentList(line.readLine(), list);
+            try {
+                while (line.ready()) {
+                    restoreStudentList(line.readLine(), list);
+                    line.close();
+                }
+            //@@author alalal47
+            } catch (ArrayIndexOutOfBoundsException e) {
+                DataUI.printFileCorruptedMessage();
+                DataUI.printDataDeletionPromptMessage();
+                promptDataDeletion();
+                UI.printDivider();
+            } catch (IOException e) {
+                DataUI.printFileCorruptedMessage();
+                DataUI.printDataDeletionPromptMessage();
+                promptDataDeletion();
+                UI.printDivider();
             }
-            line.close();
-
-            DataUI.printLoadSuccess();
-            UI.printDivider();
         }
+        //@@author ParthGandhiNUS
+        DataUI.printLoadSuccess();
+        UI.printDivider();
+    }
+
+    //@@author alalal47
+    /**
+     * Function is called in the case of file corruption, and is not localised in a data entry,
+     * in a way that is skipped and handled by our other exceptions and checks.
+     * Prompts the user to manually fix any errors they may have introduced by manual editing,
+     * then to restart Classify.
+     * Or, provides users the option to wipe all existing data in the case that they are unable to.
+     */
+    private static void promptDataDeletion() {
+        String input = in.nextLine();
+        if (checkDeletionRequestInput(input)) {
+            DataUI.printDataDeletionFinalConfirmationMessage();
+            input = in.nextLine();
+            if (deletionRequestFinalConfirmation(input)) {
+                DataHandler.deleteStudentInfo();
+            } else {
+                DataUI.printDeletionConfirmationInputMismatchMessage();
+                promptDataDeletion();
+            }
+        } else {
+            DataUI.printDeletionInputMismatchMessage();
+            promptDataDeletion();
+        }
+    }
+
+    private static boolean checkDeletionRequestInput(String input) {
+        return input.equals("YES");
+    }
+
+    private static boolean deletionRequestFinalConfirmation(String input) {
+        return input.equals("CONFIRM");
     }
 }
 

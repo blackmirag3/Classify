@@ -64,6 +64,7 @@ public class UI {
     private static final String STUDENTS_IN_ARCHIVE = "4. List of students in archive";
     private static final String STUDENTS_IN_DELETED = "5. List of students in recently deleted";
     private static final String ENTER_ONE_TWO_THREE_FOUR = "Enter your choice (1, 2, 3, 4 or 5):";
+
     //@@ author tayponghee
     private static final String ADD_SUBJECT =
             "Do you want to add another subject and grade? (yes/no)";
@@ -415,7 +416,7 @@ public class UI {
         System.out.println(SUBJECT_ALREADY_EXISTS);
     }
 
-    public static void printWrongNumberFormat () {
+    public static void printWrongNumberFormat() {
         System.out.println(WRONG_NUMBER_FORMAT);
     }
 
@@ -435,7 +436,7 @@ public class UI {
         System.out.println(NO_STUDENTS_FOUND_WITH_THE_SUBJECT + subject);
     }
 
-    public static void printListAllStudentsChoice () {
+    public static void printListAllStudentsChoice() {
         System.out.println(CHOOSE_THE_TYPE_OF_LIST_TO_DISPLAY);
         System.out.println(FULL_STUDENT_LIST);
         System.out.println(STUDENTS_WITH_TOTAL_CLASSES);
