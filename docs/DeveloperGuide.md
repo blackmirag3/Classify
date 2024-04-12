@@ -269,19 +269,45 @@ Classify serves as an attempt to modernise administrative tasks in education ins
 
 ### Adding a student to the student list
 1. Adding a student with a name and phone number only
-   1. Prerequisites: View if a student with the name 'joe' exists by using the `view joe` command.
-   2. Test case: `add joe` and when prompted for phone number enter `11111111`, while pressing enter to skip other optional fields.
+   1. Prerequisites: View if a student with the name `joe` and phone number `88888888` exists by using the `view joe` command.
+   2. Test case: `add joe` and when prompted for phone number enter `88888888`, while pressing enter to skip other optional fields.
    <br /> 
-   Expected: `view joe` now shows the Student details of a student with Name: joe, Phone Number: 11111111. Other fields that were left blank will reflect 'Unknown' or for date fields, today's date.
-   3. Test case: `add` and when prompted for Name, `joe`. `11111111` when prompted for phone number, press enter to skip other fields.
+   Expected: `view joe` now shows the Student details of a student with Name: joe, Phone Number: 11111111.
+   <br />
+   Other fields that were left blank will reflect 'Unknown' or for date fields, today's date.
+   3. Test case: `add` and when prompted for Name, `joe`. `88888888` when prompted for phone number, press enter to skip other fields.
    <br />
    Expected: `view joe` shows the same results as when a student was added via `add joe`.
+   
 ### Viewing a student's details
 1. View a student who has been added to the student list
-   1. Prerequisites: Add one student named 'joe' to the list with the `add` command
+   1. Prerequisites: Add one student named `joe` to the list with the `add` command
    2. Test case: `view joe`
    <br />
    Expected: Student's details shown correspond to the details input when `add` was used to add a student.
-   3. Test case: `view dogman`
+
+### Deleting a student from the student list
+1. Deleting a student that exists in the student list
+   1. Prerequisites: Add one student named `joe` to the list with the `add` command
+   2. Test case: `delete joe` 
+   Expected: `view joe` shows Student not found!
    <br />
-   Expected: No details are displayed, an error message stating 'Student not found!' is shown.
+   `list` followed by enter, enter again, and `1` which displays a list of all students, does not show any student named `joe`.
+
+### Displaying a list of students
+1. Listing all students enrolled in the tuition centre
+   1. Prerequisites: Have at least one student added to the list with the `add` command
+   2. Test case: `list`, enter, enter, `1`
+   Expected: A list of all students that are enrolled in the tuition centre is printed.
+   <br />
+   <br />
+2. Listing all students with a specific subject in the tuition centre
+   1. Prerequisites: Have at least one student with the subject `Math` added to the list with the `add` command
+   2. Test case: `list`, `Math`
+   Expected: A list of all the students with the subject `Math` in the tuition centre is printed.
+   <br />
+   <br />
+3. Listing all students that have been deleted in the current session
+   1. Prerequisites: Delete at least one student in the list with the `delete` command
+   2. Test case: `list`, enter, enter, `5`
+   Expected: A list of all students that have been deleted in the current session is printed.
