@@ -321,3 +321,10 @@ Classify serves as an attempt to modernise administrative tasks in education ins
    2. Test case: `undo`, then `undo` again<br />
    Expected: `undo` will restore the latest deletion, the second `undo` will restore the first deletion.
 
+### Add a student to the archive
+1. Removes a student from the student list and adds them to the archive
+   1. Prerequisites: Have a student named `joe` added to the list with the `add` command
+   2. Test case: `archive joe`<br />
+   Expected: `joe` will be removed from the list, and added to the archive, `joe` will appear in the list of students added to the archive.
+
+### Archive 
