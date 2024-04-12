@@ -82,6 +82,7 @@ public class UI {
     private static final String STUDENTS_WITH_TOTAL_CLASSES = "2. List of students with total classes attended";
     private static final String LIST_OF_STUDENTS_WITH_PHONE_NUMBER_SHOWN =
             "3. List of students with phone number shown";
+    private static final String STUDENT_NOT_FOUND_CANNOT_BE_DELETED = "Student not found! Cannot be deleted.";
     //@@author alalal47
     /**
      * Displays the help message to teach users how to use Classify.
@@ -434,6 +435,10 @@ public class UI {
 
     public static void printNoStudentsWithSubject(String subject) {
         System.out.println(NO_STUDENTS_FOUND_WITH_THE_SUBJECT + subject);
+    }
+
+    public static void printStudentToDeleteNotFound() {
+        System.out.println(STUDENT_NOT_FOUND_CANNOT_BE_DELETED);
     }
 
     public static void printListAllStudentsChoice() {
