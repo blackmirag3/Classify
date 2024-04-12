@@ -223,10 +223,10 @@ public class DataReader {
                 UI.printDivider();
             }
         }
-            //@@author ParthGandhiNUS
-            DataUI.printLoadSuccess();
-            UI.printDivider();
-        }
+        //@@author ParthGandhiNUS
+        DataUI.printLoadSuccess();
+        UI.printDivider();
+    }
 
 
     //@@author alalal47
