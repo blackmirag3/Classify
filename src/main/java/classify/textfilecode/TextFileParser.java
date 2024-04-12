@@ -239,7 +239,7 @@ public class TextFileParser {
      * @param student Instance of Student 
      * @param phoneNumber Phone number of the student
      */
-    private static void addPhoneNumber(String studentNameString, Student student, int phoneNumber) {
+    static void addPhoneNumber(String studentNameString, Student student, int phoneNumber) {
         if (InputParsing.checkNumberValidity(phoneNumber)){
             student.getAttributes().setPhoneNumber(phoneNumber);
         } else {
@@ -255,7 +255,7 @@ public class TextFileParser {
      * @param number            Phone number of the student to find.
      * @return                  Index of the student in masterStudentList
      */
-    private static Integer matchingStudentIndex (ArrayList<Student> masterStudentList, String name, int number){
+    static Integer matchingStudentIndex(ArrayList<Student> masterStudentList, String name, int number){
         int listSize = masterStudentList.size();
 
         for (int i = 0; i < listSize; i++) {
@@ -275,7 +275,7 @@ public class TextFileParser {
      * @param subjectName name of the subject that is getting added
      * @return True if subject is found attributed to that particular student. False otherwise.
      */
-    private static boolean matchingSubject(ArrayList<Student> masterStudentList, String subjectName,
+    static boolean matchingSubject(ArrayList<Student> masterStudentList, String subjectName,
                                            Integer indexOfStudent) {
         List<SubjectGrade> studentSubjects = masterStudentList.get(indexOfStudent).getAttributes().getSubjectGrades();
         for (SubjectGrade subject : studentSubjects){
@@ -296,7 +296,7 @@ public class TextFileParser {
      * @param number             Phone number of the student to find.
      * @return                   True if a student with the same name and number is found in the list,false otherwise.
      */
-    private static boolean matchingNameNumber (ArrayList<Student> masterStudentList, String name, int number) {
+    static boolean matchingNameNumber(ArrayList<Student> masterStudentList, String name, int number) {
         for (Student student : masterStudentList) {
             if (student.getName().equalsIgnoreCase(name) && student.getPhoneNumber() == number) {
                 return true;
