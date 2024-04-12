@@ -501,7 +501,7 @@ fields will be printed out in the terminal, awaiting a user input each time.
 ```
 sort
 Sort by: (Choose index)
-1. Name (A to Z)
+1. Name (A to Z):
 2. Total number of classes attended:
 3. Date of last fee payment: 
 1
@@ -525,13 +525,32 @@ Sort complete!
 ### Process a list of students from a text file `process`
 Reads a text file in the inputFolder folder located inside the data folder.
 
-:exclamation: The text file which is being processed **MUST** follow the format shown here[insert stuff here].
+The text file which is being processed **MUST** follow the format shown here[insert stuff here].
 
-Format: `process`, press enter, `filename` (without filetype) **or** `filename.txt` (with filetype)
+Format: `process`, press enter, `filename` (without filetype) **or** `filename.txt` (with file extension)
 
 The processed file will add the students into the masterStudentList with relevant attributes for subject name, grades, and classes attended.
 
-:exclamation: All other student attributes (eg. gender, phone number, remarks, etc) must be updated by the user.
+All other student attributes (eg. gender, phone number, remarks, etc) must be updated by the user.
+
+Please make sure that the proper format for the input file is followed. 
+
+```
+Subject: SUBJECT
+Classes Attended: INTEGER
+NAME ~~ NUMBER ~~ GRADE
+```
+
+An example is seen below:
+```
+Subject: Math
+Classes Attended: 10
+parth ~~ 98989898 ~~ 90.0
+pong hee ~~ 98989888 ~~ 95.0
+Yi xin ~~ 98988888 ~~ 98.0
+gerard ~~ 98888888 ~~ 95.0
+shui hon ~~ 91231234 ~~ 99.0
+```
 
 #### Without Filetype:
 ```
@@ -565,7 +584,7 @@ Data update success!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 ### Move a student from the master list to the archive `archive`
-Adds a student to the archive and deletes them from the master list. Allows the user to do archive [name] or just archive.
+Adds a student to the archive and removes them from the master list.
 
 Format: `archive`, `archive NAME`
 
@@ -593,7 +612,7 @@ Data update success!
 The user can then view currently archived students using the `list` command.
 
 ### Move a student from the archive back to the master list `unarchive`
-Removes a student from the archive and adds them back to the master list. Allows the user to do unarchive [name] or just unarchive.
+Removes a student from the archive and adds them back to the master list.
 
 Format: `unarchive`, `unarchive NAME`
 
