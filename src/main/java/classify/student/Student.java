@@ -75,20 +75,20 @@ public class Student {
      * 
      * @return Returns a String to store all subject attributes associated with a certain student.
      */
-    public String listOfSubjectAttributes(){
+    public String listOfSubjectAttributes() {
         List<SubjectGrade> currentStudent = this.getAttributes().getSubjectGrades();
 
         StringBuilder subjectInfo = new StringBuilder("");
         StringBuilder separateSubjectInfo = new StringBuilder(SUBJECTINFOSEPARATOR);
         StringBuilder separateSubject = new StringBuilder(SUBJECTSEPARATIOR);
         //Checks for an empty list
-        if (currentStudent.isEmpty()){
+        if (currentStudent.isEmpty()) {
             return subjectInfo.toString();
         }
 
         int numberOfSubjects = currentStudent.size();
 
-        for (int i = 0; i < numberOfSubjects ; i++){
+        for (int i = 0; i < numberOfSubjects ; i++) {
             //Subject Name
             StringBuilder subject = new StringBuilder(currentStudent.get(i).getSubject());
             //Grade information
@@ -112,7 +112,7 @@ public class Student {
      * @param input     an integer which needs to be converted to a StringBuilder Format
      * @return          Stringbuilder format of the double value
      */
-    public static StringBuilder doubleToString(Double input){
+    public static StringBuilder doubleToString(Double input) {
         String outputData = Double.toString(input);
         StringBuilder output = new StringBuilder(outputData);
         return output;
@@ -124,7 +124,7 @@ public class Student {
      * @param input     an integer which needs to be converted to a StringBuilder Format 
      * @return          Stringbuilder format of the integer value
      */
-    public static StringBuilder integerToString(Integer input){
+    public static StringBuilder integerToString(Integer input) {
         String outputData = Integer.toString(input);
         StringBuilder output = new StringBuilder(outputData);
         return output;

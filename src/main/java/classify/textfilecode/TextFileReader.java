@@ -9,7 +9,7 @@ public class TextFileReader {
      * 
      * @param pathnameString String contaning the filepath
      */
-    public static void printCurrentInputFolder(String pathnameString){
+    public static void printCurrentInputFolder(String pathnameString) {
         File currentDirectory = new File (pathnameString);
         getCurrentFiles(currentDirectory);
     }  
@@ -19,10 +19,10 @@ public class TextFileReader {
      * 
      * @param currentDirectory File where we are querying for the files
      */
-    private static void getCurrentFiles(File currentDirectory){
+    private static void getCurrentFiles(File currentDirectory) {
         File[] fileList = currentDirectory.listFiles();
 
-        if (fileList.length == 0 || fileList == null){
+        if (fileList.length == 0 || fileList == null) {
             System.out.println("No files in your Input Folder!\n" + 
                     "Please add some new files in the correct format!");
             return;
@@ -31,8 +31,8 @@ public class TextFileReader {
         assert fileList != null;
         
         Integer index = 1;
-        for (File newFile : fileList){
-            if (newFile.isFile() && TextFileParser.textFileChecker(newFile.getName())){
+        for (File newFile : fileList) {
+            if (newFile.isFile() && TextFileParser.textFileChecker(newFile.getName())) {
                 System.out.println(index +". " + newFile.getName());
                 index++;
             }

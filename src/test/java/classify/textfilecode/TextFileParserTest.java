@@ -25,7 +25,7 @@ class TextFileParserTest {
         " Please edit this students' phone number with the edit command!";
 
     @Test
-    public void testAddPhoneNumberValidCase(){
+    public void testAddPhoneNumberValidCase() {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
@@ -39,7 +39,7 @@ class TextFileParserTest {
     }
 
     @Test
-    public void testAddPhoneNumberInvalidCase(){
+    public void testAddPhoneNumberInvalidCase() {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
@@ -52,7 +52,7 @@ class TextFileParserTest {
     }
 
     @Test
-    public void testMatchingStudentIndexAllTrue(){
+    public void testMatchingStudentIndexAllTrue() {
         ArrayList<Student> masterStudentList = new ArrayList<>();
         Student student = new Student(JOHN_DOE);
         masterStudentList.add(student);
@@ -64,7 +64,7 @@ class TextFileParserTest {
     }
 
     @Test
-    public void testMatchingStudentIndexWrongNumber(){
+    public void testMatchingStudentIndexWrongNumber() {
         ArrayList<Student> masterStudentList = new ArrayList<>();
         Student student = new Student(JOHN_DOE);
         masterStudentList.add(student);
@@ -76,7 +76,7 @@ class TextFileParserTest {
     }
 
     @Test
-    public void testMatchingStudentIndexWrongName(){
+    public void testMatchingStudentIndexWrongName() {
         ArrayList<Student> masterStudentList = new ArrayList<>();
         Student student = new Student(JOHN_DOE);
         masterStudentList.add(student);
@@ -89,7 +89,7 @@ class TextFileParserTest {
 
 
     @Test
-    public void testMatchingSubjectTrueCase(){
+    public void testMatchingSubjectTrueCase() {
         ArrayList<Student> masterStudentList = new ArrayList<>();
         Student student = new Student(JOHN_DOE);
         masterStudentList.add(student);
@@ -102,7 +102,7 @@ class TextFileParserTest {
     }
 
     @Test
-    public void testMatchingSubjectFalseCase(){
+    public void testMatchingSubjectFalseCase() {
         ArrayList<Student> masterStudentList = new ArrayList<>();
         Student student = new Student(JOHN_DOE);
         masterStudentList.add(student);
@@ -115,7 +115,7 @@ class TextFileParserTest {
     }
 
     @Test
-    public void testMatchingNameNumberTrueCase(){
+    public void testMatchingNameNumberTrueCase() {
         ArrayList<Student> masterStudentList = new ArrayList<>();
         Student student = new Student(JOHN_DOE);
         masterStudentList.add(student);
@@ -125,7 +125,7 @@ class TextFileParserTest {
     }
 
     @Test
-    public void testMatchingNameNumberFalseCase(){
+    public void testMatchingNameNumberFalseCase() {
         ArrayList<Student> masterStudentList = new ArrayList<>();
         Student student = new Student("Jane Doe");
         masterStudentList.add(student);

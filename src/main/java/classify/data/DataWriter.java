@@ -24,21 +24,21 @@ public class DataWriter {
      * 
      * @param list list ArrayList containing the current students
      */
-    public static void writeStudentInfoFile(List <Student> list, String folderPath, String filePath){
+    public static void writeStudentInfoFile(List <Student> list, String folderPath, String filePath) {
         List<String> lines = new ArrayList<>();
 
-        for (Student student:list){
+        for (Student student:list) {
             lines.add(student.textFileInputString());
         }
 
         try {
             createParentFileFolder(folderPath);
             FileWriter studentInfoWriter = new FileWriter(filePath);
-            for (String line : lines){
+            for (String line : lines) {
                 studentInfoWriter.write(line + NEWLINE);
             }
             studentInfoWriter.close();
-        } catch (IOException e){
+        } catch (IOException e) {
             DataUI.printFileIOError();
         }
     }
@@ -52,9 +52,9 @@ public class DataWriter {
         try{
             Path path = Paths.get(parentPath);
             Files.createDirectories(path);
-        } catch (FileAlreadyExistsException ignored){
+        } catch (FileAlreadyExistsException ignored) {
             //Ignore this error as this should not cause any issues, we dont want replicas of the same file
-        } catch (IOException e){
+        } catch (IOException e) {
             DataUI.printCreateFailure();
         }
     }

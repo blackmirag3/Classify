@@ -96,7 +96,7 @@ public class ListStudentsCommand {
 
         for (SubjectGrade subjectGrade : subjectGrades) {
             if (subjectGrade.getSubject().equalsIgnoreCase(subject)) {
-                if (subjectGrade.getClassesAttended() >= 0){
+                if (subjectGrade.getClassesAttended() >= 0) {
                     classesAttended += subjectGrade.getClassesAttended();
                 } else {
                     classesAttended = -1;

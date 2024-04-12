@@ -188,7 +188,7 @@ public class UI {
         printDivider();
     }
 
-    public static void printProcessTextFileInputMessage(){
+    public static void printProcessTextFileInputMessage() {
         System.out.println("process                     " +
                 "Processes a text file containing a list of students taking the same subject and the same number " +
                 "of classes.");

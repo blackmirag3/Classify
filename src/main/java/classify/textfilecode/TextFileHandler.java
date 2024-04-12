@@ -34,14 +34,14 @@ public class TextFileHandler {
     /**
      * Used to create the parent folder for a text file for Inputting
      */
-    public static void createTextFileDirectory(String pathString){
+    public static void createTextFileDirectory(String pathString) {
         //Folder Creation if folder not there
         try{
             Path path = Paths.get(pathString);
             Files.createDirectories(path);
-        } catch (FileAlreadyExistsException ignored){
+        } catch (FileAlreadyExistsException ignored) {
             //Ignore this error as this should not cause any issues, we don't want replicas of the same file
-        } catch (IOException e){
+        } catch (IOException e) {
             UI.println(IO_EXCEPTION_MESSAGE_FOR_TEXT_FILE);
         } catch (InvalidPathException e) {
             UI.println(INVALID_PATH_MESSAGE);
