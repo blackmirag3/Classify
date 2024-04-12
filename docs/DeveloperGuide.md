@@ -397,7 +397,7 @@ Expected: `view joe` shows the same results as when a student was added via `add
 </br> Expected: Returns to edit mode for 'tim' and no change in remarks is made for 'tim'.
 
 #### 9. Editing student in empty list
-1. Prerequisites: Have empty list with no students afdded.
+1. Prerequisites: Have empty list with no students added.
 2. Test Case: `edit`
 </br> Expected: Error message for empty list will be printed.
 
