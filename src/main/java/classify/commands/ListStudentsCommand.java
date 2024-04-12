@@ -67,8 +67,7 @@ public class ListStudentsCommand {
                 if (classesAttended >= 0) {
                     UI.println("- " + student.getName() +
                             " - Classes Attended for " + subject + ": " + classesAttended);
-                }
-                else{
+                } else {
                     UI.println("- " + student.getName() + " - " + "No Classes Attended found for " + subject);
                 }
                 found = true;
@@ -99,9 +98,8 @@ public class ListStudentsCommand {
             if (subjectGrade.getSubject().equalsIgnoreCase(subject)) {
                 if (subjectGrade.getClassesAttended() >= 0){
                     classesAttended += subjectGrade.getClassesAttended();
-                }
-                else {
-                     classesAttended = -1;
+                } else {
+                    classesAttended = -1;
                 }
             }
         }
