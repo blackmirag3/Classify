@@ -271,7 +271,7 @@ public class AddStudent {
                 return -1;
             }
 
-            // @@author ParthGandhiNUS
+            //@@author ParthGandhiNUS
             int classesAttended;
             try {
                 classesAttended = Integer.parseInt(classesAttendedInput);
