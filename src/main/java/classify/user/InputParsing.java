@@ -98,7 +98,6 @@ public class InputParsing {
         //@@author ParthGandhiNUS
         case BYE:
             UI.printEndConversation();
-            DataHandler.writeStudentInfo(masterStudentList);
             break;
 
         case LIST:

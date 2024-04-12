@@ -30,7 +30,6 @@ public class DataWriter {
         for (Student student:list){
             lines.add(student.textFileInputString());
         }
-        DataUI.printAnalysingInput();
 
         try {
             createParentFileFolder(folderPath);
@@ -38,8 +37,6 @@ public class DataWriter {
             for (String line : lines){
                 studentInfoWriter.write(line + NEWLINE);
             }
-            DataUI.printUpdateSuccess();
-            UI.printDivider();
             studentInfoWriter.close();
         } catch (IOException e){
             DataUI.printFileIOError();
@@ -55,7 +52,6 @@ public class DataWriter {
         try{
             Path path = Paths.get(parentPath);
             Files.createDirectories(path);
-            DataUI.printDirectorySuccess();
         } catch (FileAlreadyExistsException ignored){
             //Ignore this error as this should not cause any issues, we dont want replicas of the same file
         } catch (IOException e){

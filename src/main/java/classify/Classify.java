@@ -29,21 +29,17 @@ public class Classify {
         UI.printWelcomeMessage();
         
         // Takes in input from the user, and processes input to determine if it contains a command and a name   
-        String[] userCommand;
-
-        userCommand = UserInput.processInput(in.nextLine());
+        String[] userCommand = null;
 
         // Set up polling for the first word input by the user.
         // If user's first word is "bye", will exit the while loop.
         while (userCommand == null || !(userCommand[0].equals("bye"))){
-            InputParsing.parseUserCommand(userCommand, StudentList.masterStudentList, StudentList.recentlyDeletedList,
-                    StudentList.archiveList, in);
             UI.printSubsequentUserPrompt();
             userCommand = UserInput.processInput(in.nextLine());
+            InputParsing.parseUserCommand(userCommand, StudentList.masterStudentList, StudentList.recentlyDeletedList,
+                    StudentList.archiveList, in);
             DataHandler.writeStudentInfo();
             DataHandler.writeArchive(StudentList.archiveList);
         }
-
-        UI.printEndConversation();
     }
 }

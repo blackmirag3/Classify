@@ -5,7 +5,6 @@ import static classify.user.InputParsing.readInString;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import classify.data.DataHandler;
 import classify.student.Student;
 import classify.student.StudentAttributes;
 import classify.student.StudentList;

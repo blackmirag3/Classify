@@ -45,9 +45,8 @@ public class ArchiveCommands {
         //@@author blackmirag3
         archiveList.remove(student);
         masterList.add(student);
-        UI.println("Archive List: ");
+        UI.println("Unarchive successful.");
         DataHandler.writeArchive(archiveList);
-        UI.println("Runtime List: ");
         DataHandler.writeStudentInfo(masterList);
     }
 
@@ -82,9 +81,8 @@ public class ArchiveCommands {
         //@@author blackmirag3
         masterList.remove(student);
         archiveList.add(student);
-        UI.println("Archive List: ");
+        UI.println("Archive successful.");
         DataHandler.writeArchive(archiveList);
-        UI.println("Runtime Database: ");
         DataHandler.writeStudentInfo(masterList);
     }
 

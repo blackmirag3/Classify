@@ -254,7 +254,7 @@ public class UI {
 
     /***
      * Print attendance count
-     * @param attendance int containing attendance count
+     * @param attendance integer representing attendance count
      */
     public static void printClassesAttended(int attendance) {
         System.out.println(CLASSES_ATTENDED_MESSAGE + attendance);
@@ -325,7 +325,7 @@ public class UI {
             System.out.println((i + 1) + ". " + students.get(i).getName());
         }
         System.out.println("Currently, there are " + students.size() + " students in the list.");
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        UI.printDivider();
     }
 
     //@@author Cryolian
@@ -397,7 +397,7 @@ public class UI {
         System.out.println(TOTAL_CLASSES_ATTENDED_ACROSS_ALL_SUBJECTS + classes);
     }
 
-    public static void println (String text) {
+    public static void println(String text) {
         System.out.println(text);
     }
 

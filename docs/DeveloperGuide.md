@@ -34,7 +34,7 @@ This component ensures that the user parses in commands in a format that makes s
 ![InputParsingUML](./diagrams/src/InputParsing/InputParsing.png)
 
 #### Design considerations
-- The parser must be effecive in breaking down the user's input into its constitutent commands, with further breakdown if an associated argument is added.
+- The parser must be effective in breaking down the user's input into its constituent commands, with further breakdown if an associated argument is added.
 - The parser should be quick and effective in understanding the user's input, with simple prompts given to help the user in correctly parsing the command through the input parser.
 - Allowing the user to input optional arguments. For example, the user could type `view <student name>`, which takes in the "student name" as an optional argument. This is to increase the robustness of the program, which accounts for the two types of users, one who just types in `view`, and the other as formerly mentioned above. 
 - Error handling must be intuitive for the user, so that appropriate error messages are produced if the user does not input a valid command. The error handling should also be robust, to account for the event a user is incapable in following instructions.
@@ -122,16 +122,12 @@ The two text files are will be created under a directory called data, in which t
 
 #### Design Considerations
 
-In order to ensure the proper usage of OOP principles (such as encapsulation), we have segregated the 3 classes to read,store and handle the data.
+In order to ensure the proper usage of OOP principles (such as encapsulation), we have segregated the 3 classes to read, store and handle the data.
 
-Moreover, the regex used to separate the different types of data in the file type have been chosen in a way which would not affect normal user operation needs. If the user chooses to use the banned characters, the input parser would replace them, as shown below:
+Moreover, the regex used to separate the different types of data in the file type have been chosen in a way which would not affect normal user operation needs. If the user chooses to use the banned characters, the input parser would reject the input.
 
 Banned characters: 
 `#`,`~` and `-`
-
-- `#` changes to ` `.
-- `~` changes to ` `.
-- `-` changes to `_`.
 
 This will prevent the user from messing with the way the program reads and writes to the text files, preventing corruption of the database due to improper usage.
 

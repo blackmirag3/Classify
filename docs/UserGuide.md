@@ -533,7 +533,9 @@ The processed file will add the students into the masterStudentList with relevan
 
 All other student attributes (eg. gender, phone number, remarks, etc) must be updated by the user.
 
-Please make sure that the proper format for the input file is followed. 
+Please make sure that the proper format for the input file is followed. Only one subject and class attended value should be present per text file. Otherwise, the program will read in the first subject and class attended, and apply it to all students present in the text file.
+
+Any students with missing or invalid grades or phone number will be skipped.
 
 ```
 Subject: SUBJECT
@@ -562,9 +564,6 @@ Current Files in your Input Folder:
 Please enter the exact name of the file you'd like to process:
 mathclass
 Fetching the data from mathclass.txt.
-Analysing Inputs...
-Directory loaded successfully!
-Data update success!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
@@ -578,9 +577,6 @@ Current Files in your Input Folder:
 Please enter the exact name of the file you'd like to process:
 scienceclass.txt
 Fetching the data from scienceclass.txt.
-Analysing Inputs...
-Directory loaded successfully!
-Data update success!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 ### Move a student from the master list to the archive `archive`
@@ -597,15 +593,10 @@ For any archived student, the user will be unable to add a student with the same
 #### Example usage:
 ```
 archive wario
-Archive List: 
-Analysing Inputs...
-Directory loaded successfully!
-Data update success!
+Archive successful.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Runtime Database: 
-Analysing Inputs...
-Directory loaded successfully!
-Data update success!
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
@@ -625,15 +616,9 @@ The user can then view currently archived students using the `list` command.
 
 ```
 unarchive wario
-Archive List: 
-Analysing Inputs...
-Directory loaded successfully!
-Data update success!
+Unarchive successful.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Runtime List: 
-Analysing Inputs...
-Directory loaded successfully!
-Data update success!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
