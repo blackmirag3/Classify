@@ -174,7 +174,7 @@ public class InputParsing {
             //@@author tayponghee
             // input = in.nextLine().trim();
 
-            if (input.equalsIgnoreCase(EXIT)) {
+            if (input.equalsIgnoreCase(EXIT) || input.isBlank()) {
                 System.out.println(EXITED_THE_COMMAND);
                 UI.printDivider();
                 return;

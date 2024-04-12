@@ -86,8 +86,7 @@ public class TextFileParser {
 
         if (matchIndex == -1){
             System.out.println(NO_MATCH_FOUND);
-            promptForFileSelectionAgain();
-            parseUserSelection(TextFileHandler.CURRENT_DIRECTORY, in, masterStudentList);
+            System.out.println("Exiting interface");
             return;
         }
         parseTextFile(fileList, matchIndex, masterStudentList);
