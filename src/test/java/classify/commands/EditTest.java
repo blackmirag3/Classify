@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+//Integration testing for "edit" implementation within Classify
 public class EditTest {
     private static final String BYE = "bye";
     private static ArrayList<Student> masterList;
@@ -66,7 +67,7 @@ public class EditTest {
         System.setOut(System.out);
         String printedOutput = outputStream.toString();
         String expectedOutput = "Name of student to edit (blank to exit):" + System.lineSeparator() +
-                "No student found to edit!" + System.lineSeparator();
+                "No student found!" + System.lineSeparator();
         assertEquals(printedOutput, expectedOutput);
     }
 }
