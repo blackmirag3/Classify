@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class Classify {
     public static Scanner in = new Scanner(System.in);
+    private static final String INPUT_TEXT_FILE_DIRECTORY = "./data/inputFolder";
 
     /**
      * Main entry-point for the Classify application.
@@ -24,7 +25,7 @@ public class Classify {
         DataHandler.readArchive(StudentList.archiveList);
 
         //@@author ParthGandhiNUS
-        TextFileHandler.createTextFileDirectory();
+        TextFileHandler.createTextFileDirectory(INPUT_TEXT_FILE_DIRECTORY);
         UI.printWelcomeMessage();
         
         // Takes in input from the user, and processes input to determine if it contains a command and a name   
