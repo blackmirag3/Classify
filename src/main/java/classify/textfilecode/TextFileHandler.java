@@ -16,7 +16,7 @@ import java.util.Scanner;
 //@@author ParthGandhiNUS
 public class TextFileHandler {
     private static final String CURRENT_FILES = "Current Files in your Input Folder:";
-    public static final String INPUT_TEXT_FILE_DIRECTORY = "./data/inputFolder";
+    private static final String INPUT_TEXT_FILE_DIRECTORY = "./data/inputFolder";
     private static final String IO_EXCEPTION_MESSAGE_FOR_TEXT_FILE = "Something went horribly wrong while creating " +
             "your data folder!";
     public static final File CURRENT_DIRECTORY = new File (INPUT_TEXT_FILE_DIRECTORY);

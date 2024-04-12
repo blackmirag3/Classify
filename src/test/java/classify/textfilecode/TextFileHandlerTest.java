@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,15 +15,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TextFileHandlerTest {
     private static final String VALID_FILE_DIRECTORY = "./data/testFolder";
-     private static final String INVALID_FILE_DIRECTORY = "./data/invalid**";
-     private static final String INVALID_PATH_MESSAGE = "Path is invalid!";
+    private static final String INVALID_FILE_DIRECTORY = "./data/invalid**";
+    private static final String INVALID_PATH_MESSAGE = "Path is invalid!";
 
     /**
      * Test checks for the creation of new  directories
-     * @throws IOException 
      */
     @Test
-    public void testCreateTextFileDirectory_SuccessfulCreation() {
+    public void testCreateTextFileDirectorySuccessfulCreation() {
         TextFileHandler.createTextFileDirectory(VALID_FILE_DIRECTORY);
         File currentDir = new File (VALID_FILE_DIRECTORY);
         Path expectedDirectory = Paths.get(VALID_FILE_DIRECTORY);
@@ -33,7 +31,7 @@ class TextFileHandlerTest {
     }
 
     @Test
-    public void testCreateTextFileDirectory_InvalidPath() {
+    public void testCreateTextFileDirectoryInvalidPath() {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 

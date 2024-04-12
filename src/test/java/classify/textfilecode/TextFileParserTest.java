@@ -15,14 +15,14 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TextFileParserTest {
-public static final String JOHN_DOE = "John_Doe";
-public static final Integer NORMAL_SG_NUMBER = 99999999;
-public static final String MATH = "Math";
-public static final String SCIENCE = "Science";
-public static final double MATH_GRADE = 81.3;
-public static final Integer MATH_CLASSES = 10;
-private static final String INVALID_PHONE_NUMBER_MESSAGE="'s phone number is not a valid Singapore phone number." +
-" Please edit this students' phone number with the edit command!";
+    public static final String JOHN_DOE = "John_Doe";
+    public static final Integer NORMAL_SG_NUMBER = 99999999;
+    public static final String MATH = "Math";
+    public static final String SCIENCE = "Science";
+    public static final double MATH_GRADE = 81.3;
+    public static final Integer MATH_CLASSES = 10;
+    private static final String INVALID_PHONE_NUMBER_MESSAGE="'s phone number is not a valid Singapore phone number." +
+        " Please edit this students' phone number with the edit command!";
 
     @Test
     public void testAddPhoneNumberValidCase(){
@@ -34,8 +34,8 @@ private static final String INVALID_PHONE_NUMBER_MESSAGE="'s phone number is not
         masterStudentList.add(student);
 
         TextFileParser.addPhoneNumber(JOHN_DOE, student, NORMAL_SG_NUMBER);
-        
-        assertTrue(student.getAttributes().getPhoneNumber() == NORMAL_SG_NUMBER);
+
+        assertEquals((int) NORMAL_SG_NUMBER, student.getAttributes().getPhoneNumber());
     }
 
     @Test
@@ -58,7 +58,8 @@ private static final String INVALID_PHONE_NUMBER_MESSAGE="'s phone number is not
         masterStudentList.add(student);
         student.getAttributes().setPhoneNumber(NORMAL_SG_NUMBER);
 
-        boolean checker = (TextFileParser.matchingStudentIndex(masterStudentList, JOHN_DOE, NORMAL_SG_NUMBER) ==  0) ? true : false;
+        boolean checker = TextFileParser.matchingStudentIndex(masterStudentList,
+                JOHN_DOE, NORMAL_SG_NUMBER) == 0;
         assertTrue(checker);
     }
 
@@ -69,7 +70,8 @@ private static final String INVALID_PHONE_NUMBER_MESSAGE="'s phone number is not
         masterStudentList.add(student);
         student.getAttributes().setPhoneNumber(NORMAL_SG_NUMBER);
 
-        boolean checker = (TextFileParser.matchingStudentIndex(masterStudentList, JOHN_DOE, 98989898) ==  0) ? true : false;
+        boolean checker = TextFileParser.matchingStudentIndex(masterStudentList,
+                JOHN_DOE, 98989898) == 0;
         assertFalse(checker);
     }
 
@@ -80,7 +82,8 @@ private static final String INVALID_PHONE_NUMBER_MESSAGE="'s phone number is not
         masterStudentList.add(student);
         student.getAttributes().setPhoneNumber(NORMAL_SG_NUMBER);
 
-        boolean checker = (TextFileParser.matchingStudentIndex(masterStudentList, "Jane Doe", NORMAL_SG_NUMBER) ==  0) ? true : false;
+        boolean checker = TextFileParser.matchingStudentIndex(masterStudentList,
+                "Jane Doe", NORMAL_SG_NUMBER) == 0;
         assertFalse(checker);
     }
 
