@@ -315,3 +315,9 @@ Classify serves as an attempt to modernise administrative tasks in education ins
    Expected: `view joe` will display the attributes that `joe` had before being deleted.<br />
    `joe` will be shown in any lists that specify attributes they possess.
              
+### Undoing the latest deletion
+1. Undo two deletes successively
+   1. Prerequisites: Have at least two students deleted in the current session with the `delete` command
+   2. Test case: `undo`, then `undo` again<br />
+   Expected: `undo` will restore the latest deletion, the second `undo` will restore the first deletion.
+
