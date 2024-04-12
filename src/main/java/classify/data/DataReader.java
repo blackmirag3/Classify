@@ -70,14 +70,14 @@ public class DataReader {
         try {
             int phoneNumber = Integer.parseInt(inputArr[PHONE_NUMBER].trim());
 
-            if (InputParsing.checkNumberValidity(phoneNumber)) {
-                requiredDataChecks(student, phoneNumber);
-                student.getAttributes().setPhoneNumber(phoneNumber);
-            } else {
+            if (!InputParsing.checkNumberValidity(phoneNumber)) {
                 UI.println("Invalid phone number found in save file.");
                 UI.println("Skipping entry: " + student.getName());
                 return;
-            }
+            } 
+            
+            requiredDataChecks(student, phoneNumber);
+            student.getAttributes().setPhoneNumber(phoneNumber);
 
         } catch (NumberFormatException e) {
             DataUI.phoneNumberParsingError();

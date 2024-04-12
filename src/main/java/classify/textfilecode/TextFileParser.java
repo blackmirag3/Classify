@@ -191,6 +191,11 @@ public class TextFileParser {
             InputParsing.checkForSpecialCharacters(student.getName());
             //Set phone_number
             int phoneNumber = Integer.parseInt(inputArr[PHONE_NUMBER].trim());
+
+            if (!InputParsing.checkNumberValidity(phoneNumber)) {
+                UI.println("Invalid number found. Skipping entry.");
+                return;
+            }
             //Set grades
             double subjectGrades = Double.parseDouble(inputArr[GRADE_FOR_SUBJECT].trim());
             //Put Everything together
