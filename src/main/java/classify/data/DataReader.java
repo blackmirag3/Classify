@@ -208,8 +208,8 @@ public class DataReader {
             try {
                 while (line.ready()) {
                     restoreStudentList(line.readLine(), list);
-                    line.close();
                 }
+                line.close();
             //@@author alalal47
             } catch (ArrayIndexOutOfBoundsException e) {
                 DataUI.printFileCorruptedMessage();
@@ -223,10 +223,11 @@ public class DataReader {
                 UI.printDivider();
             }
         }
-        //@@author ParthGandhiNUS
-        DataUI.printLoadSuccess();
-        UI.printDivider();
-    }
+            //@@author ParthGandhiNUS
+            DataUI.printLoadSuccess();
+            UI.printDivider();
+        }
+
 
     //@@author alalal47
     /**
