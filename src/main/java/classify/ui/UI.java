@@ -160,8 +160,7 @@ public class UI {
 
     private static void printAddHelpMessage() {
         System.out.println("add                         Adds a student to the student list, " +
-                "expects a name, grade and lessons attended" +
-                ", can be used directly with a name e.g. add [name]");
+                "expects a name, grade and lessons attended e.g. add [name]");
     }
 
     //@@author ParthGandhiNUS
