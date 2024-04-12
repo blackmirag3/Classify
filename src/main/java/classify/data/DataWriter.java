@@ -2,7 +2,6 @@ package classify.data;
 
 import classify.student.Student;
 import classify.ui.DataUI;
-import classify.ui.UI;
 
 import java.io.FileWriter;
 import java.io.IOException;
