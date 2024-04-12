@@ -83,6 +83,19 @@ public class AddStudent {
             return;
         }
 
+        setAttributesForStudent(masterStudentList, in, student, number);
+    }
+
+    /**
+     * Sets attributes for a given student, including phone number, gender, last payment date, and remarks.
+     *
+     * @param masterStudentList The list of all students.
+     * @param in The Scanner object for user input.
+     * @param student The student whose attributes are being set.
+     * @param number The phone number to set for the student.
+     */
+    private static void setAttributesForStudent(ArrayList<Student> masterStudentList,
+                                                Scanner in, Student student, int number) {
         student.getAttributes().setPhoneNumber(number);
 
         UI.promptForGender();
