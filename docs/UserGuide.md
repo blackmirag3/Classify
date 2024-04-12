@@ -44,7 +44,7 @@ These systems enable tutors and administrative staff to focus on more pressing i
 
 Classify is a student management system meant to assist administrative staff of private tuition centres. 
 
-The product is capable of storing students, and generating outputs based on provided parameters, such as grade improvements and payment statuses.
+The product is capable of storing students, and generating outputs based on provided parameters, such as phone number, or subjects taken.
 
 Within our program, a student can be stored with their 
 - Subjects taken
@@ -54,7 +54,7 @@ Within our program, a student can be stored with their
 - Last Payment Date
 - Remarks
 
-We have determined these to be the attributes important to running a working tuition centre. Based on these attributes, our program also has functions to sort students based on grades, subjects, improvements since joining the centre.
+We have determined these to be the attributes important to running a working tuition centre. Based on these attributes, our program also has functions to sort students based on subjects taken.
 
 ---
 
@@ -68,6 +68,7 @@ We have determined these to be the attributes important to running a working tui
 java -jar ./Classify.jar
 ```
 5. Run the command ```help``` within the program to get a quick view of the available commands.
+
 ---
 <div style="page-break-after: always;"></div>
 
