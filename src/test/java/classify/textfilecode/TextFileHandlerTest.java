@@ -12,8 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TextFileHandlerTest {
     private static final String VALID_FILE_DIRECTORY = "./data/testFolder";
-    private static final String INVALID_FILE_DIRECTORY = "./data/invalid**";
-    private static final String INVALID_PATH_MESSAGE = "Path is invalid!";
 
     /**
      * Test checks for the creation of new  directories
