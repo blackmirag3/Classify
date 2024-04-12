@@ -48,7 +48,7 @@ public class TextFileParser {
         String type = "";
         int i = textFileName.lastIndexOf(DOT);
         if (i >= 0) { 
-            type = textFileName.substring(i+1); 
+            type = textFileName.substring(i + 1); 
         }
 
         return type.equals(TEXT_TYPE);
