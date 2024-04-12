@@ -335,16 +335,6 @@ Expected: `view joe` now shows the Student details of a student with Name: joe, 
 <br />
 Expected: `view joe` shows the same results as when a student was added via `add joe`.
 
-### Viewing a student's details
-#### 1. View a student who has been added to the student list:
-1. Prerequisites: Add one student named 'joe' to the list with the `add` command
-2. Test case: `view joe`
-<br />
-Expected: Student's details shown correspond to the details input when `add` was used to add a student.
-3. Test case: `view dogman`
-<br />
-Expected: No details are displayed, an error message stating 'Student not found!' is shown.
-
 ### Editing a student's details
 #### 1. Entering edit mode for an existing student:
 1. Prerequisites: Add student named 'tim' to the student list with the `add` command.
@@ -407,7 +397,7 @@ Expected: No details are displayed, an error message stating 'Student not found!
 </br> Expected: Returns to edit mode for 'tim' and no change in remarks is made for 'tim'.
 
 #### 9. Editing student in empty list
-1. Prerequisites: Have empty list with no students added.
+1. Prerequisites: Have empty list with no students afdded.
 2. Test Case: `edit`
 </br> Expected: Error message for empty list will be printed.
 
@@ -428,4 +418,4 @@ Expected: No details are displayed, an error message stating 'Student not found!
 </br> Expected: Prints invalid phone number error message and prompts for another phone number.
 6. Test Case: `6`, `20 jan 2001`
 </br> Expected: Prints error message for invalid date and prompts for another date.
->>>>>>> 44e7b30e8b590fe292cced70777954ee2529f5bc
+
