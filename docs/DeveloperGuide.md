@@ -264,7 +264,6 @@ Classify serves as an attempt to modernise administrative tasks in education ins
 ## Instructions for manual testing
 
 ### Adding a student to the student list
-<<<<<<< HEAD
 1. Adding a student with a name and phone number only
    1. Prerequisites: View if a student with the name `joe` and phone number `88888888` exists by using the `view joe` command.
    2. Test case: `add joe` and when prompted for phone number enter `88888888`, while pressing enter to skip other optional fields.
@@ -324,8 +323,7 @@ Classify serves as an attempt to modernise administrative tasks in education ins
    2. Test case: `archive joe`<br />
    Expected: `joe` will be removed from the list, and added to the archive, `joe` will appear in the list of students added to the archive.
 
-### Archive 
-=======
+### Archive
 #### 1. Adding a student with a name and phone number only:
 1. Prerequisites: View if a student with the name 'joe' exists by using the `view joe` command.
 2. Test case: `add joe` and when prompted for phone number enter `11111111`, while pressing enter to skip other optional fields.
