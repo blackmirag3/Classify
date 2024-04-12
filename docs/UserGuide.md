@@ -242,7 +242,7 @@ The following is an example of trying to add a new student that matches the name
 
 #### Example usage:
 ```
-add awesomesjh
+add melodie
 Subject (enter nothing to skip):
 No subjects added.
 Please input a valid phone number:
@@ -306,7 +306,7 @@ Name of student to edit (blank to exit):
 Student details: 
 Name: Vincent
 
-Phone Number: 83227277
+Phone Number: 99999999
 Gender: Unknown
 Last Payment Date: 2024-04-08
 Remarks: Unknown
@@ -338,7 +338,7 @@ If no student is found in the master student list, edit mode will not be entered
 ```
 edit
 Name of student to edit (blank to exit):
-tim lau kar meeng
+luigi
 No student found to edit!
 What else can I do for you today?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -384,8 +384,8 @@ Undoes the latest "delete student". Used by typing `undo`
 
 Format: `undo`
 
+#### Example Usage:
 ```
-Example:
 undo
 Last delete undone!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -477,7 +477,7 @@ Choose the type of list to display: (index only)
 Enter your choice (1, 2, 3, 4 or 5):
 4
 List of students in archive: 
-1.Timothy
+1.Timothee Chalamet
 Currently, there is 1 student in the list.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
