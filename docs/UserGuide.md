@@ -158,7 +158,7 @@ Exits the program.
 
 # Usage
 
-:exclamation: **Please note that if any of the following characters are entered in any string prompts, `#, - and ~`, they will be replaced and your command may be deemed invalid.**:exclamation:
+**Please note that if any of the following characters are entered in any string prompts, `#, - and ~`, they will be replaced and your command may be deemed invalid.**
 
 ### Adding a student: `add`
 Initialises an interface for adding a student and their relevant details to the database. Allows the user to do add or add [name]
