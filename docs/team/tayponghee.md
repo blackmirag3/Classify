@@ -58,4 +58,4 @@ Given below are my contributions to the project:
     * [ViewStudentTest](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/src/test/java/classify/commands/ViewStudentTest.java)
     * [ListStudentsCommandTest](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/src/test/java/classify/commands/ListStudentsCommandTest.java)
     * [DeleteCommandsTest](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/src/test/java/classify/commands/DeleteCommandsTest.java)
-    * [InputParsingTest](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/src/test/java/classify/commands/ListStudentsCommandTest.java))
+    * [InputParsingTest](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/src/test/java/classify/commands/ListStudentsCommandTest.java)
