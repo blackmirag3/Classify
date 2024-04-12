@@ -202,6 +202,8 @@ public class TextFileParser {
             UI.println(INVALID_CHAR_MESSAGE);
         } catch (NumberFormatException e) {
             UI.println(INVALID_NUMBER_MESSAGE);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            UI.println("Missing data found. Skipping entry.");
         }
     }
 

@@ -69,8 +69,16 @@ public class DataReader {
         //Set Phone Number
         try {
             int phoneNumber = Integer.parseInt(inputArr[PHONE_NUMBER].trim());
-            requiredDataChecks(student, phoneNumber);
-            student.getAttributes().setPhoneNumber(phoneNumber);
+
+            if (InputParsing.checkNumberValidity(phoneNumber)) {
+                requiredDataChecks(student, phoneNumber);
+                student.getAttributes().setPhoneNumber(phoneNumber);
+            } else {
+                UI.println("Invalid phone number found in save file.");
+                UI.println("Skipping entry: " + student.getName());
+                return;
+            }
+
         } catch (NumberFormatException e) {
             DataUI.phoneNumberParsingError();
             return;

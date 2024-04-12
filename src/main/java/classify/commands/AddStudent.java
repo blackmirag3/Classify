@@ -57,7 +57,7 @@ public class AddStudent {
         try {
             number = InputParsing.promptForPhoneNumber(in);
         } catch (NumberFormatException e) {
-            UI.println("Non-number or blank character found.");
+            UI.println("Non-number, invalid number or blank character found.");
             UI.println("Exiting the adding interface.");
             UI.printDivider();
             return;
@@ -98,7 +98,6 @@ public class AddStudent {
         LOGGER.log(Level.INFO, STUDENT_ADDED_SUCCESSFULLY);
         UI.printStudentAdded();
         UI.printDivider();
-        DataHandler.writeStudentInfo(masterStudentList);
     }
 
     /**

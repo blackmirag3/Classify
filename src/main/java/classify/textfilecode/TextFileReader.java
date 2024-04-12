@@ -25,18 +25,20 @@ public class TextFileReader {
         if (fileList.length == 0 || fileList == null){
             System.out.println("No files in your Input Folder!\n" + 
                     "Please add some new files in the correct format!");
-        } else {
-            assert fileList != null;
-            
-            Integer index = 1;
-            for (File newFile : fileList){
-                if (newFile.isFile() && TextFileParser.textFileChecker(newFile.getName())){
-                    System.out.println(index +". " + newFile.getName());
-                    index++;
-                }
-            }
-            System.out.println("");
+            return;
         }
+
+        assert fileList != null;
+        
+        Integer index = 1;
+        for (File newFile : fileList){
+            if (newFile.isFile() && TextFileParser.textFileChecker(newFile.getName())){
+                System.out.println(index +". " + newFile.getName());
+                index++;
+            }
+        }
+        System.out.println("");
+        
     }
 
 }

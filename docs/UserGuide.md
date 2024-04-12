@@ -68,6 +68,7 @@ We have determined these to be the attributes important to running a working tui
 java -jar ./Classify.jar
 ```
 5. Run the command ```help``` within the program to get a quick view of the available commands.
+6. Please do not edit the save files Student_Information.txt or student_archive.txt .
 
 ---
 <div style="page-break-after: always;"></div>
@@ -342,24 +343,6 @@ Name of student to edit (blank to exit):
 luigi
 No student found to edit!
 What else can I do for you today?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-```
-
-### Delete a student from the working list `delete`
-Deletes the student from the list. Allows the user to do delete [student] or just delete.
-
-Format: `delete` or `delete NAME`
-
-Depending on whether the user entered the student's name or not during the command, 
-a field will be printed out in the terminal, awaiting a user input.
-
-#### Example usage:
-``` 
-delete
-
-Enter student name: 
-wario
-Student removed successfully!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 

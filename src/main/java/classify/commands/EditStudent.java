@@ -106,7 +106,6 @@ public class EditStudent extends Commands {
                 UI.printDivider();
                 break;
             }
-            DataHandler.writeStudentInfo();
         }
     }
 

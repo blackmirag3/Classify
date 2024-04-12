@@ -40,6 +40,8 @@ public class Classify {
                     StudentList.archiveList, in);
             UI.printSubsequentUserPrompt();
             userCommand = UserInput.processInput(in.nextLine());
+            DataHandler.writeStudentInfo();
+            DataHandler.writeArchive(StudentList.archiveList);
         }
 
         UI.printEndConversation();

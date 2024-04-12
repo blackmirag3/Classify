@@ -111,7 +111,6 @@ public class InputParsing {
         
         case PROCESS_FILE:
             TextFileHandler.process(masterStudentList, in);
-            DataHandler.writeStudentInfo(masterStudentList);
             break;
 
         //@@ author tayponghee
