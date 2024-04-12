@@ -50,7 +50,7 @@ public class UI {
     private static final String STUDENT_NAME_PROMPT = "Enter student name: ";
     private static final String STUDENT_DETAILS_MESSAGE = "Student details: ";
     private static final String STUDENT_NAME_MESSAGE = "Name: ";
-    private static final String CLASSES_ATTENDED_PROMPT = "Enter Classes Attended (blank to skip): ";
+    private static final String CLASSES_ATTENDED_PROMPT = "Enter Classes Attended for said subject (blank to skip): ";
     private static final String CLASSES_ATTENDED_MESSAGE = "Classes Attended: ";
     private static final String STUDENT_NOT_FOUND_MESSAGE = "No student found!";
     private static final String STUDENT_ADDED_MESSAGE = "Student added successfully!";
@@ -188,7 +188,7 @@ public class UI {
         printDivider();
     }
 
-    public static void printProcessTextFileInputMessage(){
+    public static void printProcessTextFileInputMessage() {
         System.out.println("process                     " +
                 "Processes a text file containing a list of students taking the same subject and the same number " +
                 "of classes.");
@@ -254,7 +254,7 @@ public class UI {
 
     /***
      * Print attendance count
-     * @param attendance int containing attendance count
+     * @param attendance integer representing attendance count
      */
     public static void printClassesAttended(int attendance) {
         System.out.println(CLASSES_ATTENDED_MESSAGE + attendance);
@@ -325,7 +325,7 @@ public class UI {
             System.out.println((i + 1) + ". " + students.get(i).getName());
         }
         System.out.println("Currently, there are " + students.size() + " students in the list.");
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        UI.printDivider();
     }
 
     //@@author Cryolian
@@ -397,7 +397,7 @@ public class UI {
         System.out.println(TOTAL_CLASSES_ATTENDED_ACROSS_ALL_SUBJECTS + classes);
     }
 
-    public static void println (String text) {
+    public static void println(String text) {
         System.out.println(text);
     }
 

@@ -44,11 +44,11 @@ public class TextFileParser {
      * @param textFileName Name of the file
      * @return True or False depending on the filetype of file
      */
-    public static Boolean textFileChecker(String textFileName){
+    public static Boolean textFileChecker(String textFileName) {
         String type = "";
         int i = textFileName.lastIndexOf(DOT);
         if (i >= 0) { 
-            type = textFileName.substring(i+1); 
+            type = textFileName.substring(i + 1); 
         }
 
         return type.equals(TEXT_TYPE);
@@ -57,14 +57,14 @@ public class TextFileParser {
     /**
      * Prints the prompt for the user to select valid file
      */
-    public static void promptForFileSelection(){
+    public static void promptForFileSelection() {
         System.out.println(FILE_SELECTION_PROMPT);
     }
 
     /**
      * Prints the prompt for the user to select valid file after entering a wrong input before.
      */
-    public static void promptForFileSelectionAgain(){
+    public static void promptForFileSelectionAgain() {
         System.out.println(REQUEST_TO_TRY_AGAIN);
         System.out.println(FILE_SELECTION_PROMPT);
     }
@@ -77,17 +77,16 @@ public class TextFileParser {
      * @param in Scanner to scan users' inputs
      * @param masterStudentList StudentList where students will be added.
      */
-    public static void parseUserSelection(File currentDirectory, Scanner in, ArrayList<Student> masterStudentList){
+    public static void parseUserSelection(File currentDirectory, Scanner in, ArrayList<Student> masterStudentList) {
         File[] fileList = currentDirectory.listFiles();
         String userInput = in.nextLine();
 
         assert fileList != null;
         int matchIndex = findMatchingFile(fileList, userInput);
 
-        if (matchIndex == -1){
+        if (matchIndex == -1) {
             System.out.println(NO_MATCH_FOUND);
-            promptForFileSelectionAgain();
-            parseUserSelection(TextFileHandler.CURRENT_DIRECTORY, in, masterStudentList);
+            System.out.println("Exiting interface");
             return;
         }
         parseTextFile(fileList, matchIndex, masterStudentList);
@@ -102,18 +101,18 @@ public class TextFileParser {
      */
     private static Integer findMatchingFile(File[] fileList, String userInput) {
         String input = userInput.toLowerCase().trim();
-        for (int i = 0; i < fileList.length; i++){
+        for (int i = 0; i < fileList.length; i++) {
             String fileName = fileList[i].getName().toLowerCase().trim();
             int dotIndex = fileName.lastIndexOf(DOT);
             String fileNameWithoutType = fileName.substring(0,dotIndex);
             
             // Return match with the type
-            if (input.equals(fileName)){
+            if (input.equals(fileName)) {
                 return i;
             }
 
             // Return match without the type
-            if (input.equals(fileNameWithoutType)){
+            if (input.equals(fileNameWithoutType)) {
                 return i;
             }
         }
@@ -127,7 +126,7 @@ public class TextFileParser {
      * @param matchIndex index of the matching file in the list of Files
      * @param masterStudentList StudentList where students will be added.
      */
-    private static void parseTextFile(File[] fileList, Integer matchIndex, ArrayList <Student> masterStudentList){
+    private static void parseTextFile(File[] fileList, Integer matchIndex, ArrayList <Student> masterStudentList) {
         String fileNameString = fileList[matchIndex].getName().trim();
         String fullFilePath = INPUT_TEXT_FILE_DIRECTORY + "/" + fileNameString;
         try {
@@ -149,7 +148,7 @@ public class TextFileParser {
      * @param masterStudentList StudentList where students will be added.
      */
     private static void fetchDataFromTextFile(BufferedReader line, ArrayList <Student> masterStudentList) {
-        try{
+        try {
             String firstLine = line.readLine();
             String [] subjectInfoStrings = firstLine.split(SUBJECT_REGEX);
             String subjectName = subjectInfoStrings[1].trim();
@@ -158,7 +157,7 @@ public class TextFileParser {
             String [] classInfoStrings = secondLine.split(CLASSES_ATTENDED_REGEX);
             int totalClassesAttended = Integer.parseInt(classInfoStrings[1].trim());
 
-            while (line.ready()){
+            while (line.ready()) {
                 String input = line.readLine();
                 deconstructTextFile(input, subjectName, totalClassesAttended, masterStudentList);
             }
@@ -177,20 +176,25 @@ public class TextFileParser {
      * @param masterStudentList StudentList where students will be added.
      */
     private static void deconstructTextFile (String textFileInput, String subjectName,
-                                        Integer classesAttended, ArrayList <Student> masterStudentList){
-        if (textFileInput.trim().isBlank()){
+                                        Integer classesAttended, ArrayList <Student> masterStudentList) {
+        if (textFileInput.trim().isBlank()) {
             return;
         }
         String [] inputArr = textFileInput.split(MAIN_REGEX);
 
 
-        try{
+        try {
             //Set Name
             String studentNameString = AddStudent.splitName(inputArr[NAME].trim());
             Student student = new Student(studentNameString);
             InputParsing.checkForSpecialCharacters(student.getName());
             //Set phone_number
             int phoneNumber = Integer.parseInt(inputArr[PHONE_NUMBER].trim());
+
+            if (!InputParsing.checkNumberValidity(phoneNumber)) {
+                UI.println("Invalid number found. Skipping entry.");
+                return;
+            }
             //Set grades
             double subjectGrades = Double.parseDouble(inputArr[GRADE_FOR_SUBJECT].trim());
             //Put Everything together
@@ -202,6 +206,8 @@ public class TextFileParser {
             UI.println(INVALID_CHAR_MESSAGE);
         } catch (NumberFormatException e) {
             UI.println(INVALID_NUMBER_MESSAGE);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            UI.println("Missing data found. Skipping entry.");
         }
     }
 
@@ -220,9 +226,9 @@ public class TextFileParser {
     private static void masterStudentListAddition(ArrayList<Student> masterStudentList, String studentNameString,
                                                   Student student,int phoneNumber, String subjectName,
                                                   SubjectGrade newSubject) {
-        if (matchingNameNumber (masterStudentList, studentNameString, phoneNumber)){
+        if (matchingNameNumber (masterStudentList, studentNameString, phoneNumber)) {
             Integer indexOfStudent = matchingStudentIndex(masterStudentList, studentNameString, phoneNumber);
-            if (!(matchingSubject(masterStudentList, subjectName, indexOfStudent))){
+            if (!(matchingSubject(masterStudentList, subjectName, indexOfStudent))) {
                 masterStudentList.get(indexOfStudent).getAttributes().addSubjectGrade(newSubject);
             }
         } else {
@@ -240,7 +246,7 @@ public class TextFileParser {
      * @param phoneNumber Phone number of the student
      */
     static void addPhoneNumber(String studentNameString, Student student, int phoneNumber) {
-        if (InputParsing.checkNumberValidity(phoneNumber)){
+        if (InputParsing.checkNumberValidity(phoneNumber)) {
             student.getAttributes().setPhoneNumber(phoneNumber);
         } else {
             UI.println(studentNameString + INVALID_PHONE_NUMBER_MESSAGE);
@@ -255,7 +261,7 @@ public class TextFileParser {
      * @param number            Phone number of the student to find.
      * @return                  Index of the student in masterStudentList
      */
-    static Integer matchingStudentIndex(ArrayList<Student> masterStudentList, String name, int number){
+    static Integer matchingStudentIndex(ArrayList<Student> masterStudentList, String name, int number) {
         int listSize = masterStudentList.size();
 
         for (int i = 0; i < listSize; i++) {
@@ -278,7 +284,7 @@ public class TextFileParser {
     static boolean matchingSubject(ArrayList<Student> masterStudentList, String subjectName,
                                            Integer indexOfStudent) {
         List<SubjectGrade> studentSubjects = masterStudentList.get(indexOfStudent).getAttributes().getSubjectGrades();
-        for (SubjectGrade subject : studentSubjects){
+        for (SubjectGrade subject : studentSubjects) {
             if (subject.getSubject().equalsIgnoreCase(subjectName)) {
                 return true;
             }

@@ -5,7 +5,6 @@ import static classify.user.InputParsing.readInString;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import classify.data.DataHandler;
 import classify.student.Student;
 import classify.student.StudentAttributes;
 import classify.student.StudentList;
@@ -106,7 +105,6 @@ public class EditStudent extends Commands {
                 UI.printDivider();
                 break;
             }
-            DataHandler.writeStudentInfo();
         }
     }
 
@@ -200,7 +198,7 @@ public class EditStudent extends Commands {
         UI.println("Type in and enter the letter a if you wish to stop editing.");
         int number = InputParsing.promptForPhoneNumber(in);
         //@@author ParthGandhiNUS
-        if (number != attributes.getPhoneNumber()){
+        if (number != attributes.getPhoneNumber()) {
             StudentList.checkNameNumberPair(StudentList.masterStudentList, attributes.getName(), number);
             StudentList.checkNameNumberPair(StudentList.recentlyDeletedList, attributes.getName(), number);
             StudentList.checkNameNumberPair(StudentList.archiveList, attributes.getName(), number);

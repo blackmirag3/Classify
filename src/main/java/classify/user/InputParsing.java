@@ -7,7 +7,6 @@ import classify.commands.EditStudent;
 import classify.commands.ListStudentsCommand;
 import classify.commands.StudentSorter;
 import classify.commands.ViewStudent;
-import classify.data.DataHandler;
 import classify.student.Student;
 import classify.textfilecode.TextFileHandler;
 import classify.ui.UI;
@@ -43,7 +42,7 @@ public class InputParsing {
     private static final String EXITED_THE_COMMAND = "Exited the command.";
     private static final String LIST_SORTED = "Sort complete!";
     private static final String SORT_BY_CHOOSE_INDEX = "Sort by: (Choose index)";
-    private static final String NAME_A_TO_Z = "1. Name (A to Z)";
+    private static final String NAME_A_TO_Z = "1. Name (A to Z):";
     private static final String TOTAL_NUMBER_OF_CLASSES_ATTENDED = "2. Total number of classes attended:";
     private static final String LAST_PAID_DATE = "3. Date of last fee payment: ";
     private static final int NUMBER_TOO_SMALL = 80000000;
@@ -98,7 +97,6 @@ public class InputParsing {
         //@@author ParthGandhiNUS
         case BYE:
             UI.printEndConversation();
-            DataHandler.writeStudentInfo(masterStudentList);
             break;
 
         case LIST:
@@ -111,7 +109,6 @@ public class InputParsing {
         
         case PROCESS_FILE:
             TextFileHandler.process(masterStudentList, in);
-            DataHandler.writeStudentInfo(masterStudentList);
             break;
 
         //@@ author tayponghee
@@ -175,7 +172,7 @@ public class InputParsing {
             //@@author tayponghee
             // input = in.nextLine().trim();
 
-            if (input.equalsIgnoreCase(EXIT)) {
+            if (input.equalsIgnoreCase(EXIT) || input.isBlank()) {
                 System.out.println(EXITED_THE_COMMAND);
                 UI.printDivider();
                 return;
