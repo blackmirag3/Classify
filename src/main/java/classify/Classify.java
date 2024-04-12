@@ -24,7 +24,7 @@ public class Classify {
         DataHandler.readArchive(StudentList.archiveList);
 
         //@@author ParthGandhiNUS
-        TextFileHandler.createTextFileDirectory();
+        TextFileHandler.createTextFileDirectory(TextFileHandler.INPUT_TEXT_FILE_DIRECTORY);
         UI.printWelcomeMessage();
         
         // Takes in input from the user, and processes input to determine if it contains a command and a name   
