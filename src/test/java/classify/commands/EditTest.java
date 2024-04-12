@@ -17,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 //Integration testing for "edit" implementation within Classify
 public class EditTest {
-    private static final String BYE = "bye";
     private static ArrayList<Student> masterList;
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 

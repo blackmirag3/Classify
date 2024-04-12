@@ -53,7 +53,7 @@ public class DataReader {
      * @param studentFileInput  Line-by-line information of strings in the Student_Information.txt
      * @param masterStudentList The list of all students
      */
-    public static void restoreStudentList(String studentFileInput, ArrayList <Student> masterStudentList ){
+    public static void restoreStudentList(String studentFileInput, ArrayList <Student> masterStudentList ) {
 
         if (studentFileInput.trim().isBlank()) {
             return;
@@ -69,8 +69,16 @@ public class DataReader {
         //Set Phone Number
         try {
             int phoneNumber = Integer.parseInt(inputArr[PHONE_NUMBER].trim());
+
+            if (!InputParsing.checkNumberValidity(phoneNumber)) {
+                UI.println("Invalid phone number found in save file.");
+                UI.println("Skipping entry: " + student.getName());
+                return;
+            } 
+
             requiredDataChecks(student, phoneNumber);
             student.getAttributes().setPhoneNumber(phoneNumber);
+
         } catch (NumberFormatException e) {
             DataUI.phoneNumberParsingError();
             return;
@@ -129,7 +137,7 @@ public class DataReader {
         String [] allSubjects = (inputArr[SUBJECTS].trim()).split(SUBJECT_REGEX);
         int numberOfSubjects = allSubjects.length;
 
-        if (numberOfSubjects == 1 && allSubjects[0].isEmpty()){
+        if (numberOfSubjects == 1 && allSubjects[0].isEmpty()) {
             DataUI.noSubjectMessage();
             return;
         }
@@ -140,7 +148,7 @@ public class DataReader {
                 student.getAttributes().addSubjectGrade(newSubject);
             } catch (InvalidCharacterException e) {
                 UI.println(INVALID_CHAR_MESSAGE);
-            } catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 UI.println(INVALID_NUMBER_MESSAGE);
             }
         }

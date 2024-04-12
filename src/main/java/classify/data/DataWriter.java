@@ -2,7 +2,6 @@ package classify.data;
 
 import classify.student.Student;
 import classify.ui.DataUI;
-import classify.ui.UI;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,24 +23,21 @@ public class DataWriter {
      * 
      * @param list list ArrayList containing the current students
      */
-    public static void writeStudentInfoFile(List <Student> list, String folderPath, String filePath){
+    public static void writeStudentInfoFile(List <Student> list, String folderPath, String filePath) {
         List<String> lines = new ArrayList<>();
 
-        for (Student student:list){
+        for (Student student:list) {
             lines.add(student.textFileInputString());
         }
-        DataUI.printAnalysingInput();
 
         try {
             createParentFileFolder(folderPath);
             FileWriter studentInfoWriter = new FileWriter(filePath);
-            for (String line : lines){
+            for (String line : lines) {
                 studentInfoWriter.write(line + NEWLINE);
             }
-            DataUI.printUpdateSuccess();
-            UI.printDivider();
             studentInfoWriter.close();
-        } catch (IOException e){
+        } catch (IOException e) {
             DataUI.printFileIOError();
         }
     }
@@ -52,13 +48,12 @@ public class DataWriter {
      * @param parentPath    Path file containing the path of folder we want to make the text file in
      */
     public static void createParentFileFolder(String parentPath) {
-        try{
+        try {
             Path path = Paths.get(parentPath);
             Files.createDirectories(path);
-            DataUI.printDirectorySuccess();
-        } catch (FileAlreadyExistsException ignored){
+        } catch (FileAlreadyExistsException ignored) {
             //Ignore this error as this should not cause any issues, we dont want replicas of the same file
-        } catch (IOException e){
+        } catch (IOException e) {
             DataUI.printCreateFailure();
         }
     }

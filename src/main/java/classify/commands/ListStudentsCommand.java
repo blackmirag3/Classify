@@ -96,7 +96,7 @@ public class ListStudentsCommand {
 
         for (SubjectGrade subjectGrade : subjectGrades) {
             if (subjectGrade.getSubject().equalsIgnoreCase(subject)) {
-                if (subjectGrade.getClassesAttended() >= 0){
+                if (subjectGrade.getClassesAttended() >= 0) {
                     classesAttended += subjectGrade.getClassesAttended();
                 } else {
                     classesAttended = -1;
@@ -200,6 +200,7 @@ public class ListStudentsCommand {
      * @param masterStudentList The list of all students.
      */
     public static void listStudentsWithPhoneNumbers(ArrayList<Student> masterStudentList) {
+
         int i = 1;
         for (Student student : masterStudentList) {
             int phoneNumber = student.getAttributes().getPhoneNumber();
@@ -210,6 +211,7 @@ public class ListStudentsCommand {
             }
             i++;
         }
+
     }
 
     /**
@@ -219,7 +221,7 @@ public class ListStudentsCommand {
      * @return true if the phone number is valid, false otherwise.
      */
     private static boolean isValidPhoneNumber(int phoneNumber) {
-        return (phoneNumber >= 80000000 && phoneNumber <= 99999999);
+        return phoneNumber >= 80000000 && phoneNumber <= 99999999;
     }
 
 }

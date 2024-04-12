@@ -44,7 +44,7 @@ These systems enable tutors and administrative staff to focus on more pressing i
 
 Classify is a student management system meant to assist administrative staff of private tuition centres. 
 
-The product is capable of storing students, and generating outputs based on provided parameters, such as grade improvements and payment statuses.
+The product is capable of storing students, and generating outputs based on provided parameters, such as phone number, or subjects taken.
 
 Within our program, a student can be stored with their 
 - Subjects taken
@@ -54,7 +54,7 @@ Within our program, a student can be stored with their
 - Last Payment Date
 - Remarks
 
-We have determined these to be the attributes important to running a working tuition centre. Based on these attributes, our program also has functions to sort students based on grades, subjects, improvements since joining the centre.
+We have determined these to be the attributes important to running a working tuition centre. Based on these attributes, our program also has functions to sort students based on subjects taken.
 
 ---
 
@@ -68,6 +68,8 @@ We have determined these to be the attributes important to running a working tui
 java -jar ./Classify.jar
 ```
 5. Run the command ```help``` within the program to get a quick view of the available commands.
+6. Please do not edit the save files Student_Information.txt or student_archive.txt .
+
 ---
 <div style="page-break-after: always;"></div>
 
@@ -157,7 +159,11 @@ Exits the program.
 
 # Usage
 
+<<<<<<< HEAD
 <:exclamation:> **Please note that if any of the following characters are entered in any string prompts, `#, - and ~`, they will be replaced and your command may be deemed invalid.**:exclamation:
+=======
+**Please note that if any of the following characters are entered in any string prompts, `#, - and ~`, they will be replaced and your command may be deemed invalid.**
+>>>>>>> 44e7b30e8b590fe292cced70777954ee2529f5bc
 
 ### Adding a student: `add`
 Initialises an interface for adding a student and their relevant details to the database. Allows the user to do add or add [name]
@@ -344,24 +350,6 @@ What else can I do for you today?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
-### Delete a student from the working list `delete`
-Deletes the student from the list. Allows the user to do delete [student] or just delete.
-
-Format: `delete` or `delete NAME`
-
-Depending on whether the user entered the student's name or not during the command, 
-a field will be printed out in the terminal, awaiting a user input.
-
-#### Example usage:
-``` 
-delete
-
-Enter student name: 
-wario
-Student removed successfully!
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-```
-
 ### Restore a student to the working list `restore`
 Restores a student deleted in the current session. Allows the user to do restore [student] or just restore.
 
@@ -517,7 +505,7 @@ fields will be printed out in the terminal, awaiting a user input each time.
 ```
 sort
 Sort by: (Choose index)
-1. Name (A to Z)
+1. Name (A to Z):
 2. Total number of classes attended:
 3. Date of last fee payment: 
 1
@@ -541,13 +529,34 @@ Sort complete!
 ### Process a list of students from a text file `process`
 Reads a text file in the inputFolder folder located inside the data folder.
 
-:exclamation: The text file which is being processed **MUST** follow the format shown here[insert stuff here].
+The text file which is being processed **MUST** follow the format shown here[insert stuff here].
 
-Format: `process`, press enter, `filename` (without filetype) **or** `filename.txt` (with filetype)
+Format: `process`, press enter, `filename` (without filetype) **or** `filename.txt` (with file extension)
 
 The processed file will add the students into the masterStudentList with relevant attributes for subject name, grades, and classes attended.
 
-:exclamation: All other student attributes (eg. gender, phone number, remarks, etc) must be updated by the user.
+All other student attributes (eg. gender, phone number, remarks, etc) must be updated by the user.
+
+Please make sure that the proper format for the input file is followed. Only one subject and class attended value should be present per text file. Otherwise, the program will read in the first subject and class attended, and apply it to all students present in the text file.
+
+Any students with missing or invalid grades or phone number will be skipped.
+
+```
+Subject: SUBJECT
+Classes Attended: INTEGER
+NAME ~~ NUMBER ~~ GRADE
+```
+
+An example is seen below:
+```
+Subject: Math
+Classes Attended: 10
+parth ~~ 98989898 ~~ 90.0
+pong hee ~~ 98989888 ~~ 95.0
+Yi xin ~~ 98988888 ~~ 98.0
+gerard ~~ 98888888 ~~ 95.0
+shui hon ~~ 91231234 ~~ 99.0
+```
 
 #### Without Filetype:
 ```
@@ -559,9 +568,6 @@ Current Files in your Input Folder:
 Please enter the exact name of the file you'd like to process:
 mathclass
 Fetching the data from mathclass.txt.
-Analysing Inputs...
-Directory loaded successfully!
-Data update success!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
@@ -575,13 +581,10 @@ Current Files in your Input Folder:
 Please enter the exact name of the file you'd like to process:
 scienceclass.txt
 Fetching the data from scienceclass.txt.
-Analysing Inputs...
-Directory loaded successfully!
-Data update success!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 ### Move a student from the master list to the archive `archive`
-Adds a student to the archive and deletes them from the master list. Allows the user to do archive [name] or just archive.
+Adds a student to the archive and removes them from the master list.
 
 Format: `archive`, `archive NAME`
 
@@ -594,22 +597,17 @@ For any archived student, the user will be unable to add a student with the same
 #### Example usage:
 ```
 archive wario
-Archive List: 
-Analysing Inputs...
-Directory loaded successfully!
-Data update success!
+Archive successful.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Runtime Database: 
-Analysing Inputs...
-Directory loaded successfully!
-Data update success!
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
 The user can then view currently archived students using the `list` command.
 
 ### Move a student from the archive back to the master list `unarchive`
-Removes a student from the archive and adds them back to the master list. Allows the user to do unarchive [name] or just unarchive.
+Removes a student from the archive and adds them back to the master list.
 
 Format: `unarchive`, `unarchive NAME`
 
@@ -622,15 +620,9 @@ The user can then view currently archived students using the `list` command.
 
 ```
 unarchive wario
-Archive List: 
-Analysing Inputs...
-Directory loaded successfully!
-Data update success!
+Unarchive successful.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Runtime List: 
-Analysing Inputs...
-Directory loaded successfully!
-Data update success!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 

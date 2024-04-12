@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ListStudentsCommandTest {
 
-    private static final String YIXIN = "Yi Xin";
+    private static final String YI_XIN = "Yi Xin";
     private static final String GERARD = "Gerard";
     private static final String SCIENCE = "Science";
     private static final String MATH = "Math";
@@ -27,14 +27,14 @@ class ListStudentsCommandTest {
     @Test
     void testListStudentsWithValidNumbers() {
         ArrayList<Student> students = new ArrayList<>();
-        Student student1 = new Student(YIXIN);
+        Student student1 = new Student(YI_XIN);
         StudentAttributes attributes1 = new StudentAttributes(student1);
         attributes1.setPhoneNumber(87654321);
         student1.setAttributes(attributes1);
         students.add(student1);
 
         ArrayList<String> expectedOutput = new ArrayList<>();
-        expectedOutput.add("1." + YIXIN + " - Phone Number: 87654321");
+        expectedOutput.add("1." + YI_XIN + " - Phone Number: 87654321");
 
         assertEquals(expectedOutput, captureOutput(() -> ListStudentsCommand.listStudentsWithPhoneNumbers(students)));
     }
@@ -67,7 +67,7 @@ class ListStudentsCommandTest {
     @Test
     void testListStudentsWithTotalClasses() {
         ArrayList<Student> students = new ArrayList<>();
-        Student student1 = new Student(YIXIN);
+        Student student1 = new Student(YI_XIN);
         StudentAttributes attributes1 = new StudentAttributes(student1);
         SubjectGrade mathGrade = new SubjectGrade(MATH, 10, 10);
         SubjectGrade scienceGrade = new SubjectGrade(SCIENCE, 12,-1);
@@ -77,7 +77,7 @@ class ListStudentsCommandTest {
         students.add(student1);
 
         ArrayList<String> expectedOutput = new ArrayList<>();
-        expectedOutput.add("1." + YIXIN + " - Total Classes Attended: 10");
+        expectedOutput.add("1." + YI_XIN + " - Total Classes Attended: 10");
 
         assertEquals(expectedOutput, captureOutput(() -> ListStudentsCommand.listStudentsWithTotalClasses(students)));
     }
@@ -90,7 +90,7 @@ class ListStudentsCommandTest {
     @Test
     void testListStudentsBySubject() {
         ArrayList<Student> students = new ArrayList<>();
-        Student student1 = new Student(YIXIN);
+        Student student1 = new Student(YI_XIN);
         StudentAttributes attributes1 = new StudentAttributes(student1);
         SubjectGrade mathGrade = new SubjectGrade(MATH, 10,10);
         attributes1.getSubjectGrades().add(mathGrade);
@@ -99,7 +99,7 @@ class ListStudentsCommandTest {
 
         ArrayList<String> expectedOutput = new ArrayList<>();
         expectedOutput.add("Students with the subject " + '"' + MATH + '"' + ":");
-        expectedOutput.add("- " + YIXIN + " - " + "Classes Attended for Math: 10");
+        expectedOutput.add("- " + YI_XIN + " - " + "Classes Attended for Math: 10");
         expectedOutput.add("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         assertEquals(expectedOutput, captureOutput(() -> ListStudentsCommand.listStudentsBySubject(students, MATH)));

@@ -17,15 +17,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ViewStudentTest {
 
-    private static final String XIAOMING = "Xiao Ming";
+    private static final String XIAO_MING = "Xiao Ming";
 
     @Test
     void viewStudentTest() {
-        InputStream in = new ByteArrayInputStream(XIAOMING.getBytes());
+        InputStream in = new ByteArrayInputStream(XIAO_MING.getBytes());
         Scanner scanner = new Scanner(in);
 
         ArrayList<Student> masterStudentList = new ArrayList<>();
-        Student student = new Student(XIAOMING);
+        Student student = new Student(XIAO_MING);
         StudentAttributes attributes = new StudentAttributes(student);
         List<SubjectGrade> subjectGrades = new ArrayList<>();
         subjectGrades.add(new SubjectGrade("Computer Science", 85.0, 20));
@@ -35,7 +35,7 @@ class ViewStudentTest {
 
         ViewStudent.viewStudent(masterStudentList, scanner, null);
 
-        assertEquals(XIAOMING, student.getName());
+        assertEquals(XIAO_MING, student.getName());
         assertEquals(85.0, student.getAttributes().getSubjectGrades().get(0).getGrade());
         assertEquals(20, student.getAttributes().getSubjectGrades().get(0).getClassesAttended());
         //currently, does not include the details like phone number and last paid date.

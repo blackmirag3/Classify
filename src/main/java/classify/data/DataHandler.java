@@ -55,7 +55,7 @@ public class DataHandler extends Commands {
      *
      * @param list ArrayList containing the current students to write
      */
-    public static void writeArchive(List<Student> list){
+    public static void writeArchive(List<Student> list) {
         DataWriter.writeStudentInfoFile(list, ARCHIVE_DIRECTORY_PATH, ARCHIVE_FILE_PATH);
     }
 

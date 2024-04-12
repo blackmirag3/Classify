@@ -19,18 +19,18 @@ public class StudentListTest {
 
         studentList.addStudent(alpha);
 
-        boolean exceptionThrown = false;
+        boolean isRightException = false;
 
         try {
             StudentList.checkNameNumberPair(studentList, alpha.getName() , alpha.getPhoneNumber());
         } catch (NameNumberMatchException e) {
-            exceptionThrown = true;
+            isRightException = true;
         } catch (NullPointerException e) {
-            exceptionThrown = false; //wrong exception thrown
+            isRightException = false; //wrong exception thrown
         }
 
         assertEquals(studentList.studentList.get(0), alpha);
-        assertTrue(exceptionThrown);
+        assertTrue(isRightException);
     } 
 
 }

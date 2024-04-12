@@ -1,7 +1,6 @@
 
 package classify.commands;
 
-import classify.data.DataHandler;
 import classify.student.Student;
 import classify.student.StudentAttributes;
 import classify.student.StudentList;
@@ -19,7 +18,7 @@ import static classify.user.InputParsing.readInString;
 
 //@@author tayponghee
 public class AddStudent {
-    private static final String NOTEMPTY = "THIS STRING IS NOT EMPTY";
+    private static final String NOT_EMPTY = "THIS STRING IS NOT EMPTY";
     private static final String YES = "yes";
     private static final String NO = "no";
     private static final String SUBJECT_ENTER_NOTHING_TO_SKIP = "Subject (enter nothing to skip): ";
@@ -57,7 +56,7 @@ public class AddStudent {
         try {
             number = InputParsing.promptForPhoneNumber(in);
         } catch (NumberFormatException e) {
-            UI.println("Non-number or blank character found.");
+            UI.println("Non-number, invalid number or blank character found.");
             UI.println("Exiting the adding interface.");
             UI.printDivider();
             return;
@@ -78,11 +77,24 @@ public class AddStudent {
             UI.printDivider();
             return;
         } catch (NullPointerException e) {
-            UI.println("Null pointer thrown. Something went wrong.");
+            UI.printNullPointerException();
             UI.printDivider();
             return;
         }
 
+        setAttributesForStudent(masterStudentList, in, student, number);
+    }
+
+    /**
+     * Sets attributes for a given student, including phone number, gender, last payment date, and remarks.
+     *
+     * @param masterStudentList The list of all students.
+     * @param in The Scanner object for user input.
+     * @param student The student whose attributes are being set.
+     * @param number The phone number to set for the student.
+     */
+    private static void setAttributesForStudent(ArrayList<Student> masterStudentList,
+                                                Scanner in, Student student, int number) {
         student.getAttributes().setPhoneNumber(number);
 
         UI.promptForGender();
@@ -98,7 +110,6 @@ public class AddStudent {
         LOGGER.log(Level.INFO, STUDENT_ADDED_SUCCESSFULLY);
         UI.printStudentAdded();
         UI.printDivider();
-        DataHandler.writeStudentInfo(masterStudentList);
     }
 
     /**
@@ -125,7 +136,7 @@ public class AddStudent {
                 name = in.nextLine().trim();
             } else {
                 name = studentName.trim();
-                studentName = NOTEMPTY;
+                studentName = NOT_EMPTY;
                 
                 //@@author tayponghee
                 assert studentName != null;
@@ -258,7 +269,7 @@ public class AddStudent {
                 return -1;
             }
 
-            // @@author ParthGandhiNUS
+            //@@author ParthGandhiNUS
             int classesAttended;
             try {
                 classesAttended = Integer.parseInt(classesAttendedInput);
