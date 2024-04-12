@@ -1,11 +1,13 @@
 package classify.commands;
 
 import classify.student.Student;
+import classify.student.StudentAttributes;
 import classify.student.StudentList;
 import classify.student.SubjectGrade;
 import classify.ui.UI;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 //@@ author blackmirag3
@@ -61,7 +63,13 @@ public class ListStudentsCommand {
 
         for (Student student : masterStudentList) {
             if (student.hasSubject(subject)) {
-                System.out.println("- " + student.getName());
+                int classesAttended = getClassesAttendedForSubject(student, subject);
+                if (classesAttended >= 0) {
+                    UI.println("- " + student.getName() +
+                            " - Classes Attended for " + subject + ": " + classesAttended);
+                } else {
+                    UI.println("- " + student.getName() + " - " + "No Classes Attended found for " + subject);
+                }
                 found = true;
             }
         }
@@ -71,6 +79,32 @@ public class ListStudentsCommand {
         }
 
         UI.printDivider();
+    }
+
+    /**
+     * Gets the total number of classes attended by a student for the specified subject.
+     *
+     * @param student The student.
+     * @param subject The subject to check for classes attended.
+     * @return The number of classes attended for the specified subject.
+     */
+    private static int getClassesAttendedForSubject(Student student, String subject) {
+        int classesAttended = 0;
+
+        StudentAttributes attributes = student.getAttributes();
+        List<SubjectGrade> subjectGrades = attributes.getSubjectGrades();
+
+        for (SubjectGrade subjectGrade : subjectGrades) {
+            if (subjectGrade.getSubject().equalsIgnoreCase(subject)) {
+                if (subjectGrade.getClassesAttended() >= 0){
+                    classesAttended += subjectGrade.getClassesAttended();
+                } else {
+                    classesAttended = -1;
+                }
+            }
+        }
+
+        return classesAttended;
     }
 
     /**

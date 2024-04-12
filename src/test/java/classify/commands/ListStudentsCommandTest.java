@@ -99,7 +99,7 @@ class ListStudentsCommandTest {
 
         ArrayList<String> expectedOutput = new ArrayList<>();
         expectedOutput.add("Students with the subject " + '"' + MATH + '"' + ":");
-        expectedOutput.add("- " + YIXIN);
+        expectedOutput.add("- " + YIXIN + " - " + "Classes Attended for Math: 10");
         expectedOutput.add("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         assertEquals(expectedOutput, captureOutput(() -> ListStudentsCommand.listStudentsBySubject(students, MATH)));

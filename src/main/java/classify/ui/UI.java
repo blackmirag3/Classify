@@ -10,15 +10,6 @@ public class UI {
             "attended across all subjects: ";
     private static final String EMPTY_SUBJECT_ERROR = "No subjects and grades found for this student.";
     private static final String NULL_ATTRIBUTE_ERROR = "No attributes found for this student.";
-    private static final String EDIT_COMMAND_PROMPT = "How would you like to edit student? " +
-            "Enter index (blank to exit):";
-    private static final String EDIT_COMMAND_ADD_SUBJECT_PROMPT = "1. Add subject";
-    private static final String EDIT_COMMAND_MODIFY_SUBJECT_PROMPT = "2. Modify subject";
-    private static final String EDIT_COMMAND_DELETE_SUBJECT_PROMPT = "3. Delete subject";
-    private static final String EDIT_COMMAND_MODIFY_PHONE_NUMBER_PROMPT = "4. Modify phone number";
-    private static final String EDIT_COMMAND_MODIFY_REMARKS_PROMPT = "5. Modify remarks";
-    private static final String EDIT_COMMAND_MODIFY_PAYMENT_DATE_PROMPT = "6. Modify payment date";
-    private static final String EDIT_COMMAND_DELETED_SUBJECT_MESSAGE = "Subject deleted successfully!";
     private static final String EMPTY_LIST_ERROR = "Currently no students in list.";
     private static final String VALID_NUMBER_ERROR = "A valid number was not entered. Please input a valid number. ";
     private static final String PHONE_NUMBER_PROMPT = "Please input a valid phone number: ";
@@ -44,6 +35,16 @@ public class UI {
     private static final String CLASSIFY_GOODBYE_MESSAGE = "Hope you've had a productive day. See you again! Goodbye!";
     private static final String WRONG_INPUT_MESSAGE = "No such command, type \"help\" to view all commands";
     //@@author blackmirag3
+    private static final String EDIT_COMMAND_PROMPT = "How would you like to edit student? " +
+            "Enter index (blank to exit):";
+    private static final String EDIT_COMMAND_ADD_SUBJECT_PROMPT = "1. Add subject";
+    private static final String EDIT_COMMAND_MODIFY_SUBJECT_PROMPT = "2. Modify subject";
+    private static final String EDIT_COMMAND_DELETE_SUBJECT_PROMPT = "3. Delete subject";
+    private static final String EDIT_COMMAND_MODIFY_PHONE_NUMBER_PROMPT = "4. Modify phone number";
+    private static final String EDIT_COMMAND_MODIFY_REMARKS_PROMPT = "5. Modify remarks";
+    private static final String EDIT_COMMAND_MODIFY_PAYMENT_DATE_PROMPT = "6. Modify payment date";
+    private static final String EDIT_COMMAND_DELETED_SUBJECT_MESSAGE = "Subject deleted successfully!";
+    private static final String EDIT_COMMAND_MODIFY_GENDER_PROMPT = "7. Edit Gender";
     private static final String WHAT_ELSE_CAN_I_DO_FOR_YOU_TODAY = "What else can I do for you today?";
     private static final String STUDENT_DETAILS_PROMPT = "Enter student details: ";
     private static final String STUDENT_NAME_PROMPT = "Enter student name: ";
@@ -51,7 +52,7 @@ public class UI {
     private static final String STUDENT_NAME_MESSAGE = "Name: ";
     private static final String CLASSES_ATTENDED_PROMPT = "Enter Classes Attended (blank to skip): ";
     private static final String CLASSES_ATTENDED_MESSAGE = "Classes Attended: ";
-    private static final String STUDENT_NOT_FOUND_MESSAGE = "No student found to edit!";
+    private static final String STUDENT_NOT_FOUND_MESSAGE = "No student found!";
     private static final String STUDENT_ADDED_MESSAGE = "Student added successfully!";
     private static final String STUDENT_DELETED_MESSAGE = "Student removed successfully!";
     private static final String SUBJECT_MESSAGE = "Subject: ";
@@ -159,8 +160,7 @@ public class UI {
 
     private static void printAddHelpMessage() {
         System.out.println("add                         Adds a student to the student list, " +
-                "expects a name, grade and lessons attended" +
-                ", can be used directly with a name e.g. add [name]");
+                "expects a name, grade and lessons attended e.g. add [name]");
     }
 
     //@@author ParthGandhiNUS
@@ -315,7 +315,7 @@ public class UI {
         System.out.println(EDIT_COMMAND_MODIFY_PHONE_NUMBER_PROMPT);
         System.out.println(EDIT_COMMAND_MODIFY_REMARKS_PROMPT);
         System.out.println(EDIT_COMMAND_MODIFY_PAYMENT_DATE_PROMPT);
-        System.out.println("7. Edit Gender.");
+        System.out.println(EDIT_COMMAND_MODIFY_GENDER_PROMPT);
     }
 
     //@@ author tayponghee

@@ -208,25 +208,28 @@ public class DataReader {
             try {
                 while (line.ready()) {
                     restoreStudentList(line.readLine(), list);
-                    line.close();
                 }
+                line.close();
             //@@author alalal47
             } catch (ArrayIndexOutOfBoundsException e) {
                 DataUI.printFileCorruptedMessage();
                 DataUI.printDataDeletionPromptMessage();
                 promptDataDeletion();
                 UI.printDivider();
+                StudentList.masterStudentList.clear();
             } catch (IOException e) {
                 DataUI.printFileCorruptedMessage();
                 DataUI.printDataDeletionPromptMessage();
                 promptDataDeletion();
                 UI.printDivider();
+                StudentList.masterStudentList.clear();
             }
         }
         //@@author ParthGandhiNUS
         DataUI.printLoadSuccess();
         UI.printDivider();
     }
+
 
     //@@author alalal47
     /**

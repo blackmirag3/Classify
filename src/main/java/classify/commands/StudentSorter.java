@@ -110,7 +110,7 @@ public class StudentSorter {
 
     //@@author alalal47
     /**
-     * Lists students in the provided list by last paid date attended in ascending order, with the most recent first.
+     * Lists students in the provided list by last paid date attended in ascending order, with the least recent first.
      *
      * @param masterStudentList The list of students to be listed by total classes attended.
      */
