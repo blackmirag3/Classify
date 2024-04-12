@@ -36,7 +36,7 @@ public class TextFileHandler {
      */
     public static void createTextFileDirectory(String pathString) {
         //Folder Creation if folder not there
-        try{
+        try {
             Path path = Paths.get(pathString);
             Files.createDirectories(path);
         } catch (FileAlreadyExistsException ignored) {

@@ -148,7 +148,7 @@ public class TextFileParser {
      * @param masterStudentList StudentList where students will be added.
      */
     private static void fetchDataFromTextFile(BufferedReader line, ArrayList <Student> masterStudentList) {
-        try{
+        try {
             String firstLine = line.readLine();
             String [] subjectInfoStrings = firstLine.split(SUBJECT_REGEX);
             String subjectName = subjectInfoStrings[1].trim();
@@ -183,7 +183,7 @@ public class TextFileParser {
         String [] inputArr = textFileInput.split(MAIN_REGEX);
 
 
-        try{
+        try {
             //Set Name
             String studentNameString = AddStudent.splitName(inputArr[NAME].trim());
             Student student = new Student(studentNameString);

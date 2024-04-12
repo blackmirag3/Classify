@@ -48,7 +48,7 @@ public class DataWriter {
      * @param parentPath    Path file containing the path of folder we want to make the text file in
      */
     public static void createParentFileFolder(String parentPath) {
-        try{
+        try {
             Path path = Paths.get(parentPath);
             Files.createDirectories(path);
         } catch (FileAlreadyExistsException ignored) {
