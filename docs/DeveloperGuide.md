@@ -268,20 +268,105 @@ Classify serves as an attempt to modernise administrative tasks in education ins
 ## Instructions for manual testing
 
 ### Adding a student to the student list
-1. Adding a student with a name and phone number only
-   1. Prerequisites: View if a student with the name 'joe' exists by using the `view joe` command.
-   2. Test case: `add joe` and when prompted for phone number enter `11111111`, while pressing enter to skip other optional fields.
-   <br /> 
-   Expected: `view joe` now shows the Student details of a student with Name: joe, Phone Number: 11111111. Other fields that were left blank will reflect 'Unknown' or for date fields, today's date.
-   3. Test case: `add` and when prompted for Name, `joe`. `11111111` when prompted for phone number, press enter to skip other fields.
-   <br />
-   Expected: `view joe` shows the same results as when a student was added via `add joe`.
+#### 1. Adding a student with a name and phone number only:
+1. Prerequisites: View if a student with the name 'joe' exists by using the `view joe` command.
+2. Test case: `add joe` and when prompted for phone number enter `11111111`, while pressing enter to skip other optional fields.
+<br /> 
+Expected: `view joe` now shows the Student details of a student with Name: joe, Phone Number: 11111111. Other fields that were left blank will reflect 'Unknown' or for date fields, today's date.
+3. Test case: `add` and when prompted for Name, `joe`. `11111111` when prompted for phone number, press enter to skip other fields.
+<br />
+Expected: `view joe` shows the same results as when a student was added via `add joe`.
+
 ### Viewing a student's details
-1. View a student who has been added to the student list
-   1. Prerequisites: Add one student named 'joe' to the list with the `add` command
-   2. Test case: `view joe`
-   <br />
-   Expected: Student's details shown correspond to the details input when `add` was used to add a student.
-   3. Test case: `view dogman`
-   <br />
-   Expected: No details are displayed, an error message stating 'Student not found!' is shown.
+#### 1. View a student who has been added to the student list:
+1. Prerequisites: Add one student named 'joe' to the list with the `add` command
+2. Test case: `view joe`
+<br />
+Expected: Student's details shown correspond to the details input when `add` was used to add a student.
+3. Test case: `view dogman`
+<br />
+Expected: No details are displayed, an error message stating 'Student not found!' is shown.
+
+### Editing a student's details
+#### 1. Entering edit mode for an existing student:
+1. Prerequisites: Add student named 'tim' to the student list with the `add` command.
+2. Test Case: `edit`, `tim`
+<br/> Expected: Name will be prompted first, then edit mode will be initiated for student 'tim'.
+3. Test Case: `edit tim`
+<br/> Expected: Edit mode will be initiated for student 'tim'.
+
+#### 2. Adding single or multiple subjects to an existing student
+1. Prerequisites: Add student 'tim' and initiate edit mode for 'tim'.
+2. Test Case: `1`, `CS2113`, `11`, `1`, `no`
+<br/> Expected: 'tim' has subject 'CS2112' with marks '11' and '1' class attended.
+3. Test Case: `1`, `CS2030`, ` `, ` `, `yes`, `CS2040`, ` `, ` `, `no`
+<br/> Expected: 'tim' has subjects 'CS2030' and 'CS2040' with no marks and attendance.
+4. Test Case: `1`, ` `
+</br> Expected: Returns to edit mode for 'tim' and no change in subjects is made for 'tim'.
+
+#### 3. Modifying existing subject under existing student
+1. Prerequisites: Add student 'tim' with subject 'CS2113' and initiate edit mode for 'tim'.
+2. Test Case: `2`, `CS2113`, `CS3223`, `2`, `0`
+<br/> Expected: Returns to edit mode for 'tim' and 'tim' now has subject 'CS3223' with '2' marks and '0' classes attended.
+3. Test Case: `2`, ` `
+</br> Expected: Returns to edit mode for 'tim' and no change in subjects is made for 'tim'.
+
+#### 4. Deleting existing subject under existing student
+1. Prerequisites: Add student 'tim' with subject 'CS2113' and initiate edit mode for 'tim'.
+2. Test Case: `3`, `CS2113`
+<br/> Expected: Returns to edit mode for 'tim', subject 'CS2113' is deleted and 'tim' now has no subjects.
+3. Test Case: `3`, ` `
+</br> Expected: Returns to edit mode for 'tim' and no change in subjects is made for 'tim'.
+
+#### 5. Modify existing phone number under existing student
+1. Prerequisites: Add student 'tim' with phone number '88888888' and initiate edit mode for 'tim'.
+2. Test Case: `4`, `88888887`
+<br/> Expected: Returns to edit mode for 'tim' and phone number for 'tim' is now '88888887'.
+3. Test Case: `4`, ` `
+</br> Expected: Returns to edit mode for 'tim' and no change in phone number is made for 'tim'.
+4. Test Case: `4`, `lol`
+</br> Expected: Returns to edit mode for 'tim' and no change in phone number is made for 'tim'.
+
+#### 6. Modify remarks under existing student
+1. Prerequisites: Add student 'tim' and initiate edit mode for 'tim'.
+2. Test Case: `5`, `deans list material`
+<br/> Expected: Returns to edit mode for 'tim' and remarks for 'tim' is now 'deans list material'.
+3. Test Case: `5`, ` `
+</br> Expected: Returns to edit mode for 'tim' and no change in remarks is made for 'tim'.
+
+#### 7. Modify payment date under existing student
+1. Prerequisites: Add student 'tim' and initiate edit mode for 'tim'.
+2. Test Case: `6`, ` `
+   <br/> Expected: Returns to edit mode for 'tim' and payment date for 'tim' is system's current date in YYYY-MM-DD format.
+3. Test Case: `6`, `2000-11-20`
+   </br> Expected: Returns to edit mode for 'tim' and payment date for 'tim' is now '2000-11-20'.
+4. 
+#### 8. Modify gender under existing student
+1. Prerequisites: Add student 'tim' and initiate edit mode for 'tim'.
+2. Test Case: `7`, `undefined`
+ <br/> Expected: Returns to edit mode for 'tim' and gender for 'tim' is now 'undefined'.
+3. Test Case: `7`, ` `
+</br> Expected: Returns to edit mode for 'tim' and no change in remarks is made for 'tim'.
+
+#### 9. Editing student in empty list
+1. Prerequisites: Have empty list with no students added.
+2. Test Case: `edit`
+</br> Expected: Error message for empty list will be printed.
+
+#### 10. Editing non-existing student in non-empty list
+1. Prerequisites: Add student `tim`
+2. Test Case: `edit john`
+</br> Expected: Error message for non-existed student will be printed.
+
+#### 11. Invalid entries for editing student
+1. Prerequisites: Add student 'tim' with subjects 'CS2113', 'CS2040' and phone number '88888888' and initiate edit mode for 'tim'.
+2. Test Case: `1`, `cs2113`
+</br> Expected: Returns to edit mode for 'tim', no new subject added and error message printed for adding existing subject.
+3. Test Case: `2`, `CS2113`, `CS2040`
+</br> Expected: Prints error message for existing subject and new subject name is prompted to update 'CS2113'.
+4. Test Case: `3`, `CG2023`
+</br> Expected: Prints error message for no subject found and prompts for another subject name to delete.
+5. Test Case: `4`, `11111111`
+</br> Expected: Prints invalid phone number error message and prompts for another phone number.
+6. Test Case: `6`, `20 jan 2001`
+</br> Expected: Prints error message for invalid date and prompts for another date.
