@@ -69,4 +69,104 @@ public class EditTest {
                 "No student found!" + System.lineSeparator();
         assertEquals(printedOutput, expectedOutput);
     }
+
+    //@@author Cryolians
+    @Test
+    void testInvalidNumberEdit() {
+        String commandString = "88888888 \n" +
+                "4 \n" +
+                "99999999 \n" +
+                '\n';
+
+        Student alpha = new Student("Alpha");
+        alpha.getAttributes().setPhoneNumber(88888888);
+        StudentList.masterStudentList.add(alpha);
+
+        Student alpha2 = new Student("Alpha");
+        alpha2.getAttributes().setPhoneNumber(99999999);
+        StudentList.masterStudentList.add(alpha2);
+
+        assertEquals(StudentList.masterStudentList.size(), 2);
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        Scanner input = new Scanner(commandString);
+
+        System.setOut(new PrintStream(output));
+
+        EditStudent.editStudent(input, "Alpha");
+
+        assertEquals(88888888, alpha.getPhoneNumber());
+    }
+
+    @Test
+    void testValidNumberEdit() {
+        String commandString = "88888888 \n" +
+                "4 \n" +
+                "80808080 \n" +
+                '\n';
+
+        Student alpha = new Student("Alpha");
+        alpha.getAttributes().setPhoneNumber(88888888);
+        StudentList.masterStudentList.add(alpha);
+
+        Student alpha2 = new Student("Alpha");
+        alpha2.getAttributes().setPhoneNumber(99999999);
+        StudentList.masterStudentList.add(alpha2);
+
+        assertEquals(StudentList.masterStudentList.size(), 2);
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        Scanner input = new Scanner(commandString);
+
+        System.setOut(new PrintStream(output));
+
+        EditStudent.editStudent(input, "Alpha");
+
+        assertEquals(80808080, alpha.getPhoneNumber());
+    }
+
+    @Test
+    void testInvalidGenderEdit() {
+        String commandString = "7 \n" +
+                "----~~~~ \n" +
+                '\n';
+
+        Student alpha = new Student("Alpha");
+        alpha.getAttributes().setGender("gender");
+        StudentList.masterStudentList.add(alpha);
+
+        assertEquals(StudentList.masterStudentList.size(), 1);
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        Scanner input = new Scanner(commandString);
+
+        System.setOut(new PrintStream(output));
+
+        EditStudent.editStudent(input, "Alpha");
+
+        assertEquals("gender", alpha.getGender());
+    }
+
+    @Test
+    void testValidGenderEdit() {
+        String commandString = "7 \n" +
+                "gender2\n" +
+                '\n';
+
+        Student alpha = new Student("Alpha");
+        alpha.getAttributes().setGender("gender");
+        StudentList.masterStudentList.add(alpha);
+
+        assertEquals(StudentList.masterStudentList.size(), 1);
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        Scanner input = new Scanner(commandString);
+
+        System.setOut(new PrintStream(output));
+
+        EditStudent.editStudent(input, "Alpha");
+
+        assertEquals("gender2", alpha.getGender());
+    }
+
 }
