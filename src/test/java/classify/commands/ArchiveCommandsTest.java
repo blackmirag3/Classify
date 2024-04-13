@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import classify.student.StudentList;
 import classify.student.Student;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Scanner;
@@ -98,15 +99,16 @@ public class ArchiveCommandsTest {
 
         StudentList.masterStudentList.clear();
         StudentList.archiveList.clear();
+        studentlist.studentList.clear();
 
-        studentlist.addStudent(new Student("Wario"));
+        StudentList.masterStudentList.add(new Student("Wario"));
         StudentList.archiveList.add(new Student("Wario"));
         Scanner in = new Scanner("Wario\n");
 
-        ArchiveCommands.unarchiveStudent(studentlist.studentList, StudentList.archiveList, null, in);
+        ArchiveCommands.unarchiveStudent(StudentList.masterStudentList, StudentList.archiveList, "Wario", in);
 
-        assertTrue(studentlist.studentList.size() >= 0);
-        assertTrue(StudentList.archiveList.size() == 0);
+        assertEquals(1, StudentList.masterStudentList.size());
+        assertTrue(StudentList.archiveList.size() == 1);
 
     }
 }
