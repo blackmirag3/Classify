@@ -23,7 +23,7 @@ all Tuition Centres can employ for ease of student management.
 
   * Non-features:
     * Implemented `SubjectGrade` class.
-    * Implemented helper functions for the team to re-use in their own features, such as `findSubject` and `isValidGrade`.
+    * Implemented and maintained heavily re-used helper functions for the team, such as `findSubject` which finds whether a subject exists under a student and `isValidGrade` which validates input format for grade.
 
 
 - **Contributions to [UG](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/docs/UserGuide.md)**
@@ -46,7 +46,6 @@ all Tuition Centres can employ for ease of student management.
 
 - **Review/mentoring contributions**
     * Actively reviewed and approved team's PRs, with some recent examples [here](https://github.com/AY2324S2-CS2113-T13-3/tp/pull/258) or [here](https://github.com/AY2324S2-CS2113-T13-3/tp/pull/246).
-    * Approached relevant team members to discuss bug fixes whenever I discovered new bugs for their features.
 
 - **Contributions beyond project team**
     * Did exploratory testing of T13-4's TP before their final release.
