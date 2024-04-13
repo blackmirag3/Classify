@@ -8,8 +8,11 @@
 - Used as template to structure this Developer Guide
 
 ## Design & implementation
+Main architectural diagram:
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+![Overall architecture diagram](./diagrams/src/ArchitectureDiagram/MainArchitecture.png)
+
+Do note that the Classify class is the "main" class in the diagram, with all other packages having their classes omitted for simplicity.
 
 ---
 

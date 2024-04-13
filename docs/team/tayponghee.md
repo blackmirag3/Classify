@@ -39,10 +39,11 @@ Given below are my contributions to the project:
     * Features for list, sorting, as well as the examples for deletion and view. Compiled all the commands into the summary sheet at the bottom of the UG.
   * [Contributions to DG](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/docs/DeveloperGuide.md): 
     * References, InputParsing Component, DataStoring Component, AddStudent Component and StudentSorter Component, as well as the non-functional requirements.
-    * UMLs contributed: Object diagram for DataStoring, Class diagrams for InputParsing and StudentSorter. Created using the PlantUML software.
+    * UMLs contributed: Main Architecture diagram, Object diagram for DataStoring, Class diagrams for InputParsing and StudentSorter. Created using the PlantUML software.
     * [DataStoring UML](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/docs/diagrams/src/DataStoring/ObjectDiagram.png)
     * [InputParsing UML](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/docs/diagrams/src/InputParsing/InputParsing.png)
     * [StudentSorter UML](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/docs/diagrams/src/StudentSorter/StudentSorter.png)
+    * [MainArchitecture UML](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/docs/diagrams/src/ArchitectureDiagram/MainArchitecture.png)
 
 
 - **Contributions to Team-Based tasks:**
