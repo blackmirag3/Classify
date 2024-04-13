@@ -173,7 +173,7 @@ public class DataReaderTest {
     }
 
     @Test
-    public void checkDeletionRequestInvalidTest4(){
+    public void checkDeletionRequestInvalidTest3(){
         assertFalse(DataReader.checkDeletionRequestInput("NO"));
     }
 
