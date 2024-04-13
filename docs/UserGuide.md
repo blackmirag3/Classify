@@ -731,4 +731,8 @@ This section provides a quick overview of all the commands used in our Classify.
 
 **A**: Due to the ever-changing climate of what is considered a name (and more), we have limited the bans to 3 special characters above only. In the event your name or other identification metrics contains `#`, `~` or `-`, we seek for your understanding.
 
+**Q**: What happens if my data file gets corrupted?
+
+**A**: We recommend manually looking through the data file and rectifying any errors, or by running Classify with a corrupted data file, the prompts on screen will guide you to delete all data in the file to restore Classify to a working state.
+
 
