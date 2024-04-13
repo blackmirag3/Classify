@@ -4,7 +4,6 @@ package classify.commands;
 import classify.student.Student;
 import classify.student.StudentAttributes;
 import classify.student.SubjectGrade;
-import classify.ui.UI;
 import classify.student.StudentList;
 
 import org.junit.jupiter.api.Test;
