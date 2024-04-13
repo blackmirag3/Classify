@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class UI {
     public static final String TOTAL_CLASSES_ATTENDED_ACROSS_ALL_SUBJECTS = "Total classes " +
             "attended across all subjects: ";
+    public static final String DIVIDER = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
     private static final String EMPTY_SUBJECT_ERROR = "No subjects and grades found for this student.";
     private static final String NULL_ATTRIBUTE_ERROR = "No attributes found for this student.";
     private static final String EMPTY_LIST_ERROR = "Currently no students in list.";
@@ -29,7 +30,6 @@ public class UI {
     private static final String INVALID_DATE_RANGE = "Please input a date with a reasonable value. \n" +
             "(eg. from 2010 until today.)";
     //@@author ParthGandhiNUS
-    private static final String DIVIDER = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
     private static final String WELCOME_TO_CLASSIFY = "Welcome to Classify!";
     private static final String WHAT_CAN_I_DO_FOR_YOU_TODAY = "What can I do for you today?";
     private static final String CLASSIFY_GOODBYE_MESSAGE = "Hope you've had a productive day. See you again! Goodbye!";
@@ -86,6 +86,8 @@ public class UI {
     private static final String STUDENT_NOT_FOUND_CANNOT_BE_DELETED = "Student not found! Cannot be deleted.";
     private static final String NULL_POINTER_THROWN_SOMETHING_WENT_WRONG =
             "Null pointer thrown. Something went wrong.";
+
+
     //@@author alalal47
     /**
      * Displays the help message to teach users how to use Classify.
