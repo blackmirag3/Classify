@@ -1,5 +1,23 @@
 # Developer Guide
 
+## Table of Contents
+- [Acknowledgements](#acknowledgements)
+- [Overall Design and Implementation](#overall-design-and-implementation)
+- [Project Components](#project-components)
+   - [Ui component](#ui-component)
+   - [InputParsing component](#inputparsing-component)
+   - [Student Details](#student-details)
+   - [AddStudent Component](#addstudent-component)
+   - [StudentSorter Component](#studentsorter-component)
+   - [Data Commands Component](#data-commands-component)
+   - [Process Componenent](#process-component)
+- [Project Scope](#product-scope)
+   - [User Stories](#user-stories)
+   - [Non-Functional Requirements](#non-functional-requirements)
+   - [Glossary](#glossary)
+   - [Instructions for manual testing](#instructions-for-manual-testing)
+
+
 ## Acknowledgements
 
 1. Reference to AB-3 Developer Guide
@@ -7,7 +25,7 @@
 - [Source](https://se-education.org/addressbook-level3/DeveloperGuide.html#proposed-undoredo-feature)
 - Used as template to structure this Developer Guide
 
-## Design & implementation
+## Overall Design and implementation
 Main architectural diagram:
 
 ![Overall architecture diagram](./diagrams/src/ArchitectureDiagram/MainArchitecture.png)
@@ -15,6 +33,8 @@ Main architectural diagram:
 Do note that the Classify class is the "main" class in the diagram, with all other packages having their classes omitted for simplicity.
 
 ---
+
+## Project Components
 
 ### Ui component
 
@@ -105,24 +125,6 @@ We created a parent `Details` class as those are information not specifically re
 
 However, our current implementation is not very secure as one can access every field of a `Student` object just by having access to it or the `StudentAttribute` object, which can be done via accessing the `static masterStudentList` variable.In future updates, we could possibly implement a Facade Pattern to better hide sensitive details.
 
-### Data Commands Component
-
-This section refers to `DataHandler.java`, `DataReader.java`, and `DataStorage.java` classes.
-
-We have currently implemented a basic data handler which has the abilities to store a student's name into a text file.
-
-This text file is created locally on the users' computer for easy access and retrieval.
-
-Currently there is a polling system set in place where every change in the list of students (eg, addition, deletion, modification) would override the current working text file on the users' computer.
-
-As stated above, all the names and attributes associated with each student will be saved to the main text file, named Student_Information.txt.
-
-If the user chooses to delete or archive a student, it would be saved to an archive file, named student_archive.txt. If the user chooses to unarchive a student or undo a recent deletion, it will be brought back to the main text file.
-
-The two text files are will be created under a directory called data, in which two separate file paths will be created if it is not already found on the user's desktop. 
-
-![DataStoringObjectDiagramUML](./diagrams/src/DataStoring/ObjectDiagram.png)
-
 #### Design Considerations
 
 In order to ensure the proper usage of OOP principles (such as encapsulation), we have segregated the 3 classes to read, store and handle the data.
@@ -198,6 +200,27 @@ total classes attended, and last payment date.
 
 The `StudentSorter` class contributes to the overall functionality of the application by 
 providing a mechanism to organize and present student information based on user preferences.
+
+### Data Commands Component
+
+This section refers to `DataHandler.java`, `DataReader.java`, and `DataStorage.java` classes.
+
+We have currently implemented a basic data handler which has the abilities to store a student's name into a text file.
+
+This text file is created locally on the users' computer for easy access and retrieval.
+
+Currently there is a polling system set in place where every change in the list of students (eg, addition, deletion, modification) would override the current working text file on the users' computer.
+
+As stated above, all the names and attributes associated with each student will be saved to the main text file, named Student_Information.txt.
+
+If the user chooses to delete or archive a student, it would be saved to an archive file, named student_archive.txt. If the user chooses to unarchive a student or undo a recent deletion, it will be brought back to the main text file.
+
+The two text files are will be created under a directory called data, in which two separate file paths will be created if it is not already found on the user's desktop. 
+
+![DataStoringObjectDiagramUML](./diagrams/src/DataStoring/ObjectDiagram.png)
+
+### Process Component
+This section refers to `TextFileHandler.java`, `TextFileParser.java`, and `TextFileReader.java` classes.
 
 ---
 
