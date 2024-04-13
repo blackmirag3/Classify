@@ -186,6 +186,8 @@ Thus, please be informed and educated that our software only works in countries 
 To be specific, this is referring to a city-state republic in South East Asia, that lies in the timezone GMT +8 in the Straits of Johor. 
 Some may debate that our time zone is actually GMT+7.5 or GMT+7, but it was changed to facilitate business deals and decisions with other financial hubs in the region thanks to our capitalistic overlords.
 
+Last payment date must be within a range from 1970-01-01 to the day after the current date. This is a buffer to account for situations when storing dates, such as for audit reasons.
+
 #### Example usage:
 ``` 
 add wario
