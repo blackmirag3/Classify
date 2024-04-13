@@ -331,8 +331,7 @@ Enter Classes Attended (blank to skip):
 >> 10
 Do you want to add another subject and grade? (yes/no)
 >> no
-What else can I do for you today?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 ```
 If no student is found in the master student list, edit mode will not be entered and the programme will resume as per normal.
 
@@ -343,8 +342,6 @@ edit
 Name of student to edit (blank to exit):
 luigi
 No student found to edit!
-What else can I do for you today?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
 ### Restore a student to the working list `restore`
@@ -598,8 +595,6 @@ For any archived student, the user will be unable to add a student with the same
 ```
 archive wario
 Archive successful.
-What else can I do for you today?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
 The user can then view currently archived students using the `list` command.
@@ -619,8 +614,6 @@ The user can then view currently archived students using the `list` command.
 ```
 unarchive wario
 Unarchive successful.
-What else can I do for you today?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
 #### Invalid student:
@@ -628,8 +621,6 @@ What else can I do for you today?
 ```
 unarchive yeeter
 No student found!
-What else can I do for you today?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 If a student that exists in the archive data file matches the name and phone number of an already existing student,
 the archived student will not be loaded into the archive list and will be overwritten subsequently.
