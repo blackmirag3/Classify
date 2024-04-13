@@ -31,7 +31,7 @@ public class UI {
             "(eg. from 2010 until today.)";
     //@@author ParthGandhiNUS
     private static final String WELCOME_TO_CLASSIFY = "Welcome to Classify!";
-    private static final String WHAT_ELSE_CAN_I_DO_FOR_YOU_TODAY = "What can I do for you today?";
+    private static final String WHAT_CAN_I_DO_FOR_YOU_TODAY = "What can I do for you today?";
     private static final String CLASSIFY_GOODBYE_MESSAGE = "Hope you've had a productive day. See you again! Goodbye!";
     private static final String WRONG_INPUT_MESSAGE = "No such command, type \"help\" to view all commands";
     //@@author blackmirag3
@@ -214,7 +214,7 @@ public class UI {
 
     //@@author blackmirag3
     public static void printSubsequentUserPrompt() {
-        System.out.println(WHAT_ELSE_CAN_I_DO_FOR_YOU_TODAY);
+        System.out.println(WHAT_CAN_I_DO_FOR_YOU_TODAY);
         printDivider();
     }
     public static void printWrongInput() {
