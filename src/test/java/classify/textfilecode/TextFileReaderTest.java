@@ -14,7 +14,7 @@ class TextFileReaderTest {
     private static final String VALID_FILE_DIRECTORY = "./data/testFolder";
 
     @Test
-    public void testPrintCurrentInputFolderwhenEmpty() {
+    public void testPrintCurrentInputFolderWhenEmpty() {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
@@ -27,7 +27,7 @@ class TextFileReaderTest {
     }
     
     @Test
-    public void testPrintCurrentInputFolderwhenFilled() {
+    public void testPrintCurrentInputFolderWhenFilled() {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
