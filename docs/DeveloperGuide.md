@@ -349,16 +349,6 @@ Classify serves as an attempt to modernise administrative tasks in education ins
    2. Test case: `archive joe`<br />
    Expected: `joe` will be removed from the list, and added to the archive, `joe` will appear in the list of students added to the archive.
 
-### Archive
-#### 1. Adding a student with a name and phone number only:
-1. Prerequisites: View if a student with the name 'joe' exists by using the `view joe` command.
-2. Test case: `add joe` and when prompted for phone number enter `11111111`, while pressing enter to skip other optional fields.
-<br /> 
-Expected: `view joe` now shows the Student details of a student with Name: joe, Phone Number: 11111111. Other fields that were left blank will reflect 'Unknown' or for date fields, today's date.
-3. Test case: `add` and when prompted for Name, `joe`. `11111111` when prompted for phone number, press enter to skip other fields.
-<br />
-Expected: `view joe` shows the same results as when a student was added via `add joe`.
-
 ### Editing a student's details
 #### 1. Entering edit mode for an existing student:
 1. Prerequisites: Add student named 'tim' to the student list with the `add` command.
@@ -425,7 +415,7 @@ Expected: `view joe` shows the same results as when a student was added via `add
 2. Test Case: `edit`
 </br> Expected: Error message for empty list will be printed.
 
-#### 10. Editing non-existing student in non-empty list
+#### 10. Editing non-existent student in non-empty list
 1. Prerequisites: Add student `tim`
 2. Test Case: `edit john`
 </br> Expected: Error message for non-existed student will be printed.

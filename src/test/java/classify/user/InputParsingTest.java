@@ -144,21 +144,21 @@ public class InputParsingTest {
         String expectedOutput =
                 "add                         Adds a student to the student list, expects a name" +
                                              ", grade and lessons attended e.g. add [name]"
-                                             + System.lineSeparator() +
+                                             + System.lineSeparator() + System.lineSeparator() +
                 "edit                        Edits a students details, expects a name" +
                                              ", can be used directly with a name e.g. edit [name]"
-                                             + System.lineSeparator() +
+                                             + System.lineSeparator() + System.lineSeparator() +
                 "view                        Views a students details, expects a name" +
                                              ", can be used directly with a name e.g. add [name]"
-                                             + System.lineSeparator() +
+                                             + System.lineSeparator() + System.lineSeparator() +
                 "delete                      Deletes a student from the student list, expects a name" +
                                              ", can be used directly with a name e.g. add [name]"
-                                             + System.lineSeparator() +
+                                             + System.lineSeparator() + System.lineSeparator() +
                 "restore                     Restore a student deleted within the current session, expects a name, " +
                                              "can be used directly by restore [name]."
-                                             + System.lineSeparator() +
+                                             + System.lineSeparator() + System.lineSeparator() +
                 "undo                        Restores the last student deleted in the current session."
-                                             + System.lineSeparator() +
+                                             + System.lineSeparator() + System.lineSeparator() +
                 "list                        Displays the list of all students"
                                              + System.lineSeparator() +
                 "                            Currently available types: Whole student list, with " +
@@ -166,23 +166,23 @@ public class InputParsingTest {
                                              + System.lineSeparator() +
                 "                            the archived list, the recently deleted list or " +
                                              "by certain subject only."
-                                             + System.lineSeparator() +
+                                             + System.lineSeparator() + System.lineSeparator() +
                 "bye                         Exits Classify"
-                                             + System.lineSeparator() +
+                                             + System.lineSeparator() + System.lineSeparator() +
                 "sort                        Sorts the student list by the input parameter, expects an" +
                                              " attribute to sort by, can be used directly by sort [type]."
                                              + System.lineSeparator() +
                 "                            Currently available types: name, classes, payment"
-                                             + System.lineSeparator() +
+                                             + System.lineSeparator() + System.lineSeparator() +
                 "archive                     Removes the specified student from the list and archives them," +
                                              " can be used directly by archive [name]."
-                                             + System.lineSeparator() +
+                                             + System.lineSeparator() + System.lineSeparator() +
                 "unarchive                   Removes the specified student from the archive and adds them to the list" +
                                              ", can be used directly by unarchive [name]."
-                                             + System.lineSeparator() +
+                                             + System.lineSeparator() + System.lineSeparator() +
                 "process                     Processes a text file containing a list of students taking the same"+
                                              " subject and the same number of classes."
-                                             + System.lineSeparator() +
+                                             + System.lineSeparator() + System.lineSeparator() +
                 "help                        Prints this help message" +
             System.lineSeparator() + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
 

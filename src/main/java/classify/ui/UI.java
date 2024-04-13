@@ -45,7 +45,6 @@ public class UI {
     private static final String EDIT_COMMAND_MODIFY_PAYMENT_DATE_PROMPT = "6. Modify payment date";
     private static final String EDIT_COMMAND_DELETED_SUBJECT_MESSAGE = "Subject deleted successfully!";
     private static final String EDIT_COMMAND_MODIFY_GENDER_PROMPT = "7. Edit Gender";
-    private static final String WHAT_ELSE_CAN_I_DO_FOR_YOU_TODAY = "What else can I do for you today?";
     private static final String STUDENT_DETAILS_PROMPT = "Enter student details: ";
     private static final String STUDENT_NAME_PROMPT = "Enter student name: ";
     private static final String STUDENT_DETAILS_MESSAGE = "Student details: ";
@@ -94,17 +93,33 @@ public class UI {
      */
     public static void printHelp() {
         printAddHelpMessage();
+        System.out.println("");
         printEditHelpMessage();
+        System.out.println("");
         printViewHelpMessage();
+        System.out.println("");
         printDeleteHelpMessage();
+        System.out.println("");
         printRestoreHelpMessage();
+        System.out.println("");
         printUndoHelpMessage();
+        System.out.println("");
         printListHelpMessage();
+        System.out.println("");
         printByeHelpMessage();
+        System.out.println("");
         printSortHelpMessage();
+        System.out.println("");
         printArchiveHelpMessage();
+        System.out.println("");
         printUnarchiveHelpMessage();
+        System.out.println("");
         printProcessTextFileInputMessage();
+        System.out.println("");
+        printHelpHelpMessage();
+    }
+
+    private static void printHelpHelpMessage() {
         System.out.println("help                        Prints this help message");
     }
 
@@ -181,7 +196,6 @@ public class UI {
     public static void printWelcomeMessage() {
         printDivider();
         System.out.println(WELCOME_TO_CLASSIFY);
-        System.out.println(WHAT_CAN_I_DO_FOR_YOU_TODAY);
     }
 
     /**
@@ -200,16 +214,12 @@ public class UI {
 
     //@@author blackmirag3
     public static void printSubsequentUserPrompt() {
-        System.out.println(WHAT_ELSE_CAN_I_DO_FOR_YOU_TODAY);
+        System.out.println(WHAT_CAN_I_DO_FOR_YOU_TODAY);
         printDivider();
     }
     public static void printWrongInput() {
         System.out.println(WRONG_INPUT_MESSAGE);
         printDivider();
-    }
-
-    public static void printStudentDetailsPrompt() {
-        System.out.println(STUDENT_DETAILS_PROMPT);
     }
 
     public static void printStudentNamePrompt() {
@@ -233,11 +243,6 @@ public class UI {
 
     public static void printStudentName(String name) {
         System.out.println(STUDENT_NAME_MESSAGE + name + "\n");
-    }
-
-    //@@author Cryolian
-    public static void printStudentName(Student student) {
-        System.out.println(STUDENT_NAME_MESSAGE + student.getName() + "\n");
     }
 
     //@@author blackmirag3
