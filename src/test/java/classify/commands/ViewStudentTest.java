@@ -96,7 +96,7 @@ class ViewStudentTest {
                 "Phone Number: 88888888" + System.lineSeparator() +
                 "Gender: null" + System.lineSeparator() +
                 "Last Payment Date: 2024-04-13" + System.lineSeparator() +
-                "Remarks: NA" + System.lineSeparator() +  
+                "Remarks: NA" + System.lineSeparator() +  System.lineSeparator() +
                 "No subjects and grades found for this student." + System.lineSeparator() +
                 "Total classes attended across all subjects: 0"; 
 
