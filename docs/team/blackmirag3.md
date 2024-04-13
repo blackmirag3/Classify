@@ -37,7 +37,7 @@ all Tuition Centres can employ for ease of student management.
 
 
 - **Contributions to Team-Based tasks:** 
-  * Testing.........
+  * Wrote `EditTest` class to test edit feature.
   * Refactored/rewrote at least 300 LoC (authored by teammates) to improve code quality, such as for [input checking](https://github.com/AY2324S2-CS2113-T13-3/tp/commit/23f3ac553d243b9d31d80fdd05ff2ac3b3a2d57e) and [file IO](https://github.com/AY2324S2-CS2113-T13-3/tp/commit/932b51fbdb542b59f3ecdcaa1c04c65eda873ff1).
   * Established TP's current code organisation, such as refactoring project into respective packages `commands`, `data`, `ui` etc.
   * Maintained team's GitHub Project, such as updating status and priority of project items.
