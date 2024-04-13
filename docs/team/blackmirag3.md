@@ -48,4 +48,4 @@ all Tuition Centres can employ for ease of student management.
     * Actively reviewed and approved team's PRs, with some recent examples [here](https://github.com/AY2324S2-CS2113-T13-3/tp/pull/258) or [here](https://github.com/AY2324S2-CS2113-T13-3/tp/pull/246).
 
 - **Contributions beyond project team**
-    * Did exploratory testing of T13-4's TP before their final release.
+    * Did [exploratory testing of T13-4's TP] (https://github.com/orgs/AY2324S2-CS2113-T13-4/discussions/256) before their final release.
