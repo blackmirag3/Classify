@@ -91,7 +91,7 @@ public class DataReader {
         }
         //Set Last Payment Date
         try {
-            LocalDate inputLastPaymentDate = convertStringInput(inputArr[LAST_PAYMENT_DATE].trim());
+            LocalDate inputLastPaymentDate = convertStringToLocalDate(inputArr[LAST_PAYMENT_DATE].trim());
             student.getAttributes().setLastPaymentDate(inputLastPaymentDate);
         } catch (DateTimeParseException e) {
             DataUI.lastPaymentDateParseExceptionMessage();
@@ -161,7 +161,7 @@ public class DataReader {
      * @return all the subject information which needs to be added as a SubjectGrade
      * @throws InvalidCharacterException Exception if the character is invalid
      */
-    private static SubjectGrade getAllSubjectInformation(String allSubjects) throws InvalidCharacterException,
+    static SubjectGrade getAllSubjectInformation(String allSubjects) throws InvalidCharacterException,
             NumberFormatException {
         String [] subjectDetailedInfo = allSubjects.split(SUBJECT_INFO_REGEX);
         //Subject Name
@@ -184,7 +184,7 @@ public class DataReader {
      * @return the data about the date of last payment in the LocalDate form
      * @throws DateTimeParseException if there is some error experienced when trying to convert to LocalDate format
      */
-    public static LocalDate convertStringInput(String input) throws DateTimeParseException {
+    public static LocalDate convertStringToLocalDate(String input) throws DateTimeParseException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         return LocalDate.parse(input,formatter);
@@ -264,11 +264,11 @@ public class DataReader {
         }
     }
 
-    private static boolean checkDeletionRequestInput(String input) {
+    static boolean checkDeletionRequestInput(String input) {
         return input.equals("YES");
     }
 
-    private static boolean deletionRequestFinalConfirmation(String input) {
+    static boolean deletionRequestFinalConfirmation(String input) {
         return input.equals("CONFIRM");
     }
 }
