@@ -32,8 +32,8 @@ public class TextFileParser {
     private static final String INPUT_TEXT_FILE_DIRECTORY = "./data/inputFolder";
     private static final String INVALID_CHAR_MESSAGE = "Invalid character found.";
     private static final String INVALID_NUMBER_MESSAGE = "Invalid Number format found.";
-    private static final String SUBJECT_REGEX = "Subject:";
-    private static final String CLASSES_ATTENDED_REGEX = "Classes Attended:";
+    private static final String SUBJECT_REGEX = " ";
+    private static final String CLASSES_ATTENDED_REGEX = ": ";
     private static final String INVALID_PHONE_NUMBER_MESSAGE="'s phone number is not a valid Singapore phone number." +
         " Please edit this students' phone number with the edit command!";
 
@@ -163,6 +163,10 @@ public class TextFileParser {
             }
         } catch (IOException e) {
             UI.println(ERROR_ACCESSING_THE_FILE);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            UI.println("Wrong format found. Exiting process.");
+        } catch (NumberFormatException e) {
+            UI.println("Wrong number format found. Exiting process.");
         }
     }
 
