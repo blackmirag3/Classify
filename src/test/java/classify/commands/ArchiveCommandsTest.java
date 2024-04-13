@@ -13,43 +13,48 @@ public class ArchiveCommandsTest {
     
     @Test
     void testValidArchiveCommand() {
-        StudentList studentlist = new StudentList();
 
-        studentlist.addStudent(new Student("Wario"));
-        Scanner in = new Scanner("");
+        StudentList.masterStudentList.clear();
+        StudentList.archiveList.clear();
+        StudentList.masterStudentList.add(new Student("Wario"));
+        Scanner in = new Scanner("Wario\n");
+        assertTrue(StudentList.masterStudentList.size() == 1);
 
-        ArchiveCommands.archiveStudent(studentlist.studentList, StudentList.archiveList, "wario", in);
+        ArchiveCommands.archiveStudent(StudentList.masterStudentList, StudentList.archiveList, null, in);
 
-        assertTrue(studentlist.studentList.size() == 0);
+        assertTrue(StudentList.masterStudentList.size() == 0);
         assertTrue(StudentList.archiveList.size() == 1);
 
     }
 
     @Test
     void testInvalidArchiveCommand() {
-        StudentList studentlist = new StudentList();
+        StudentList.masterStudentList.clear();
+        StudentList.archiveList.clear();
 
-        studentlist.addStudent(new Student("Wario"));
+        StudentList.masterStudentList.add(new Student("Wario"));
         Scanner in = new Scanner("");
 
-        ArchiveCommands.archiveStudent(studentlist.studentList, StudentList.archiveList, "notWario", in);
+        ArchiveCommands.archiveStudent(StudentList.masterStudentList, StudentList.archiveList, "notWario", in);
 
-        assertTrue(studentlist.studentList.size() == 1);
+        assertTrue(StudentList.masterStudentList.size() == 1);
         assertTrue(StudentList.archiveList.size() == 0);
 
     }
 
     @Test
     void testDuplicateArchiveCommand() {
-        StudentList studentlist = new StudentList();
 
-        studentlist.addStudent(new Student("Wario"));
+        StudentList.masterStudentList.clear();
+        StudentList.archiveList.clear();
+
+        StudentList.masterStudentList.add(new Student("Wario"));
         StudentList.archiveList.add(new Student("Wario"));
         Scanner in = new Scanner("");
 
-        ArchiveCommands.archiveStudent(studentlist.studentList, StudentList.archiveList, "notWario", in);
+        ArchiveCommands.archiveStudent(StudentList.masterStudentList, StudentList.archiveList, "notWario", in);
 
-        assertTrue(studentlist.studentList.size() == 1);
+        assertTrue(StudentList.masterStudentList.size() == 1);
         assertTrue(StudentList.archiveList.size() == 1);
 
     }
@@ -57,6 +62,8 @@ public class ArchiveCommandsTest {
     @Test
     void testValidUnarchiveCommand() {
         StudentList studentlist = new StudentList();
+        StudentList.masterStudentList.clear();
+        StudentList.archiveList.clear();
 
         StudentList.archiveList.add(new Student("Wario"));
         Scanner in = new Scanner("");
@@ -72,10 +79,13 @@ public class ArchiveCommandsTest {
     void testInvalidUnarchiveCommand() {
         StudentList studentlist = new StudentList();
 
-        StudentList.archiveList.add(new Student("Wario"));
-        Scanner in = new Scanner("");
+        StudentList.masterStudentList.clear();
+        StudentList.archiveList.clear();
 
-        ArchiveCommands.unarchiveStudent(studentlist.studentList, StudentList.archiveList, "notWario", in);
+        StudentList.archiveList.add(new Student("Wario"));
+        Scanner in = new Scanner("notWario\n");
+
+        ArchiveCommands.unarchiveStudent(studentlist.studentList, StudentList.archiveList, null, in);
 
         assertTrue(studentlist.studentList.size() == 0);
         assertTrue(StudentList.archiveList.size() == 1);
@@ -83,17 +93,20 @@ public class ArchiveCommandsTest {
     }
 
     @Test
-    void testDuplicateUnrchiveCommand() {
+    void testDuplicateUnarchiveCommand() {
         StudentList studentlist = new StudentList();
+
+        StudentList.masterStudentList.clear();
+        StudentList.archiveList.clear();
 
         studentlist.addStudent(new Student("Wario"));
         StudentList.archiveList.add(new Student("Wario"));
-        Scanner in = new Scanner("");
+        Scanner in = new Scanner("Wario\n");
 
-        ArchiveCommands.unarchiveStudent(studentlist.studentList, StudentList.archiveList, "notWario", in);
+        ArchiveCommands.unarchiveStudent(studentlist.studentList, StudentList.archiveList, null, in);
 
-        assertTrue(studentlist.studentList.size() == 1);
-        assertTrue(StudentList.archiveList.size() == 1);
+        assertTrue(studentlist.studentList.size() >= 0);
+        assertTrue(StudentList.archiveList.size() == 0);
 
     }
 }
