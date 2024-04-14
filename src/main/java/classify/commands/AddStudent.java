@@ -220,7 +220,7 @@ public class AddStudent {
                 return;
             }
 
-            if (checkForValidSubjectResponse(in, attributes, subject)) {
+            if (isValidSubjectResponse(in, attributes, subject)) {
                 //@@author tayponghee
                 return;
             }
