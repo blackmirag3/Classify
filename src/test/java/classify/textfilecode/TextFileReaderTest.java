@@ -19,11 +19,13 @@ class TextFileReaderTest {
         System.setOut(new PrintStream(outContent));
 
         TextFileHandler.createTextFileDirectory(VALID_FILE_DIRECTORY);
-
+        File currentDir = new File (VALID_FILE_DIRECTORY);
         TextFileReader.printCurrentInputFolder(VALID_FILE_DIRECTORY);
 
         assertEquals("No files in your Input Folder!\n" + 
             "Please add some new files in the correct format!", outContent.toString().trim());
+        
+            currentDir.delete();
     }
     
     @Test
