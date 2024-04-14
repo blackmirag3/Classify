@@ -45,7 +45,7 @@ public class TextFileParser {
      * @param textFileName Name of the file
      * @return True or False depending on the filetype of file
      */
-    public static Boolean textFileChecker(String textFileName) {
+    public static Boolean isTextFile(String textFileName) {
         String type = "";
         int i = textFileName.lastIndexOf(DOT);
         if (i >= 0) { 
@@ -196,7 +196,7 @@ public class TextFileParser {
             //Set phone_number
             int phoneNumber = Integer.parseInt(inputArr[PHONE_NUMBER].trim());
 
-            if (!InputParsing.checkNumberValidity(phoneNumber)) {
+            if (!InputParsing.isValidNumber(phoneNumber)) {
                 UI.println("Invalid number found. Skipping entry.");
                 return;
             }
@@ -231,9 +231,9 @@ public class TextFileParser {
     private static void masterStudentListAddition(ArrayList<Student> masterStudentList, String studentNameString,
                                                   Student student,int phoneNumber, String subjectName,
                                                   SubjectGrade newSubject) {
-        if (matchingNameNumber (masterStudentList, studentNameString, phoneNumber)) {
+        if (isMatchingNameNumber (masterStudentList, studentNameString, phoneNumber)) {
             Integer indexOfStudent = matchingStudentIndex(masterStudentList, studentNameString, phoneNumber);
-            if (!(matchingSubject(masterStudentList, subjectName, indexOfStudent))) {
+            if (!(isMatchingSubject(masterStudentList, subjectName, indexOfStudent))) {
                 masterStudentList.get(indexOfStudent).getAttributes().addSubjectGrade(newSubject);
             }
         } else {
@@ -251,7 +251,7 @@ public class TextFileParser {
      * @param phoneNumber Phone number of the student
      */
     static void addPhoneNumber(String studentNameString, Student student, int phoneNumber) {
-        if (InputParsing.checkNumberValidity(phoneNumber)) {
+        if (InputParsing.isValidNumber(phoneNumber)) {
             student.getAttributes().setPhoneNumber(phoneNumber);
         } else {
             UI.println(studentNameString + INVALID_PHONE_NUMBER_MESSAGE);
@@ -286,7 +286,7 @@ public class TextFileParser {
      * @param subjectName name of the subject that is getting added
      * @return True if subject is found attributed to that particular student. False otherwise.
      */
-    static boolean matchingSubject(ArrayList<Student> masterStudentList, String subjectName,
+    static boolean isMatchingSubject(ArrayList<Student> masterStudentList, String subjectName,
                                            Integer indexOfStudent) {
         List<SubjectGrade> studentSubjects = masterStudentList.get(indexOfStudent).getAttributes().getSubjectGrades();
         for (SubjectGrade subject : studentSubjects) {
@@ -307,7 +307,7 @@ public class TextFileParser {
      * @param number             Phone number of the student to find.
      * @return                   True if a student with the same name and number is found in the list,false otherwise.
      */
-    static boolean matchingNameNumber(ArrayList<Student> masterStudentList, String name, int number) {
+    static boolean isMatchingNameNumber(ArrayList<Student> masterStudentList, String name, int number) {
         for (Student student : masterStudentList) {
             if (student.getName().equalsIgnoreCase(name) && student.getPhoneNumber() == number) {
                 return true;

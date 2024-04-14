@@ -70,7 +70,7 @@ public class DataReader {
         try {
             int phoneNumber = Integer.parseInt(inputArr[PHONE_NUMBER].trim());
 
-            if (!InputParsing.checkNumberValidity(phoneNumber)) {
+            if (!InputParsing.isValidNumber(phoneNumber)) {
                 UI.println("Invalid phone number found in save file.");
                 UI.println("Skipping entry: " + student.getName());
                 return;
@@ -249,10 +249,10 @@ public class DataReader {
      */
     private static void promptDataDeletion() {
         String input = in.nextLine();
-        if (checkDeletionRequestInput(input)) {
+        if (isDeletionRequestInput(input)) {
             DataUI.printDataDeletionFinalConfirmationMessage();
             input = in.nextLine();
-            if (deletionRequestFinalConfirmation(input)) {
+            if (isDeletionRequestFinalConfirmation(input)) {
                 DataHandler.deleteStudentInfo();
             } else {
                 DataUI.printDeletionConfirmationInputMismatchMessage();
@@ -264,11 +264,11 @@ public class DataReader {
         }
     }
 
-    static boolean checkDeletionRequestInput(String input) {
+    static boolean isDeletionRequestInput(String input) {
         return input.equals("YES");
     }
 
-    static boolean deletionRequestFinalConfirmation(String input) {
+    static boolean isDeletionRequestFinalConfirmation(String input) {
         return input.equals("CONFIRM");
     }
 }

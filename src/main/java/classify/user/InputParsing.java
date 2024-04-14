@@ -358,7 +358,7 @@ public class InputParsing {
         do {
             UI.printPhoneNumberPrompt();
             number = readInPhoneNumber(in);
-        } while (!checkNumberValidity(number));
+        } while (!isValidNumber(number));
 
         LOGGER.log(Level.INFO, "Storing number: " + number);
         return number;
@@ -388,7 +388,7 @@ public class InputParsing {
      * @return True if the number is a valid Singapore Number, false otherwise
      */
     //@@author Cryolian
-    public static boolean checkNumberValidity(int number) {
+    public static boolean isValidNumber(int number) {
         return number >= NUMBER_TOO_SMALL && number < NUMBER_TOO_BIG;
     }
 

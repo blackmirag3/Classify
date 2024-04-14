@@ -32,7 +32,7 @@ public class TextFileReader {
         
         Integer index = 1;
         for (File newFile : fileList) {
-            if (newFile.isFile() && TextFileParser.textFileChecker(newFile.getName())) {
+            if (newFile.isFile() && TextFileParser.isTextFile(newFile.getName())) {
                 System.out.println(index +". " + newFile.getName());
                 index++;
             }

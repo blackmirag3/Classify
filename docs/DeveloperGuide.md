@@ -223,8 +223,15 @@ The two text files are will be created under a directory called data, in which t
 This section refers to `TextFileHandler.java`, `TextFileParser.java`, and `TextFileReader.java` classes. It ensures that we are able to put new files in the folder in data which is named Input Folder.
 
 #### Design Considerations
+   * Support for adding multiple students taking the same class/subject at once
+   * Need to take down students' name and phone number as these are used to prevent duplicate entries in masterStudentList
+   * Need to have a different parser to make it easy for the users to add many studetns 
 
 #### Implementation and Rationale
+   * **Standardised Subject and Classes Attended**: Simplify adding users in text file for user
+   * **Common Regex**: Using " ~~ " to separate all other attributes like Student Name, Phone Number and Grade ensures it is easy for the user to add many students
+   * **Checker for same student**: Ensures that we dont have duplicate entries of one student.
+   * **Checker for same subject**: Ensures that an existing student does not get duplicate entries of the same subject (Not applicable for new students for obvious reasons)
 
 
 ---

@@ -215,7 +215,7 @@ public class AddStudent {
                 UI.printSubjectAlreadyExists();
                 break;
 
-            } else if (checkForValidSubjectResponse(in, attributes, subject)) {
+            } else if (isValidSubjectResponse(in, attributes, subject)) {
                 //@@author tayponghee
                 return;
             }
@@ -230,7 +230,7 @@ public class AddStudent {
      * @param subject    The subject to be added.
      * @return True if the user chooses not to add another subject and grade, false otherwise.
      */
-    private static boolean checkForValidSubjectResponse(Scanner in, StudentAttributes attributes, String subject) {
+    private static boolean isValidSubjectResponse(Scanner in, StudentAttributes attributes, String subject) {
         double grade = Math.max(InputParsing.promptForGrade(in), 0);
         int classesAttended = promptForClassesAttended(in);
 
