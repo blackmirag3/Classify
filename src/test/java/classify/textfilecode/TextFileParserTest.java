@@ -57,7 +57,7 @@ class TextFileParserTest {
         TextFileParser.promptForFileSelectionAgain();
 
         assertEquals((REQUEST_TO_TRY_AGAIN + System.lineSeparator() + 
-        FILE_SELECTION_PROMPT).trim(), outContent.toString().trim());
+            FILE_SELECTION_PROMPT).trim(), outContent.toString().trim());
     }
 
     @Test

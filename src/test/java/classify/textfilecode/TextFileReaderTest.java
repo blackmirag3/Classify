@@ -25,7 +25,7 @@ class TextFileReaderTest {
         assertEquals("No files in your Input Folder!\n" + 
             "Please add some new files in the correct format!", outContent.toString().trim());
         
-            currentDir.delete();
+        currentDir.delete();
     }
     
     @Test
