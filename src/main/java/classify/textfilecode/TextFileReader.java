@@ -37,8 +37,5 @@ public class TextFileReader {
                 index++;
             }
         }
-        System.out.println("");
-        
     }
-
 }
