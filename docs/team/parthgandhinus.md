@@ -45,13 +45,16 @@ Overall, the code base has more than 7000 Lines of Code, and is written in Java.
 **Documentation:**
 * [Contributions to UG](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/docs/UserGuide.md):
     * Did the preface for the project. 
-    * Wrote out the functionalities for Process Command
+    * Wrote out the functionalities for Process Command 
+    [Sample File](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/docs/SampleFile.txt)
+    [Format for writing text file](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/docs/Text%20File%20Format%20Picture.jpg)
     * Made the command summary in Tabular form for easy referencing
     * Refactored and cleaned the UG
     * Made the table of contents for the UG, linking the relevant parts of the markdown file
 * [Contributions to DG](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/docs/DeveloperGuide.md):
-    * Listed out the workflow for Process and Data commands in DG
+    * Wrote out the workflow for Process and Data commands in DG
     * Made the table of contents for the DG
+    * Assisted in the various UML Diagrams
 
 ---
 
@@ -65,3 +68,5 @@ Overall, the code base has more than 7000 Lines of Code, and is written in Java.
     * [TextFileReaderTest](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/src/test/java/classify/textfilecode/TextFileReaderTest.java)
     * [DataReaderTest](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/src/test/java/classify/data/DataReaderTest.java)
     * [DataWriterTest](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/src/test/java/classify/data/DataWriterTest.java)
+
+---

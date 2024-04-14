@@ -245,8 +245,15 @@ The two text files are will be created under a directory called data, in which t
 This section refers to `TextFileHandler.java`, `TextFileParser.java`, and `TextFileReader.java` classes. It ensures that we are able to put new files in the folder in data which is named Input Folder.
 
 #### Design Considerations
+   * Support for adding multiple students taking the same class/subject at once
+   * Need to take down students' name and phone number as these are used to prevent duplicate entries in masterStudentList
+   * Need to have a different parser to make it easy for the users to add many studetns 
 
 #### Implementation and Rationale
+   * **Standardised Subject and Classes Attended**: Simplify adding users in text file for user
+   * **Common Regex**: Using " ~~ " to separate all other attributes like Student Name, Phone Number and Grade ensures it is easy for the user to add many students
+   * **Checker for same student**: Ensures that we dont have duplicate entries of one student.
+   * **Checker for same subject**: Ensures that an existing student does not get duplicate entries of the same subject (Not applicable for new students for obvious reasons)
 
 
 ---
@@ -357,6 +364,27 @@ Classify serves as an attempt to modernise administrative tasks in education ins
    2. Test case: `list`, enter, enter, `5`<br />
    Expected: A list of all students that have been deleted in the current session is printed.
 
+### Processing a Test File 
+1. **No file** in inputFolder
+   1. Prerequisites: **Empty** inputFolder folder in Data. 
+   2. Expected: `No files in your Input Folder!` & `Please add some new files in the correct format!`. 
+   Should be redirected to the main commands menu.
+
+2. **No text file** in inputFolder
+   1. Prerequisites: inputFolder folder in Data **with no text files**.
+   2. Expected: `Files in your inputFolder are not Text Files!` & `Add some text files and try processing again!`. 
+   Should be redirected to the main commands menu.
+
+3. Ingesting a full list of Students using a Text File (without using file extension)
+   1. Prerequisites: Have at least one text file in the inputFolder in Data. The text file present (eg. **File.txt**) is properly formatted according to the requirements stated in the User Guide and is present in the inputFolder.
+   2. Test case: `Process`, enter, **`File`**
+   Expected: `Fetching the data from File.txt.` will be displayed. Can use the `list`, enter,enter,`1` to ensure that all the students in the file are added.
+
+4. Ingesting a full list of Students using a Text File (using file extension)
+   1. Prerequisites: Have at least one text file in the inputFolder in Data. The text file present (eg. **File.txt**) is properly formatted according to the requirements stated in the User Guide and is present in the inputFolder.
+   2. Test case: `Process`, enter, **`File.txt`**
+   Expected: `Fetching the data from File.txt.` will be displayed. Can use the `list`, enter,enter,`1` to ensure that all the students in the file are added. 
+
 ### Restoring a recently deleted student
 1. Restore a student from the recently deleted list
    1. Prerequisites: Have at least one student named `joe` deleted in the current session with the `delete joe` command
@@ -421,4 +449,3 @@ Classify serves as an attempt to modernise administrative tasks in education ins
 </br> Expected: Prints invalid phone number error message and prompts for another phone number.
 6. Test Case: `6`, `20 jan 2001`
 </br> Expected: Prints error message for invalid date and prompts for another date.
-

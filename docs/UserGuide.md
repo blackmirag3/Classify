@@ -177,7 +177,7 @@ Example:
 - james WONG BING XUAN -> James Wong Bing Xuan
 - jaMeS WONG binG Xuan -> James Wong Bing Xuan
 
-Format: `add` or `add NAME`
+**Format:** `add` or `add NAME`
 
 Depending on whether the user entered the student's name or not during the command, fields will be printed out in the terminal, awaiting a user input each time.
 
@@ -214,7 +214,7 @@ Please input a valid Phone number:
 
 Views a student's details. Allows the user to do view [name] or just view.
 
-Format: `view` or `view NAME`
+**Format:** `view` or `view NAME`
 
 Depending on whether the user entered the student's name or not during the command, fields will be printed out in the terminal, awaiting a user input each time.
 If user enters different letter cases from name stored data, the system will still match strings regardless of letter case for user intuitiveness.
@@ -259,7 +259,7 @@ Student and Phone number pair found. If not found in the list, please restore or
 ### Delete a student from the working list `delete`
 Deletes the student from the list. Allows the user to do delete [student] or just delete.
 
-Format: `delete` or `delete NAME`
+**Format:** `delete` or `delete NAME`
 
 Depending on whether the user entered the student's name or not during the command, 
 a field will be printed out in the terminal, awaiting a user input.
@@ -275,7 +275,7 @@ Student removed successfully!
 ### Edit details of a student `edit`
 Edit a student's details and subjects. Allows the user to do edit [student] or just edit.
 
-Format: `edit` or `edit NAME`
+**Format:** `edit` or `edit NAME`
 
 If user has not entered a name, they will be prompted to input a name.
 Once programme received name input, the student master list will be searched for the name. Name search is not case-sensitive.
@@ -347,7 +347,7 @@ No student found to edit!
 ### Restore a student to the working list `restore`
 Restores a student deleted in the current session. Allows the user to do restore [student] or just restore.
 
-Format: `restore` or `restore NAME`
+**Format:** `restore` or `restore NAME`
 
 Depending on whether the user entered the student's name or not during the command, 
 a field will be printed out in the terminal, awaiting a user input.
@@ -364,7 +364,7 @@ Student has been restored!
 ### Undo a delete and restore the deleted student to the working list `undo`
 Undoes the latest "delete student". Used by typing `undo`
 
-Format: `undo`
+**Format:** `undo`
 
 #### Example Usage:
 ```
@@ -380,7 +380,7 @@ Displays the list of all students, or students with a specified subject.
 The user can further specify if they would like to display the full student list, 
 the list with the total classes attended, as well as the list of students in the archive or in the recently deleted list.
 
-Format: `list`
+**Format:** `list`
 
 Allows the user to specify a subject, then displays all students with that subject. 
 If the field is left blank, students will be displayed regardless of the subjects they have.
@@ -492,33 +492,37 @@ Currently, there are 4 students in the list.
 ### Sort the list of students `sort`
 Sorts the list of students based on the following input. Allows the user to do sort [type] or just sort.
 
-Format: `sort`, `sort name`, `sort classes` or `sort payment`
+**Format:** `sort`, `sort name`, `sort classes` or `sort payment`
 
 Depending on whether the user entered the student's name or not during the command, 
 fields will be printed out in the terminal, awaiting a user input each time.
+
+In the event the commands  **`sort name`**, `sort classes` or `sort payment` was typed, the program would immediately
+go into the sort type.
+
 
 #### Example usage:
 
 ```
 sort
-Sort by: (Choose index)
+Sort by: (Choose index) or press enter to escape
 1. Name (A to Z):
 2. Total number of classes attended:
 3. Date of last fee payment: 
 1
 List of Students:
-1. mario
-2. toad
-3. wario
+1. Mario
+2. Toad
+3. Wario
 Currently, there are 3 students in the list.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Sort complete!
 
 sort payment
-1.toad - Date of last payment: 2015-10-21
-2.mario - Date of last payment: 2024-03-30
-3.wario - Date of last payment: 2024-03-30
+1.Toad - Date of last payment: 2015-10-21
+2.Mario - Date of last payment: 2024-03-30
+3.Wario - Date of last payment: 2024-03-30
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Sort complete!
 ```
@@ -526,39 +530,39 @@ Sort complete!
 ### Process a list of students from a text file `process`
 Reads a text file in the inputFolder folder located inside the data folder.
 
-> The text file which is being processed **MUST** follow the format shown here in the [SampleFile.txt](./SampleFile.txt)
-> You can change the subject name, classes attended, name, phone number and grades of the student. When doing so, please follow the given format below.
+ **Format:** `process`, press enter, `filename` (without filetype) **or** `filename.txt` (with file extension)
 
-![Text File Format](./Text%20File%20Format%20Picture.jpg)
+The processed file will add the students into the masterStudentList with relevant attributes for subject name, grades, and classes attended. 
 
-Format: `process`, press enter, `filename` (without filetype) **or** `filename.txt` (with file extension)
-
-The processed file will add the students into the masterStudentList with relevant attributes for subject name, grades, and classes attended.
-
-All other student attributes (eg. gender, phone number, remarks, etc) must be updated by the user.
+> **All other student attributes (eg. gender, last payment date, remarks, etc) must be updated by the user.**
 
 Please make sure that the proper format for the input file is followed. Only one subject and class attended value should be present per text file. Otherwise, the program will read in the first subject and class attended, and apply it to all students present in the text file.
 
 Any students with missing or invalid grades or phone number will be skipped.
 
+> The text file which is being processed **MUST** follow the format shown here in the [SampleFile.txt](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/docs/SampleFile.txt)
+>
+> You can change the subject name, classes attended, name, phone number and grades of the student. 
+> When doing so, please follow the given format below:
+
+
+##### An example is seen below:
+
+![Text File Format](./Text%20File%20Format%20Picture.jpg)
+
 ```
-Subject: SUBJECT
-Classes Attended: INTEGER
-NAME ~~ NUMBER ~~ GRADE
+Subject: CS2113
+Classes Attended: 12
+Luigi ~~ 98989898 ~~ 90.0
+Daisy ~~ 98989888 ~~ 95.0
+Mario ~~ 98988888 ~~ 98.0
+Peach ~~ 98888888 ~~ 95.0
+Tai Lung ~~ 90909090 ~~ 99.0
 ```
 
-An example is seen below:
-```
-Subject: Math
-Classes Attended: 10
-parth ~~ 98989898 ~~ 90.0
-pong hee ~~ 98989888 ~~ 95.0
-Yi xin ~~ 98988888 ~~ 98.0
-gerard ~~ 98888888 ~~ 95.0
-shui hon ~~ 91231234 ~~ 99.0
-```
+#### Different types of Processing Possible:
 
-#### Without File extension:
+##### Without File extension:
 ```
 process
 Current Files in your Input Folder:
@@ -567,12 +571,12 @@ Current Files in your Input Folder:
 3. scienceclass.txt
 
 Please enter the exact name of the file you'd like to process:
-mathclass
+mathclass                                                   <---
 Fetching the data from mathclass.txt.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
-#### With File extension:
+##### With File extension:
 ```
 process
 Current Files in your Input Folder:
@@ -581,14 +585,14 @@ Current Files in your Input Folder:
 3. scienceclass.txt
 
 Please enter the exact name of the file you'd like to process:
-scienceclass.txt
+scienceclass.txt                                            <---
 Fetching the data from scienceclass.txt.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 ### Move a student from the master list to the archive `archive`
 Adds a student to the archive and removes them from the master list.
 
-Format: `archive`, `archive NAME`
+**Format:** `archive`, `archive NAME`
 
 Depending on whether the user entered the student's name or not during the command,
 a field will be printed out in the terminal, awaiting a user input.
@@ -607,7 +611,7 @@ The user can then view currently archived students using the `list` command.
 ### Move a student from the archive back to the master list `unarchive`
 Removes a student from the archive and adds them back to the master list.
 
-Format: `unarchive`, `unarchive NAME`
+**Format:** `unarchive`, `unarchive NAME`
 
 Depending on whether the user entered the student's name or not during the command,
 a field will be printed out in the terminal, awaiting a user input.
@@ -634,7 +638,7 @@ the archived student will not be loaded into the archive list and will be overwr
 ### Display instructions on how to use Classify `help`
 Prints instructions which detail how to use all the features of Classify.
 
-Format: `help`
+**Format:** `help`
 
 #### Example usage:
 ```
@@ -718,7 +722,7 @@ help
 ### Exit Classify `bye`
 Exits the Classify program.
 
-Format: `bye`
+**Format:** `bye`
 
 #### Example usage:
 ```
@@ -742,17 +746,17 @@ This section provides a quick overview of all the commands used in our Classify.
 | `delete <student>`                            |Deletes the student from the list. <br> If the name of the student is not specified in the initial command, the program will prompt the user for the name.|[Delete](#delete-a-student-from-the-working-list-delete)|
 | `edit <student>`                              |Allows the user to edit the details of the student. <br> If the name of the student is not specified in the initial command, the program will prompt the user for the name.|[Edit](#edit-details-of-a-student-edit)|
 | **Listing**                                   | |
-| `list`, press enter, <br>  [subject]          |Displays the list of students that has taken that subject.|[List](#display-the-list-of-students-list)|
-| `list`, press enter, <br> press enter, [1]    |Displays the list of students that is registered in the tuition centre.|[List](#display-the-list-of-students-list)|
-| `list`,  press enter, <br> press enter, [2]   |Displays the list of students that is registered in the tuition centre with the total number of classes taken.|[List](#display-the-list-of-students-list)|
-| `list`, press enter, <br> press enter, [3]    |Displays the list of students that is registered in the tuition centre with their phone numbers beside their names|[List](#display-the-list-of-students-list)|
-| `list`, press enter, <br> press enter, [4]    |Displays the list of students who were archived.|[List](#display-the-list-of-students-list)|
-| `list`, press enter, <br> press enter, [5]    |Displays the list of students who were recently deleted from the master list.|[List](#display-the-list-of-students-list) |
-| **Sorting**                                   | [List](#display-the-list-of-students-list)|
+| `list`, press enter, <br>  `<subject>`          |Displays the list of students that has taken that subject.|[List](#display-the-list-of-students-list)|
+| `list`, press enter, <br> press enter, `<1>`    |Displays the list of students that is registered in the tuition centre.|[List](#display-the-list-of-students-list)|
+| `list`,  press enter, <br> press enter, `<2>`   |Displays the list of students that is registered in the tuition centre with the total number of classes taken.|[List](#display-the-list-of-students-list)|
+| `list`, press enter, <br> press enter, `<3>`    |Displays the list of students that is registered in the tuition centre with their phone numbers beside their names|[List](#display-the-list-of-students-list)|
+| `list`, press enter, <br> press enter, `<4>`    |Displays the list of students who were archived.|[List](#display-the-list-of-students-list)|
+| `list`, press enter, <br> press enter, `<5>`    |Displays the list of students who were recently deleted from the master list.|[List](#display-the-list-of-students-list) |
+| **Sorting**                                   | |
 | `sort <name>`                                 |Sorts the list lexicographically. <br> If the word `name` is not specified in the initial command, the program will prompt the user for an appropriate flag.|[Sort](#sort-the-list-of-students-sort)|
 | `sort <payment>`                              |Sorts the list by the last fee payment date of a student. <br> If the word `payment` is not specified in the initial command, the program will prompt the user for an appropriate flag.|[Sort](#sort-the-list-of-students-sort)|
 | `sort <classes>`                              |Sorts the list by the number of classes a student has attended. <br> If the word `classes` is not specified in the initial command, the program will prompt the user for an appropriate flag.|[Sort](#sort-the-list-of-students-sort)|
-| **Processing**                                | |
+| **Process Text File**                                | |
 | `process`, press enter,<br>`<text_file_name>` | Processes a text file containing a list of students taking the same subject and having attended the same number of lessons. <br> Adds all of them into the current list with their individual grades for the subject. <br> Will need to manually input their other attributes (eg. phone number, gender, etc) |[Process](#process-a-list-of-students-from-a-text-file-process)|
 | **Archiving**                                 | |
 | `archive <student>`                           |Archives specified student. Removes student from current list and adds student to archive.|[Archive](#move-a-student-from-the-master-list-to-the-archive-archive)|
