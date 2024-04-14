@@ -93,29 +93,29 @@ public class UI {
      */
     public static void printHelp() {
         printAddHelpMessage();
-        System.out.println("");
+        System.out.println();
         printEditHelpMessage();
-        System.out.println("");
+        System.out.println();
         printViewHelpMessage();
-        System.out.println("");
+        System.out.println();
         printDeleteHelpMessage();
-        System.out.println("");
+        System.out.println();
         printRestoreHelpMessage();
-        System.out.println("");
+        System.out.println();
         printUndoHelpMessage();
-        System.out.println("");
+        System.out.println();
         printListHelpMessage();
-        System.out.println("");
+        System.out.println();
         printByeHelpMessage();
-        System.out.println("");
+        System.out.println();
         printSortHelpMessage();
-        System.out.println("");
+        System.out.println();
         printArchiveHelpMessage();
-        System.out.println("");
+        System.out.println();
         printUnarchiveHelpMessage();
-        System.out.println("");
+        System.out.println();
         printProcessTextFileHelpMessage();
-        System.out.println("");
+        System.out.println();
         printHelpHelpMessage();
     }
 
@@ -175,10 +175,10 @@ public class UI {
         System.out.println("    Currently available types:" +
                 "\n    Whole student list" +
                 "\n    With total classes attended" +
-                "\n    With phone number, ");
+                "\n    With phone number");
         System.out.println("    The archived list" +
                 "\n    The recently deleted list" +
-                "\n    By certain subject only.");
+                "\n    By certain subject only");
     }
 
     private static void printDeleteHelpMessage() {
@@ -186,14 +186,14 @@ public class UI {
                 "\n    Deletes a student from the student list," +
                 "\n    expects a name," +
                 "\n    can be used directly with a name" +
-                "\n    e.g. add [name]");
+                "\n    e.g. delete [name]");
     }
 
     private static void printViewHelpMessage() {
         System.out.println("view" +
                 "\n    Views a students details, expects a name," +
                 "\n    can be used directly with a name" +
-                "\n    e.g. add [name]");
+                "\n    e.g. view [name]");
     }
 
     private static void printEditHelpMessage() {
