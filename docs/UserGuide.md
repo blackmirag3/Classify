@@ -181,10 +181,12 @@ Format: `add` or `add NAME`
 
 Depending on whether the user entered the student's name or not during the command, fields will be printed out in the terminal, awaiting a user input each time.
 
-Please note that the user input NUMBER (shown below) must be an *8 digit number starting with 8 or 9*. 
+Please note that the user input NUMBER (shown below) must be an *8-digit number starting with 8 or 9*. 
 Thus, please be informed and educated that our software only works in countries that have phone numbers that are 8 digits long and start with 8 or 9.
 To be specific, this is referring to a city-state republic in South East Asia, that lies in the timezone GMT +8 in the Straits of Johor. 
 Some may debate that our time zone is actually GMT+7.5 or GMT+7, but it was changed to facilitate business deals and decisions with other financial hubs in the region thanks to our capitalistic overlords.
+
+Last payment date must be within a range from 1970-01-01 to the day after the current date. This is a buffer to account for situations when storing dates, such as for audit reasons.
 
 #### Example usage:
 ``` 
@@ -203,7 +205,7 @@ Do you want to add another subject and grade? (yes/no)
 no
 
 Please input a valid Phone number: 
-NUMBER
+89718971
 .
 .
 ```
@@ -265,7 +267,6 @@ a field will be printed out in the terminal, awaiting a user input.
 #### Example usage:
 ``` 
 delete
-
 Enter student name: 
 wario
 Student removed successfully!
@@ -330,8 +331,7 @@ Enter Classes Attended (blank to skip):
 >> 10
 Do you want to add another subject and grade? (yes/no)
 >> no
-What else can I do for you today?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 ```
 If no student is found in the master student list, edit mode will not be entered and the programme will resume as per normal.
 
@@ -342,8 +342,6 @@ edit
 Name of student to edit (blank to exit):
 luigi
 No student found to edit!
-What else can I do for you today?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
 ### Restore a student to the working list `restore`
@@ -387,9 +385,12 @@ Format: `list`
 Allows the user to specify a subject, then displays all students with that subject. 
 If the field is left blank, students will be displayed regardless of the subjects they have.
 
-The user can then select by index, from 4 additional options to either display all students in the master list,
-all students in the master list as well as the total number of classes they have attended.
-
+The user can then select by index, from 5 additional options.
+1. Full student list
+2. List of students with total classes attended
+3. List of students with phone number shown
+4. List of students in archive
+5. List of students in recently deleted
 Alternatively, the user can choose to display either the students in the recently deleted list or the archive.
 
 Do note that there is a difference between 0 and no classes attended found. If the program displays 0 classes attended,
@@ -525,7 +526,10 @@ Sort complete!
 ### Process a list of students from a text file `process`
 Reads a text file in the inputFolder folder located inside the data folder.
 
-The text file which is being processed **MUST** follow the format shown here[insert stuff here].
+> The text file which is being processed **MUST** follow the format shown here in the [SampleFile.txt](./SampleFile.txt)
+> You can change the subject name, classes attended, name, phone number and grades of the student. When doing so, please follow the given format below.
+
+![Text File Format](./Text%20File%20Format%20Picture.jpg)
 
 Format: `process`, press enter, `filename` (without filetype) **or** `filename.txt` (with file extension)
 
@@ -554,12 +558,13 @@ gerard ~~ 98888888 ~~ 95.0
 shui hon ~~ 91231234 ~~ 99.0
 ```
 
-#### Without Filetype:
+#### Without File extension:
 ```
 process
 Current Files in your Input Folder:
-1. mathclass.txt
-2. scienceclass.txt
+1. SampleFile.txt
+2. mathclass.txt
+3. scienceclass.txt
 
 Please enter the exact name of the file you'd like to process:
 mathclass
@@ -567,12 +572,13 @@ Fetching the data from mathclass.txt.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
-#### With Filetype:
+#### With File extension:
 ```
 process
 Current Files in your Input Folder:
-1. mathclass.txt
-2. scienceclass.txt
+1. SampleFile.txt
+2. mathclass.txt
+3. scienceclass.txt
 
 Please enter the exact name of the file you'd like to process:
 scienceclass.txt
@@ -594,10 +600,6 @@ For any archived student, the user will be unable to add a student with the same
 ```
 archive wario
 Archive successful.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Runtime Database: 
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
 The user can then view currently archived students using the `list` command.
@@ -617,9 +619,6 @@ The user can then view currently archived students using the `list` command.
 ```
 unarchive wario
 Unarchive successful.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Runtime List: 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
 #### Invalid student:
@@ -627,8 +626,6 @@ Runtime List:
 ```
 unarchive yeeter
 No student found!
-What else can I do for you today?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 If a student that exists in the archive data file matches the name and phone number of an already existing student,
 the archived student will not be loaded into the archive list and will be overwritten subsequently.
@@ -642,21 +639,79 @@ Format: `help`
 #### Example usage:
 ```
 help
-add                         Adds a student to the student list, expects a name, grade and lessons attended, can be used directly with a name e.g. add [name]
-edit                        Edits a students details, expects a name, can be used directly with a name e.g. edit [name]
-view                        Views a students details, expects a name, can be used directly with a name e.g. add [name]
-delete                      Deletes a student from the student list, expects a name, can be used directly with a name e.g. add [name]
-restore                     Restore a student deleted within the current session, expects a name, can be used directly by restore [name].
-undo                        Restores the last student deleted in the current session.
-list                        Displays the list of all students
-                            Currently available types: Whole student list, with total classes attended, with phone number, the archived list, the recently deleted list or by certain subject only.
-bye                         Exits Classify
-sort                        Sorts the student list by the input parameter, expects an attribute to sort by, can be used directly by sort [type].
-                            Currently available types: name, classes, payment
-archive                     Removes the specified student from the list and archives them, can be used directly by archive [name].
-unarchive                   Removes the specified student from the archive and adds them to the list, can be used directly by unarchive [name].
-process                     Processes a text file containing a list of students taking the same subject and the same number of classes.
-help                        Prints this help message
+add
+    Adds a student to the student list,
+    expects a name, grade and lessons attended
+    e.g. add [name]
+
+edit
+    Edits a students details, expects a name,
+    can be used directly with a name
+    e.g. edit [name]
+
+view
+    Views a students details, expects a name,
+    can be used directly with a name
+    e.g. view [name]
+
+delete
+    Deletes a student from the student list,
+    expects a name,
+    can be used directly with a name
+    e.g. delete [name]
+
+restore
+    Restore a student deleted within the
+    current session, expects a name,
+    can be used directly by restore [name].
+
+undo
+    Restores the last student deleted
+    in the current session.
+
+list
+    Displays the list of all students
+    Currently available types:
+    Whole student list
+    With total classes attended
+    With phone number
+    The archived list
+    The recently deleted list
+    By certain subject only
+
+bye
+    Exits Classify
+
+sort
+    Sorts the student list by the
+    input parameter, expects an attribute
+    to sort by,
+    can be used directly by sort [type].
+    Currently available types:
+    Name
+    Classes
+    Payment
+
+archive
+    Removes the specified student from
+    the list and archives them,
+    expects a name, can be used directly by
+    archive [name].
+
+unarchive
+    Removes the specified student from the
+    archive and adds them to the list,
+    expects a name, can be used directly by
+    unarchive [name].
+
+process
+    Processes a text file containing
+    a list of students
+    taking the same subject and the
+    same number of classes.
+
+help
+    Prints this help message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 

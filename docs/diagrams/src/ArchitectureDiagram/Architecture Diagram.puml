@@ -1,0 +1,35 @@
+@startuml MainArchitecture
+hide circle
+
+package data {
+}
+package commands {
+}
+package textfilecode {
+}
+package ui {
+}
+package student {
+}
+package user {
+}
+
+class Classify
+
+Classify --> user
+Classify <--> data
+Classify --> textfilecode
+user <--> commands
+data <--> commands
+Classify --> ui
+textfilecode <-- user
+textfilecode --> ui
+student <..> user
+commands --> student
+commands --> ui
+user --> ui
+user ..> data
+
+note "Classes and methods are omitted within packages for simplicity" as n1
+
+@enduml

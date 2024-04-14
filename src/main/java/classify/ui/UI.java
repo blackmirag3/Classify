@@ -45,7 +45,6 @@ public class UI {
     private static final String EDIT_COMMAND_MODIFY_PAYMENT_DATE_PROMPT = "6. Modify payment date";
     private static final String EDIT_COMMAND_DELETED_SUBJECT_MESSAGE = "Subject deleted successfully!";
     private static final String EDIT_COMMAND_MODIFY_GENDER_PROMPT = "7. Edit Gender";
-    private static final String WHAT_ELSE_CAN_I_DO_FOR_YOU_TODAY = "What else can I do for you today?";
     private static final String STUDENT_DETAILS_PROMPT = "Enter student details: ";
     private static final String STUDENT_NAME_PROMPT = "Enter student name: ";
     private static final String STUDENT_DETAILS_MESSAGE = "Student details: ";
@@ -94,77 +93,121 @@ public class UI {
      */
     public static void printHelp() {
         printAddHelpMessage();
+        System.out.println();
         printEditHelpMessage();
+        System.out.println();
         printViewHelpMessage();
+        System.out.println();
         printDeleteHelpMessage();
+        System.out.println();
         printRestoreHelpMessage();
+        System.out.println();
         printUndoHelpMessage();
+        System.out.println();
         printListHelpMessage();
+        System.out.println();
         printByeHelpMessage();
+        System.out.println();
         printSortHelpMessage();
+        System.out.println();
         printArchiveHelpMessage();
+        System.out.println();
         printUnarchiveHelpMessage();
-        printProcessTextFileInputMessage();
-        System.out.println("help                        Prints this help message");
+        System.out.println();
+        printProcessTextFileHelpMessage();
+        System.out.println();
+        printHelpHelpMessage();
+    }
+
+    private static void printHelpHelpMessage() {
+        System.out.println("help" +
+                "\n    Prints this help message");
     }
 
     private static void printSortHelpMessage() {
-        System.out.println("sort                        Sorts the student list by the input parameter, expects an" +
-                " attribute to sort by, can be used directly by sort [type].");
-        System.out.println("                            Currently available types: name, classes, payment");
+        System.out.println("sort\n    Sorts the student list by the" +
+                "\n    input parameter, expects an attribute" +
+                "\n    to sort by," +
+                "\n    can be used directly by sort [type].");
+        System.out.println("    Currently available types:" +
+                "\n    Name" +
+                "\n    Classes" +
+                "\n    Payment");
     }
 
     private static void printRestoreHelpMessage() {
-        System.out.println("restore                     Restore a student deleted within the current session, expects" +
-                " a name, can be used directly by restore [name].");
+        System.out.println("restore" +
+                "\n    Restore a student deleted within the" +
+                "\n    current session, expects a name," +
+                "\n    can be used directly by restore [name].");
     }
 
     private static void printUndoHelpMessage() {
-        System.out.println("undo                        Restores the last student deleted in the current session.");
+        System.out.println("undo" +
+                "\n    Restores the last student deleted" +
+                "\n    in the current session.");
     }
 
     private static void printArchiveHelpMessage() {
-        System.out.println("archive                     " +
-                "Removes the specified student from the list and archives them, can be used directly by archive" +
-                " [name].");
+        System.out.println("archive" +
+                "\n    Removes the specified student from" +
+                "\n    the list and archives them," +
+                "\n    expects a name, can be used directly by" +
+                "\n    archive [name].");
     }
 
     private static void printUnarchiveHelpMessage() {
-        System.out.println("unarchive                   " +
-                "Removes the specified student from the archive and adds them to the list, can be used directly by" +
-                " unarchive [name].");
+        System.out.println("unarchive" +
+                "\n    Removes the specified student from the" +
+                "\n    archive and adds them to the list," +
+                "\n    expects a name, can be used directly by" +
+                "\n    unarchive [name].");
     }
     //@@ author Cryolian
     private static void printByeHelpMessage() {
-        System.out.println("bye                         Exits Classify");
+        System.out.println("bye" +
+                "\n    Exits Classify");
     }
 
     private static void printListHelpMessage() {
-        System.out.println("list                        Displays the list of all students");
-        System.out.println("                            Currently available types: Whole student list, with " +
-                "with total classes attended, with phone number, ");
-        System.out.println("                            the archived list, the recently deleted list or " +
-                "by certain subject only.");
+        System.out.println("list" +
+                "\n    Displays the list of all students");
+        System.out.println("    Currently available types:" +
+                "\n    Whole student list" +
+                "\n    With total classes attended" +
+                "\n    With phone number");
+        System.out.println("    The archived list" +
+                "\n    The recently deleted list" +
+                "\n    By certain subject only");
     }
 
     private static void printDeleteHelpMessage() {
-        System.out.println("delete                      Deletes a student from the student list, expects a name" +
-                ", can be used directly with a name e.g. add [name]");
+        System.out.println("delete" +
+                "\n    Deletes a student from the student list," +
+                "\n    expects a name," +
+                "\n    can be used directly with a name" +
+                "\n    e.g. delete [name]");
     }
 
     private static void printViewHelpMessage() {
-        System.out.println("view                        Views a students details, expects a name" +
-                ", can be used directly with a name e.g. add [name]");
+        System.out.println("view" +
+                "\n    Views a students details, expects a name," +
+                "\n    can be used directly with a name" +
+                "\n    e.g. view [name]");
     }
 
     private static void printEditHelpMessage() {
-        System.out.println("edit                        Edits a students details, expects a name" +
-                ", can be used directly with a name e.g. edit [name]");
+        System.out.println("edit" +
+                "\n    Edits a students details, expects a name," +
+                "\n    can be used directly with a name" +
+                "\n    e.g. edit [name]");
     }
 
     private static void printAddHelpMessage() {
-        System.out.println("add                         Adds a student to the student list, " +
-                "expects a name, grade and lessons attended e.g. add [name]");
+        System.out.println("add" +
+                "\n    Adds a student to the student list," +
+                "\n    expects a name, grade and lessons attended" +
+                "\n    e.g. add [name]");
     }
 
     //@@author ParthGandhiNUS
@@ -181,7 +224,6 @@ public class UI {
     public static void printWelcomeMessage() {
         printDivider();
         System.out.println(WELCOME_TO_CLASSIFY);
-        System.out.println(WHAT_CAN_I_DO_FOR_YOU_TODAY);
     }
 
     /**
@@ -192,24 +234,22 @@ public class UI {
         printDivider();
     }
 
-    public static void printProcessTextFileInputMessage() {
-        System.out.println("process                     " +
-                "Processes a text file containing a list of students taking the same subject and the same number " +
-                "of classes.");
+    public static void printProcessTextFileHelpMessage() {
+        System.out.println("process" +
+                "\n    Processes a text file containing" +
+                "\n    a list of students" +
+                "\n    taking the same subject and the" +
+                "\n    same number of classes.");
     }
 
     //@@author blackmirag3
     public static void printSubsequentUserPrompt() {
-        System.out.println(WHAT_ELSE_CAN_I_DO_FOR_YOU_TODAY);
+        System.out.println(WHAT_CAN_I_DO_FOR_YOU_TODAY);
         printDivider();
     }
     public static void printWrongInput() {
         System.out.println(WRONG_INPUT_MESSAGE);
         printDivider();
-    }
-
-    public static void printStudentDetailsPrompt() {
-        System.out.println(STUDENT_DETAILS_PROMPT);
     }
 
     public static void printStudentNamePrompt() {
@@ -233,11 +273,6 @@ public class UI {
 
     public static void printStudentName(String name) {
         System.out.println(STUDENT_NAME_MESSAGE + name + "\n");
-    }
-
-    //@@author Cryolian
-    public static void printStudentName(Student student) {
-        System.out.println(STUDENT_NAME_MESSAGE + student.getName() + "\n");
     }
 
     //@@author blackmirag3
