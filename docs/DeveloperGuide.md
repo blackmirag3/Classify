@@ -376,11 +376,27 @@ Classify serves as an attempt to modernise administrative tasks in education ins
    2. Test case: `undo`, then `undo` again<br />
    Expected: `undo` will restore the latest deletion, the second `undo` will restore the first deletion.
 
-### Add a student to the archive
-1. Removes a student from the student list and adds them to the archive
-   1. Prerequisites: Have a student named `joe` added to the list with the `add` command
-   2. Test case: `archive joe`<br />
-   Expected: `joe` will be removed from the list, and added to the archive, `joe` will appear in the list of students added to the archive.
+### Archiving/unarchiving a student
+#### 1. Archiving a student:
+   1. Prerequisites: Add 2 students named 'tim' and 'joe' to the student list.
+   2. Test Case: `archive joe`
+   </br> Expected: `joe` will be removed from student list and will appear in the list of students added to the archive.
+   3. Test Case: `archive`, `tim`  
+   </br> Expected: `tim` will be removed from student list and will appear in the list of students added to the archive.
+
+#### 2. Unarchiving a student:
+   1. Prerequisites: Have 2 students named 'tim' and 'joe' already archived.
+   2. Test Case: `unarchive joe`
+   </br> Expected: `joe` will be removed from archive and added back to student list.
+   3. Test Case: `unarchive`, `tim`  
+   </br> Expected: `tim` will be removed from archive and added back to student list.
+
+#### 2. Archiving/unarchiving student that does not exist:
+1. Prerequisites: Have an empty student list
+2. Test Case: `archive joe`
+   </br> Expected: Error message printed for no student found and prompts for new command.
+3. Test Case: `unarchive`, `tim`  
+   </br> Expected: Error message printed for no student found and prompts for new command.
 
 ### Editing a student's details
 #### 1. Entering edit mode for an existing student:
@@ -453,7 +469,7 @@ Classify serves as an attempt to modernise administrative tasks in education ins
 2. Test Case: `edit john`
 </br> Expected: Error message for non-existed student will be printed.
 
-#### 11. Invalid entries for editing student
+#### 11. Testing invalid entries for editing student
 1. Prerequisites: Add student 'tim' with subjects 'CS2113', 'CS2040' and phone number '88888888' and initiate edit mode for 'tim'.
 2. Test Case: `1`, `cs2113`
 </br> Expected: Returns to edit mode for 'tim', no new subject added and error message printed for adding existing subject.
