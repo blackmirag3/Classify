@@ -526,7 +526,10 @@ Sort complete!
 ### Process a list of students from a text file `process`
 Reads a text file in the inputFolder folder located inside the data folder.
 
-The text file which is being processed **MUST** follow the format shown here[insert stuff here].
+> The text file which is being processed **MUST** follow the format shown here in the [SampleFile.txt](./SampleFile.txt)
+> You can change the subject name, classes attended, name, phone number and grades of the student. When doing so, please follow the given format below.
+
+![Text File Format](./Text%20File%20Format%20Picture.jpg)
 
 Format: `process`, press enter, `filename` (without filetype) **or** `filename.txt` (with file extension)
 
@@ -559,8 +562,9 @@ shui hon ~~ 91231234 ~~ 99.0
 ```
 process
 Current Files in your Input Folder:
-1. mathclass.txt
-2. scienceclass.txt
+1. SampleFile.txt
+2. mathclass.txt
+3. scienceclass.txt
 
 Please enter the exact name of the file you'd like to process:
 mathclass
@@ -572,8 +576,9 @@ Fetching the data from mathclass.txt.
 ```
 process
 Current Files in your Input Folder:
-1. mathclass.txt
-2. scienceclass.txt
+1. SampleFile.txt
+2. mathclass.txt
+3. scienceclass.txt
 
 Please enter the exact name of the file you'd like to process:
 scienceclass.txt
