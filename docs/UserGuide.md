@@ -505,7 +505,7 @@ go into the sort type.
 
 ```
 sort
-Sort by: (Choose index)
+Sort by: (Choose index) or press enter to escape
 1. Name (A to Z):
 2. Total number of classes attended:
 3. Date of last fee payment: 
