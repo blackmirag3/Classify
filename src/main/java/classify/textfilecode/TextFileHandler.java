@@ -21,14 +21,42 @@ public class TextFileHandler {
             "your data folder!";
     public static final File CURRENT_DIRECTORY = new File (INPUT_TEXT_FILE_DIRECTORY);
     private static final String INVALID_PATH_MESSAGE = "Path is invalid!";
+    private static final String NOT_TEXT_FILE_MESSAGE = "Files in your inputFolder are not Text Files!";
+    private static final String ADD_TEXT_FILE_MESSAGE = "Add some text files and try processing again!";
 
+    /**
+     * Function runs the whole process command, from every input all the way to the final output
+     * 
+     * @param masterStudentList     StudentList where students will be added
+     * @param in                    Scanner which scans for the users' inputs
+     */
     public static void process(ArrayList<Student> masterStudentList, Scanner in) {
         createTextFileDirectory(INPUT_TEXT_FILE_DIRECTORY);
         // Print out the current files in your folder
         UI.println(CURRENT_FILES);
         TextFileReader.printCurrentInputFolder(INPUT_TEXT_FILE_DIRECTORY);
-        TextFileParser.promptForFileSelection();
-        TextFileParser.parseUserSelection(CURRENT_DIRECTORY, in, masterStudentList);
+
+        File currentDirectory =new File (INPUT_TEXT_FILE_DIRECTORY);
+        File[] fileList = currentDirectory.listFiles();
+        assert fileList != null;
+        if (fileList.length == 0) {
+            return;
+        }
+
+        boolean isTextFilePresent = false;
+        for (File file : fileList){
+            if (file.isFile() && TextFileParser.isTextFile(file.getName())) {
+                isTextFilePresent = true;
+            }
+        }
+
+        if (isTextFilePresent){
+            TextFileParser.promptForFileSelection();
+            TextFileParser.parseUserSelection(CURRENT_DIRECTORY, in, masterStudentList);
+        } else {
+            System.out.println(NOT_TEXT_FILE_MESSAGE);
+            System.out.println(ADD_TEXT_FILE_MESSAGE);
+        }
     }
 
     /**
