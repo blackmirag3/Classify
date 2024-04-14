@@ -33,9 +33,12 @@ all Tuition Centres can employ for ease of student management.
     - Prevents invalid inputs in the data file from crashing Classify.
     - Does not allow the user to resume use of Classify before the file is deleted, or the corruption is rectified.
 
+  - **Feature: Create and maintain the help function**
+    - Ensures users do not have to bring up the UG at every instance, they can instead refer to the help function for a quick guide on how to use all features.
+
 
 - #### Contributions to the [UG](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/docs/UserGuide.md)
-  - Wrote the Usage guide for the edit, delete, restore, undo and sort features.
+  - Wrote the Usage guide for the help, edit, delete, restore, undo and sort features.
 
 - #### Contributions to the [DG](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/docs/DeveloperGuide.md)
   - Wrote the instructions for manual testing.
@@ -49,3 +52,6 @@ all Tuition Centres can employ for ease of student management.
   - **Links to some PRs reviewed**
     - [PR1](https://github.com/AY2324S2-CS2113-T13-3/tp/pull/148)
     - [PR2](https://github.com/AY2324S2-CS2113-T13-3/tp/pull/164)
+
+- #### Contributions beyond the project team
+  -  Participated in a mutual debugging session with T13-4 link to GitHub [Discussion](https://github.com/orgs/AY2324S2-CS2113-T13-4/discussions/256)

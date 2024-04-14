@@ -634,21 +634,79 @@ Format: `help`
 #### Example usage:
 ```
 help
-add                         Adds a student to the student list, expects a name, grade and lessons attended, can be used directly with a name e.g. add [name]
-edit                        Edits a students details, expects a name, can be used directly with a name e.g. edit [name]
-view                        Views a students details, expects a name, can be used directly with a name e.g. add [name]
-delete                      Deletes a student from the student list, expects a name, can be used directly with a name e.g. add [name]
-restore                     Restore a student deleted within the current session, expects a name, can be used directly by restore [name].
-undo                        Restores the last student deleted in the current session.
-list                        Displays the list of all students
-                            Currently available types: Whole student list, with total classes attended, with phone number, the archived list, the recently deleted list or by certain subject only.
-bye                         Exits Classify
-sort                        Sorts the student list by the input parameter, expects an attribute to sort by, can be used directly by sort [type].
-                            Currently available types: name, classes, payment
-archive                     Removes the specified student from the list and archives them, can be used directly by archive [name].
-unarchive                   Removes the specified student from the archive and adds them to the list, can be used directly by unarchive [name].
-process                     Processes a text file containing a list of students taking the same subject and the same number of classes.
-help                        Prints this help message
+add
+    Adds a student to the student list,
+    expects a name, grade and lessons attended
+    e.g. add [name]
+
+edit
+    Edits a students details, expects a name,
+    can be used directly with a name
+    e.g. edit [name]
+
+view
+    Views a students details, expects a name,
+    can be used directly with a name
+    e.g. add [name]
+
+delete
+    Deletes a student from the student list,
+    expects a name,
+    can be used directly with a name
+    e.g. add [name]
+
+restore
+    Restore a student deleted within the
+    current session, expects a name,
+    can be used directly by restore [name].
+
+undo
+    Restores the last student deleted
+    in the current session.
+
+list
+    Displays the list of all students
+    Currently available types:
+    Whole student list
+    With total classes attended
+    With phone number,
+    The archived list
+    The recently deleted list
+    By certain subject only.
+
+bye
+    Exits Classify
+
+sort
+    Sorts the student list by the
+    input parameter, expects an attribute
+    to sort by,
+    can be used directly by sort [type].
+    Currently available types:
+    Name
+    Classes
+    Payment
+
+archive
+    Removes the specified student from
+    the list and archives them,
+    expects a name, can be used directly by
+    archive [name].
+
+unarchive
+    Removes the specified student from the
+    archive and adds them to the list,
+    expects a name, can be used directly by
+    unarchive [name].
+
+process
+    Processes a text file containing
+    a list of students
+    taking the same subject and the
+    same number of classes.
+
+help
+    Prints this help message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 

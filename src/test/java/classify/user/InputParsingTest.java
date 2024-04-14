@@ -141,50 +141,80 @@ public class InputParsingTest {
         System.setOut(System.out);
 
         String printedOutput = outputStream.toString().trim();
-        String expectedOutput =
-                "add                         Adds a student to the student list, expects a name" +
-                                             ", grade and lessons attended e.g. add [name]"
-                                             + System.lineSeparator() + System.lineSeparator() +
-                "edit                        Edits a students details, expects a name" +
-                                             ", can be used directly with a name e.g. edit [name]"
-                                             + System.lineSeparator() + System.lineSeparator() +
-                "view                        Views a students details, expects a name" +
-                                             ", can be used directly with a name e.g. add [name]"
-                                             + System.lineSeparator() + System.lineSeparator() +
-                "delete                      Deletes a student from the student list, expects a name" +
-                                             ", can be used directly with a name e.g. add [name]"
-                                             + System.lineSeparator() + System.lineSeparator() +
-                "restore                     Restore a student deleted within the current session, expects a name, " +
-                                             "can be used directly by restore [name]."
-                                             + System.lineSeparator() + System.lineSeparator() +
-                "undo                        Restores the last student deleted in the current session."
-                                             + System.lineSeparator() + System.lineSeparator() +
-                "list                        Displays the list of all students"
-                                             + System.lineSeparator() +
-                "                            Currently available types: Whole student list, with " +
-                                             "with total classes attended, with phone number, "
-                                             + System.lineSeparator() +
-                "                            the archived list, the recently deleted list or " +
-                                             "by certain subject only."
-                                             + System.lineSeparator() + System.lineSeparator() +
-                "bye                         Exits Classify"
-                                             + System.lineSeparator() + System.lineSeparator() +
-                "sort                        Sorts the student list by the input parameter, expects an" +
-                                             " attribute to sort by, can be used directly by sort [type]."
-                                             + System.lineSeparator() +
-                "                            Currently available types: name, classes, payment"
-                                             + System.lineSeparator() + System.lineSeparator() +
-                "archive                     Removes the specified student from the list and archives them," +
-                                             " can be used directly by archive [name]."
-                                             + System.lineSeparator() + System.lineSeparator() +
-                "unarchive                   Removes the specified student from the archive and adds them to the list" +
-                                             ", can be used directly by unarchive [name]."
-                                             + System.lineSeparator() + System.lineSeparator() +
-                "process                     Processes a text file containing a list of students taking the same"+
-                                             " subject and the same number of classes."
-                                             + System.lineSeparator() + System.lineSeparator() +
-                "help                        Prints this help message" +
-            System.lineSeparator() + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+        String expectedOutput = "add" + "\n" +
+                                "    " + "Adds a student to the student list," + "\n" +
+                                "    " + "expects a name, grade and lessons attended" + "\n" +
+                                "    " + "e.g. add [name]" + System.lineSeparator() +
+                                System.lineSeparator() +
+                                "edit" + "\n" +
+                                "    " + "Edits a students details, expects a name," + "\n" +
+                                "    " + "can be used directly with a name" + "\n" +
+                                "    " + "e.g. edit [name]" + System.lineSeparator() +
+                                System.lineSeparator() +
+                                "view" + "\n" +
+                                "    " + "Views a students details, expects a name," + "\n" +
+                                "    " + "can be used directly with a name" + "\n" +
+                                "    " + "e.g. view [name]" + System.lineSeparator() +
+                                System.lineSeparator() +
+                                "delete" + "\n" +
+                                "    " + "Deletes a student from the student list," + "\n" +
+                                "    " + "expects a name," + "\n" +
+                                "    " + "can be used directly with a name" + "\n" +
+                                "    " + "e.g. delete [name]" + System.lineSeparator() +
+                                System.lineSeparator()+
+                                "restore" + "\n" +
+                                "    " + "Restore a student deleted within the" + "\n" +
+                                "    " + "current session, expects a name," + "\n" +
+                                "    " + "can be used directly by restore [name]." + System.lineSeparator() +
+                                System.lineSeparator() +
+                                "undo" + "\n" +
+                                "    " + "Restores the last student deleted" + "\n" +
+                                "    " + "in the current session." + System.lineSeparator() +
+                                System.lineSeparator() +
+                                "list" + "\n" +
+                                "    " + "Displays the list of all students" + System.lineSeparator() +
+                                "    " + "Currently available types:" + "\n" +
+                                "    " + "Whole student list" + "\n" +
+                                "    " + "With total classes attended" + "\n" +
+                                "    " + "With phone number" + System.lineSeparator() +
+                                "    " + "The archived list" + "\n" +
+                                "    " + "The recently deleted list" + "\n" +
+                                "    " + "By certain subject only" + System.lineSeparator() +
+                                System.lineSeparator() +
+                                "bye" + "\n" +
+                                "    " + "Exits Classify" + System.lineSeparator() +
+                                System.lineSeparator() +
+                                "sort" + "\n" +
+                                "    " + "Sorts the student list by the" + "\n" +
+                                "    " + "input parameter, expects an attribute" + "\n" +
+                                "    " + "to sort by," + "\n" +
+                                "    " + "can be used directly by sort [type]." + System.lineSeparator() +
+                                "    " + "Currently available types:" + "\n" +
+                                "    " + "Name" + "\n" +
+                                "    " + "Classes" + "\n" +
+                                "    " + "Payment" + System.lineSeparator() +
+                                System.lineSeparator() +
+                                "archive" + "\n" +
+                                "    " + "Removes the specified student from" + "\n" +
+                                "    " + "the list and archives them," + "\n" +
+                                "    " + "expects a name, can be used directly by" + "\n" +
+                                "    " + "archive [name]." + System.lineSeparator() +
+                                System.lineSeparator() +
+                                "unarchive" + "\n" +
+                                "    " + "Removes the specified student from the" + "\n" +
+                                "    " + "archive and adds them to the list," + "\n" +
+                                "    " + "expects a name, can be used directly by" + "\n" +
+                                "    " + "unarchive [name]." + System.lineSeparator() +
+                                System.lineSeparator() +
+                                "process" + "\n" +
+                                "    " + "Processes a text file containing" + "\n" +
+                                "    " + "a list of students" + "\n" +
+                                "    " + "taking the same subject and the" + "\n" +
+                                "    " + "same number of classes." + System.lineSeparator() +
+                                System.lineSeparator() +
+                                "help" + "\n" +
+                                "    " + "Prints this help message" + System.lineSeparator() +
+                                "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
 
         assertEquals(expectedOutput.trim(), printedOutput);
     }
