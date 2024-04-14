@@ -36,6 +36,7 @@ public class TextFileParser {
     private static final String CLASSES_ATTENDED_REGEX = ": ";
     private static final String INVALID_PHONE_NUMBER_MESSAGE="'s phone number is not a valid Singapore phone number." +
         " Please edit this students' phone number with the edit command!";
+    private static final String EXIT_INTERFACE = "Exiting interface.";
 
     /**
      * Boolean that checks for the filetype of the files.
@@ -86,7 +87,7 @@ public class TextFileParser {
 
         if (matchIndex == -1) {
             System.out.println(NO_MATCH_FOUND);
-            System.out.println("Exiting interface");
+            System.out.println(EXIT_INTERFACE);
             return;
         }
         parseTextFile(fileList, matchIndex, masterStudentList);

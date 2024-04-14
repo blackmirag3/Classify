@@ -23,6 +23,42 @@ class TextFileParserTest {
     public static final Integer MATH_CLASSES = 10;
     private static final String INVALID_PHONE_NUMBER_MESSAGE="'s phone number is not a valid Singapore phone number." +
         " Please edit this students' phone number with the edit command!";
+    private static final String VALID_TEXT_FILE = "File.txt";
+    private static final String INVALID_TEXT_FILE = "File";
+    private static final String FILE_SELECTION_PROMPT = "Please enter the exact name of the file " +
+            "you'd like to process:";
+    private static final String REQUEST_TO_TRY_AGAIN = "Please try again!";
+
+    @Test
+    public void testTextFileCheckerValidCase() {
+        assertTrue(TextFileParser.textFileChecker(VALID_TEXT_FILE));
+    }
+
+    @Test
+    public void testTextFileCheckerInvalidCase() {
+        assertFalse(TextFileParser.textFileChecker(INVALID_TEXT_FILE));
+    }
+    
+    @Test
+    public void testPromptForFileSelection(){
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        TextFileParser.promptForFileSelection();
+
+        assertEquals(FILE_SELECTION_PROMPT, outContent.toString().trim());
+    }
+
+    @Test
+    public void testPromptForFileSelectionAgain(){
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        TextFileParser.promptForFileSelectionAgain();
+
+        assertEquals((REQUEST_TO_TRY_AGAIN + System.lineSeparator() + 
+            FILE_SELECTION_PROMPT).trim(), outContent.toString().trim());
+    }
 
     @Test
     public void testAddPhoneNumberValidCase() {
