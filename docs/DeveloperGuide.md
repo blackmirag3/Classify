@@ -342,6 +342,27 @@ Classify serves as an attempt to modernise administrative tasks in education ins
    2. Test case: `list`, enter, enter, `5`<br />
    Expected: A list of all students that have been deleted in the current session is printed.
 
+### Processing a Test File 
+1. **No file** in inputFolder
+   1. Prerequisites: **Empty** inputFolder folder in Data. 
+   2. Expected: `No files in your Input Folder!` & `Please add some new files in the correct format!`. 
+   Should be redirected to the main commands menu.
+
+2. **No text file** in inputFolder
+   1. Prerequisites: inputFolder folder in Data **with no text files**.
+   2. Expected: `Files in your inputFolder are not Text Files!` & `Add some text files and try processing again!`. 
+   Should be redirected to the main commands menu.
+
+3. Ingesting a full list of Students using a Text File (without using file extension)
+   1. Prerequisites: Have at least one text file in the inputFolder in Data. The text file present (eg. **File.txt**) is properly formatted according to the requirements stated in the User Guide and is present in the inputFolder.
+   2. Test case: `Process`, enter, **`File`**
+   Expected: `Fetching the data from File.txt.` will be displayed. Can use the `list`, enter,enter,`1` to ensure that all the students in the file are added.
+
+4. Ingesting a full list of Students using a Text File (using file extension)
+   1. Prerequisites: Have at least one text file in the inputFolder in Data. The text file present (eg. **File.txt**) is properly formatted according to the requirements stated in the User Guide and is present in the inputFolder.
+   2. Test case: `Process`, enter, **`File.txt`**
+   Expected: `Fetching the data from File.txt.` will be displayed. Can use the `list`, enter,enter,`1` to ensure that all the students in the file are added. 
+
 ### Restoring a recently deleted student
 1. Restore a student from the recently deleted list
    1. Prerequisites: Have at least one student named `joe` deleted in the current session with the `delete joe` command
@@ -444,4 +465,3 @@ Classify serves as an attempt to modernise administrative tasks in education ins
 </br> Expected: Prints invalid phone number error message and prompts for another phone number.
 6. Test Case: `6`, `20 jan 2001`
 </br> Expected: Prints error message for invalid date and prompts for another date.
-
