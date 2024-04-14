@@ -36,12 +36,10 @@ public class InputParsing {
     private static final String SORT = "sort";
     private static final String ARCHIVE = "archive";
     private static final String UNARCHIVE = "unarchive";
-    private static final String ENTER_THE_SUBJECT_NAME_TYPE_EXIT_TO_GO_BACK = 
-            "Enter the subject name (type 'exit' to go back):";
     private static final String EXIT = "exit";
     private static final String EXITED_THE_COMMAND = "Exited the command.";
     private static final String LIST_SORTED = "Sort complete!";
-    private static final String SORT_BY_CHOOSE_INDEX = "Sort by: (Choose index)";
+    private static final String SORT_BY_CHOOSE_INDEX = "Sort by: (Choose index) or press enter to escape";
     private static final String NAME_A_TO_Z = "1. Name (A to Z):";
     private static final String TOTAL_NUMBER_OF_CLASSES_ATTENDED = "2. Total number of classes attended:";
     private static final String LAST_PAID_DATE = "3. Date of last fee payment: ";
