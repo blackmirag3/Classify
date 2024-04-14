@@ -27,13 +27,14 @@ all Tuition Centres can employ for ease of student management.
 
 
 - **Contributions to [UG](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/docs/UserGuide.md)**
-  * Wrote content related to `edit`, `archive`, `unarchive` features.
-  * Finalised formatting in UG, such as standardising the layout in `Usage` section.
+  * Wrote for `edit`, `archive`, `unarchive` features.
+  * Finalised formatting in UG, such as standardising the layout under `Usage` section.
 
 
   
 - **Contributions to [DG](https://github.com/AY2324S2-CS2113-T13-3/tp/blob/master/docs/DeveloperGuide.md)**
-  * ...
+  * Wrote `EditStudent` and `ArchiveCommands` component
+  * Wrote `Archiving/unarchiving a student` and `Editing a student's details` under manual testing.
 
 
 - **Contributions to Team-Based tasks:** 

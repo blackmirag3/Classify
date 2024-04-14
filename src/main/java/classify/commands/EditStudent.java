@@ -144,6 +144,14 @@ public class EditStudent extends Commands {
         UI.printDivider();
     }
 
+    //@@author blackmirag3
+    /**
+     * Edits gender for a particular student
+     *
+     * @param in               The scanner object to read user input.
+     * @param attributes       The attributes object of the student that the user has chosen to edit.
+     */
+    //@@author Cryolian
     private static void editGender(Scanner in, StudentAttributes attributes) {
         UI.println(attributes.getGender());
         UI.printDivider();
