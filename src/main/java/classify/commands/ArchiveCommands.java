@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ArchiveCommands {
-    public static final Logger logger = Logger.getLogger(InputParsing.class.getName());
+    private static final Logger logger = Logger.getLogger(InputParsing.class.getName());
 
     //@@author blackmirag3
     /***
