@@ -159,41 +159,41 @@ public class DataReaderTest {
 
     @Test
     public void checkDeletionRequestInputTest(){
-        assertTrue(DataReader.checkDeletionRequestInput("YES"));
+        assertTrue(DataReader.isDeletionRequestInput("YES"));
     }
 
     @Test
     public void checkDeletionRequestInvalidTest1(){
-        assertFalse(DataReader.checkDeletionRequestInput("yes"));
+        assertFalse(DataReader.isDeletionRequestInput("yes"));
     }
 
     @Test
     public void checkDeletionRequestInvalidTest2(){
-        assertFalse(DataReader.checkDeletionRequestInput("YEs"));
+        assertFalse(DataReader.isDeletionRequestInput("YEs"));
     }
 
     @Test
     public void checkDeletionRequestInvalidTest3(){
-        assertFalse(DataReader.checkDeletionRequestInput("NO"));
+        assertFalse(DataReader.isDeletionRequestInput("NO"));
     }
 
     @Test
     public void deletionRequestFinalConfirmationValidTest(){
-        assertTrue(DataReader.deletionRequestFinalConfirmation("CONFIRM"));
+        assertTrue(DataReader.isDeletionRequestFinalConfirmation("CONFIRM"));
     }
 
     @Test
     public void deletionRequestFinalConfirmationInvalidTest1(){
-        assertFalse(DataReader.deletionRequestFinalConfirmation("confirm"));
+        assertFalse(DataReader.isDeletionRequestFinalConfirmation("confirm"));
     }
 
     @Test
     public void deletionRequestFinalConfirmationInvalidTest2(){
-        assertFalse(DataReader.deletionRequestFinalConfirmation("CONfirm"));
+        assertFalse(DataReader.isDeletionRequestFinalConfirmation("CONfirm"));
     }
 
     @Test
     public void deletionRequestFinalConfirmationInvalidTest3(){
-        assertFalse(DataReader.deletionRequestFinalConfirmation("BANANA"));
+        assertFalse(DataReader.isDeletionRequestFinalConfirmation("BANANA"));
     }
 }

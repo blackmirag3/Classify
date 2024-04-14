@@ -58,7 +58,7 @@ public class ListStudentsCommand {
      * @param subject           The subject to filter the list of students.
      */
     public static void listStudentsBySubject(ArrayList<Student> masterStudentList, String subject) {
-        boolean found = false;
+        boolean isFound = false;
         UI.printStudentsWithSubject(subject);
 
         for (Student student : masterStudentList) {
@@ -70,11 +70,11 @@ public class ListStudentsCommand {
                 } else {
                     UI.println("- " + student.getName() + " - " + "No Classes Attended found for " + subject);
                 }
-                found = true;
+                isFound = true;
             }
         }
 
-        if (!found) {
+        if (!isFound) {
             UI.printNoStudentsWithSubject(subject);
         }
 

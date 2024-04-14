@@ -31,12 +31,12 @@ class TextFileParserTest {
 
     @Test
     public void testTextFileCheckerValidCase() {
-        assertTrue(TextFileParser.textFileChecker(VALID_TEXT_FILE));
+        assertTrue(TextFileParser.isTextFile(VALID_TEXT_FILE));
     }
 
     @Test
     public void testTextFileCheckerInvalidCase() {
-        assertFalse(TextFileParser.textFileChecker(INVALID_TEXT_FILE));
+        assertFalse(TextFileParser.isTextFile(INVALID_TEXT_FILE));
     }
     
     @Test
@@ -94,9 +94,9 @@ class TextFileParserTest {
         masterStudentList.add(student);
         student.getAttributes().setPhoneNumber(NORMAL_SG_NUMBER);
 
-        boolean checker = TextFileParser.matchingStudentIndex(masterStudentList,
+        boolean isTrue = TextFileParser.matchingStudentIndex(masterStudentList,
                 JOHN_DOE, NORMAL_SG_NUMBER) == 0;
-        assertTrue(checker);
+        assertTrue(isTrue);
     }
 
     @Test
@@ -106,9 +106,9 @@ class TextFileParserTest {
         masterStudentList.add(student);
         student.getAttributes().setPhoneNumber(NORMAL_SG_NUMBER);
 
-        boolean checker = TextFileParser.matchingStudentIndex(masterStudentList,
+        boolean isFalse = TextFileParser.matchingStudentIndex(masterStudentList,
                 JOHN_DOE, 98989898) == 0;
-        assertFalse(checker);
+        assertFalse(isFalse);
     }
 
     @Test
@@ -118,9 +118,9 @@ class TextFileParserTest {
         masterStudentList.add(student);
         student.getAttributes().setPhoneNumber(NORMAL_SG_NUMBER);
 
-        boolean checker = TextFileParser.matchingStudentIndex(masterStudentList,
+        boolean isFalse = TextFileParser.matchingStudentIndex(masterStudentList,
                 "Jane Doe", NORMAL_SG_NUMBER) == 0;
-        assertFalse(checker);
+        assertFalse(isFalse);
     }
 
 
@@ -134,7 +134,7 @@ class TextFileParserTest {
         student.getAttributes().addSubjectGrade(newSubject);
         
 
-        assertTrue(TextFileParser.matchingSubject(masterStudentList, MATH, 0));
+        assertTrue(TextFileParser.isMatchingSubject(masterStudentList, MATH, 0));
     }
 
     @Test
@@ -147,7 +147,7 @@ class TextFileParserTest {
         student.getAttributes().addSubjectGrade(newSubject);
         
 
-        assertFalse(TextFileParser.matchingSubject(masterStudentList, SCIENCE, 0));
+        assertFalse(TextFileParser.isMatchingSubject(masterStudentList, SCIENCE, 0));
     }
 
     @Test
@@ -157,7 +157,7 @@ class TextFileParserTest {
         masterStudentList.add(student);
         student.getAttributes().setPhoneNumber(NORMAL_SG_NUMBER);
 
-        assertTrue(TextFileParser.matchingNameNumber(masterStudentList, JOHN_DOE, NORMAL_SG_NUMBER));
+        assertTrue(TextFileParser.isMatchingNameNumber(masterStudentList, JOHN_DOE, NORMAL_SG_NUMBER));
     }
 
     @Test
@@ -167,6 +167,6 @@ class TextFileParserTest {
         masterStudentList.add(student);
         student.getAttributes().setPhoneNumber(98989898);
 
-        assertFalse(TextFileParser.matchingNameNumber(masterStudentList, JOHN_DOE, NORMAL_SG_NUMBER));
+        assertFalse(TextFileParser.isMatchingNameNumber(masterStudentList, JOHN_DOE, NORMAL_SG_NUMBER));
     }
 }
