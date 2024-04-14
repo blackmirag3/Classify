@@ -647,13 +647,13 @@ edit
 view
     Views a students details, expects a name,
     can be used directly with a name
-    e.g. add [name]
+    e.g. view [name]
 
 delete
     Deletes a student from the student list,
     expects a name,
     can be used directly with a name
-    e.g. add [name]
+    e.g. delete [name]
 
 restore
     Restore a student deleted within the
@@ -669,10 +669,10 @@ list
     Currently available types:
     Whole student list
     With total classes attended
-    With phone number,
+    With phone number
     The archived list
     The recently deleted list
-    By certain subject only.
+    By certain subject only
 
 bye
     Exits Classify
