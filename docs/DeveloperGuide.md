@@ -10,7 +10,7 @@
    - [AddStudent Component](#addstudent-component)
    - [StudentSorter Component](#studentsorter-component)
    - [Data Commands Component](#data-commands-component)
-   - [Process Componenent](#process-component)
+   - [Process Component](#process-component)
 - [Project Scope](#product-scope)
    - [User Stories](#user-stories)
    - [Non-Functional Requirements](#non-functional-requirements)
@@ -220,7 +220,12 @@ The two text files are will be created under a directory called data, in which t
 ![DataStoringObjectDiagramUML](./diagrams/src/DataStoring/ObjectDiagram.png)
 
 ### Process Component
-This section refers to `TextFileHandler.java`, `TextFileParser.java`, and `TextFileReader.java` classes.
+This section refers to `TextFileHandler.java`, `TextFileParser.java`, and `TextFileReader.java` classes. It ensures that we are able to put new files in the folder in data which is named Input Folder.
+
+#### Design Considerations
+
+#### Implementation and Rationale
+
 
 ---
 
