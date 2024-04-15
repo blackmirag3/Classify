@@ -255,6 +255,19 @@ This section refers to `TextFileHandler.java`, `TextFileParser.java`, and `TextF
    * **Checker for same student**: Ensures that we dont have duplicate entries of one student.
    * **Checker for same subject**: Ensures that an existing student does not get duplicate entries of the same subject (Not applicable for new students for obvious reasons)
 
+### ArchiveCommands Component
+The `ArchiveCommands` class is responsible for transferring students from the student list to archive list and vice versa, using methods `archiveStudent` and `unarchiveStudent`.
+This class contains the `editStudent` method which is called by `InputParsing` class when user chooses to enter edit mode for a student.
+
+The following is a sequence diagram for an example of when `archiveStudent` is called to move a student from the student list to archive.
+
+![ArchiveCommandsSequenceDiagram](./diagrams/src/ArchiveCommands/ArchiveCommands.PNG)
+#### Design Considerations
+* Write data using `Data Commands` component into archive and student data file whenever there is change.
+* Check for student-number pairs whenever student is archived or unarchived to ensure there are no duplicate students amongst all student lists.
+
+#### Implementation and Rationale
+* **Exception Handling**: Uses the 'checkNameNumberPair' method and catches 'NameNumberMatchException'
 
 ---
 
@@ -317,9 +330,6 @@ Classify serves as an attempt to modernise administrative tasks in education ins
 7. **Data Management**:
    - File saving should done whenever a change has been made to the Master List.
 
-## Glossary
-
-* *glossary item* - Definition
 
 ## Instructions for manual testing
 
