@@ -234,7 +234,7 @@ Currently there is a polling system set in place where every change in the list 
 
 As stated above, all the names and attributes associated with each student will be saved to the main text file, named Student_Information.txt.
 
-If the user chooses to delete or archive a student, it would be saved to an archive file, named student_archive.txt. If the user chooses to unarchive a student or undo a recent deletion, it will be brought back to the main text file.
+If the user chooses to archive a student, it would be saved to an archive file, named student_archive.txt. If the user chooses to unarchive a student, the student will be re-added to the student list and consequently be written to the main text file.
 
 The two text files are will be created under a directory called data, in which two separate file paths will be created if it is not already found on the user's desktop. 
 
