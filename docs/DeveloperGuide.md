@@ -37,19 +37,17 @@ Do note that the Classify class is the "main" class in the diagram, with all oth
 
 ## Project Components
 
-### Ui component
+### UI component
 
-The `Ui` class handles message output for the user within the terminal.
-
-The `UI`component,
-- stores message output strings for user feedback
-- holds methods for printing messages to be called by other classes, such as `InputParsing`.
+The `UI` class handles message output for the user within the terminal.
+- Stores message output strings for user feedback
+- Holds methods for printing messages to be called by other classes, such as `InputParsing`.
 
 #### Design considerations
 
-Being a CLI application, UI/UX is minimal and user IO is confined within the terminal.
+* Being a CLI application, UI/UX should be minimal and user IO should be confined within the terminal.
 
-Hence, public methods within the`Ui` class are static for easy access by other classes, without the need to instantiate an instance of the `Ui` class to call.
+* public methods within the `UI` class are static for easy access by other classes, without the need to instantiate an instance of the `UI` class to call.
 
 ### InputParsing component
 
@@ -225,7 +223,7 @@ providing a mechanism to organize and present student information based on user 
 
 ### Data Commands Component
 
-This section refers to `DataHandler.java`, `DataReader.java`, and `DataStorage.java` classes.
+This section refers to `DataHandler`, `DataReader`, and `DataStorage` classes.
 
 We have currently implemented a basic data handler which has the abilities to store a student's name into a text file.
 
@@ -242,7 +240,7 @@ The two text files are will be created under a directory called data, in which t
 ![DataStoringObjectDiagramUML](./diagrams/src/DataStoring/ObjectDiagram.png)
 
 ### Process Component
-This section refers to `TextFileHandler.java`, `TextFileParser.java`, and `TextFileReader.java` classes. It ensures that we are able to put new files in the folder in data which is named Input Folder.
+This section refers to `TextFileHandler`, `TextFileParser`, and `TextFileReader` classes. It ensures that we are able to put new files in the folder in data which is named Input Folder.
 
 #### Design Considerations
    * Support for adding multiple students taking the same class/subject at once
@@ -330,12 +328,14 @@ Classify serves as an attempt to modernise administrative tasks in education ins
 7. **Data Management**:
    - File saving should done whenever a change has been made to the Master List.
 
+## Glossary
+* *` `* - Refers to empty user input, where user just presses `enter` key.
 
 ## Instructions for manual testing
 
 ### Adding a student to the student list
 1. Adding a student with a name and phone number only
-   1. Prerequisites: View if a student with the name 'joe' and phone number `88888888` exists by using the `view joe` command.
+   1. Prerequisites: View if a student with the name 'joe' and phone number '88888888' exists by using the `view joe` command.
    2. Test case: `add joe` and when prompted for phone number enter `88888888`, while pressing enter to skip other optional fields.
    <br /> 
    Expected: `view joe` now shows the Student details of a student with Name: joe, Phone Number: 88888888.
@@ -367,7 +367,7 @@ Classify serves as an attempt to modernise administrative tasks in education ins
 2. Listing all students with a specific subject in the tuition centre
    1. Prerequisites: Have at least one student with the subject 'Math' added to the list with the `add` command
    2. Test case: `list`, `Math`<br />
-   Expected: A list of all the students with the subject `Math` in the tuition centre is printed.
+   Expected: A list of all the students with the subject 'Math' in the tuition centre is printed.
    <br />
 3. Listing all students that have been deleted in the current session
    1. Prerequisites: Delete at least one student in the list with the `delete` command
@@ -388,12 +388,12 @@ Classify serves as an attempt to modernise administrative tasks in education ins
 3. Ingesting a full list of Students using a Text File (without using file extension)
    1. Prerequisites: Have at least one text file in the inputFolder in Data. The text file present (eg. **File.txt**) is properly formatted according to the requirements stated in the User Guide and is present in the inputFolder.
    2. Test case: `Process`, enter, **`File`**
-   Expected: `Fetching the data from File.txt.` will be displayed. Can use the `list`, enter,enter,`1` to ensure that all the students in the file are added.
+   Expected: `Fetching the data from File.txt.` will be displayed. Can use the `list`, ` `, ` `, `1` to ensure that all the students in the file are added.
 
 4. Ingesting a full list of Students using a Text File (using file extension)
    1. Prerequisites: Have at least one text file in the inputFolder in Data. The text file present (eg. **File.txt**) is properly formatted according to the requirements stated in the User Guide and is present in the inputFolder.
    2. Test case: `Process`, enter, **`File.txt`**
-   Expected: `Fetching the data from File.txt.` will be displayed. Can use the `list`, enter,enter,`1` to ensure that all the students in the file are added. 
+   Expected: `Fetching the data from File.txt.` will be displayed. Can use the `list`, ` `, ` `, `1` to ensure that all the students in the file are added. 
 
 ### Restoring a recently deleted student
 1. Restore a student from the recently deleted list
