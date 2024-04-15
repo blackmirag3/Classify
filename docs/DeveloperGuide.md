@@ -4,7 +4,7 @@
 - [Acknowledgements](#acknowledgements)
 - [Overall Design and Implementation](#overall-design-and-implementation)
 - [Project Components](#project-components)
-   - [Ui component](#ui-component)
+   - [UI component](#ui-component)
    - [InputParsing component](#inputparsing-component)
    - [Student Details](#student-details)
    - [AddStudent Component](#addstudent-component)
@@ -12,6 +12,7 @@
    - [StudentSorter Component](#studentsorter-component)
    - [Data Commands Component](#data-commands-component)
    - [Process Component](#process-component)
+   - [ArchiveCommands Component](#archivecommands-component)
 - [Project Scope](#product-scope)
    - [User Stories](#user-stories)
    - [Non-Functional Requirements](#non-functional-requirements)
@@ -59,7 +60,7 @@ This component ensures that the user parses in commands in a format that makes s
 - The parser must be effective in breaking down the user's input into its constituent commands, with further breakdown if an associated argument is added.
 - The parser should be quick and effective in understanding the user's input, with simple prompts given to help the user in correctly parsing the command through the input parser.
 - Allowing the user to input optional arguments. For example, the user could type `view <student name>`, which takes in the "student name" as an optional argument. This is to increase the robustness of the program, which accounts for the two types of users, one who just types in `view`, and the other as formerly mentioned above. 
-- Error handling must be intuitive for the user, so that appropriate error messages are produced if the user does not input a valid command. The error handling should also be robust, to account for the event a user is incapable in following instructions.
+- Error handling must be intuitive for the user, so that appropriate error messages are produced if the user does not input a valid command. The error handling should also be robust, to account for the event a user is incapable of following instructions.
 
 #### Implementation and rationale
 
@@ -67,7 +68,7 @@ This component ensures that the user parses in commands in a format that makes s
 
 The InputParsing class is designed to handle the considerations above by breaking down the input given by the user in a well structured process. Below is how the InputParsing class works:
 
-1. Splitting User Input: The Parser would take on the user's input and split it into 2 parts, which is the command and the argument, if any. this is done by the `UserInput` Class
+1. Splitting User Input: The Parser would take in the user's input and split it into 2 parts, command and argument, if any. This is done using the `UserInput` Class.
    
 2. Command recognition: Depending on the command and the argument given, if any, the parser would execute the command as per defined by the program. If the command and/or argument given is invalid/undefined, the input parser would generate a message to the user, informing them of the command's invalidity. This is done by the `InputParsing` Class.
 
@@ -265,8 +266,8 @@ The following is a sequence diagram for an example of when `archiveStudent` is c
 * Have proper checks whenever student is archived or unarchived to ensure there are no duplicate students amongst all student lists.
 
 #### Implementation and Rationale
-* **Exception Handling**: To prevent duplicate students (especially from corrupted archive data file), the class uses the 'checkNameNumberPair' method and catches 'NameNumberMatchException' to catch instances of duplicate students existing in any list in the programme.
-* **File Saving**: Uses the `Data Commands` component to write archive and main student data file whenever 'archiveStudent' or `unarchiveStudent' method is called.
+* **Exception Handling**: To prevent duplicate students (especially from corrupted archive data file), the class uses the `checkNameNumberPair` method and catches `NameNumberMatchException` to catch instances of duplicate students existing in any list in the programme.
+* **File Saving**: Uses the `Data Commands` component to write archive and main student data file whenever `archiveStudent` or `unarchiveStudent` method is called.
 ---
 
 ## Product scope
@@ -329,7 +330,7 @@ Classify serves as an attempt to modernise administrative tasks in education ins
    - File saving should done whenever a change has been made to the Master List.
 
 ## Glossary
-* *` `* - Refers to empty user input, where user just presses `enter` key.
+* *` `*  - Refers to empty user input, where user just presses `enter` key.   
 
 ## Instructions for manual testing
 
